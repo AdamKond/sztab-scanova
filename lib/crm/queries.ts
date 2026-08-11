@@ -1,0 +1,150 @@
+import "server-only";
+
+// Odczyty domeny CRM. Wyłącznie za service role, wywoływane z kodu, który
+// wcześniej przeszedł requireStaff()/guardStaffAction().
+//
+// Zasady:
+// - każdy błąd bazy leci wyjątkiem (rdzeń failuje głośno, KPI nie pokazuje 0),
+// - każda lista przechodzi przez selectAll (paginacja ponad limit PostgREST),
+// - pola numeric z PostgREST parsujemy na granicy (przychodzą jako stringi).
+
+import { getServiceClient } from "@/lib/supabase/service";
+import { selectAll } from "@/lib/db";
+import type {
+  CrmActivity,
+  CrmLead,
+  CrmSettings,
+  CrmStageHistory,
+  CrmTask,
+  SalesGoal,
+} from "./types";
+
+function parseLead(row: CrmLead): CrmLead {
+  return {
+    ...row,
+    monthly_revenue: row.monthly_revenue === null ? null : Number(row.monthly_revenue),
+    google_rating: row.google_rating === null ? null : Number(row.google_rating),
+  };
+}
+
+function parseGoal(row: SalesGoal): SalesGoal {
+  return { ...row, target_value: Number(row.target_value) };
+}
+
+export async function listLeads(): Promise<CrmLead[]> {
+  const db = getServiceClient();
+  const rows = await selectAll<CrmLead>(db, "crm_leads", {
+    orderBy: { column: "updated_at", ascending: false },
+  });
+  return rows.map(parseLead);
+}
+
+export async function getLead(id: string): Promise<CrmLead | null> {
+  const db = getServiceClient();
+  const { data, error } = await db.from("crm_leads").select("*").eq("id", id).maybeSingle();
+  if (error) throw new Error(`Błąd bazy przy odczycie leada: ${error.message}`);
+  return data ? parseLead(data as CrmLead) : null;
+}
+
+export async function listActivities(leadId?: string): Promise<CrmActivity[]> {
+  const db = getServiceClient();
+  return selectAll<CrmActivity>(db, "crm_activities", {
+    filter: leadId ? (q) => q.eq("lead_id", leadId) : undefined,
+    orderBy: { column: "happened_at", ascending: false },
+  });
+}
+
+export async function listStageHistory(leadId?: string): Promise<CrmStageHistory[]> {
+  const db = getServiceClient();
+  return selectAll<CrmStageHistory>(db, "crm_stage_history", {
+    filter: leadId ? (q) => q.eq("lead_id", leadId) : undefined,
+    orderBy: { column: "changed_at", ascending: true },
+  });
+}
+
+export async function listTasks(): Promise<CrmTask[]> {
+  const db = getServiceClient();
+  return selectAll<CrmTask>(db, "crm_tasks", {
+    orderBy: { column: "due_at", ascending: true },
+  });
+}
+
+export async function listTasksForLead(leadId: string): Promise<CrmTask[]> {
+  const db = getServiceClient();
+  return selectAll<CrmTask>(db, "crm_tasks", {
+    filter: (q) => q.eq("lead_id", leadId),
+    orderBy: { column: "due_at", ascending: true },
+  });
+}
+
+export async function listGoals(): Promise<SalesGoal[]> {
+  const db = getServiceClient();
+  const rows = await selectAll<SalesGoal>(db, "sales_goals", {
+    orderBy: { column: "starts_on", ascending: false },
+  });
+  return rows.map(parseGoal);
+}
+
+export async function getSettings(): Promise<CrmSettings> {
+  const db = getServiceClient();
+  const { data, error } = await db.from("crm_settings").select("*").eq("id", 1).maybeSingle();
+  if (error) throw new Error(`Błąd bazy przy odczycie ustawień: ${error.message}`);
+  // Brak wiersza ustawień = niewykonana migracja. Failujemy głośno zamiast
+  // po cichu przyjmować domyślne progi — to sygnał złej konfiguracji.
+  if (!data) {
+    throw new Error(
+      "Brak wiersza crm_settings — uruchom supabase/migration-001-core.sql (patrz supabase/README.md).",
+    );
+  }
+  return data as CrmSettings;
+}
+
+/**
+ * Kandydaci na duplikaty dla podanych kluczy — używane przy tworzeniu leada
+ * i w imporcie. Porównujemy po znormalizowanej nazwie, telefonie, domenie
+ * i Instagramie. Zwraca istniejące leady pasujące do KTÓREGOKOLWIEK klucza.
+ */
+export async function findDuplicateCandidates(keys: {
+  normalized_name?: string | null;
+  phone?: string | null;
+  domain?: string | null;
+  instagram?: string | null;
+}): Promise<CrmLead[]> {
+  const db = getServiceClient();
+  const found = new Map<string, CrmLead>();
+
+  if (keys.normalized_name) {
+    const { data, error } = await db
+      .from("crm_leads")
+      .select("*")
+      .eq("normalized_name", keys.normalized_name)
+      .limit(20);
+    if (error) throw new Error(`Błąd bazy przy szukaniu duplikatów: ${error.message}`);
+    for (const row of (data ?? []) as CrmLead[]) found.set(row.id, parseLead(row));
+  }
+  if (keys.phone) {
+    const { data, error } = await db.from("crm_leads").select("*").eq("phone", keys.phone).limit(20);
+    if (error) throw new Error(`Błąd bazy przy szukaniu duplikatów: ${error.message}`);
+    for (const row of (data ?? []) as CrmLead[]) found.set(row.id, parseLead(row));
+  }
+  if (keys.instagram) {
+    const { data, error } = await db
+      .from("crm_leads")
+      .select("*")
+      .eq("instagram", keys.instagram)
+      .limit(20);
+    if (error) throw new Error(`Błąd bazy przy szukaniu duplikatów: ${error.message}`);
+    for (const row of (data ?? []) as CrmLead[]) found.set(row.id, parseLead(row));
+  }
+  if (keys.domain) {
+    // www przechowujemy z https://, więc porównanie po fragmencie domeny.
+    const { data, error } = await db
+      .from("crm_leads")
+      .select("*")
+      .ilike("www", `%${keys.domain}%`)
+      .limit(20);
+    if (error) throw new Error(`Błąd bazy przy szukaniu duplikatów: ${error.message}`);
+    for (const row of (data ?? []) as CrmLead[]) found.set(row.id, parseLead(row));
+  }
+  return [...found.values()];
+}
