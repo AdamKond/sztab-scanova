@@ -7,8 +7,8 @@ import { requireStaff } from "@/lib/auth";
 export const dynamic = "force-dynamic";
 
 // Jedyna brama autoryzacji dla całej sekcji prywatnej: middleware celowo
-// nie autoryzuje, a requireStaff() zwraca 404 dla każdego spoza allowlisty —
-// sekcja ma dla obcych nie istnieć.
+// nie autoryzuje. requireStaff() odsyła niezalogowanych na /login, a komuś
+// zalogowanemu spoza allowlisty pokazuje 404 — dla obcych sekcja ma nie istnieć.
 export default async function StaffLayout({ children }: { children: React.ReactNode }) {
   const user = await requireStaff();
   return <AppShell userEmail={user.email ?? "—"}>{children}</AppShell>;

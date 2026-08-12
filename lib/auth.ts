@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type { User } from "@supabase/supabase-js";
 import { getCurrentUser } from "@/lib/supabase/auth-server";
 
@@ -81,15 +81,21 @@ export async function getStaffUser(): Promise<User | null> {
 }
 
 /**
- * Bramka dla layoutów i stron.
+ * Bramka dla layoutów i stron. Dwa różne przypadki, dwie różne odpowiedzi:
  *
- * Świadomie `notFound()` (404), a nie redirect na /login: dla kogoś z zewnątrz
- * ta część aplikacji ma po prostu nie istnieć. Przekierowanie potwierdzałoby,
- * że pod danym adresem coś jest i zapraszało do prób logowania.
+ * 1. Nikt nie jest zalogowany → redirect na /login. Nie ujawnia to niczego:
+ *    strona logowania i tak jest publiczna, a 404 w tym miejscu oznaczałoby,
+ *    że własny zespół przy każdym wejściu na adres główny widzi błąd.
+ *
+ * 2. Ktoś jest zalogowany, ale nie ma go na allowliście → `notFound()` (404).
+ *    To jest przypadek, o który naprawdę chodzi: dla obcego z poprawnym kontem
+ *    Supabase ta część aplikacji ma po prostu nie istnieć. Redirect na /login
+ *    potwierdzałby, że pod adresem coś jest i zapraszał do dalszych prób.
  */
 export async function requireStaff(): Promise<User> {
-  const user = await getStaffUser();
-  if (!user) notFound();
+  const user = await getCurrentUser();
+  if (!user) redirect("/login");
+  if (!isStaffUser(user)) notFound();
   return user;
 }
 
