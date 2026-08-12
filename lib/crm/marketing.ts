@@ -82,7 +82,9 @@ export function adsTotals(
   let paidCustomers = 0;
   for (const r of rows) {
     if (filter.platform && r.platform !== filter.platform) continue;
-    if (filter.campaign !== undefined && r.campaign !== filter.campaign) continue;
+    // Pusty string = "wszystkie kampanie" (wartość pustej opcji <select>),
+    // nie filtr po kampanii bez nazwy — klasyczna pułapka ""-vs-undefined.
+    if (filter.campaign && r.campaign !== filter.campaign) continue;
     if (filter.fromDay && r.log_date < filter.fromDay) continue;
     if (filter.toDay && r.log_date > filter.toDay) continue;
     // PostgREST zwraca numeric jako string — Number() na granicy.
@@ -216,8 +218,17 @@ export function outboundQueue(
       suggested = sequence[0];
     } else {
       const idx = sequence.indexOf(seq.type);
-      // Po ostatnim kroku sekwencji zostajemy przy wizycie — dalej decyduje człowiek.
-      suggested = idx >= 0 && idx < sequence.length - 1 ? sequence[idx + 1] : sequence[sequence.length - 1];
+      if (idx === -1) {
+        // Ostatnia próba była krokiem spoza sekwencji tego leada (np. DM, a lead
+        // nie ma już Instagrama) — zaczynamy jego sekwencję od początku (telefon),
+        // a nie od razu od wizyty w terenie.
+        suggested = sequence[0];
+      } else if (idx < sequence.length - 1) {
+        suggested = sequence[idx + 1];
+      } else {
+        // Po ostatnim kroku sekwencji zostajemy przy wizycie — dalej decyduje człowiek.
+        suggested = sequence[sequence.length - 1];
+      }
     }
 
     items.push({

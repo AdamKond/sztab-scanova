@@ -263,14 +263,12 @@ describe("adsTotals", () => {
     expect(adsTotals(rows, { campaign: "nieistniejaca" }).spend).toBe(0);
   });
 
-  it("campaign: \"\" jest traktowany jako pełnoprawny filtr — łapie tylko pustą kampanię", () => {
+  it("campaign: \"\" oznacza „wszystkie kampanie” (wartość pustej opcji <select>)", () => {
     const bezKampanii = makeAdsLog({ log_date: "2026-01-04", campaign: "", spend: 7, raw_leads: 1 });
     const t = adsTotals([...rows, bezKampanii], { campaign: "" });
-    expect(t.spend).toBe(7);
-    expect(t.rawLeads).toBe(1);
-    expect(t.cpl).toBe(7);
-    // Uwaga: pusty string NIE oznacza „wszystkie kampanie”.
-    expect(t.spend).not.toBe(67);
+    // 60 (rows) + 7 (bez kampanii) — pusty filtr nie zawęża niczego.
+    expect(t.spend).toBe(67);
+    expect(t.rawLeads).toBe(11);
   });
 
   it("filtr okresu jest obustronnie domknięty", () => {
@@ -567,16 +565,17 @@ describe("outboundQueue", () => {
     expect(items[0].suggestedStep).toBe("wizyta");
   });
 
-  it("lead bez Instagrama z historycznym DM-em przeskakuje od razu do wizyty", () => {
-    // Krok spoza skróconej sekwencji (indexOf === -1) spada na jej ostatni
-    // element — telefon zostaje pominięty. Utrwalamy bieżące zachowanie.
+  it("lead bez Instagrama z historycznym DM-em dostaje telefon, nie wizytę", () => {
+    // Krok spoza skróconej sekwencji (np. DM, gdy lead stracił Instagrama)
+    // zaczyna sekwencję leada od początku — najpierw telefon, dopiero potem
+    // jazda w teren.
     const lead = makeLead({ instagram: null });
     const items = outboundQueue(
       [lead],
       [makeActivity({ lead_id: lead.id, type: "ig_dm", happened_at: "2026-01-10T10:00:00Z" })],
       now,
     );
-    expect(items[0].suggestedStep).toBe("wizyta");
+    expect(items[0].suggestedStep).toBe("telefon");
     expect(items[0].attempts).toBe(1);
   });
 

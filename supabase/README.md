@@ -10,11 +10,13 @@ bazą aplikacji lojalnościowej SCANOVY.
 3. Region: **`eu-central-1` (Frankfurt)**.
 4. Zapisz hasło do bazy w menedżerze haseł (nie będzie potrzebne w aplikacji).
 
-## 2. Uruchom migrację
+## 2. Uruchom migracje (w kolejności)
 
 1. W dashboardzie: **SQL Editor → New query**.
 2. Wklej całą zawartość `supabase/migration-001-core.sql` → **Run**.
-3. Uruchamiaj tylko raz. Migracja jest idempotentna (`if not exists`), więc
+3. Następnie wklej `supabase/migration-002-etapy-2-4.sql` → **Run**
+   (partnerzy, szablony, content, dziennik reklam, odprawy AI).
+4. Każdą migrację uruchamiaj raz. Są idempotentne (`if not exists`), więc
    ponowne uruchomienie nie zepsuje danych, ale nie jest potrzebne.
 
 ## 3. Wyłącz publiczną rejestrację
@@ -49,8 +51,24 @@ Skopiuj `.env.example` do `.env.local` i uzupełnij:
 | `STAFF_EMAILS` | dwa e-maile po przecinku, np. `adam@x.pl,oliwier@x.pl` |
 | `STAFF_USER_IDS` | dwa UUID z kroku 4, po przecinku |
 
-`ANTHROPIC_API_KEY` i `INBOUND_WEBHOOK_SECRET` zostaw puste — potrzebne dopiero
-w Etapie 2/4.
+Opcjonalne (system działa bez nich):
+
+| Zmienna | Po co |
+|---|---|
+| `ANTHROPIC_API_KEY` | włącza odprawę AI i generator hooków (ekran „Odprawa AI") |
+| `SZTAB_AI_MODEL` | nadpisuje model AI (domyślnie `claude-opus-5`) |
+| `INBOUND_WEBHOOK_SECRET` | włącza endpoint `POST /api/inbound/lead` dla formularza landingu |
+
+Przykład zgłoszenia z landingu (dedupe wbudowane — duplikat dopisuje aktywność
+zamiast tworzyć drugą firmę):
+
+```bash
+curl -X POST https://twoj-sztab.vercel.app/api/inbound/lead \
+  -H "x-inbound-token: $INBOUND_WEBHOOK_SECRET" \
+  -H "content-type: application/json" \
+  -d '{"name":"Kawiarnia X","phone":"512 345 678","city":"Lublin",
+       "message":"Proszę o kontakt","utm_source":"meta","utm_campaign":"sierpien"}'
+```
 
 ## 6. Weryfikacja
 

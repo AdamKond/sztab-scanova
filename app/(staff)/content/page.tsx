@@ -235,36 +235,39 @@ function ContentCard({ item }: { item: CrmContent }) {
             />
           </div>
 
-          <fieldset className="grid grid-cols-3 gap-2">
+          {/* Legenda poza siatką — jako element grida zajmowałaby całą komórkę. */}
+          <fieldset>
             <legend className="mb-1 text-[12px] font-medium text-ink-2">
               Wyniki — wpisujemy ręcznie
             </legend>
-            {(
-              [
-                ["views", "Wyświetlenia", item.views],
-                ["comments", "Komentarze", item.comments],
-                ["saves", "Zapisy", item.saves],
-                ["inquiries", "Zapytania", item.inquiries],
-                ["leads", "Leady", item.leads],
-                ["demos", "Demo", item.demos],
-              ] as const
-            ).map(([name, label, value]) => (
-              <div key={name}>
-                <Label htmlFor={`${name}-${item.id}`} className="text-[12px]">
-                  {label}
-                </Label>
-                <Input
-                  id={`${name}-${item.id}`}
-                  name={name}
-                  type="number"
-                  min="0"
-                  step="1"
-                  inputMode="numeric"
-                  defaultValue={value ?? ""}
-                  className="min-h-9 px-2 text-[13px]"
-                />
-              </div>
-            ))}
+            <div className="grid grid-cols-3 gap-2">
+              {(
+                [
+                  ["views", "Wyświetlenia", item.views],
+                  ["comments", "Komentarze", item.comments],
+                  ["saves", "Zapisy", item.saves],
+                  ["inquiries", "Zapytania", item.inquiries],
+                  ["leads", "Leady", item.leads],
+                  ["demos", "Demo", item.demos],
+                ] as const
+              ).map(([name, label, value]) => (
+                <div key={name}>
+                  <Label htmlFor={`${name}-${item.id}`} className="text-[12px]">
+                    {label}
+                  </Label>
+                  <Input
+                    id={`${name}-${item.id}`}
+                    name={name}
+                    type="number"
+                    min="0"
+                    step="1"
+                    inputMode="numeric"
+                    defaultValue={value ?? ""}
+                    className="min-h-9 px-2 text-[13px]"
+                  />
+                </div>
+              ))}
+            </div>
           </fieldset>
 
           <SubmitButton size="sm">Zapisz materiał</SubmitButton>

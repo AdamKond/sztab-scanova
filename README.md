@@ -52,15 +52,19 @@ wyłączenie signupów, konta, allowlista, Vercel): **`supabase/README.md`**.
 ## Struktura
 
 ```
-app/(staff)/        ekrany: Dziś, leady, pipeline, piloty, followup, cele, import, ustawienia
+app/(staff)/        ekrany: Dziś, leady, outbound, followup, odprawa AI, pipeline, piloty,
+                    cele, content, ads, partnerzy, import, ustawienia
 app/login, logout   logowanie e-mail+hasło (bez rejestracji), wylogowanie
+app/api/            health, eksport CSV (8 zbiorów), inbound webhook z landingu (tokenowany)
 lib/auth.ts         allowlista, requireStaff (404), guardStaffAction
 lib/supabase/       klient auth (anon+cookies) ↔ klient danych (service role, server-only)
-lib/crm/            typy, stałe PL, normalizacja, walidacja przejść, metryki (czyste), queries, actions
+lib/crm/            typy, stałe PL, normalizacja, walidacja przejść, metryki (czyste),
+                    marketing (ads + kolejka outboundu), queries, actions
+lib/ai/             odprawa dnia + generator hooków (opcjonalne, Anthropic SDK, claude-opus-5)
 components/         shell (ciemny sidebar + jasny canvas), ui, crm
-supabase/           migration-001-core.sql + instrukcja konfiguracji
+supabase/           migration-001-core.sql, migration-002-etapy-2-4.sql + instrukcja
 scripts/            create-user, test-db, import ze starego Sztabu
-tests/              vitest — metryki, normalizacja, walidacja, daty, allowlista
+tests/              vitest — metryki, marketing, normalizacja, walidacja, daty, allowlista
 ```
 
 ## Zasady domenowe, których pilnuje kod
@@ -74,9 +78,15 @@ tests/              vitest — metryki, normalizacja, walidacja, daty, allowlist
   dziennie". Progi (stygnięcie, zaleganie, check-iny pilota) w Ustawieniach.
 - Błąd bazy nigdy nie zamienia się w „0" w KPI — rdzeń failuje głośno.
 
-## Etapy
+## Etapy — wszystkie zbudowane
 
-- **Etap 0–1 (ten kod):** rdzeń CRM — patrz wyżej.
-- Etap 2: outbound, partnerzy, inbound z landingu. Etap 3: content i reklamy.
-  Etap 4: odprawa AI (Anthropic). Nie budowane, dopóki Etap 1 nie przejdzie
-  realnego użycia.
+- **Etap 0–1:** rdzeń CRM (auth, leady, lejek z historią, aktywności, zadania,
+  piloty/MRR, KPI, import CSV, cele).
+- **Etap 2:** kolejka outboundu (sekwencja DM→follow-up→telefon→wizyta, szablony
+  bez automatycznej wysyłki), partnerzy z poleceniami, tokenowany inbound
+  z landingu (dedupe + UTM), eksport CSV.
+- **Etap 3:** pipeline contentu (pomysł→archiwum, wyniki ręczne) i dziennik
+  reklam (CPL ≠ CAC, alert drogiego CPL po 3 kolejnych dniach).
+- **Etap 4:** odprawa AI (3 priorytety, follow-upy, ryzyko lejka, eksperyment)
+  i generator hooków — opcjonalne, wymaga `ANTHROPIC_API_KEY`; do modelu trafiają
+  wyłącznie agregaty i nazwy firm.
