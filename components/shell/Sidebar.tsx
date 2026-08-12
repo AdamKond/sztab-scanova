@@ -98,6 +98,52 @@ function IconSettings(props: IconProps) {
   );
 }
 
+function IconSend(props: IconProps) {
+  return (
+    <svg {...iconBase(props)}>
+      <path d="M21 3L10 14" />
+      <path d="M21 3l-7 18-4-7-7-4 18-7z" />
+    </svg>
+  );
+}
+
+function IconSparkles(props: IconProps) {
+  return (
+    <svg {...iconBase(props)}>
+      <path d="M12 4l1.5 4.5L18 10l-4.5 1.5L12 16l-1.5-4.5L6 10l4.5-1.5L12 4z" />
+      <path d="M19 15l.7 2.1L21.8 18l-2.1.7L19 21l-.7-2.3-2.1-.7 2.1-.9L19 15z" />
+    </svg>
+  );
+}
+
+function IconFilm(props: IconProps) {
+  return (
+    <svg {...iconBase(props)}>
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2" />
+      <path d="M8 4.5v15M16 4.5v15M3.5 9h4.5M3.5 15h4.5M16 9h4.5M16 15h4.5" />
+    </svg>
+  );
+}
+
+function IconMegaphone(props: IconProps) {
+  return (
+    <svg {...iconBase(props)}>
+      <path d="M3 11v3l3 .5V10.5L3 11z" />
+      <path d="M6 10l12-5v14l-12-5" />
+      <path d="M8 15l1 5h2.5l-1-4.6" />
+    </svg>
+  );
+}
+
+function IconHandshake(props: IconProps) {
+  return (
+    <svg {...iconBase(props)}>
+      <path d="M4 7l4-2 4 3 4-3 4 2v7l-4 4-4-3-4 3-4-4V7z" />
+      <path d="M12 8l-3 3 2 2 3-3" />
+    </svg>
+  );
+}
+
 export const icons = {
   "circle-dot": IconCircleDot,
   users: IconUsers,
@@ -107,6 +153,11 @@ export const icons = {
   target: IconTarget,
   upload: IconUpload,
   settings: IconSettings,
+  send: IconSend,
+  sparkles: IconSparkles,
+  film: IconFilm,
+  megaphone: IconMegaphone,
+  handshake: IconHandshake,
 } as const;
 
 export type IconName = keyof typeof icons;
@@ -129,7 +180,9 @@ export const navGroups: NavGroup[] = [
     items: [
       { href: "/", label: "Dziś", icon: "circle-dot" },
       { href: "/leady", label: "Leady", icon: "users" },
+      { href: "/outbound", label: "Outbound", icon: "send" },
       { href: "/followup", label: "Follow-up", icon: "check-square" },
+      { href: "/ai", label: "Odprawa AI", icon: "sparkles" },
     ],
   },
   {
@@ -138,6 +191,14 @@ export const navGroups: NavGroup[] = [
       { href: "/pipeline", label: "Pipeline", icon: "funnel" },
       { href: "/piloty", label: "Piloty i przychód", icon: "rocket" },
       { href: "/cele", label: "Cele", icon: "target" },
+    ],
+  },
+  {
+    title: "MARKETING",
+    items: [
+      { href: "/content", label: "Content", icon: "film" },
+      { href: "/ads", label: "Ads", icon: "megaphone" },
+      { href: "/partnerzy", label: "Partnerzy", icon: "handshake" },
     ],
   },
   {
