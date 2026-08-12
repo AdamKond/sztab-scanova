@@ -12,7 +12,7 @@ import { NextResponse, type NextRequest } from "next/server";
 // łatwo obejść błędem w matcherze, a decyzja podjęta bezpośrednio przed
 // renderem strony nie da się pominąć.
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
