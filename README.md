@@ -36,6 +36,8 @@ wyłączenie signupów, konta, allowlista, Vercel): **`supabase/README.md`**.
 | `npx tsx scripts/create-user.ts <email> <hasło>` | tworzy konto z potwierdzonym e-mailem |
 | `npx tsx scripts/test-db.ts` | testy domenowe na żywej bazie (pomija się bez konfiguracji) |
 | `npx tsx scripts/import-stary-sztab.ts <plik.json>` | dry-run importu ze starego Sztabu (`--wykonaj` zapisuje) |
+| `npx tsx scripts/odprawa.ts` | wypisuje dane do odprawy (tryb bez płatnego API — patrz niżej) |
+| `npx tsx scripts/odprawa.ts --zapisz odprawa.md` | zapisuje gotową odprawę na dziś |
 | `curl localhost:3000/api/health` | stan połączenia i tabel rdzenia |
 
 ## Model bezpieczeństwa (skrót)
@@ -90,3 +92,17 @@ tests/              vitest — metryki, marketing, normalizacja, walidacja, daty
 - **Etap 4:** odprawa AI (3 priorytety, follow-upy, ryzyko lejka, eksperyment)
   i generator hooków — opcjonalne, wymaga `ANTHROPIC_API_KEY`; do modelu trafiają
   wyłącznie agregaty i nazwy firm.
+
+## Odprawa bez kredytów API
+
+Generowanie w aplikacji wymaga płatnego klucza, ale odprawę można zrobić
+subskrypcją w Claude Code — dane i tak są te same:
+
+```bash
+npx tsx scripts/odprawa.ts                    # wypisuje instrukcję + dane
+# (Claude Code pisze odprawę do pliku odprawa.md)
+npx tsx scripts/odprawa.ts --zapisz odprawa.md
+```
+
+Zapisana odprawa pojawia się w zakładce **Odprawa AI** dokładnie tak samo,
+jakby wygenerowało ją API. `--pokaz` wypisuje dzisiejszą odprawę w terminalu.

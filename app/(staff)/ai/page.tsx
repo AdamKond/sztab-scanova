@@ -11,7 +11,9 @@ import { BriefingPanel, GeneratorPanel } from "./AiPanels";
 export default async function AiPage() {
   const configured = isAiConfigured();
   const today = warsawToday();
-  const briefing = configured ? await getBriefing(today) : null;
+  // Odprawę czytamy ZAWSZE — może ją zapisać skrypt scripts/odprawa.ts
+  // (tryb bez płatnego API), więc brak klucza nie znaczy brak odprawy.
+  const briefing = await getBriefing(today);
 
   return (
     <>
@@ -20,10 +22,24 @@ export default async function AiPage() {
       <div className="space-y-4">
         {!configured ? (
           <Card>
-            <EmptyState
-              title="AI jest wyłączone"
-              hint="Dodaj ANTHROPIC_API_KEY do .env.local (i na Vercelu), żeby włączyć odprawę i generator. Cały CRM działa bez tego."
-            />
+            <div className="mb-1 flex items-baseline justify-between gap-2">
+              <h2 className="text-[15px] font-semibold text-ink">
+                Odprawa dnia — {fullDate(today)}
+              </h2>
+              <span className="rounded-md border border-amber-100 bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-700">
+                sugestia AI
+              </span>
+            </div>
+            {briefing ? (
+              <pre className="mt-3 max-h-[600px] overflow-y-auto whitespace-pre-wrap rounded-lg border border-line bg-canvas p-4 font-sans text-[14px] leading-relaxed text-ink">
+                {briefing.content_md}
+              </pre>
+            ) : (
+              <EmptyState
+                title="Brak odprawy na dziś"
+                hint="Generowanie w aplikacji wymaga ANTHROPIC_API_KEY. Bez kredytów zrobisz to w Claude Code: uruchom „npx tsx scripts/odprawa.ts”, poproś o napisanie odprawy, a potem „npx tsx scripts/odprawa.ts --zapisz odprawa.md”. Odprawa pojawi się tutaj."
+              />
+            )}
           </Card>
         ) : (
           <>
