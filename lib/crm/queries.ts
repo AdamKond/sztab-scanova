@@ -12,10 +12,15 @@ import { getServiceClient } from "@/lib/supabase/service";
 import { selectAll } from "@/lib/db";
 import type {
   CrmActivity,
+  CrmAdsLog,
+  CrmBriefing,
+  CrmContent,
   CrmLead,
+  CrmPartner,
   CrmSettings,
   CrmStageHistory,
   CrmTask,
+  CrmTemplate,
   SalesGoal,
 } from "./types";
 
@@ -97,6 +102,51 @@ export async function getSettings(): Promise<CrmSettings> {
     );
   }
   return data as CrmSettings;
+}
+
+// ----------------------------------------------------------------------------
+// Etapy 2–4: partnerzy, szablony, content, reklamy, odprawy
+// ----------------------------------------------------------------------------
+
+export async function listPartners(): Promise<CrmPartner[]> {
+  const db = getServiceClient();
+  return selectAll<CrmPartner>(db, "crm_partners", {
+    orderBy: { column: "name", ascending: true },
+  });
+}
+
+export async function listTemplates(): Promise<CrmTemplate[]> {
+  const db = getServiceClient();
+  return selectAll<CrmTemplate>(db, "crm_templates", {
+    orderBy: { column: "step", ascending: true },
+  });
+}
+
+export async function listContent(): Promise<CrmContent[]> {
+  const db = getServiceClient();
+  return selectAll<CrmContent>(db, "crm_content", {
+    orderBy: { column: "created_at", ascending: false },
+  });
+}
+
+export async function listAdsLog(): Promise<CrmAdsLog[]> {
+  const db = getServiceClient();
+  const rows = await selectAll<CrmAdsLog>(db, "crm_ads_log", {
+    orderBy: { column: "log_date", ascending: false },
+  });
+  // numeric przychodzi jako string — parsujemy na granicy.
+  return rows.map((r) => ({ ...r, spend: Number(r.spend) }));
+}
+
+export async function getBriefing(day: string): Promise<CrmBriefing | null> {
+  const db = getServiceClient();
+  const { data, error } = await db
+    .from("crm_briefings")
+    .select("*")
+    .eq("briefing_date", day)
+    .maybeSingle();
+  if (error) throw new Error(`Błąd bazy przy odczycie odprawy: ${error.message}`);
+  return (data as CrmBriefing) ?? null;
 }
 
 /**

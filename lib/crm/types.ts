@@ -96,6 +96,8 @@ export interface CrmLead {
   source_detail: string | null;
   campaign: string | null;
   referred_by: string | null;
+  /** Partner polecający (Etap 2). Brak kolumny przed migracją 002 = undefined. */
+  partner_id?: string | null;
 
   status: LeadStatus;
   priority: LeadPriority;
@@ -164,6 +166,105 @@ export interface SalesGoal {
   ends_on: string; // YYYY-MM-DD
   owner: string | null;
   active: boolean;
+  created_at: string;
+}
+
+// ----------------------------------------------------------------------------
+// Etapy 2–4: partnerzy, szablony, content, reklamy, odprawy AI
+// ----------------------------------------------------------------------------
+
+export interface CrmPartner {
+  id: string;
+  name: string;
+  contact_name: string | null;
+  phone: string | null;
+  email: string | null;
+  instagram: string | null;
+  commission_note: string | null;
+  active: boolean;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export type TemplateChannel = "ig_dm" | "email" | "telefon" | "wizyta" | "inne";
+
+export interface CrmTemplate {
+  id: string;
+  name: string;
+  channel: TemplateChannel;
+  /** Krok sekwencji ręcznej: 1 = pierwszy kontakt, 2 = follow-up, ... */
+  step: number;
+  body: string;
+  active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export type ContentChannel =
+  | "tiktok"
+  | "reels"
+  | "shorts"
+  | "linkedin"
+  | "fb_grupy"
+  | "youtube"
+  | "inne";
+
+export type ContentFormat = "rolka" | "post" | "story" | "longform";
+
+export type ContentStatus =
+  | "pomysl"
+  | "zaakceptowane"
+  | "do_nagrania"
+  | "nagrane"
+  | "opublikowane"
+  | "archiwum";
+
+export interface CrmContent {
+  id: string;
+  channel: ContentChannel;
+  format: ContentFormat;
+  hook: string | null;
+  script_md: string | null;
+  status: ContentStatus;
+  planned_date: string | null; // YYYY-MM-DD
+  published_date: string | null; // YYYY-MM-DD
+  url: string | null;
+  views: number | null;
+  comments: number | null;
+  saves: number | null;
+  inquiries: number | null;
+  leads: number | null;
+  demos: number | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export type AdsPlatform = "meta" | "google";
+
+export interface CrmAdsLog {
+  id: string;
+  log_date: string; // YYYY-MM-DD
+  platform: AdsPlatform;
+  campaign: string;
+  // numeric — PostgREST zwraca jako string; parsujemy na granicy w queries.
+  spend: number;
+  impressions: number | null;
+  clicks: number | null;
+  raw_leads: number;
+  qualified_leads: number;
+  demos: number;
+  pilots: number;
+  paid_customers: number;
+  notes: string | null;
+  created_at: string;
+}
+
+export interface CrmBriefing {
+  id: string;
+  briefing_date: string; // YYYY-MM-DD
+  content_md: string;
+  created_by: string;
   created_at: string;
 }
 

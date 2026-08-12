@@ -5,6 +5,10 @@
 import type {
   ActivityOutcome,
   ActivityType,
+  AdsPlatform,
+  ContentChannel,
+  ContentFormat,
+  ContentStatus,
   CurrentLoyalty,
   GoalMetric,
   LeadPriority,
@@ -12,6 +16,7 @@ import type {
   LeadStatus,
   TaskPriority,
   TaskStatus,
+  TemplateChannel,
 } from "./types";
 
 // Kolejność etapów lejka od pierwszego kontaktu do płatności.
@@ -242,6 +247,78 @@ export const CURRENT_LOYALTY_LABELS: Record<CurrentLoyalty, string> = {
   pos: "Program w POS",
   inne: "Inne",
 };
+
+// ----------------------------------------------------------------------------
+// Etapy 2–4: szablony, content, reklamy
+// ----------------------------------------------------------------------------
+
+export const TEMPLATE_CHANNELS: TemplateChannel[] = ["ig_dm", "email", "telefon", "wizyta", "inne"];
+
+export const TEMPLATE_CHANNEL_LABELS: Record<TemplateChannel, string> = {
+  ig_dm: "Instagram DM",
+  email: "E-mail",
+  telefon: "Telefon",
+  wizyta: "Wizyta",
+  inne: "Inne",
+};
+
+export const CONTENT_CHANNELS: ContentChannel[] = [
+  "tiktok",
+  "reels",
+  "shorts",
+  "linkedin",
+  "fb_grupy",
+  "youtube",
+  "inne",
+];
+
+export const CONTENT_CHANNEL_LABELS: Record<ContentChannel, string> = {
+  tiktok: "TikTok",
+  reels: "Reels",
+  shorts: "Shorts",
+  linkedin: "LinkedIn",
+  fb_grupy: "Grupy FB",
+  youtube: "YouTube",
+  inne: "Inne",
+};
+
+export const CONTENT_FORMATS: ContentFormat[] = ["rolka", "post", "story", "longform"];
+
+export const CONTENT_FORMAT_LABELS: Record<ContentFormat, string> = {
+  rolka: "Rolka",
+  post: "Post",
+  story: "Story",
+  longform: "Longform",
+};
+
+export const CONTENT_STATUSES: ContentStatus[] = [
+  "pomysl",
+  "zaakceptowane",
+  "do_nagrania",
+  "nagrane",
+  "opublikowane",
+  "archiwum",
+];
+
+export const CONTENT_STATUS_LABELS: Record<ContentStatus, string> = {
+  pomysl: "Pomysł",
+  zaakceptowane: "Zaakceptowane",
+  do_nagrania: "Do nagrania",
+  nagrane: "Nagrane",
+  opublikowane: "Opublikowane",
+  archiwum: "Archiwum",
+};
+
+export const ADS_PLATFORMS: AdsPlatform[] = ["meta", "google"];
+
+export const ADS_PLATFORM_LABELS: Record<AdsPlatform, string> = {
+  meta: "Meta Ads",
+  google: "Google Ads",
+};
+
+// Sekwencja ręcznego outboundu — kolejność sugerowanego następnego ruchu.
+// System NICZEGO nie wysyła sam: podpowiada krok i szablon, człowiek działa.
+export const OUTBOUND_SEQUENCE: ActivityType[] = ["ig_dm", "ig_followup", "telefon", "wizyta"];
 
 // Podpowiedzi kategorii wg ICP (kolumna w DB celowo nieograniczona —
 // import może przynieść nowe branże bez zmiany schematu).

@@ -12,6 +12,10 @@ import { getLead } from "./queries";
 import {
   isActivityOutcome,
   isActivityType,
+  isAdsPlatform,
+  isContentChannel,
+  isContentFormat,
+  isContentStatus,
   isCurrentLoyalty,
   isGoalMetric,
   isLeadPriority,
@@ -19,6 +23,7 @@ import {
   isLeadStatus,
   isTaskPriority,
   isTaskStatus,
+  isTemplateChannel,
   parseMoney,
   parsePositiveInt,
   validateStatusChange,
@@ -432,6 +437,214 @@ export async function updateSettings(formData: FormData): Promise<ActionResult> 
     })
     .eq("id", 1);
   if (error) return { error: `Nie udało się zapisać ustawień: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+// ----------------------------------------------------------------------------
+// Etap 2: partnerzy
+// ----------------------------------------------------------------------------
+
+export async function savePartner(formData: FormData): Promise<ActionResult> {
+  await guardStaffAction();
+  const name = text(formData, "name", LIMITS.name);
+  if (!name) return { error: "Nazwa partnera jest wymagana." };
+
+  const db = getServiceClient();
+  const payload = {
+    name,
+    contact_name: text(formData, "contact_name"),
+    phone: normalizePhone(text(formData, "phone")),
+    email: text(formData, "email"),
+    instagram: normalizeInstagram(text(formData, "instagram")),
+    commission_note: text(formData, "commission_note", LIMITS.note),
+    notes: text(formData, "notes", LIMITS.notes),
+  };
+  const partnerId = text(formData, "partner_id");
+  const { error } = partnerId
+    ? await db.from("crm_partners").update(payload).eq("id", partnerId)
+    : await db.from("crm_partners").insert(payload);
+  if (error) return { error: `Nie udało się zapisać partnera: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+export async function togglePartnerActive(partnerId: string): Promise<ActionResult> {
+  await guardStaffAction();
+  const db = getServiceClient();
+  const { data, error } = await db
+    .from("crm_partners")
+    .select("active")
+    .eq("id", partnerId)
+    .maybeSingle();
+  if (error || !data) return { error: "Partner nie istnieje." };
+  const { error: updErr } = await db
+    .from("crm_partners")
+    .update({ active: !data.active })
+    .eq("id", partnerId);
+  if (updErr) return { error: `Nie udało się zmienić partnera: ${updErr.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+/** Przypina/odpina partnera do leada (polecenie). */
+export async function setLeadPartner(leadId: string, formData: FormData): Promise<ActionResult> {
+  await guardStaffAction();
+  const partnerId = text(formData, "partner_id");
+  const db = getServiceClient();
+  const { error } = await db
+    .from("crm_leads")
+    .update({ partner_id: partnerId })
+    .eq("id", leadId);
+  if (error) return { error: `Nie udało się przypisać partnera: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+// ----------------------------------------------------------------------------
+// Etap 2: szablony wiadomości (bez automatycznej wysyłki — tylko do kopiowania)
+// ----------------------------------------------------------------------------
+
+export async function saveTemplate(formData: FormData): Promise<ActionResult> {
+  await guardStaffAction();
+  const name = text(formData, "name", LIMITS.name);
+  const body = text(formData, "body", LIMITS.notes);
+  const channelRaw = formData.get("channel");
+  const step = parsePositiveInt(formData.get("step"));
+  if (!name) return { error: "Nazwa szablonu jest wymagana." };
+  if (!body) return { error: "Treść szablonu jest wymagana." };
+
+  const db = getServiceClient();
+  const payload = {
+    name,
+    body,
+    channel: isTemplateChannel(channelRaw) ? channelRaw : "ig_dm",
+    step: step && step >= 1 && step <= 9 ? step : 1,
+  };
+  const templateId = text(formData, "template_id");
+  const { error } = templateId
+    ? await db.from("crm_templates").update(payload).eq("id", templateId)
+    : await db.from("crm_templates").insert(payload);
+  if (error) return { error: `Nie udało się zapisać szablonu: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+export async function deleteTemplate(templateId: string): Promise<ActionResult> {
+  await guardStaffAction();
+  const db = getServiceClient();
+  const { error } = await db.from("crm_templates").delete().eq("id", templateId);
+  if (error) return { error: `Nie udało się usunąć szablonu: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+// ----------------------------------------------------------------------------
+// Etap 3: content
+// ----------------------------------------------------------------------------
+
+export async function saveContent(formData: FormData): Promise<ActionResult> {
+  await guardStaffAction();
+  const channelRaw = formData.get("channel");
+  const formatRaw = formData.get("format");
+  const statusRaw = formData.get("status");
+  const hook = text(formData, "hook", LIMITS.title);
+  if (!hook) return { error: "Hook jest wymagany — bez hooka nie ma materiału." };
+
+  const db = getServiceClient();
+  const payload = {
+    channel: isContentChannel(channelRaw) ? channelRaw : "reels",
+    format: isContentFormat(formatRaw) ? formatRaw : "rolka",
+    status: isContentStatus(statusRaw) ? statusRaw : "pomysl",
+    hook,
+    script_md: text(formData, "script_md", LIMITS.notes),
+    planned_date: text(formData, "planned_date"),
+    published_date: text(formData, "published_date"),
+    url: text(formData, "url"),
+    views: parsePositiveInt(formData.get("views")),
+    comments: parsePositiveInt(formData.get("comments")),
+    saves: parsePositiveInt(formData.get("saves")),
+    inquiries: parsePositiveInt(formData.get("inquiries")),
+    leads: parsePositiveInt(formData.get("leads")),
+    demos: parsePositiveInt(formData.get("demos")),
+  };
+  const contentId = text(formData, "content_id");
+  const { error } = contentId
+    ? await db.from("crm_content").update(payload).eq("id", contentId)
+    : await db.from("crm_content").insert(payload);
+  if (error) return { error: `Nie udało się zapisać materiału: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+export async function changeContentStatus(contentId: string, formData: FormData): Promise<ActionResult> {
+  await guardStaffAction();
+  const statusRaw = formData.get("status");
+  if (!isContentStatus(statusRaw)) return { error: "Nieznany status materiału." };
+  const db = getServiceClient();
+  const updates: Record<string, unknown> = { status: statusRaw };
+  // Publikacja bez daty publikacji = dziś (Europe/Warsaw) — wpis ręczny może nadpisać.
+  if (statusRaw === "opublikowane") {
+    const published = text(formData, "published_date");
+    updates.published_date = published ?? new Date().toISOString().slice(0, 10);
+  }
+  const { error } = await db.from("crm_content").update(updates).eq("id", contentId);
+  if (error) return { error: `Nie udało się zmienić statusu: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+export async function deleteContent(contentId: string): Promise<ActionResult> {
+  await guardStaffAction();
+  const db = getServiceClient();
+  const { error } = await db.from("crm_content").delete().eq("id", contentId);
+  if (error) return { error: `Nie udało się usunąć materiału: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+// ----------------------------------------------------------------------------
+// Etap 3: dziennik reklam
+// ----------------------------------------------------------------------------
+
+export async function saveAdsEntry(formData: FormData): Promise<ActionResult> {
+  await guardStaffAction();
+  const platformRaw = formData.get("platform");
+  const logDate = text(formData, "log_date");
+  const spend = parseMoney(formData.get("spend"));
+  if (!isAdsPlatform(platformRaw)) return { error: "Nieznana platforma reklamowa." };
+  if (!logDate) return { error: "Data wpisu jest wymagana." };
+  if (spend === null) return { error: "Wydatek jest wymagany (może być 0)." };
+
+  const db = getServiceClient();
+  const payload = {
+    log_date: logDate,
+    platform: platformRaw,
+    campaign: text(formData, "campaign") ?? "",
+    spend,
+    impressions: parsePositiveInt(formData.get("impressions")),
+    clicks: parsePositiveInt(formData.get("clicks")),
+    raw_leads: parsePositiveInt(formData.get("raw_leads")) ?? 0,
+    qualified_leads: parsePositiveInt(formData.get("qualified_leads")) ?? 0,
+    demos: parsePositiveInt(formData.get("demos")) ?? 0,
+    pilots: parsePositiveInt(formData.get("pilots")) ?? 0,
+    paid_customers: parsePositiveInt(formData.get("paid_customers")) ?? 0,
+    notes: text(formData, "notes", LIMITS.note),
+  };
+  // Upsert po (dzień, platforma, kampania) — poprawka wpisu nadpisuje, nie dubluje.
+  const { error } = await db
+    .from("crm_ads_log")
+    .upsert(payload, { onConflict: "log_date,platform,campaign" });
+  if (error) return { error: `Nie udało się zapisać wpisu reklam: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+export async function deleteAdsEntry(entryId: string): Promise<ActionResult> {
+  await guardStaffAction();
+  const db = getServiceClient();
+  const { error } = await db.from("crm_ads_log").delete().eq("id", entryId);
+  if (error) return { error: `Nie udało się usunąć wpisu: ${error.message}` };
   revalidatePath("/", "layout");
   return { ok: true };
 }

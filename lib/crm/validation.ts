@@ -6,6 +6,10 @@
 import {
   ALL_STATUSES,
   ACTIVITY_TYPES,
+  ADS_PLATFORMS,
+  CONTENT_CHANNELS,
+  CONTENT_FORMATS,
+  CONTENT_STATUSES,
   CURRENT_LOYALTY_OPTIONS,
   GOAL_METRICS,
   OUTCOMES,
@@ -13,10 +17,15 @@ import {
   SOURCES,
   TASK_PRIORITIES,
   TASK_STATUSES,
+  TEMPLATE_CHANNELS,
 } from "./constants";
 import type {
   ActivityOutcome,
   ActivityType,
+  AdsPlatform,
+  ContentChannel,
+  ContentFormat,
+  ContentStatus,
   CrmLead,
   CurrentLoyalty,
   GoalMetric,
@@ -25,6 +34,7 @@ import type {
   LeadStatus,
   TaskPriority,
   TaskStatus,
+  TemplateChannel,
 } from "./types";
 
 // Limity długości pól tekstowych — ochrona przed wklejkami i wektorami DoS.
@@ -66,6 +76,21 @@ export function isGoalMetric(v: unknown): v is GoalMetric {
 }
 export function isCurrentLoyalty(v: unknown): v is CurrentLoyalty {
   return typeof v === "string" && (CURRENT_LOYALTY_OPTIONS as string[]).includes(v);
+}
+export function isTemplateChannel(v: unknown): v is TemplateChannel {
+  return typeof v === "string" && (TEMPLATE_CHANNELS as string[]).includes(v);
+}
+export function isContentChannel(v: unknown): v is ContentChannel {
+  return typeof v === "string" && (CONTENT_CHANNELS as string[]).includes(v);
+}
+export function isContentFormat(v: unknown): v is ContentFormat {
+  return typeof v === "string" && (CONTENT_FORMATS as string[]).includes(v);
+}
+export function isContentStatus(v: unknown): v is ContentStatus {
+  return typeof v === "string" && (CONTENT_STATUSES as string[]).includes(v);
+}
+export function isAdsPlatform(v: unknown): v is AdsPlatform {
+  return typeof v === "string" && (ADS_PLATFORMS as string[]).includes(v);
 }
 
 // ----------------------------------------------------------------------------
