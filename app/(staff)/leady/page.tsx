@@ -217,7 +217,7 @@ export default async function LeadyPage({
         </form>
       </Topbar>
 
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+      <div className="anim-in mb-3 flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-3 text-[13px] text-ink-2">
           <span>{leads.length} z {allLeads.length} leadów</span>
           {filtersActive ? (
@@ -247,7 +247,7 @@ export default async function LeadyPage({
       </div>
 
       {leads.length === 0 ? (
-        <Card>
+        <Card className="anim-in">
           <EmptyState
             title="Brak leadów spełniających filtry"
             hint="Zmień kryteria albo wyczyść filtry, żeby zobaczyć wszystkie leady."
@@ -258,7 +258,7 @@ export default async function LeadyPage({
       ) : (
         <>
           {/* Desktop: gęsta tabela. */}
-          <div className="hidden md:block">
+          <div className="anim-in hidden md:block">
             <Table>
               <THead>
                 <TH>Nazwa</TH>
@@ -280,7 +280,7 @@ export default async function LeadyPage({
           </div>
 
           {/* Mobile: karty, bez przewijania w poziomie. */}
-          <div className="space-y-2 md:hidden">
+          <div className="anim-in space-y-2 md:hidden">
             {leads.map((l) => (
               <LeadCard key={l.id} lead={l} today={today} />
             ))}
@@ -389,10 +389,10 @@ function KanbanView({ leads, today }: { leads: CrmLead[]; today: string }) {
   }
 
   return (
-    <div className="hidden gap-3 overflow-x-auto md:grid md:auto-cols-[220px] md:grid-flow-col">
+    <div className="anim-in hidden gap-4 overflow-x-auto md:grid md:auto-cols-[220px] md:grid-flow-col">
       {columns.map((status) => (
         <div key={status} className="min-w-[220px]">
-          <div className="mb-2 flex items-center justify-between text-[12px] font-medium text-ink-2">
+          <div className="mb-3 flex items-center justify-between text-[12px] font-medium text-ink-2">
             <span>{STATUS_LABELS[status]}</span>
             <span>{byStatus.get(status)?.length ?? 0}</span>
           </div>

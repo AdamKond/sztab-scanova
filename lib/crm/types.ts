@@ -276,3 +276,22 @@ export interface CrmSettings {
   pilot_checkin_after_days: number;
   updated_at: string;
 }
+
+// ----------------------------------------------------------------------------
+// Whiteboard — tablica strategii (migration-003)
+// ----------------------------------------------------------------------------
+
+/**
+ * Karta tablicy strategii. `content_md` to tekst „markdown-ish" — trzymamy go
+ * surowo, bo renderujemy własnym mini-formatterem (bez biblioteki markdown).
+ * `updated_by` bywa null dla kart z zasiewu migracji — nikt ich jeszcze nie tknął.
+ */
+export interface CrmNote {
+  id: string;
+  title: string;
+  content_md: string;
+  sort_order: number;
+  updated_by: string | null;
+  created_at: string;
+  updated_at: string;
+}

@@ -231,7 +231,7 @@ export default async function PartnerzyPage() {
     <>
       <Topbar title="Partnerzy" />
 
-      <div className="space-y-5">
+      <div className="anim-in space-y-6">
         <p className="text-[13px] text-ink-2">
           Partnerzy polecają nas dalej za prowizję. Leada przypina się do partnera{" "}
           <span className="font-medium text-ink">z karty leada</span> (pole „Partner”) — tutaj widać
@@ -262,7 +262,7 @@ export default async function PartnerzyPage() {
           </Card>
         ) : (
           <>
-            <div className="grid grid-cols-1 gap-3 lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
               {active.map((p) => (
                 <PartnerCard key={p.id} partner={p} />
               ))}
@@ -273,7 +273,7 @@ export default async function PartnerzyPage() {
                 <summary className="min-h-11 cursor-pointer text-[14px] font-semibold text-ink">
                   Nieaktywni ({inactive.length})
                 </summary>
-                <div className="mt-3 grid grid-cols-1 gap-3 lg:grid-cols-2">
+                <div className="mt-3 grid grid-cols-1 gap-4 lg:grid-cols-2">
                   {inactive.map((p) => (
                     <PartnerCard key={p.id} partner={p} />
                   ))}

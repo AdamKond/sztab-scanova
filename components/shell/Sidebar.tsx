@@ -144,6 +144,17 @@ function IconHandshake(props: IconProps) {
   );
 }
 
+function IconBoard(props: IconProps) {
+  return (
+    <svg {...iconBase(props)}>
+      <rect x="3" y="4" width="18" height="12" rx="2" />
+      <path d="M12 16v3.5" />
+      <path d="M9.5 19.5h5" />
+      <path d="M7 8.5h7M7 12h4" />
+    </svg>
+  );
+}
+
 export const icons = {
   "circle-dot": IconCircleDot,
   users: IconUsers,
@@ -158,6 +169,7 @@ export const icons = {
   film: IconFilm,
   megaphone: IconMegaphone,
   handshake: IconHandshake,
+  board: IconBoard,
 } as const;
 
 export type IconName = keyof typeof icons;
@@ -179,6 +191,7 @@ export const navGroups: NavGroup[] = [
     title: "PRACA",
     items: [
       { href: "/", label: "Dziś", icon: "circle-dot" },
+      { href: "/whiteboard", label: "Whiteboard", icon: "board" },
       { href: "/leady", label: "Leady", icon: "users" },
       { href: "/outbound", label: "Outbound", icon: "send" },
       { href: "/followup", label: "Follow-up", icon: "check-square" },

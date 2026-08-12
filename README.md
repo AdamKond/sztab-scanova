@@ -64,10 +64,19 @@ lib/crm/            typy, stałe PL, normalizacja, walidacja przejść, metryki 
                     marketing (ads + kolejka outboundu), queries, actions
 lib/ai/             odprawa dnia + generator hooków (opcjonalne, Anthropic SDK, claude-opus-5)
 components/         shell (ciemny sidebar + jasny canvas), ui, crm
-supabase/           migration-001-core.sql, migration-002-etapy-2-4.sql + instrukcja
+supabase/           migration-001-core.sql, -002-etapy-2-4.sql, -003-whiteboard.sql + instrukcja
 scripts/            create-user, test-db, import ze starego Sztabu
 tests/              vitest — metryki, marketing, normalizacja, walidacja, daty, allowlista
 ```
+
+## Wydajność
+
+Funkcje serwerowe działają we **Frankfurcie** (`vercel.json` → `regions: ["fra1"]`),
+w tym samym regionie co baza Supabase. Bez tego każde zapytanie leciało z USA
+do Frankfurtu i z powrotem, a strony robią ich po kilka — to była główna
+przyczyna „zacinania" przy klikaniu. Drugi element to `app/(staff)/loading.tsx`:
+granica ładowania sprawia, że przejście między ekranami jest natychmiastowe,
+a dane dolatują chwilę później.
 
 ## Zasady domenowe, których pilnuje kod
 

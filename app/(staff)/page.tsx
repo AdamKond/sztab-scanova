@@ -52,7 +52,7 @@ function person(email: string | null): string {
 
 function LeadRow({ lead, detail }: { lead: CrmLead; detail?: React.ReactNode }) {
   return (
-    <li className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-line py-2.5 last:border-0">
+    <li className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-line py-3 last:border-0">
       <Link
         href={`/leady/${lead.id}`}
         className="min-w-0 flex-1 truncate text-[14px] font-medium text-ink hover:text-accent"
@@ -85,7 +85,7 @@ function Section({
         : "bg-neutral-100 text-neutral-700 border-neutral-200";
   return (
     <Card>
-      <div className="mb-2 flex items-center justify-between">
+      <div className="mb-3 flex items-center justify-between">
         <h2 className="text-[15px] font-semibold text-ink">{title}</h2>
         {count !== undefined ? (
           <span className={`rounded-md border px-1.5 py-0.5 text-[11px] font-semibold ${badgeClass}`}>
@@ -150,7 +150,7 @@ export default async function DzisPage({
         }
       />
 
-      <div className="space-y-4">
+      <div className="anim-in space-y-6">
         {quickOpen ? (
           <Card>
             <h2 className="mb-3 text-[15px] font-semibold text-ink">Szybki wpis</h2>
@@ -159,7 +159,7 @@ export default async function DzisPage({
         ) : null}
 
         {/* KPI dnia: przejścia lejka i pieniądze, nie liczba klików. */}
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
           <MetricTile
             label="Kontakty z decydentem"
             value={String(reached.get("kontakt_zdecydentem")?.size ?? 0)}
@@ -248,7 +248,7 @@ export default async function DzisPage({
           </Section>
         ) : null}
 
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="grid gap-5 lg:grid-cols-2">
           <Section title="Piloty kończące się" count={endingPilots.length} tone="amber">
             {endingPilots.length === 0 ? (
               <p className="text-[13px] text-ink-2">
@@ -313,7 +313,7 @@ export default async function DzisPage({
           </Section>
         ) : null}
 
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="grid gap-5 lg:grid-cols-2">
           <Section title="Aktywne cele" count={activeGoals.length}>
             {activeGoals.length === 0 ? (
               <EmptyState
@@ -367,7 +367,7 @@ export default async function DzisPage({
                 {recentActivities.map((a) => (
                   <li
                     key={a.id}
-                    className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 border-b border-line py-2 text-[13px] last:border-0"
+                    className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 border-b border-line py-3 text-[13px] last:border-0"
                   >
                     <span className="font-medium text-ink">{ACTIVITY_LABELS[a.type]}</span>
                     {a.outcome ? <span className="text-ink-2">· {OUTCOME_LABELS[a.outcome]}</span> : null}

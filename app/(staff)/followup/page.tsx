@@ -70,7 +70,7 @@ export default async function FollowupPage() {
     const isDone = task.status === "zrobione";
     return (
       <div className={`rounded-lg border border-line ${muted ? "bg-canvas" : "bg-surface"}`}>
-        <div className="flex items-center gap-3 px-3 py-2.5">
+        <div className="flex items-center gap-3 px-3 py-3">
           <form
             action={async () => {
               // Goły <form action> oczekuje void — opakowujemy akcję zwracającą ActionResult.
@@ -189,7 +189,7 @@ export default async function FollowupPage() {
   }) {
     return (
       <div>
-        <div className="mb-2 flex items-center gap-2">
+        <div className="mb-3 flex items-center gap-2">
           <h2 className="text-[14px] font-semibold text-ink">{title}</h2>
           <Badge tone={countTone === "red" && tasksList.length > 0 ? "red" : "neutral"}>
             {tasksList.length}
@@ -214,7 +214,7 @@ export default async function FollowupPage() {
     <>
       <Topbar title="Follow-up" />
 
-      <div className="space-y-5">
+      <div className="anim-in space-y-6">
         {/* Pasek przypomnień follow-upów leadów — celowo jedna linia z linkiem,
             żeby nie duplikować widoku Dziś (tam jest pełna lista). */}
         <Card padding="sm" className="flex flex-wrap items-center gap-2 text-[13px]">

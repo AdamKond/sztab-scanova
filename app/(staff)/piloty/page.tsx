@@ -66,8 +66,8 @@ export default async function PilotyPage() {
     <>
       <Topbar title="Piloty i przychód" />
 
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+      <div className="anim-in space-y-6">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
           <MetricTile label="Aktywne piloty" value={String(activePilots.length)} />
           <MetricTile
             label="Pilot → płatny"
@@ -84,7 +84,7 @@ export default async function PilotyPage() {
         </div>
 
         <Card>
-          <h2 className="mb-2 text-[15px] font-semibold text-ink">Aktywne piloty</h2>
+          <h2 className="mb-3 text-[15px] font-semibold text-ink">Aktywne piloty</h2>
           {activePilots.length === 0 ? (
             <EmptyState
               title="Brak aktywnych pilotów"
@@ -152,12 +152,12 @@ export default async function PilotyPage() {
 
         {quietPilots.length > 0 ? (
           <Card>
-            <h2 className="mb-2 text-[15px] font-semibold text-ink">
+            <h2 className="mb-3 text-[15px] font-semibold text-ink">
               Piloty bez check-inu od {settings.pilot_checkin_after_days} dni
             </h2>
             <ul>
               {quietPilots.map((l) => (
-                <li key={l.id} className="flex items-center gap-2 border-b border-line py-2 last:border-0">
+                <li key={l.id} className="flex items-center gap-2 border-b border-line py-3 last:border-0">
                   <Link href={`/leady/${l.id}`} className="text-[14px] font-medium text-ink hover:text-accent">
                     {l.name}
                   </Link>
@@ -171,7 +171,7 @@ export default async function PilotyPage() {
         ) : null}
 
         <Card>
-          <h2 className="mb-2 text-[15px] font-semibold text-ink">Płatni klienci</h2>
+          <h2 className="mb-3 text-[15px] font-semibold text-ink">Płatni klienci</h2>
           {paidClients.length === 0 ? (
             <EmptyState
               title="Jeszcze bez płatnych klientów"
@@ -216,15 +216,15 @@ export default async function PilotyPage() {
           )}
         </Card>
 
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="grid gap-5 lg:grid-cols-2">
           <Card>
-            <h2 className="mb-2 text-[15px] font-semibold text-ink">Churn</h2>
+            <h2 className="mb-3 text-[15px] font-semibold text-ink">Churn</h2>
             {churned.length === 0 ? (
               <p className="text-[13px] text-ink-2">Brak rezygnacji. Oby jak najdłużej.</p>
             ) : (
               <ul>
                 {churned.map((l) => (
-                  <li key={l.id} className="border-b border-line py-2 last:border-0">
+                  <li key={l.id} className="border-b border-line py-3 last:border-0">
                     <div className="flex items-baseline justify-between gap-2">
                       <Link href={`/leady/${l.id}`} className="text-[14px] font-medium text-ink hover:text-accent">
                         {l.name}
@@ -247,7 +247,7 @@ export default async function PilotyPage() {
           </Card>
 
           <Card>
-            <h2 className="mb-2 text-[15px] font-semibold text-ink">Powody utraty i dyskwalifikacji</h2>
+            <h2 className="mb-3 text-[15px] font-semibold text-ink">Powody utraty i dyskwalifikacji</h2>
             {reasons.lost.length === 0 && reasons.disqualified.length === 0 ? (
               <p className="text-[13px] text-ink-2">
                 Brak danych — powody zbierają się przy przejściach w utracony / churn / zdyskwalifikowany.

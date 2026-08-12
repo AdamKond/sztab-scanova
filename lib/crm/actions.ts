@@ -8,7 +8,7 @@
 import { revalidatePath } from "next/cache";
 import { guardStaffAction } from "@/lib/auth";
 import { getServiceClient } from "@/lib/supabase/service";
-import { getLead } from "./queries";
+import { getLead, listNotes } from "./queries";
 import {
   isActivityOutcome,
   isActivityType,
@@ -645,6 +645,126 @@ export async function deleteAdsEntry(entryId: string): Promise<ActionResult> {
   const db = getServiceClient();
   const { error } = await db.from("crm_ads_log").delete().eq("id", entryId);
   if (error) return { error: `Nie udało się usunąć wpisu: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+// ----------------------------------------------------------------------------
+// Whiteboard — tablica strategii
+// ----------------------------------------------------------------------------
+
+// Baza pilnuje `char_length(title) between 1 and 200`. Przycinamy do tej samej
+// wartości (a nie do LIMITS.title = 240), żeby zamiast błędu constraintu
+// użytkownik dostał po prostu zapisany, skrócony tytuł.
+const NOTE_TITLE_MAX = 200;
+
+// Odstęp między kartami przy dopisywaniu na koniec — luka zostawia miejsce na
+// ręczne wciśnięcie karty pomiędzy istniejące bez przenumerowywania wszystkiego.
+const NOTE_ORDER_STEP = 10;
+
+/**
+ * Tworzy kartę (brak `note_id`) albo aktualizuje istniejącą.
+ * `updated_by` bierzemy WYŁĄCZNIE z sesji — gdyby szło z formularza, każdy
+ * mógłby podpisać cudzą zmianę, a to jedyny ślad autorstwa na tablicy.
+ */
+export async function saveNote(formData: FormData): Promise<ActionResult> {
+  const user = await guardStaffAction();
+  const title = text(formData, "title", NOTE_TITLE_MAX);
+  if (!title) return { error: "Tytuł karty jest wymagany." };
+  // Kolumna jest NOT NULL DEFAULT '' — pusta karta (sam tytuł) jest dozwolona.
+  const content = text(formData, "content_md", LIMITS.notes) ?? "";
+  const sortOrder = parsePositiveInt(formData.get("sort_order"));
+  const noteId = text(formData, "note_id");
+
+  const db = getServiceClient();
+  const payload = {
+    title,
+    content_md: content,
+    updated_by: user.email!.toLowerCase(),
+    ...(sortOrder !== null ? { sort_order: sortOrder } : {}),
+  };
+
+  if (noteId) {
+    const { error } = await db.from("crm_notes").update(payload).eq("id", noteId);
+    if (error) return { error: `Nie udało się zapisać karty: ${error.message}` };
+    revalidatePath("/", "layout");
+    return { ok: true, id: noteId };
+  }
+
+  // Nowa karta ląduje na końcu tablicy: domyślne 0 wrzucałoby ją nad strategię,
+  // a świeży pomysł nie jest automatycznie ważniejszy od tego, co już ustalone.
+  let nextOrder = sortOrder;
+  if (nextOrder === null) {
+    const { data: last, error: lastErr } = await db
+      .from("crm_notes")
+      .select("sort_order")
+      .order("sort_order", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (lastErr) return { error: `Nie udało się odczytać kolejności: ${lastErr.message}` };
+    nextOrder = (last?.sort_order ?? 0) + NOTE_ORDER_STEP;
+  }
+
+  const { data, error } = await db
+    .from("crm_notes")
+    .insert({ ...payload, sort_order: nextOrder })
+    .select("id")
+    .single();
+  if (error) return { error: `Nie udało się dodać karty: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true, id: data.id };
+}
+
+export async function deleteNote(noteId: string): Promise<ActionResult> {
+  await guardStaffAction();
+  const db = getServiceClient();
+  const { error } = await db.from("crm_notes").delete().eq("id", noteId);
+  if (error) return { error: `Nie udało się usunąć karty: ${error.message}` };
+  revalidatePath("/", "layout");
+  return { ok: true };
+}
+
+/**
+ * Przesuwa kartę o jedno miejsce, zamieniając sort_order z sąsiadem.
+ * Sąsiada wyznaczamy z tej samej, posortowanej listy, którą widzi użytkownik —
+ * inaczej „w górę" na ekranie mogłoby oznaczać co innego niż w bazie.
+ */
+export async function moveNote(noteId: string, direction: "up" | "down"): Promise<ActionResult> {
+  await guardStaffAction();
+  const notes = await listNotes();
+  const index = notes.findIndex((n) => n.id === noteId);
+  if (index === -1) return { error: "Karta nie istnieje." };
+
+  const neighbourIndex = direction === "up" ? index - 1 : index + 1;
+  // Karta skrajna: brak sąsiada to nie błąd, przycisk po prostu nic nie robi.
+  if (neighbourIndex < 0 || neighbourIndex >= notes.length) return { ok: true };
+
+  const current = notes[index];
+  const neighbour = notes[neighbourIndex];
+
+  // Przy remisie sort_order o kolejności decyduje created_at, więc sama zamiana
+  // nie zmieniłaby nic na ekranie — wtedy wypychamy kartę o 1 poza sąsiada.
+  const tie = current.sort_order === neighbour.sort_order;
+  const currentOrder = tie
+    ? neighbour.sort_order + (direction === "up" ? -1 : 1)
+    : neighbour.sort_order;
+  const neighbourOrder = tie ? neighbour.sort_order : current.sort_order;
+
+  const db = getServiceClient();
+  const { error } = await db
+    .from("crm_notes")
+    .update({ sort_order: currentOrder })
+    .eq("id", current.id);
+  if (error) return { error: `Nie udało się przenieść karty: ${error.message}` };
+
+  if (neighbourOrder !== neighbour.sort_order) {
+    const { error: nbErr } = await db
+      .from("crm_notes")
+      .update({ sort_order: neighbourOrder })
+      .eq("id", neighbour.id);
+    if (nbErr) return { error: `Nie udało się przenieść karty: ${nbErr.message}` };
+  }
+
   revalidatePath("/", "layout");
   return { ok: true };
 }

@@ -173,7 +173,7 @@ export default async function CelePage() {
     <>
       <Topbar title="Cele" />
 
-      <div className="space-y-5">
+      <div className="anim-in space-y-6">
         <p className="text-[13px] text-ink-2">
           Cele są edytowalne — żadnych zakodowanych „6 wizyt dziennie”. Główne KPI to przejścia lejka,
           płatni klienci i MRR; aktywności to wskaźnik wykonania.
@@ -226,13 +226,13 @@ export default async function CelePage() {
         </Card>
 
         <div>
-          <h2 className="mb-2 text-[14px] font-semibold text-ink">Aktywne cele</h2>
+          <h2 className="mb-3 text-[14px] font-semibold text-ink">Aktywne cele</h2>
           {active.length === 0 ? (
             <Card>
               <EmptyState title="Brak aktywnych celów" hint="Dodaj cel powyżej." />
             </Card>
           ) : (
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {active.map((g) => (
                 <GoalCard key={g.id} goal={g} />
               ))}
@@ -242,8 +242,8 @@ export default async function CelePage() {
 
         {historyGoals.length > 0 ? (
           <div>
-            <h2 className="mb-2 text-[14px] font-semibold text-ink">Historia</h2>
-            <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+            <h2 className="mb-3 text-[14px] font-semibold text-ink">Historia</h2>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {historyGoals.map((g) => (
                 <GoalCard key={g.id} goal={g} muted />
               ))}

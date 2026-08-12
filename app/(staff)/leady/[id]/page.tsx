@@ -124,8 +124,8 @@ export default async function LeadPage({ params }: { params: Promise<{ id: strin
         }
       />
 
-      <div className="grid gap-4 lg:grid-cols-[1fr_380px]">
-        <div className="space-y-4">
+      <div className="anim-in grid gap-5 lg:grid-cols-[1fr_380px]">
+        <div className="space-y-6">
           <Card>
             <div className="flex flex-wrap items-center gap-2">
               <h2 className="text-[18px] font-semibold text-ink">{lead.name}</h2>
@@ -267,7 +267,7 @@ export default async function LeadPage({ params }: { params: Promise<{ id: strin
           </Card>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           <StageSelect lead={lead} />
 
           <Card>

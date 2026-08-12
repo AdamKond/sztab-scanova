@@ -19,7 +19,9 @@ export default function AppShell({
       <MobileTopBar userEmail={userEmail} />
 
       <main className="md:pl-[236px]">
-        <div className="mx-auto max-w-[1440px] px-4 py-4 pb-24 md:px-6 md:py-6 md:pb-6">
+        {/* Więcej powietrza na desktopie: gęstość informacji ma wynikać
+            z porządku, a nie ze ściśnięcia elementów do siebie. */}
+        <div className="mx-auto max-w-[1440px] px-4 py-5 pb-28 md:px-10 md:py-8 md:pb-12">
           {children}
         </div>
       </main>

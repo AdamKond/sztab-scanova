@@ -16,7 +16,7 @@ export default async function UstawieniaPage() {
     <>
       <Topbar title="Ustawienia" />
 
-      <div className="space-y-5">
+      <div className="anim-in space-y-6">
         <Card>
           <h2 className="mb-1 text-[14px] font-semibold text-ink">Progi operacyjne</h2>
           <p className="mb-4 text-[13px] text-ink-2">

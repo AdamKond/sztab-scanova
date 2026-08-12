@@ -12,7 +12,7 @@ export default function ImportPage() {
     <>
       <Topbar title="Import leadów" />
 
-      <Card className="mb-4 space-y-3">
+      <Card className="anim-in mb-6 space-y-3">
         <p className="text-[14px] text-ink">
           Wgraj plik <strong>CSV</strong> lub <strong>TSV</strong> albo wklej dane prosto
           z arkusza. <strong>Pierwszy wiersz musi zawierać nazwy kolumn</strong> — na ich

@@ -466,7 +466,7 @@ export default function ImportWizard() {
   // --------------------------------------------------------------------------
 
   return (
-    <div className="space-y-4">
+    <div className="anim-in space-y-6">
       <StepBar step={step} />
 
       {actionError ? (

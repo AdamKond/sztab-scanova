@@ -19,7 +19,7 @@ export default async function AiPage() {
     <>
       <Topbar title="Odprawa AI" />
 
-      <div className="space-y-4">
+      <div className="anim-in space-y-6">
         {!configured ? (
           <Card>
             <div className="mb-1 flex items-baseline justify-between gap-2">

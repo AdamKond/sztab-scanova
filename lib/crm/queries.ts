@@ -16,6 +16,7 @@ import type {
   CrmBriefing,
   CrmContent,
   CrmLead,
+  CrmNote,
   CrmPartner,
   CrmSettings,
   CrmStageHistory,
@@ -197,4 +198,25 @@ export async function findDuplicateCandidates(keys: {
     for (const row of (data ?? []) as CrmLead[]) found.set(row.id, parseLead(row));
   }
   return [...found.values()];
+}
+
+// ----------------------------------------------------------------------------
+// Whiteboard — tablica strategii
+// ----------------------------------------------------------------------------
+
+/**
+ * Karty tablicy w kolejności wyświetlania: sort_order rosnąco, a przy remisie
+ * created_at rosnąco (starsza karta wyżej).
+ *
+ * selectAll przyjmuje tylko jedną kolumnę w `orderBy`, a kolejność wywołań
+ * .order() wyznacza priorytet sortowania — dlatego pierwszy klucz dokładamy
+ * przez `filter`. Sortowanie musi zajść w bazie, bo lista jest stronicowana
+ * i posortowanie dopiero w JS pomieszałoby wyniki między stronami.
+ */
+export async function listNotes(): Promise<CrmNote[]> {
+  const db = getServiceClient();
+  return selectAll<CrmNote>(db, "crm_notes", {
+    filter: (q) => q.order("sort_order", { ascending: true }),
+    orderBy: { column: "created_at", ascending: true },
+  });
 }

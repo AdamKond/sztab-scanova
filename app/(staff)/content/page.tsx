@@ -321,8 +321,8 @@ export default async function ContentPage() {
     <>
       <Topbar title="Content" />
 
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="anim-in space-y-6">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           <MetricTile
             label="W pipeline"
             value={String(inPipeline)}
@@ -413,7 +413,7 @@ export default async function ContentPage() {
           // Na desktopie 5 kolumn = lejek produkcji od lewej do prawej;
           // na mobile te same sekcje jedna pod drugą (kanban na telefonie
           // wymusza poziome przewijanie i gubi karty).
-          <div className="grid grid-cols-1 gap-3 lg:grid-cols-5">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
             {BOARD_STATUSES.map((status) => {
               const column = byStatus.get(status) ?? [];
               return (

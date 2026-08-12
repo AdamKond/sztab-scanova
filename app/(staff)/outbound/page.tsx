@@ -112,7 +112,7 @@ export default async function OutboundPage() {
   function TemplateItem({ template, muted = false }: { template: CrmTemplate; muted?: boolean }) {
     return (
       <details className={`rounded-lg border border-line ${muted ? "bg-canvas" : "bg-surface"}`}>
-        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 px-3 py-2.5">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 px-3 py-3">
           <span className={`min-w-0 flex-1 truncate text-[14px] font-medium ${muted ? "text-ink-2" : "text-ink"}`}>
             {template.name}
           </span>
@@ -161,7 +161,7 @@ export default async function OutboundPage() {
   function QueueRow({ item }: { item: OutboundItem }) {
     const { lead, suggestedStep, lastTouch, attempts } = item;
     return (
-      <div className="rounded-lg border border-line bg-surface px-3 py-2.5">
+      <div className="rounded-lg border border-line bg-surface px-3 py-3">
         <div className="flex flex-wrap items-center gap-2">
           <Link
             href={`/leady/${lead.id}`}
@@ -265,7 +265,7 @@ export default async function OutboundPage() {
     <>
       <Topbar title="Outbound" />
 
-      <div className="space-y-4">
+      <div className="anim-in space-y-6">
         <Card padding="sm">
           <p className="text-[13px] text-ink-2">
             <span className="font-medium text-ink">System niczego nie wysyła sam.</span> Podpowiada
@@ -274,7 +274,7 @@ export default async function OutboundPage() {
           </p>
         </Card>
 
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           <MetricTile label="W kolejce" value={String(queue.length)} />
           <MetricTile label="Priorytet A" value={String(priorityACount)} />
           <MetricTile
@@ -290,7 +290,7 @@ export default async function OutboundPage() {
           />
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-5 lg:grid-cols-3">
           <div className="space-y-3 lg:col-span-2">
             {queue.length === 0 ? (
               <Card>

@@ -9,7 +9,7 @@ export default function Card({
   className?: string;
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>) {
-  const pad = padding === "sm" ? "p-3" : "p-4 md:p-5";
+  const pad = padding === "sm" ? "p-4" : "p-5 md:p-6";
   return (
     <div
       className={`rounded-xl border border-line bg-surface ${pad} ${className}`}

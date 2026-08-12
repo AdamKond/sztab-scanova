@@ -182,7 +182,7 @@ export default async function AdsPage({
         </form>
       </Topbar>
 
-      <div className="space-y-4">
+      <div className="anim-in space-y-6">
         {alerts.map((p) => (
           // Czerwony ton wyłącznie dla ryzyka — tu przepalamy budżet od kilku dni.
           <div
@@ -195,7 +195,7 @@ export default async function AdsPage({
           </div>
         ))}
 
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
           <MetricTile
             label="Wydatek"
             value={plnRound.format(totals.spend)}
@@ -231,10 +231,10 @@ export default async function AdsPage({
           mieszamy. Puste mianowniki pokazujemy jako „—”, nie jako 0 zł.
         </p>
 
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {perPlatform.map(({ platform, totals: t }) => (
             <Card key={platform} padding="sm">
-              <div className="mb-2 flex items-center justify-between gap-2">
+              <div className="mb-3 flex items-center justify-between gap-2">
                 <h2 className="text-[14px] font-semibold text-ink">
                   {ADS_PLATFORM_LABELS[platform]}
                 </h2>
@@ -350,7 +350,7 @@ export default async function AdsPage({
         </Card>
 
         <Card>
-          <h2 className="mb-2 text-[15px] font-semibold text-ink">
+          <h2 className="mb-3 text-[15px] font-semibold text-ink">
             Dziennik ({filtered.length}{" "}
             {filtered.length === 1 ? "wpis" : filtered.length < 5 ? "wpisy" : "wpisów"})
           </h2>

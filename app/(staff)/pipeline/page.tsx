@@ -145,8 +145,8 @@ export default async function PipelinePage({
         </form>
       </Topbar>
 
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <div className="anim-in space-y-6">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           <MetricTile label="Otwarte leady" value={String(openCount)} />
           <MetricTile
             label="Win rate"
