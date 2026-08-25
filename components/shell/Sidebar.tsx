@@ -194,6 +194,7 @@ export const navGroups: NavGroup[] = [
       { href: "/whiteboard", label: "Whiteboard", icon: "board" },
       { href: "/leady", label: "Leady", icon: "users" },
       { href: "/outbound", label: "Outbound", icon: "send" },
+      { href: "/wysylka", label: "Wysyłka DM", icon: "send" },
       { href: "/followup", label: "Follow-up", icon: "check-square" },
       { href: "/ai", label: "Odprawa AI", icon: "sparkles" },
     ],
