@@ -768,3 +768,87 @@ export async function moveNote(noteId: string, direction: "up" | "down"): Promis
   revalidatePath("/", "layout");
   return { ok: true };
 }
+
+// ----------------------------------------------------------------------------
+// Wysyłka DM — masowa kampania Instagram (tabela crm_dm_blitz)
+// ----------------------------------------------------------------------------
+
+export async function toggleDmSent(blitzId: string): Promise<ActionResult> {
+  const user = await guardStaffAction();
+  const db = getServiceClient();
+  const { data, error } = await db
+    .from("crm_dm_blitz")
+    .select("sent_at")
+    .eq("id", blitzId)
+    .maybeSingle();
+  if (error) return { error: `Błąd bazy: ${error.message}` };
+  if (!data) return { error: "Nie znaleziono wpisu." };
+
+  const updates = data.sent_at
+    ? { sent_at: null, sent_by: null }
+    : { sent_at: new Date().toISOString(), sent_by: user.email!.toLowerCase() };
+  const { error: updError } = await db.from("crm_dm_blitz").update(updates).eq("id", blitzId);
+  if (updError) return { error: `Nie udało się zapisać: ${updError.message}` };
+
+  revalidatePath("/wysylka");
+  return { ok: true };
+}
+
+export async function promoteDmToLead(blitzId: string): Promise<ActionResult> {
+  const user = await guardStaffAction();
+  const db = getServiceClient();
+  const { data: row, error } = await db
+    .from("crm_dm_blitz")
+    .select("*")
+    .eq("id", blitzId)
+    .maybeSingle();
+  if (error) return { error: `Błąd bazy: ${error.message}` };
+  if (!row) return { error: "Nie znaleziono wpisu." };
+  // Idempotencja: drugi klik nie tworzy drugiego leada.
+  if (row.lead_id) return { ok: true, id: row.lead_id };
+
+  const email = user.email!.toLowerCase();
+  const { data: lead, error: leadError } = await db
+    .from("crm_leads")
+    .insert({
+      name: row.name,
+      normalized_name: normalizeName(row.name),
+      category: row.niche,
+      city: row.city,
+      instagram: row.instagram,
+      source: "ig_dm",
+      source_detail: "masowa wysyłka DM",
+      campaign: row.campaign,
+      status: "proba_kontaktu",
+      priority: "B",
+      owner: email,
+      next_action: "Odpisać i umówić demo",
+      notes: `Odpowiedział na DM z kampanii.\n\nWysłany DM:\n${row.dm_text}`,
+    })
+    .select("id")
+    .single();
+  if (leadError) return { error: `Nie udało się utworzyć leada: ${leadError.message}` };
+
+  // Historia kontaktu od razu w CRM: wysłany DM + odpowiedź.
+  await db.from("crm_activities").insert({
+    lead_id: lead.id,
+    type: "ig_dm",
+    outcome: "zainteresowany",
+    note: "DM z masowej kampanii — jest odpowiedź.",
+    created_by: email,
+  });
+  await backfillHistoryAuthor(lead.id, user.email!);
+
+  await db
+    .from("crm_dm_blitz")
+    .update({
+      lead_id: lead.id,
+      // Odpowiedź implikuje wysyłkę — odhacz, jeśli ktoś kliknął tylko "odpowiedział".
+      sent_at: row.sent_at ?? new Date().toISOString(),
+      sent_by: row.sent_by ?? email,
+    })
+    .eq("id", blitzId);
+
+  revalidatePath("/", "layout");
+  return { ok: true, id: lead.id };
+}

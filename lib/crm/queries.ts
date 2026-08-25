@@ -10,6 +10,7 @@ import "server-only";
 
 import { getServiceClient } from "@/lib/supabase/service";
 import { selectAll } from "@/lib/db";
+import type { CrmDmBlitz } from "./blitz";
 import type {
   CrmActivity,
   CrmAdsLog,
@@ -218,5 +219,14 @@ export async function listNotes(): Promise<CrmNote[]> {
   return selectAll<CrmNote>(db, "crm_notes", {
     filter: (q) => q.order("sort_order", { ascending: true }),
     orderBy: { column: "created_at", ascending: true },
+  });
+}
+
+export async function listDmBlitz(): Promise<CrmDmBlitz[]> {
+  const db = getServiceClient();
+  // Kolejność nadaje groupBlitzByNiche — zasiew ma jeden created_at dla
+  // wszystkich wierszy, więc sortowanie bazą nic tu nie wnosi.
+  return selectAll<CrmDmBlitz>(db, "crm_dm_blitz", {
+    orderBy: { column: "instagram", ascending: true },
   });
 }
