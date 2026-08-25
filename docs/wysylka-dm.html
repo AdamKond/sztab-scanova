@@ -3,103 +3,177 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Wysyłka DM — Scanova</title>
 <style>
-  :root { color-scheme: light; }
-  * { box-sizing: border-box; }
-  body { font-family: -apple-system, system-ui, sans-serif; margin: 0; background: #f4f5f7; color: #1a1d24; }
-  header { position: sticky; top: 0; background: #101b33; color: #fff; padding: 14px 20px; z-index: 10;
-           display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  header h1 { font-size: 17px; margin: 0; }
-  #prog { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 17px; }
-  #bar { flex: 1 1 140px; height: 8px; background: #2c3a57; border-radius: 4px; overflow: hidden; min-width: 120px; }
-  #bar > div { height: 100%; background: #4ade80; width: 0%; transition: width .2s; }
-  .filters { display: flex; gap: 8px; }
-  .filters button { border: 1px solid #3d4d6e; background: transparent; color: #cfd8ea; border-radius: 999px;
-                    padding: 5px 14px; font-size: 13px; cursor: pointer; }
-  .filters button.on { background: #fff; color: #101b33; border-color: #fff; font-weight: 600; }
-  main { max-width: 860px; margin: 0 auto; padding: 16px; }
-  h2 { font-size: 15px; margin: 26px 4px 10px; color: #45506b; display: flex; justify-content: space-between; }
-  .row { display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 12px;
-         padding: 10px 14px; margin-bottom: 6px; box-shadow: 0 1px 2px rgba(16,27,51,.06); }
-  .row.done { opacity: .45; }
-  .row.done .nm { text-decoration: line-through; }
-  .row input[type=checkbox] { width: 26px; height: 26px; accent-color: #16a34a; cursor: pointer; flex-shrink: 0; }
+  :root {
+    --canvas: #f5f5f3; --surface: #fff; --ink: #171717; --ink2: #6b6b6b;
+    --line: #e5e5e2; --accent: #2563eb; --accent-hover: #1d4ed8;
+    --navy: #0e1a33; --success: #16a34a;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: -apple-system, "SF Pro Text", system-ui, sans-serif;
+         background: var(--canvas); color: var(--ink);
+         -webkit-font-smoothing: antialiased; }
+  .tab { font-variant-numeric: tabular-nums; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.92);
+           backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .head-in { max-width: 720px; margin: 0 auto; padding: 16px 20px 14px;
+             display: flex; align-items: center; gap: 16px; }
+  .brand { display: flex; flex-direction: column; gap: 2px; margin-right: auto; }
+  .brand b { font-size: 15px; letter-spacing: -0.01em; }
+  .brand span { font-size: 12px; color: var(--ink2); }
+  .count { text-align: right; }
+  .count b { font-size: 20px; letter-spacing: -0.02em; }
+  .count span { display: block; font-size: 11px; color: var(--ink2);
+                text-transform: uppercase; letter-spacing: .07em; }
+  .seg { display: flex; background: #ececea; border-radius: 9px; padding: 3px; }
+  .seg button { border: 0; background: transparent; color: var(--ink2); font-size: 13px;
+                font-weight: 500; padding: 6px 13px; border-radius: 7px; cursor: pointer;
+                transition: color .15s; font-family: inherit; }
+  .seg button.on { background: var(--surface); color: var(--ink); font-weight: 600;
+                   box-shadow: 0 1px 3px rgba(23,23,23,.12); }
+  #bar { height: 3px; background: transparent; }
+  #bar div { height: 100%; background: var(--accent); width: 0; transition: width .3s ease; }
+
+  main { max-width: 720px; margin: 0 auto; padding: 8px 20px 80px; }
+  .sec { margin-top: 32px; }
+  .sec-h { display: flex; align-items: baseline; justify-content: space-between;
+           padding: 0 4px 10px; }
+  .sec-h h2 { font-size: 12px; font-weight: 600; color: var(--ink2);
+              text-transform: uppercase; letter-spacing: .09em; }
+  .sec-h .tab { font-size: 12px; color: var(--ink2); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+          overflow: hidden; }
+  .row { display: flex; align-items: center; gap: 14px; padding: 13px 16px;
+         border-top: 1px solid var(--line); transition: background .15s; }
+  .row:first-child { border-top: 0; }
+  .row:hover { background: #fafaf8; }
+  .row.done .nm { color: var(--ink2); text-decoration: line-through;
+                  text-decoration-color: rgba(107,107,107,.5); }
+  .row.done { background: #fbfbfa; }
+  .row.done .meta { opacity: .6; }
+
+  .chk { position: relative; width: 24px; height: 24px; flex-shrink: 0; cursor: pointer; }
+  .chk input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .chk .box { width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid #d1d1cd;
+              display: grid; place-items: center; transition: all .15s; background: var(--surface); }
+  .chk .box svg { width: 12px; height: 12px; stroke: #fff; stroke-width: 3; fill: none;
+                  opacity: 0; transform: scale(.6); transition: all .15s; }
+  .chk input:checked + .box { background: var(--success); border-color: var(--success); }
+  .chk input:checked + .box svg { opacity: 1; transform: scale(1); }
+  .chk:hover .box { border-color: var(--accent); }
+  .chk input:checked:hover + .box { border-color: var(--success); }
+
   .info { flex: 1; min-width: 0; }
-  .nm { font-weight: 600; font-size: 15px; }
-  .meta { font-size: 12.5px; color: #6b7690; }
-  .btn { border: none; border-radius: 9px; padding: 8px 13px; font-size: 13px; font-weight: 600;
-         cursor: pointer; white-space: nowrap; }
-  .ig { background: #eef1f7; color: #101b33; text-decoration: none; }
-  .cp { background: #101b33; color: #fff; }
-  .cp.ok { background: #16a34a; }
-  @media (max-width: 540px) { .btn { padding: 8px 10px; } .meta { display: none; } }
+  .nm { font-size: 14.5px; font-weight: 600; letter-spacing: -0.01em; }
+  .meta { font-size: 12.5px; color: var(--ink2); margin-top: 1px; }
+
+  .act { display: flex; gap: 8px; }
+  .btn { font-family: inherit; font-size: 13px; font-weight: 600; border-radius: 9px;
+         padding: 7px 12px; cursor: pointer; border: 1px solid transparent;
+         transition: all .15s; text-decoration: none; display: inline-flex;
+         align-items: center; white-space: nowrap; }
+  .btn-ig { background: var(--surface); color: var(--ink); border-color: var(--line); }
+  .btn-ig:hover { border-color: #c9c9c5; background: #fafaf8; }
+  .btn-cp { background: var(--navy); color: #fff; }
+  .btn-cp:hover { background: #1a2c52; }
+  .btn-cp.ok { background: var(--success); animation: pop .25s ease; }
+  @keyframes pop { 0% { transform: scale(.94); } 60% { transform: scale(1.04); } 100% { transform: scale(1); } }
+
+  .empty { text-align: center; color: var(--ink2); font-size: 14px; padding: 60px 0; }
+  @media (max-width: 560px) {
+    .head-in { padding: 12px 14px 10px; gap: 10px; flex-wrap: wrap; }
+    main { padding: 4px 10px 80px; }
+    .meta { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .btn { padding: 7px 10px; }
+  }
 </style></head><body>
 <header>
-  <h1>Wysyłka DM</h1><span id="prog"></span>
-  <div id="bar"><div></div></div>
-  <div class="filters">
-    <button data-f="all" class="on">Wszystkie</button>
-    <button data-f="todo">Do wysłania</button>
-    <button data-f="done">Wysłane</button>
+  <div class="head-in">
+    <div class="brand"><b>Wysyłka DM</b><span>Scanova · kampania lubelskie</span></div>
+    <div class="seg">
+      <button data-f="all" class="on">Wszystkie</button>
+      <button data-f="todo">Do wysłania</button>
+      <button data-f="done">Wysłane</button>
+    </div>
+    <div class="count"><b class="tab" id="prog"></b><span>wysłane</span></div>
   </div>
+  <div id="bar"><div></div></div>
 </header>
 <main id="list"></main>
 <script>
 const DM = {"pizza": "Cześć [NAZWA]! Piątkowa pizza to nawyk — pytanie tylko, czy ludzie mają ten nawyk u Was, czy u konkurencji. Robimy cyfrowe karty pieczątek w Apple/Google Wallet: pieczątka za każdą pizzę, co szósta gratis (nagrodę ustawiacie sami). W regionie korzystają z nas już m.in. MusiSushi i Kago Sushi. Efekt: stali klienci zamawiają u Was, nie przez portale z prowizją, i zostawiają opinie w Google. Jesteśmy z Lublina, pokażemy na miejscu w 5 minut. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "burgery": "Cześć [NAZWA]! Wasi goście wracają średnio co ile — miesiąc? Da się to skrócić. Robimy karty pieczątek w Apple/Google Wallet: pieczątka za każdego burgera, nagroda po kilku wizytach, klient ma to zawsze w telefonie. W regionie korzystają z nas m.in. MusiSushi i Kago Sushi. Do tego system podbija liczbę opinii w Google, bo prosi o nie zadowolonych, nie przypadkowych. 5 minut na miejscu i widać wszystko — jesteśmy z Lublina. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "kebab/street food": "Cześć [NAZWA]! Stały klient na lunch to najtańszy klient, jakiego można mieć — nie trzeba go zdobywać drugi raz. Robimy cyfrowe karty pieczątek w Apple/Google Wallet: pieczątka za wizytę, nagroda po kilku, zero papierków. Korzystają z nas już m.in. MusiSushi i Kago Sushi. System przy okazji zbiera Wam opinie w Google. Jesteśmy z Lublina, pokażemy na Waszym telefonie w 5 minut. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "kawiarnia": "Cześć [NAZWA]! Papierowe karty na kawę giną w portfelach — telefon nie ginie. Robimy cyfrowe karty pieczątek w Apple/Google Wallet: pieczątka za każdą kawę, dziesiąta gratis (albo jak ustawicie). Korzysta z tego już Yōkai Matcha i restauracje MusiSushi i Kago Sushi. Przy kawie to działa najlepiej ze wszystkich branż, bo ludzie przychodzą codziennie. Do tego więcej opinii w Google. Wpadniemy z demo na 5 minut — jesteśmy z Lublina. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "cukiernia/lody": "Cześć [NAZWA]! Sobotnie wyjście po Wasze wypieki to dla wielu osób rytuał — a rytuały można wzmacniać. Robimy cyfrowe karty pieczątek w Apple/Google Wallet: pieczątka za zakup, nagroda po kilku wizytach, karta zawsze w telefonie. Korzysta z tego już Yōkai Matcha oraz MusiSushi i Kago Sushi. System pomaga też zbierać opinie w Google. Pokażemy wszystko na miejscu w 5 minut, jesteśmy z Lublina. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "sniadania/brunch": "Cześć [NAZWA]! Weekendowa kolejka u Was to jedno — pytanie, gdzie ci sami ludzie jedzą we wtorek. Robimy cyfrowe karty pieczątek w Apple/Google Wallet: pieczątka za wizytę, nagroda po kilku — dobra zachęta, żeby wpaść też w tygodniu. Korzystają z nas już m.in. MusiSushi, Kago Sushi i Yōkai Matcha. Do tego system dowozi opinie w Google. Jesteśmy z Lublina, 5 minut demo na Waszym telefonie. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "sushi/azja": "Cześć [NAZWA]! Ile osób było u Was raz, pochwaliło jedzenie i nigdy nie wróciło? Robimy na to prosty patent: karta pieczątek w Apple/Google Wallet — pieczątka za wizytę, nagroda po kilku, gość wraca częściej. Korzysta z tego już MusiSushi w Lublinie i Kago Sushi w Świdniku, a przy okazji system pomaga zbierać opinie w Google. Jesteśmy z Lublina — możemy wpaść i pokazać na Waszym telefonie, 5 minut. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "boba/matcha": "Cześć [NAZWA]! Wasi klienci żyją w telefonach — karta lojalnościowa też powinna. Robimy karty pieczątek w Apple/Google Wallet: pieczątka za każdy kubek, nagroda po kilku, bez papierków. Korzysta z tego już Yōkai Matcha, a z restauracji MusiSushi i Kago Sushi. Przy okazji system zbiera Wam opinie w Google. Jesteśmy z Lublina — wpadniemy i pokażemy na Waszym telefonie, 5 minut. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "vegan": "Cześć [NAZWA]! Goście lokali wege to najwierniejsza klientela w gastro — jeśli dać im powód do regularnych powrotów. Robimy cyfrowe karty pieczątek w Apple/Google Wallet: pieczątka za wizytę, nagroda po kilku. Korzysta z tego już Yōkai Matcha oraz MusiSushi i Kago Sushi. Do tego system pomaga zbierać opinie w Google. Jesteśmy z Lublina, demo na Waszym telefonie zajmie 5 minut. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "wloska": "Cześć [NAZWA]! Nowych gości przyprowadza marketing, ale stałych — konkretny powód, żeby wrócić. Robimy cyfrowe karty pieczątek w Apple/Google Wallet: pieczątka za wizytę, nagroda po kilku, karta zawsze w telefonie gościa. Korzystają z nas już m.in. MusiSushi w Lublinie i Kago Sushi w Świdniku. System przy okazji pomaga zbierać opinie w Google. Jesteśmy z Lublina — pokażemy wszystko przy Waszym stoliku w 5 minut. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam", "restauracja": "Cześć [NAZWA]! Nowych gości przyprowadza marketing, ale stałych — konkretny powód, żeby wrócić. Robimy cyfrowe karty pieczątek w Apple/Google Wallet: pieczątka za wizytę, nagroda po kilku, karta zawsze w telefonie gościa. Korzystają z nas już m.in. MusiSushi w Lublinie i Kago Sushi w Świdniku. System przy okazji pomaga zbierać opinie w Google. Jesteśmy z Lublina — pokażemy wszystko przy Waszym stoliku w 5 minut. Pierwszy miesiąc macie za darmo. Pozdrawiam, Adam"};
 const DATA = [{"n": "Pizza Lover", "c": "Lublin", "niche": "pizza", "ig": "pizzalover_pl", "f": 13000}, {"n": "Pizzeria Rykowisko", "c": "Lublin", "niche": "pizza", "ig": "rykowiskolublin", "f": 4385}, {"n": "Bianca e Livia BeL Pizza Napoletana", "c": "Lublin", "niche": "pizza", "ig": "biancaeliviapizza", "f": 4272}, {"n": "Michele Arcangelo Pizzeria", "c": "Biała Podlaska", "niche": "pizza", "ig": "michele_arcangelo_pizzeria", "f": 3843}, {"n": "Canotto", "c": "Lublin", "niche": "pizza", "ig": "canottolublin", "f": 3486}, {"n": "Dla Przyjaciół Diana", "c": "Biała Podlaska", "niche": "pizza", "ig": "dlaprzyjaciol", "f": 3119}, {"n": "EncePence Pizzeria", "c": "Lublin", "niche": "pizza", "ig": "encepencepizzeria", "f": 2516}, {"n": "#NIEBO Roztocze", "c": "Tomaszów Lubelski", "niche": "pizza", "ig": "niebo_roztocze", "f": 1939}, {"n": "ABC Pizza Lublin", "c": "Lublin", "niche": "pizza", "ig": "abcpizzalublin", "f": 1740}, {"n": "La Vista Pizza", "c": "Lublin", "niche": "pizza", "ig": "lavistapizza", "f": 1313}, {"n": "Tutti Gusti Lublin Pizza Pasta", "c": "Lublin", "niche": "pizza", "ig": "tutti.gusti.lublin", "f": 1000}, {"n": "Pizza Raggio 7", "c": "Lublin", "niche": "pizza", "ig": "pizzaraggio7", "f": 994}, {"n": "Resto & Pizza Valentino", "c": "Tomaszów Lubelski", "niche": "pizza", "ig": "valentinopizzapl", "f": 468}, {"n": "Maxi Pizza Lublin", "c": "Lublin", "niche": "pizza", "ig": "maxipizzalublin", "f": 430}, {"n": "Mimi Pizza", "c": "Lublin", "niche": "pizza", "ig": "mimi_pizza_lublin", "f": 374}, {"n": "Pizzeria La Strega", "c": "Lublin", "niche": "pizza", "ig": "pizzerialastregalublin", "f": 279}, {"n": "La Pizza Dozynkowa", "c": "Lublin", "niche": "pizza", "ig": "la_pizza_dozynkowa", "f": 188}, {"n": "Pizzeria Roma", "c": "Biała Podlaska", "niche": "pizza", "ig": "pizzeriaroma_bp", "f": null}, {"n": "Pizzeria Restauracja COUNTRY", "c": "Biłgoraj", "niche": "pizza", "ig": "country_pizzeria_restauracja", "f": null}, {"n": "Pizzeria Verona", "c": "Biłgoraj", "niche": "pizza", "ig": "pizzeriaveronabilgoraj", "f": null}, {"n": "Tutto Bene", "c": "Biłgoraj", "niche": "pizza", "ig": "tutto_bene_bilgoraj", "f": null}, {"n": "Milano", "c": "Krasnystaw", "niche": "pizza", "ig": "milano.krasnystaw", "f": null}, {"n": "Itallo Pizza", "c": "Lubartów", "niche": "pizza", "ig": "itallo_pizza", "f": null}, {"n": "'a pizza", "c": "Lublin", "niche": "pizza", "ig": "a_pizza_lublin", "f": null}, {"n": "Viva La Pizza", "c": "Lublin", "niche": "pizza", "ig": "vivalapizza.lublin", "f": null}, {"n": "Italian Garden", "c": "Puławy", "niche": "pizza", "ig": "italian_garden_pulawy", "f": null}, {"n": "OLIO pizza Italiana", "c": "Puławy", "niche": "pizza", "ig": "oliopizzaitaliana", "f": null}, {"n": "Diavolo", "c": "Tomaszów Lubelski", "niche": "pizza", "ig": "diavolo_tomaszowlubelski", "f": null}, {"n": "Infinito Restauracja & Pizzeria", "c": "Zamość", "niche": "pizza", "ig": "infinito_zamosc_", "f": null}, {"n": "Najlepiej Pizza & Bar", "c": "Zamość", "niche": "pizza", "ig": "najlepiej_pizza", "f": null}, {"n": "Piazza Grande", "c": "Zamość", "niche": "pizza", "ig": "piazzagrandezamosc", "f": null}, {"n": "Franco Ristorante", "c": "Łęczna", "niche": "pizza", "ig": "franco_ristorante", "f": null}, {"n": "Smash&Chickz", "c": "Lublin", "niche": "burgery", "ig": "smash_chickz", "f": 4297}, {"n": "Munchies Lublin", "c": "Lublin", "niche": "burgery", "ig": "munchieslublin", "f": 3482}, {"n": "Johnny Smash Burger", "c": "Lublin", "niche": "burgery", "ig": "johnnysmashburger.pl", "f": 1293}, {"n": "King Fryt", "c": "Chełm", "niche": "burgery", "ig": "king_fryt", "f": 372}, {"n": "Alladyn Kebab & Strefa Burgera", "c": "Zamość", "niche": "burgery", "ig": "strefaburgera", "f": 260}, {"n": "BurgerBar Biała Podlaska", "c": "Biała Podlaska", "niche": "burgery", "ig": "burgerbarbiala", "f": null}, {"n": "Encanto Bistro", "c": "Lublin", "niche": "burgery", "ig": "encantolublin", "f": null}, {"n": "Lava Lublin", "c": "Lublin", "niche": "burgery", "ig": "lava_lublin", "f": null}, {"n": "Ranch Burger", "c": "Lublin", "niche": "burgery", "ig": "ranch.burger", "f": null}, {"n": "TuBurger Lublin", "c": "Lublin", "niche": "burgery", "ig": "tuburgerlublin", "f": null}, {"n": "Burger Krowia Wyspa", "c": "Puławy", "niche": "burgery", "ig": "burger_krowia_wyspa", "f": null}, {"n": "Byczek Bistro", "c": "Puławy", "niche": "burgery", "ig": "byczekbistro", "f": null}, {"n": "Smash&Chicken Puławy", "c": "Puławy", "niche": "burgery", "ig": "smashandchicken", "f": null}, {"n": "CopaCabana Burger", "c": "Zamość", "niche": "burgery", "ig": "copacabana__burger", "f": null}, {"n": "Tauro Burger", "c": "Zamość", "niche": "burgery", "ig": "tauroburger", "f": null}, {"n": "Kuźnia – Burgery & Pizza", "c": "Świdnik", "niche": "burgery", "ig": "kuzniaswidnik", "f": null}, {"n": "Munchies Street Food", "c": "Lublin", "niche": "kebab/street food", "ig": "munchiesstreetfood", "f": 651}, {"n": "Kebab Turecki Lublin", "c": "Lublin", "niche": "kebab/street food", "ig": "kebab_turecki", "f": 457}, {"n": "Dostana Kebab", "c": "Lublin", "niche": "kebab/street food", "ig": "dostanakebab.lublin", "f": 401}, {"n": "Zapiekanki Lublin", "c": "Lublin", "niche": "kebab/street food", "ig": "zapiekanki_lublin", "f": 355}, {"n": "O! Kebab Lublin", "c": "Lublin", "niche": "kebab/street food", "ig": "okebab_okebab", "f": 288}, {"n": "Alibaba Kebab", "c": "Lublin", "niche": "kebab/street food", "ig": "alibaba_kebab_lublin", "f": 29}, {"n": "Abdul Cuda na Kiju", "c": "Lublin", "niche": "kebab/street food", "ig": "abdulcudanakiju", "f": null}, {"n": "Erbil Doner Kebab", "c": "Lublin", "niche": "kebab/street food", "ig": "erbilkebab", "f": null}, {"n": "Habiby Kebab Lublin", "c": "Lublin", "niche": "kebab/street food", "ig": "habibykebab", "f": null}, {"n": "Jalapeno Kebab Lublin", "c": "Lublin", "niche": "kebab/street food", "ig": "jalapenokebablublin", "f": null}, {"n": "Kebab Salsa", "c": "Lublin", "niche": "kebab/street food", "ig": "kebab.salsa.lublin", "f": null}, {"n": "Maestro Kebab", "c": "Lublin", "niche": "kebab/street food", "ig": "maestrokebab_lublin", "f": null}, {"n": "Sahara Kebab & Pizza", "c": "Lublin", "niche": "kebab/street food", "ig": "sahara_lublin", "f": null}, {"n": "Streetszef", "c": "Lublin", "niche": "kebab/street food", "ig": "streetszef", "f": null}, {"n": "Mrau Cafe", "c": "Lublin", "niche": "kawiarnia", "ig": "mraucafe", "f": 4948}, {"n": "The Optimist", "c": "Lublin", "niche": "kawiarnia", "ig": "the_optimist_lublin", "f": 3584}, {"n": "Nie Wylej", "c": "Lublin", "niche": "kawiarnia", "ig": "kawiarnia.niewylej", "f": 3414}, {"n": "Kawałek Specialty Coffee", "c": "Lublin", "niche": "kawiarnia", "ig": "kawiarniakawalek", "f": 2437}, {"n": "Creamy Cafe", "c": "Lublin", "niche": "kawiarnia", "ig": "creamycafelublin", "f": 2130}, {"n": "Herbaciarnia Galeria U Dziwisza", "c": "Kazimierz Dolny", "niche": "kawiarnia", "ig": "herbaciarnia_u_dziwisza", "f": 1756}, {"n": "Imbryk Cafe&Lunch", "c": "Chełm", "niche": "kawiarnia", "ig": "imbrykcafechelm", "f": 1725}, {"n": "KOLOR Kawiarnia", "c": "Tomaszów Lubelski", "niche": "kawiarnia", "ig": "kolor.kawiarnia", "f": 1427}, {"n": "Kamienica bistro&cafe", "c": "Lublin", "niche": "kawiarnia", "ig": "kamienica_bistro_cafe", "f": 1202}, {"n": "Cafè Pâtisserie", "c": "Lublin", "niche": "kawiarnia", "ig": "cafepatisserie_lublin", "f": 1080}, {"n": "Cyngwajs", "c": "Lublin", "niche": "kawiarnia", "ig": "cyngwajs.lbn", "f": 1008}, {"n": "Cafe Insieme", "c": "Lublin", "niche": "kawiarnia", "ig": "cafeinsieme", "f": 845}, {"n": "Cafe Kot – Kocia Kawiarnia", "c": "Chełm", "niche": "kawiarnia", "ig": "cafekotpl", "f": 576}, {"n": "Agharta", "c": "Kazimierz Dolny", "niche": "kawiarnia", "ig": "aghartakazimierz", "f": 488}, {"n": "Pianka Cafe", "c": "Puławy", "niche": "kawiarnia", "ig": "piankacafe_pulawy", "f": 417}, {"n": "Cafe LuLu", "c": "Lublin", "niche": "kawiarnia", "ig": "cafelulu_lublin", "f": 316}, {"n": "Próba Cafe", "c": "Lublin", "niche": "kawiarnia", "ig": "probacafe", "f": 227}, {"n": "Aura Café", "c": "Biała Podlaska", "niche": "kawiarnia", "ig": "auracafe_bp", "f": null}, {"n": "CieKawa – kawiarnia i bawialnia", "c": "Biała Podlaska", "niche": "kawiarnia", "ig": "ciekawa_kawiarnia_bawialnia", "f": null}, {"n": "CoffeeLove Kawiarnia", "c": "Biała Podlaska", "niche": "kawiarnia", "ig": "coffeelove_kawiarnia", "f": null}, {"n": "LAP.Kawę", "c": "Biłgoraj", "niche": "kawiarnia", "ig": "lap.kawe.bilgoraj", "f": null}, {"n": "Markowa Kawiarnia", "c": "Biłgoraj", "niche": "kawiarnia", "ig": "markowa.kawiarnia", "f": null}, {"n": "K.Coffe", "c": "Lubartów", "niche": "kawiarnia", "ig": "k.coffe_lubartow", "f": null}, {"n": "Akwarela Cafe", "c": "Lublin", "niche": "kawiarnia", "ig": "akwarelacafe", "f": null}, {"n": "Cafe Heca", "c": "Lublin", "niche": "kawiarnia", "ig": "cafe_heca", "f": null}, {"n": "Cafe Velo", "c": "Lublin", "niche": "kawiarnia", "ig": "cafevelolublin", "f": null}, {"n": "Café Teatralna", "c": "Lublin", "niche": "kawiarnia", "ig": "cafeteatralna", "f": null}, {"n": "Enzo Muratore", "c": "Lublin", "niche": "kawiarnia", "ig": "enzomuratore.roastery", "f": null}, {"n": "Kap Kap Cafe", "c": "Lublin", "niche": "kawiarnia", "ig": "kapkapcafe", "f": null}, {"n": "Kawiarnia Umówieni", "c": "Lublin", "niche": "kawiarnia", "ig": "kawiarnia.umowieni", "f": null}, {"n": "Miejska", "c": "Lublin", "niche": "kawiarnia", "ig": "miejska_", "f": null}, {"n": "Między Słowami", "c": "Lublin", "niche": "kawiarnia", "ig": "miedzy_slowami_lublin", "f": null}, {"n": "NOOK Cafe", "c": "Lublin", "niche": "kawiarnia", "ig": "nook_lublin", "f": null}, {"n": "V.Cafe", "c": "Lublin", "niche": "kawiarnia", "ig": "v.cafe_lublin", "f": null}, {"n": "Alchemia Café", "c": "Puławy", "niche": "kawiarnia", "ig": "alchemia_cafe_pulawy", "f": null}, {"n": "Kawiarnia Szmaragdowa", "c": "Puławy", "niche": "kawiarnia", "ig": "szmaragdowa.pulawy", "f": null}, {"n": "Kazimierska Palarnia Kawy (Slow Coffee)", "c": "Puławy", "niche": "kawiarnia", "ig": "slowcoffee_official", "f": null}, {"n": "Galicya Cafe", "c": "Zamość", "niche": "kawiarnia", "ig": "galicyacafe", "f": null}, {"n": "Kawa na Ławę", "c": "Zamość", "niche": "kawiarnia", "ig": "kawa_na_lawe_cafe", "f": null}, {"n": "Kawiarnia Mazagran", "c": "Zamość", "niche": "kawiarnia", "ig": "kawiarnia_mazagran", "f": null}, {"n": "KarmeLove Cafe", "c": "Świdnik", "niche": "kawiarnia", "ig": "karmelove_cafe", "f": null}, {"n": "Yummy Sweets", "c": "Lublin", "niche": "cukiernia/lody", "ig": "yummysweetspl", "f": 13000}, {"n": "Ciacho bez Cukru", "c": "Lublin", "niche": "cukiernia/lody", "ig": "ciachobezcukru", "f": 7216}, {"n": "Córka Piekarza", "c": "Lublin", "niche": "cukiernia/lody", "ig": "corka_piekarza_lublin", "f": 2629}, {"n": "Bułka i Kromka", "c": "Lublin", "niche": "cukiernia/lody", "ig": "bulkaikromka", "f": 1946}, {"n": "Słodko Słodko", "c": "Lublin", "niche": "cukiernia/lody", "ig": "slodkoslodkolublin", "f": 682}, {"n": "Cukiernia Chmielewski", "c": "Lublin", "niche": "cukiernia/lody", "ig": "cukierniachmielewski", "f": 649}, {"n": "Vaflove", "c": "Zamość", "niche": "cukiernia/lody", "ig": "vaflove_zamosc", "f": 618}, {"n": "Cukiernia Kryształka", "c": "Biała Podlaska", "niche": "cukiernia/lody", "ig": "krysztalkacukiernia", "f": null}, {"n": "Cukiernia Słodka", "c": "Biała Podlaska", "niche": "cukiernia/lody", "ig": "cukiernia_slodka", "f": null}, {"n": "Cukiernia Biłgorajska", "c": "Biłgoraj", "niche": "cukiernia/lody", "ig": "cukiernia_bilgoraj", "f": null}, {"n": "Lody od Sarzyńskich", "c": "Kazimierz Dolny", "niche": "cukiernia/lody", "ig": "lody_od_sarzynskich", "f": null}, {"n": "Miętowe – Manufaktura Lodów", "c": "Kazimierz Dolny", "niche": "cukiernia/lody", "ig": "lody_mietowe", "f": null}, {"n": "Mela Caffe", "c": "Kraśnik", "niche": "cukiernia/lody", "ig": "melacaffe_krasnik", "f": null}, {"n": "Bonbonsy", "c": "Lublin", "niche": "cukiernia/lody", "ig": "bonbonsy_cukiernia_lublin", "f": null}, {"n": "Mom's Cake", "c": "Lublin", "niche": "cukiernia/lody", "ig": "momscake.lublin", "f": null}, {"n": "Pastorella", "c": "Lublin", "niche": "cukiernia/lody", "ig": "pastorella.lublin", "f": null}, {"n": "Piekarnia Artystyczna", "c": "Lublin", "niche": "cukiernia/lody", "ig": "piekarnia_artystyczna", "f": null}, {"n": "Piekarnia Hunek", "c": "Lublin", "niche": "cukiernia/lody", "ig": "piekarnia_hunek", "f": null}, {"n": "Polonia Cafe – Lubelska Manufaktura Lodów", "c": "Lublin", "niche": "cukiernia/lody", "ig": "polonia_cafe_manufaktura_lodow", "f": null}, {"n": "Sarzyński Lublin", "c": "Lublin", "niche": "cukiernia/lody", "ig": "sarzynski_lublin", "f": null}, {"n": "Sweet Baker", "c": "Lublin", "niche": "cukiernia/lody", "ig": "sweetbaker_cukiernia", "f": null}, {"n": "Tu i Tam", "c": "Lublin", "niche": "cukiernia/lody", "ig": "tuitam.lublin", "f": null}, {"n": "W Piekarniku (Marta Zając)", "c": "Lublin", "niche": "cukiernia/lody", "ig": "w_piekarniku", "f": null}, {"n": "Włoska Sztuka Piekarnia", "c": "Lublin", "niche": "cukiernia/lody", "ig": "wloskasztuka.piekarnia", "f": null}, {"n": "Kremove – Lody Wyjątkowe", "c": "Nałęczów", "niche": "cukiernia/lody", "ig": "kremove_lody_wyjatkowe", "f": null}, {"n": "O'Lovecake", "c": "Tomaszów Lubelski", "niche": "cukiernia/lody", "ig": "olovecake", "f": null}, {"n": "Kuźnia Cukiernia", "c": "Łęczna", "niche": "cukiernia/lody", "ig": "kuznia_cukiernia_leczna", "f": null}, {"n": "Cukiernia Finezja", "c": "Świdnik", "niche": "cukiernia/lody", "ig": "finezja.swidnik", "f": null}, {"n": "Fabryka Smaku Cukiernia Lodziarnia", "c": "Świdnik", "niche": "cukiernia/lody", "ig": "fabrykasmaku_cukiernia", "f": null}, {"n": "Pelier", "c": "Lublin", "niche": "sniadania/brunch", "ig": "pelier_bistro", "f": 12000}, {"n": "OSTRO", "c": "Lublin", "niche": "sniadania/brunch", "ig": "ostro_ristoteca", "f": 9953}, {"n": "Mandragora", "c": "Lublin", "niche": "sniadania/brunch", "ig": "restauracja.mandragora", "f": 3999}, {"n": "Cafe Mari", "c": "Lublin", "niche": "sniadania/brunch", "ig": "cafe_mari", "f": 3794}, {"n": "Piekarnia Sarzyński", "c": "Kazimierz Dolny", "niche": "sniadania/brunch", "ig": "piekarnia_sarzynski", "f": null}, {"n": "Otwarta Cafe", "c": "Zamość", "niche": "sniadania/brunch", "ig": "otwartacafe", "f": null}, {"n": "Phúc Lublin", "c": "Lublin", "niche": "sushi/azja", "ig": "restauracjawietnamskalublin", "f": 1918}, {"n": "Masami / Josei Sushi", "c": "Lublin", "niche": "sushi/azja", "ig": "masami_lublin", "f": 1725}, {"n": "Namasthai", "c": "Lublin", "niche": "sushi/azja", "ig": "namasthai_restauracja", "f": 1576}, {"n": "Torii Sushi", "c": "Łęczna", "niche": "sushi/azja", "ig": "torii_sushi_leczna", "f": 1480}, {"n": "Hanoi n U", "c": "Lublin", "niche": "sushi/azja", "ig": "hanoinu.lublin", "f": 869}, {"n": "Sajgon Lublin", "c": "Lublin", "niche": "sushi/azja", "ig": "sajgonlublin", "f": 246}, {"n": "Oishi Sushi and Ramen", "c": "Lublin", "niche": "sushi/azja", "ig": "oishi_sushi_lublin", "f": 216}, {"n": "Azja od Kuchni", "c": "Lublin", "niche": "sushi/azja", "ig": "azja_od_kuchni_lublin", "f": null}, {"n": "Chińczyk Wok This Way", "c": "Lublin", "niche": "sushi/azja", "ig": "chinczyk.lublin", "f": null}, {"n": "Hōseki Sushi & Ramen", "c": "Lublin", "niche": "sushi/azja", "ig": "hosekilublin", "f": null}, {"n": "Lin's Restaurant", "c": "Lublin", "niche": "sushi/azja", "ig": "lins_restaurant", "f": null}, {"n": "Makani", "c": "Lublin", "niche": "sushi/azja", "ig": "restauracja_makani", "f": null}, {"n": "Matsu Sushi & Wok", "c": "Lublin", "niche": "sushi/azja", "ig": "matsu_sushi_lublin", "f": null}, {"n": "Po Ramen Lublin", "c": "Lublin", "niche": "sushi/azja", "ig": "po.ramen.lublin", "f": null}, {"n": "Tim Tim Ramen", "c": "Lublin", "niche": "sushi/azja", "ig": "timtimramen", "f": null}, {"n": "Magic Bubble", "c": "Lublin", "niche": "boba/matcha", "ig": "magicbubblelublin", "f": null}, {"n": "Bubble Tea Puławy", "c": "Puławy", "niche": "boba/matcha", "ig": "bubble_tea_pulawy", "f": null}, {"n": "Trzeci Wymiar", "c": "Lublin", "niche": "vegan", "ig": "trzeci_wymiar_lublin", "f": null}, {"n": "Vegan Bistro Pomylone Gary", "c": "Lublin", "niche": "vegan", "ig": "veganbistropomylonegary", "f": null}, {"n": "Zielony Talerzyk", "c": "Lublin", "niche": "vegan", "ig": "zielonytalerzyk", "f": null}, {"n": "Capo Pizza Cucina Italiana", "c": "Lublin", "niche": "wloska", "ig": "capo_pizza_cucina_italiana", "f": 3251}, {"n": "Trattoria Bagatto Pizzeria", "c": "Lublin", "niche": "wloska", "ig": "trattoria.bagatto.pizzeria", "f": 1416}, {"n": "Atrium Ristorante Pizzeria", "c": "Lublin", "niche": "wloska", "ig": "atrium.lublin", "f": null}, {"n": "La Casa Trattoria Lublin", "c": "Lublin", "niche": "wloska", "ig": "la_casa.lublin", "f": null}, {"n": "Peccato di Gola", "c": "Lublin", "niche": "wloska", "ig": "peccato.rynek18", "f": null}, {"n": "Wloska Sztuka", "c": "Lublin", "niche": "wloska", "ig": "wloskasztuka", "f": null}, {"n": "Restauracja Akuku", "c": "Kazimierz Dolny", "niche": "restauracja", "ig": "akukurestauracja", "f": 27000}, {"n": "Hamsa", "c": "Kazimierz Dolny", "niche": "restauracja", "ig": "hamsakazimierzdolny", "f": 4077}, {"n": "Pstrągowo", "c": "Chełm", "niche": "restauracja", "ig": "pstragowo", "f": 3606}, {"n": "Zyto", "c": "Lublin", "niche": "restauracja", "ig": "zyto.rest", "f": 3596}, {"n": "Restauracja Kaslik", "c": "Kazimierz Dolny", "niche": "restauracja", "ig": "kaslik.kazimierzdolny", "f": 2244}, {"n": "Central Park Bistro", "c": "Puławy", "niche": "restauracja", "ig": "centralparkbistro", "f": 1587}, {"n": "Stara Poczta", "c": "Biała Podlaska", "niche": "restauracja", "ig": "stara_poczta_biala", "f": 1508}, {"n": "Restauracja Patataj", "c": "Nałęczów", "niche": "restauracja", "ig": "restauracjapatataj", "f": 1024}, {"n": "Luneta", "c": "Zamość", "niche": "restauracja", "ig": "luneta_zamosc", "f": 998}, {"n": "Zadora Nalesnikarnia Francuska", "c": "Lublin", "niche": "restauracja", "ig": "nalesnikarniazadora", "f": 749}, {"n": "artROOM", "c": "Kazimierz Dolny", "niche": "restauracja", "ig": "artroom_kd", "f": 737}, {"n": "Dumka", "c": "Chełm", "niche": "restauracja", "ig": "dumka_restauracja_", "f": 640}, {"n": "Restauracja Bohema", "c": "Zamość", "niche": "restauracja", "ig": "bohema.restauracja", "f": 591}, {"n": "Browar Osjann", "c": "Biała Podlaska", "niche": "restauracja", "ig": "browarosjann", "f": 423}, {"n": "Umami", "c": "Tomaszów Lubelski", "niche": "restauracja", "ig": "restauracja_umami", "f": 312}, {"n": "Pierogarnia 1-go Maja 24", "c": "Lublin", "niche": "restauracja", "ig": "pierogarnia_1go_maja24_lublin_", "f": 233}, {"n": "Hotel i Restauracja Skala", "c": "Biała Podlaska", "niche": "restauracja", "ig": "hotelirestauracjaskala", "f": 197}, {"n": "Stara Octownia", "c": "Puławy", "niche": "restauracja", "ig": "staraoctowniaofficial", "f": 93}, {"n": "Imbryk Bistro", "c": "Chełm", "niche": "restauracja", "ig": "imbryk.bistro", "f": 84}, {"n": "Restauracja Padwa", "c": "Zamość", "niche": "restauracja", "ig": "padwa.restauracja", "f": 74}, {"n": "Chillout", "c": "Biłgoraj", "niche": "restauracja", "ig": "chillout.bilgoraj", "f": null}, {"n": "Finazi", "c": "Biłgoraj", "niche": "restauracja", "ig": "finazifood", "f": null}, {"n": "Grand Beef", "c": "Biłgoraj", "niche": "restauracja", "ig": "grand_beef_restaurant", "f": null}, {"n": "Po Prostu", "c": "Chełm", "niche": "restauracja", "ig": "poprostu.rest", "f": null}, {"n": "Batumi – Kuchnia Gruzińska", "c": "Kazimierz Dolny", "niche": "restauracja", "ig": "restauracja.batumi", "f": null}, {"n": "Restauracja Dębowa", "c": "Kazimierz Dolny", "niche": "restauracja", "ig": "debowa_kazimierzdolny", "f": null}, {"n": "Restauracja Theo", "c": "Kazimierz Dolny", "niche": "restauracja", "ig": "restauracja_theo", "f": null}, {"n": "Restauracja Ludmiła", "c": "Kraśnik", "niche": "restauracja", "ig": "restauracja_ludmila_krasnik", "f": null}, {"n": "Restauracja Rubio", "c": "Kraśnik", "niche": "restauracja", "ig": "rubio_restauracja", "f": null}, {"n": "Restauracja Fabryka", "c": "Lubartów", "niche": "restauracja", "ig": "fabryka_lubartow", "f": null}, {"n": "Restauracja w Bramie", "c": "Lubartów", "niche": "restauracja", "ig": "restauracja_w_bramie", "f": null}, {"n": "Bibosz Pub Bar&Restauracja", "c": "Lublin", "niche": "restauracja", "ig": "biboszpub", "f": null}, {"n": "Bistro Wytrawny", "c": "Lublin", "niche": "restauracja", "ig": "wytrawny.pl", "f": null}, {"n": "Bursztynowa 1", "c": "Lublin", "niche": "restauracja", "ig": "restauracjabursztynowa1", "f": null}, {"n": "El Tiempo Bar Bistro", "c": "Lublin", "niche": "restauracja", "ig": "el_tiempo_lublin", "f": null}, {"n": "Halka Lublin", "c": "Lublin", "niche": "restauracja", "ig": "halka_lublin", "f": null}, {"n": "Jazzve Restauracja Kaukaska", "c": "Lublin", "niche": "restauracja", "ig": "jazzve_restauracja", "f": null}, {"n": "Kuchnia Otwarta", "c": "Lublin", "niche": "restauracja", "ig": "kuchniaotwarta_lublin", "f": null}, {"n": "Od Kuchni Stare Miasto", "c": "Lublin", "niche": "restauracja", "ig": "odkuchni_staremiasto", "f": null}, {"n": "Pierogarnia Rynek 26", "c": "Lublin", "niche": "restauracja", "ig": "pierogarniarynek26", "f": null}, {"n": "Pierogarnia Stolnica", "c": "Lublin", "niche": "restauracja", "ig": "pierogarnias", "f": null}, {"n": "Popularna", "c": "Lublin", "niche": "restauracja", "ig": "popularna.lublin", "f": null}, {"n": "Restauracja Como", "c": "Lublin", "niche": "restauracja", "ig": "como.restauracja", "f": null}, {"n": "Restauracja Za Kulisami", "c": "Lublin", "niche": "restauracja", "ig": "za_kulisami_lublin", "f": null}, {"n": "Sielsko Anielsko", "c": "Lublin", "niche": "restauracja", "ig": "sielskoanielsko_lublin", "f": null}, {"n": "Staropolska", "c": "Lublin", "niche": "restauracja", "ig": "staro__polska", "f": null}, {"n": "Stol i Wol", "c": "Lublin", "niche": "restauracja", "ig": "stoliwol", "f": null}, {"n": "Ukryta", "c": "Lublin", "niche": "restauracja", "ig": "ukryta_restauracja", "f": null}, {"n": "Kuchnia Puławy", "c": "Puławy", "niche": "restauracja", "ig": "kuchniapulawy", "f": null}, {"n": "Bistro Figa z Makiem", "c": "Zamość", "niche": "restauracja", "ig": "figazmakiemzamosc", "f": null}, {"n": "Centralka", "c": "Zamość", "niche": "restauracja", "ig": "centralka.zamosc", "f": null}, {"n": "Krowa na Miedzy", "c": "Zamość", "niche": "restauracja", "ig": "krowanamiedzy", "f": null}, {"n": "Patio Restauracja & Cocktail Bar", "c": "Zamość", "niche": "restauracja", "ig": "patio.zamosc", "f": null}, {"n": "Restauracja Muzealna Ormiańskie Piwnice", "c": "Zamość", "niche": "restauracja", "ig": "restauracja_muzealna", "f": null}, {"n": "Zamów Gościu", "c": "Zamość", "niche": "restauracja", "ig": "zamowgosciu", "f": null}];
-const LABEL = {"pizza": "🍕 Pizza", "burgery": "🍔 Burgery", "kebab/street food": "🌯 Kebab / street food", "kawiarnia": "☕ Kawiarnie", "cukiernia/lody": "🍰 Cukiernie / lody / piekarnie", "sniadania/brunch": "🍳 Śniadania / brunch", "sushi/azja": "🍣 Sushi / Azja", "boba/matcha": "🧋 Boba / matcha", "vegan": "🥦 Vegan", "wloska": "🇮🇹 Włoskie", "restauracja": "🍽️ Restauracje"};
+const LABEL = {"pizza": "Pizza", "burgery": "Burgery", "kebab/street food": "Kebab i street food", "kawiarnia": "Kawiarnie", "cukiernia/lody": "Cukiernie, lody, piekarnie", "sniadania/brunch": "Śniadania i brunch", "sushi/azja": "Sushi i Azja", "boba/matcha": "Boba i matcha", "vegan": "Vegan", "wloska": "Włoskie", "restauracja": "Restauracje"};
 const KEY = 'scanova-dm-2026-08';
 let state = JSON.parse(localStorage.getItem(KEY) || '{}');
 let filter = 'all';
+const CHECK_SVG = '<svg viewBox="0 0 16 16"><path d="M2.5 8.5 6 12l7.5-8"/></svg>';
 
 function save() { localStorage.setItem(KEY, JSON.stringify(state)); }
+function fmt(n) { return n.toLocaleString('pl-PL'); }
 
 function render() {
   const list = document.getElementById('list');
   list.innerHTML = '';
-  let byNiche = {};
+  const byNiche = {};
   for (const x of DATA) (byNiche[x.niche] ||= []).push(x);
+  let shown = 0;
   for (const niche of Object.keys(byNiche)) {
-    const items = byNiche[niche].filter(x =>
-      filter === 'all' || (filter === 'done') === !!state[x.ig]);
+    const all = byNiche[niche];
+    const items = all.filter(x => filter === 'all' || (filter === 'done') === !!state[x.ig]);
     if (!items.length) continue;
-    const doneN = byNiche[niche].filter(x => state[x.ig]).length;
-    const h = document.createElement('h2');
-    h.innerHTML = `<span>${LABEL[niche]}</span><span>${doneN}/${byNiche[niche].length}</span>`;
-    list.appendChild(h);
+    shown += items.length;
+    const doneN = all.filter(x => state[x.ig]).length;
+    const sec = document.createElement('section');
+    sec.className = 'sec';
+    sec.innerHTML = `<div class="sec-h"><h2>${LABEL[niche]}</h2>
+      <span class="tab">${doneN} / ${all.length}</span></div>`;
+    const card = document.createElement('div');
+    card.className = 'card';
     for (const x of items) {
       const row = document.createElement('div');
       row.className = 'row' + (state[x.ig] ? ' done' : '');
-      const fol = x.f ? ` · ${x.f.toLocaleString('pl')} obs.` : '';
+      const fol = x.f ? ` · ${fmt(x.f)} obs.` : '';
       row.innerHTML = `
-        <input type="checkbox" ${state[x.ig] ? 'checked' : ''}>
+        <label class="chk"><input type="checkbox" ${state[x.ig] ? 'checked' : ''}>
+          <span class="box">${CHECK_SVG}</span></label>
         <div class="info"><div class="nm">${x.n}</div>
-        <div class="meta">@${x.ig} · ${x.c}${fol}</div></div>
-        <a class="btn ig" href="https://instagram.com/${x.ig}" target="_blank">IG</a>
-        <button class="btn cp">Kopiuj DM</button>`;
+          <div class="meta">@${x.ig} · ${x.c}${fol}</div></div>
+        <div class="act">
+          <a class="btn btn-ig" href="https://instagram.com/${x.ig}" target="_blank">Profil</a>
+          <button class="btn btn-cp">Kopiuj DM</button>
+        </div>`;
       row.querySelector('input').onchange = e => {
-        state[x.ig] = e.target.checked; if (!e.target.checked) delete state[x.ig];
+        if (e.target.checked) state[x.ig] = 1; else delete state[x.ig];
         save(); render();
       };
-      row.querySelector('.cp').onclick = async e => {
+      row.querySelector('.btn-cp').onclick = async e => {
         const txt = DM[x.niche].replaceAll('[NAZWA]', x.n);
         try { await navigator.clipboard.writeText(txt); }
         catch (_) {
           const t = document.createElement('textarea'); t.value = txt;
           document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove();
         }
-        e.target.textContent = 'Skopiowano!'; e.target.classList.add('ok');
-        setTimeout(() => { e.target.textContent = 'Kopiuj DM'; e.target.classList.remove('ok'); }, 1500);
+        const b = e.target;
+        b.textContent = 'Skopiowano'; b.classList.add('ok');
+        setTimeout(() => { b.textContent = 'Kopiuj DM'; b.classList.remove('ok'); }, 1400);
       };
-      list.appendChild(row);
+      card.appendChild(row);
     }
+    sec.appendChild(card);
+    list.appendChild(sec);
+  }
+  if (!shown) {
+    list.innerHTML = `<div class="empty">${filter === 'done'
+      ? 'Nic jeszcze nie wysłane.' : 'Wszystko wysłane 🎉'}</div>`;
   }
   const done = DATA.filter(x => state[x.ig]).length;
-  document.getElementById('prog').textContent = `${done}/${DATA.length}`;
-  document.querySelector('#bar > div').style.width = (100 * done / DATA.length) + '%';
+  document.getElementById('prog').textContent = `${done} / ${DATA.length}`;
+  document.querySelector('#bar div').style.width = (100 * done / DATA.length) + '%';
 }
-document.querySelectorAll('.filters button').forEach(b => b.onclick = () => {
+document.querySelectorAll('.seg button').forEach(b => b.onclick = () => {
   filter = b.dataset.f;
-  document.querySelectorAll('.filters button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.seg button').forEach(x => x.classList.toggle('on', x === b));
   render();
 });
 render();
