@@ -1,0 +1,211 @@
+{
+  "campaign": "sushi-lubelskie-2026-08",
+  "source_detail": "research web 2026-08, wertykal sushi + gastro Lublin",
+  "leads": [
+    {
+      "name": "Takushi Ramen & Sushi",
+      "category": "sushi/ramen",
+      "city": "Lublin",
+      "address": "ul. Pana Balcera 6A (LSM)",
+      "www": "takushisushi.pl",
+      "google_rating": 4.5,
+      "priority": "A",
+      "qualification_note": "15 lat na rynku, ~900 opinii 4,5. Ramen + poke + lunch = wizyty co tydzien, nie od swieta. Najmocniejszy kandydat w Lublinie.",
+      "dm": "Czesc, tu Adam ze Scanovy, jestesmy z Lublina. Robimy karty pieczatek w telefonie: gosc dodaje karte do Apple albo Google Wallet, zbiera pieczatki za wizyty i wraca czesciej. Korzysta z tego juz MusiSushi w Lublinie i Kago Sushi w Swidniku. Przy okazji system pomaga zbierac opinie w Google. Moge wpasc na Balcera i pokazac wszystko na Waszym telefonie, zajmie to 5 minut. Strona: scanova.tech"
+    },
+    {
+      "name": "Boru Ramen Noodle & Poke Bar",
+      "category": "ramen/poke",
+      "city": "Lublin",
+      "priority": "A",
+      "qualification_note": "Ramen i poke na lunch = najwyzsza czestotliwosc wizyt w calym wertykale. Stala miejscowa klientela.",
+      "dm": "Czesc! Pisze ze Scanovy, lubelskiej firmy od cyfrowych kart lojalnosciowych. Dziala to prosto: gosc ma karte w Apple/Google Wallet, dostaje pieczatke za wizyte, po kilku wizytach odbiera nagrode. W Lublinie korzysta juz MusiSushi, w Swidniku Kago Sushi. Przy ramenie i poke na lunch to dziala najlepiej, bo ludzie wracaja co tydzien. Do tego prosty sposob na zbieranie opinii w Google. Chetnie pokaze na zywo, 5 minut. scanova.tech"
+    },
+    {
+      "name": "Kobi Sushi",
+      "category": "sushi",
+      "city": "Lublin",
+      "address": "Srodmiescie",
+      "google_rating": 4.5,
+      "priority": "B",
+      "qualification_note": "Ponad 1300 opinii 4,5, ikona Srodmiescia. Duzy lokal, decyzja moze isc wolniej.",
+      "dm": "Dzien dobry, tu Adam ze Scanovy. Pomagamy lokalom zamieniac jednorazowych gosci w stalych: cyfrowa karta pieczatek w Apple/Google Wallet zamiast papierowej karteczki. Wspolpracujemy juz z MusiSushi w Lublinie i Kago Sushi w Swidniku. System przy okazji pomaga zbierac kolejne opinie w Google. Przy Waszej skali efekt widac szybko. Moge podejsc do lokalu i pokazac demo na telefonie, kiedy pasuje? scanova.tech"
+    },
+    {
+      "name": "DajTo Sushi",
+      "category": "sushi",
+      "city": "Lublin",
+      "address": "ul. Swietoduska 10",
+      "www": "sushi-lublin.pl",
+      "priority": "B",
+      "qualification_note": "Mocny dowoz i zamowienia online, sushi burgery. Lojalnosc konkuruje tu z pyszne.pl - argument: wlasny kanal staly klientow zamiast prowizji.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy cyfrowe karty lojalnosciowe w Apple/Google Wallet: pieczatka za zamowienie, nagroda po kilku wizytach. Korzysta z tego juz MusiSushi i Kago Sushi ze Swidnika. Przy mocnym dowozie to sposob, zeby stali klienci zamawiali u Was bezposrednio, a nie przez portale z prowizja. Pomagamy tez zbierac opinie w Google. 5 minut i pokazuje wszystko na telefonie. scanova.tech"
+    },
+    {
+      "name": "Tosaka Sushi",
+      "category": "sushi",
+      "city": "Lublin",
+      "www": "tosakasushi.pl",
+      "priority": "B",
+      "qualification_note": "Niezalezne sushi w Lublinie, aktywna strona www.",
+      "dm": "Czesc, tu Adam ze Scanovy. Jestesmy z Lublina i robimy karty pieczatek w telefonie (Apple/Google Wallet). Gosc zbiera pieczatki za wizyty i wraca po nagrode. Wspolpracuja z nami juz MusiSushi w Lublinie i Kago Sushi w Swidniku. To nowy sposob na budowanie stalych gosci i zbieranie opinii w Google przy okazji kazdej wizyty. Chetnie wpadne i pokaze demo, 5 minut wystarczy. scanova.tech"
+    },
+    {
+      "name": "Momiko Sushi",
+      "category": "sushi",
+      "city": "Lublin",
+      "google_rating": 5.0,
+      "priority": "A",
+      "qualification_note": "Ocena 5,0 - lider rankingu. Swietna jakosc = latwo im zbierac kolejne opinie i nagradzac powroty.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Macie 5,0 w Google i to sie rzadko zdarza, wiec pisze wlasnie do Was. Robimy cyfrowe karty pieczatek w Apple/Google Wallet: gosc zbiera pieczatki za wizyty, wraca czesciej, a przy okazji system zacheca zadowolonych do zostawienia opinii w Google. Korzysta z tego juz MusiSushi w Lublinie i Kago Sushi w Swidniku. Moge wpasc i pokazac na Waszym telefonie, 5 minut. scanova.tech"
+    },
+    {
+      "name": "MoMo Sushi",
+      "category": "sushi/ramen",
+      "city": "Swidnik",
+      "address": "ul. Olimpijczykow 26",
+      "www": "momosushi.pl",
+      "priority": "C",
+      "qualification_note": "UWAGA: bezposredni konkurent Kago Sushi w Swidniku. Przed kontaktem ocenic, czy to nie zaszkodzi relacji z Kago. DM celowo nie wymienia Kago.",
+      "dm": "Czesc, tu Adam ze Scanovy, firmy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet: pieczatka za wizyte, nagroda po kilku, gosc wraca czesciej. Korzysta z tego juz kilka restauracji w regionie, m.in. MusiSushi w Lublinie. System pomaga tez zbierac opinie w Google. Jesli chcecie, podjade do Swidnika i pokaze demo na telefonie, 5 minut. scanova.tech"
+    },
+    {
+      "name": "Ale SUSHI",
+      "category": "sushi/poke",
+      "city": "Zamosc",
+      "address": "ul. Waleriana Lukasinskiego",
+      "google_rating": 4.9,
+      "priority": "A",
+      "qualification_note": "4,9 w Google, najlepsza azjatycka restauracja w Zamosciu, poke w ofercie, rezerwacje z wyprzedzeniem = pelna sala.",
+      "dm": "Czesc, tu Adam ze Scanovy. Jestesmy firma z Lublina i robimy cyfrowe karty pieczatek w Apple/Google Wallet. W Lublinie korzysta z nich MusiSushi, w Swidniku Kago Sushi, teraz szukamy jednego dobrego lokalu w Zamosciu i Wasze 4,9 mowi samo za siebie. Gosc zbiera pieczatki za wizyty i wraca czesciej, a system przy okazji pomaga zbierac opinie w Google. Moge podjechac do Zamoscia i pokazac wszystko w 5 minut. scanova.tech"
+    },
+    {
+      "name": "Toto Sushi",
+      "category": "sushi",
+      "city": "Zamosc",
+      "www": "totosushizamosc.pl",
+      "priority": "B",
+      "qualification_note": "Dobre opinie, zamowienia online przez wlasna strone.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy karty pieczatek w telefonie (Apple/Google Wallet): pieczatka za wizyte albo zamowienie, po kilku nagroda. Korzystaja z tego juz MusiSushi w Lublinie i Kago Sushi w Swidniku. To prosty sposob na stalych klientow i wiecej opinii w Google. Macie wlasne zamowienia online, wiec u Was zagraloby to podwojnie. Chetnie podjade do Zamoscia z krotkim demo. scanova.tech"
+    },
+    {
+      "name": "Oedo Sushi",
+      "category": "sushi",
+      "city": "Zamosc",
+      "google_rating": 4.4,
+      "priority": "C",
+      "qualification_note": "4,4, malo opinii w sieci. Kontakt dopiero gdy Ale SUSHI lub Toto odmowia.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet: gosc zbiera pieczatki za wizyty i wraca po nagrode. Korzystaja z nich juz MusiSushi w Lublinie i Kago Sushi w Swidniku. System pomaga tez zbierac opinie w Google, co przy konkurencji w Zamosciu robi roznice. Moge podjechac i pokazac demo w 5 minut. scanova.tech"
+    },
+    {
+      "name": "Sushi Garden",
+      "category": "sushi",
+      "city": "Pulawy",
+      "www": "sushigarden.pulawy.pl",
+      "priority": "A",
+      "qualification_note": "Nr 1 sushi w Pulawach, wlasne zamowienia online.",
+      "dm": "Czesc, tu Adam ze Scanovy, firmy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet. W Lublinie korzysta z nich MusiSushi, w Swidniku Kago Sushi, a w Pulawach chcemy zaczac od najlepszych, czyli od Was. Gosc zbiera pieczatki za wizyty, wraca czesciej, a przy okazji zostawia opinie w Google. Moge podjechac do Pulaw i pokazac wszystko na telefonie, 5 minut. scanova.tech"
+    },
+    {
+      "name": "Sushi Studio",
+      "category": "sushi",
+      "city": "Pulawy",
+      "priority": "B",
+      "qualification_note": "Rozbudowane menu, dobre opinie, druga opcja w Pulawach.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy karty pieczatek w telefonie: gosc dodaje karte do Apple/Google Wallet, zbiera pieczatki i wraca po nagrode. Korzystaja z tego juz MusiSushi w Lublinie i Kago Sushi w Swidniku. To nowy sposob na stalych gosci i wiecej opinii w Google. Jesli macie 5 minut, podjade do Pulaw i pokaze demo na Waszym telefonie. scanova.tech"
+    },
+    {
+      "name": "MOOD Ramen & Sushi",
+      "category": "sushi/ramen",
+      "city": "Pulawy",
+      "www": "sushimood.pulawy.pl",
+      "priority": "B",
+      "qualification_note": "Ramen w ofercie = czestsze wizyty niz samo sushi.",
+      "dm": "Czesc, tu Adam ze Scanovy, jestesmy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet: pieczatka za wizyte, nagroda po kilku, gosc wraca czesciej. Przy ramenie to dziala najlepiej, bo ludzie jedza go regularnie, nie od swieta. Korzystaja z nas juz MusiSushi w Lublinie i Kago Sushi w Swidniku. Do tego system pomaga zbierac opinie w Google. Podjade do Pulaw i pokaze demo w 5 minut, kiedy pasuje? scanova.tech"
+    },
+    {
+      "name": "Yamato Art Sushi & Wok",
+      "category": "sushi/wok",
+      "city": "Chelm",
+      "www": "yamatoart.pl",
+      "priority": "A",
+      "qualification_note": "Nr 1 w Chelmie na Google Maps. Jedyny mocny gracz sushi w miescie = szybka dominacja kategorii.",
+      "dm": "Czesc, tu Adam ze Scanovy, firmy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet: gosc zbiera pieczatki za wizyty i wraca po nagrode. Korzystaja z nich juz MusiSushi w Lublinie i Kago Sushi w Swidniku, a w Chelmie jestescie naturalnym numerem jeden, wiec pisze do Was. System przy okazji pomaga zbierac opinie w Google. Moge podjechac do Chelma i pokazac wszystko w 5 minut. scanova.tech"
+    },
+    {
+      "name": "Numazu Sushi & Thai",
+      "category": "sushi/thai",
+      "city": "Biala Podlaska",
+      "address": "Plac Wojska Polskiego 13",
+      "www": "numazu.pl",
+      "priority": "A",
+      "qualification_note": "Nr 1 w Bialej Podlaskiej, druga lokalizacja w Lukowie = locations_count 2, wiekszy potencjal MRR.",
+      "locations_count": 2,
+      "dm": "Czesc, tu Adam ze Scanovy, firmy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet: pieczatka za wizyte, nagroda po kilku, gosc wraca czesciej. Korzystaja z nich juz MusiSushi w Lublinie i Kago Sushi w Swidniku. U Was zagraloby to podwojnie, bo jedna karta dziala w obu lokalach, w Bialej i w Lukowie. Do tego system pomaga zbierac opinie w Google. Chetnie podjade i pokaze demo w 5 minut. scanova.tech"
+    },
+    {
+      "name": "Futo Sushi & Asian Food",
+      "category": "sushi",
+      "city": "Biala Podlaska",
+      "address": "ul. Stefana Batorego 14",
+      "google_rating": 4.6,
+      "priority": "B",
+      "qualification_note": "4,6 przy 228 opiniach, dobre ceny = mlodsza klientela, dobra pod Wallet.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy karty pieczatek w telefonie (Apple/Google Wallet): gosc zbiera pieczatki za wizyty i wraca po nagrode. Korzystaja z tego juz MusiSushi w Lublinie i Kago Sushi w Swidniku. To nowy sposob na stalych klientow i wiecej opinii w Google. Jesli macie chwile, podjade do Bialej i pokaze demo na Waszym telefonie, 5 minut. scanova.tech"
+    },
+    {
+      "name": "Space Sushi",
+      "category": "sushi",
+      "city": "Biala Podlaska",
+      "priority": "C",
+      "qualification_note": "Nr 3 w Bialej Podlaskiej. Kontakt gdy Numazu i Futo odmowia.",
+      "dm": "Czesc, tu Adam ze Scanovy, firmy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet: pieczatka za wizyte, po kilku nagroda, gosc wraca czesciej. Korzystaja z nich juz MusiSushi w Lublinie i Kago Sushi w Swidniku. System pomaga tez zbierac opinie w Google. Chetnie podjade i pokaze demo w 5 minut. scanova.tech"
+    },
+    {
+      "name": "Niebo Matcha Bar",
+      "category": "matcha bar",
+      "city": "Lublin",
+      "address": "ul. Narutowicza 14/19",
+      "priority": "A",
+      "qualification_note": "Fala 2 (po sushi). Blizniaczy profil do klienta Yokai Matcha - social proof przenosi sie 1:1. Matcha = wizyty kilka razy w tygodniu.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet i korzysta z nich m.in. Yokai Matcha oraz restauracje MusiSushi i Kago Sushi. Gosc zbiera pieczatki za kazda matche i wraca czesciej, a system przy okazji pomaga zbierac opinie w Google. Jestem na Narutowicza w 5 minut i pokaze wszystko na Waszym telefonie. scanova.tech"
+    },
+    {
+      "name": "Hello Boba",
+      "category": "bubble tea",
+      "city": "Lublin",
+      "address": "Krakowskie Przedmiescie 29",
+      "instagram": "hellobobapl",
+      "priority": "A",
+      "qualification_note": "Fala 2. Klientela Gen Z ze smartfonem, aktywny IG. Idealny profil pod Wallet.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy karty pieczatek w telefonie: klient dodaje karte do Apple/Google Wallet, zbiera pieczatki za kazda bobe i wraca po nagrode. Korzysta z tego juz Yokai Matcha, a z restauracji MusiSushi i Kago Sushi. Wasi klienci i tak zyja w telefonach, wiec to strzal w dziesiatke. Do tego wiecej opinii w Google. Wpadne na Krakowskie i pokaze demo w 5 minut, kiedy pasuje? scanova.tech"
+    },
+    {
+      "name": "GanBei Bubble Tea",
+      "category": "bubble tea",
+      "city": "Lublin",
+      "address": "ul. Krolewska, przy bramie Starego Miasta",
+      "instagram": "ganbei_bubble_tea",
+      "priority": "B",
+      "qualification_note": "Fala 2. Mocny TikTok, lokalizacja przy Starym Miescie. Rezerwa gdyby Hello Boba odmowila.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet: pieczatka za kazda herbate, nagroda po kilku, klient wraca czesciej. Korzysta z tego juz Yokai Matcha oraz MusiSushi i Kago Sushi. Widze, ze mocno dzialacie na TikToku, wiec cyfrowa karta pasuje do Was bardziej niz papierowa. Do tego system pomaga zbierac opinie w Google. Jestem pod brama Starego Miasta w 5 minut z demo. scanova.tech"
+    },
+    {
+      "name": "ParZona",
+      "category": "kawiarnia specialty",
+      "city": "Lublin",
+      "priority": "B",
+      "qualification_note": "Fala 2. Nr 1 rankingow kawiarni w Lublinie. Kawa = najwyzsza czestotliwosc zakupowa ze wszystkich kategorii.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet, czyli to co papierowa karteczka na kawe, tylko ze klient ma ja zawsze przy sobie i nie zgubi. Korzysta z tego juz Yokai Matcha oraz restauracje MusiSushi i Kago Sushi. System przy okazji pomaga zbierac opinie w Google. Przy kawie pieczatki dzialaja najlepiej ze wszystkiego. Wpadne z demo na 5 minut, kiedy pasuje? scanova.tech"
+    },
+    {
+      "name": "PATE",
+      "category": "cukiernia",
+      "city": "Lublin",
+      "instagram": "pate.lublin",
+      "priority": "B",
+      "qualification_note": "Fala 2. Rzemieslnicza cukiernia, 6 tys. obserwujacych na IG, dbaja o wizerunek. Weekendowy rytual croissant + kawa.",
+      "dm": "Czesc, tu Adam ze Scanovy z Lublina. Robimy cyfrowe karty pieczatek w Apple/Google Wallet: klient zbiera pieczatki za wizyty i wraca po nagrode. Korzysta z tego juz Yokai Matcha oraz restauracje MusiSushi i Kago Sushi. U Was sobotni croissant to dla wielu osob rytual, a karta w telefonie ten rytual wzmacnia. Do tego wiecej opinii w Google. Wpadne i pokaze demo w 5 minut, kiedy Wam pasuje? scanova.tech"
+    }
+  ]
+}
