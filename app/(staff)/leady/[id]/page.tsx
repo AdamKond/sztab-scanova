@@ -10,6 +10,7 @@ import StatusBadge from "@/components/crm/StatusBadge";
 import PriorityBadge from "@/components/crm/PriorityBadge";
 import StageSelect from "@/components/crm/StageSelect";
 import ActionForm, { SubmitButton } from "@/components/crm/ActionForm";
+import CopyTextButton from "@/components/crm/CopyTextButton";
 import { getLead, listActivities, listStageHistory, listTasksForLead } from "@/lib/crm/queries";
 import { addActivity, createTask, setNextAction, toggleTask, updateLeadNotes } from "@/lib/crm/actions";
 import {
@@ -102,6 +103,11 @@ export default async function LeadPage({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const lead = await getLead(id);
   if (!lead) notFound();
+
+  // DM kampanii żyje w notatkach z markerem w pierwszej linii — przycisk
+  // "Kopiuj DM" kopiuje samą wiadomość, bez nagłówka.
+  const dmMatch = /^DM \(IG\)[^\n]*\n([\s\S]+)$/.exec(lead.notes ?? "");
+  const dmFromNotes = dmMatch ? dmMatch[1].trim() : null;
 
   const [activities, history, tasks] = await Promise.all([
     listActivities(id),
@@ -259,7 +265,10 @@ export default async function LeadPage({ params }: { params: Promise<{ id: strin
           </Card>
 
           <Card>
-            <h2 className="mb-3 text-[15px] font-semibold text-ink">Notatki</h2>
+            <div className="mb-3 flex items-center justify-between gap-2">
+              <h2 className="text-[15px] font-semibold text-ink">Notatki</h2>
+              {dmFromNotes ? <CopyTextButton text={dmFromNotes} label="Kopiuj DM" /> : null}
+            </div>
             <ActionForm action={updateLeadNotes.bind(null, lead.id)} className="space-y-2">
               <Textarea name="notes" defaultValue={lead.notes ?? ""} />
               <SubmitButton size="sm">Zapisz notatki</SubmitButton>
