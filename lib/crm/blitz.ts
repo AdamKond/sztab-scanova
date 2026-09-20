@@ -15,10 +15,52 @@ export type CrmDmBlitz = {
   campaign: string;
   sent_at: string | null;
   sent_by: string | null;
+  followup_sent_at: string | null;
+  followup_sent_by: string | null;
   lead_id: string | null;
   created_at: string;
   updated_at: string;
 };
+
+// ----------------------------------------------------------------------------
+// Lejek: DM #1 → (3 dni ciszy) follow-up → odpowiedź = awans do CRM.
+// Etap wyliczamy z timestampów zamiast trzymać kolumnę statusu — nie ma czego
+// synchronizować i cofnięcie odhaczenia automatycznie cofa etap.
+// ----------------------------------------------------------------------------
+
+export const FOLLOWUP_AFTER_DAYS = 3;
+
+export type BlitzStage =
+  | "todo" // DM #1 jeszcze nie wysłany
+  | "waiting" // DM #1 wysłany, cisza krótsza niż próg
+  | "followup_due" // cisza ≥ progu — lokal czeka w kolejce follow-upu
+  | "followed_up" // follow-up wysłany, dalej cisza
+  | "in_crm"; // odpowiedział — żyje już jako lead
+
+export function blitzStage(row: CrmDmBlitz, nowMs: number): BlitzStage {
+  if (row.lead_id) return "in_crm";
+  if (!row.sent_at) return "todo";
+  if (row.followup_sent_at) return "followed_up";
+  const silenceMs = nowMs - Date.parse(row.sent_at);
+  return silenceMs >= FOLLOWUP_AFTER_DAYS * 86_400_000 ? "followup_due" : "waiting";
+}
+
+export function countFollowupsDue(rows: CrmDmBlitz[], nowMs: number): number {
+  return rows.filter((r) => blitzStage(r, nowMs) === "followup_due").length;
+}
+
+/**
+ * Follow-up celowo krótki i z prośbą o jedno słowo — odpowiedź otwiera
+ * oficjalne okno wiadomości i pozwala wysłać filmik z tablicą.
+ */
+export function followupDmText(row: CrmDmBlitz): string {
+  return (
+    `Cześć ${row.name}! Wracam na moment, bo wiem, że DM-y łatwo giną. ` +
+    `W skrócie: cyfrowa karta pieczątek w Apple/Google Wallet dla Waszych stałych gości, ` +
+    `pierwszy miesiąc za darmo. Wystarczy, że odpiszecie „ok", a wyślę 2-minutowy filmik, ` +
+    `jak to działa w praktyce. Pozdrawiam, Adam`
+  );
+}
 
 // Kolejność sekcji = kolejność uderzenia: od nisz o najwyższej częstotliwości
 // wizyt (pizza piątkowa, kawa codzienna) do ogólnych restauracji.

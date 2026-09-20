@@ -16,7 +16,10 @@ bazą aplikacji lojalnościowej SCANOVY.
 2. Wklej całą zawartość `supabase/migration-001-core.sql` → **Run**.
 3. Następnie wklej `supabase/migration-002-etapy-2-4.sql` → **Run**
    (partnerzy, szablony, content, dziennik reklam, odprawy AI).
-4. Każdą migrację uruchamiaj raz. Są idempotentne (`if not exists`), więc
+4. Dalej po kolei: `migration-003-whiteboard.sql` (tablica strategii),
+   `migration-004-wysylka-dm.sql` (kampania DM + zasiew lokali),
+   `migration-005-lejek-dm.sql` (follow-upy w lejku DM).
+5. Każdą migrację uruchamiaj raz. Są idempotentne (`if not exists`), więc
    ponowne uruchomienie nie zepsuje danych, ale nie jest potrzebne.
 
 ## 3. Wyłącz publiczną rejestrację

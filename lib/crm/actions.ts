@@ -794,6 +794,28 @@ export async function toggleDmSent(blitzId: string): Promise<ActionResult> {
   return { ok: true };
 }
 
+export async function toggleDmFollowup(blitzId: string): Promise<ActionResult> {
+  const user = await guardStaffAction();
+  const db = getServiceClient();
+  const { data, error } = await db
+    .from("crm_dm_blitz")
+    .select("sent_at, followup_sent_at")
+    .eq("id", blitzId)
+    .maybeSingle();
+  if (error) return { error: `Błąd bazy: ${error.message}` };
+  if (!data) return { error: "Nie znaleziono wpisu." };
+  if (!data.sent_at) return { error: "Najpierw oznacz DM #1 jako wysłany." };
+
+  const updates = data.followup_sent_at
+    ? { followup_sent_at: null, followup_sent_by: null }
+    : { followup_sent_at: new Date().toISOString(), followup_sent_by: user.email!.toLowerCase() };
+  const { error: updError } = await db.from("crm_dm_blitz").update(updates).eq("id", blitzId);
+  if (updError) return { error: `Nie udało się zapisać: ${updError.message}` };
+
+  revalidatePath("/wysylka");
+  return { ok: true };
+}
+
 export async function promoteDmToLead(blitzId: string): Promise<ActionResult> {
   const user = await guardStaffAction();
   const db = getServiceClient();
@@ -822,7 +844,9 @@ export async function promoteDmToLead(blitzId: string): Promise<ActionResult> {
       status: "proba_kontaktu",
       priority: "B",
       owner: email,
-      next_action: "Odpisać i umówić demo",
+      // Kolejny etap lejka po odpowiedzi: filmik z tablicą, dopiero po jego
+      // odpowiedzi link do spotkania.
+      next_action: "Odpisać i wysłać filmik z tablicą",
       notes: `Odpowiedział na DM z kampanii.\n\nWysłany DM:\n${row.dm_text}`,
     })
     .select("id")

@@ -2,8 +2,12 @@ import { describe, expect, it } from "vitest";
 import {
   blitzNicheLabel,
   blitzProgress,
+  blitzStage,
+  countFollowupsDue,
+  followupDmText,
   groupBlitzByNiche,
   senderInitial,
+  FOLLOWUP_AFTER_DAYS,
   type CrmDmBlitz,
 } from "@/lib/crm/blitz";
 
@@ -19,6 +23,8 @@ function row(over: Partial<CrmDmBlitz>): CrmDmBlitz {
     campaign: "dm-ig-2026-08",
     sent_at: null,
     sent_by: null,
+    followup_sent_at: null,
+    followup_sent_by: null,
     lead_id: null,
     created_at: "2026-08-25T00:00:00Z",
     updated_at: "2026-08-25T00:00:00Z",
@@ -83,6 +89,65 @@ describe("senderInitial", () => {
   it("null i pusty string nie wybuchają", () => {
     expect(senderInitial(null)).toBeNull();
     expect(senderInitial("")).toBeNull();
+  });
+});
+
+describe("blitzStage", () => {
+  const sentAt = "2026-09-10T10:00:00Z";
+  const now = Date.parse(sentAt);
+  const day = 86_400_000;
+
+  it("niewysłany to todo", () => {
+    expect(blitzStage(row({}), now)).toBe("todo");
+  });
+
+  it("cisza krótsza niż próg to waiting", () => {
+    expect(blitzStage(row({ sent_at: sentAt }), now + (FOLLOWUP_AFTER_DAYS - 1) * day)).toBe(
+      "waiting",
+    );
+  });
+
+  it("cisza równa progowi otwiera follow-up", () => {
+    expect(blitzStage(row({ sent_at: sentAt }), now + FOLLOWUP_AFTER_DAYS * day)).toBe(
+      "followup_due",
+    );
+  });
+
+  it("wysłany follow-up wycisza kolejkę", () => {
+    expect(
+      blitzStage(
+        row({ sent_at: sentAt, followup_sent_at: "2026-09-14T10:00:00Z" }),
+        now + 10 * day,
+      ),
+    ).toBe("followed_up");
+  });
+
+  it("lead_id wygrywa ze wszystkim — odpowiedź kończy lejek wysyłki", () => {
+    expect(blitzStage(row({ sent_at: sentAt, lead_id: "L1" }), now + 30 * day)).toBe("in_crm");
+  });
+});
+
+describe("countFollowupsDue", () => {
+  it("liczy tylko wiersze z otwartym follow-upem", () => {
+    const sentAt = "2026-09-10T10:00:00Z";
+    const now = Date.parse(sentAt) + (FOLLOWUP_AFTER_DAYS + 1) * 86_400_000;
+    expect(
+      countFollowupsDue(
+        [
+          row({ instagram: "a", sent_at: sentAt }),
+          row({ instagram: "b" }),
+          row({ instagram: "c", sent_at: sentAt, followup_sent_at: sentAt }),
+          row({ instagram: "d", sent_at: sentAt, lead_id: "L1" }),
+        ],
+        now,
+      ),
+    ).toBe(1);
+  });
+});
+
+describe("followupDmText", () => {
+  it("personalizuje nazwą lokalu", () => {
+    expect(followupDmText(row({ name: "Pizza Lover" }))).toContain("Cześć Pizza Lover!");
   });
 });
 

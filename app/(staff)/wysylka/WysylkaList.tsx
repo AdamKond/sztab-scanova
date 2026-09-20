@@ -1,37 +1,68 @@
 "use client";
 
-// Checklista wysyłki: filtry, odhaczanie, kopiowanie DM-a, awans do CRM.
+// Checklista wysyłki: filtry, odhaczanie, kopiowanie DM-a, follow-upy, awans do CRM.
 //
 // Dlaczego client component: odhaczenie ma być natychmiastowe (optymistyczne),
 // a kopiowanie DM-a wymaga schowka przeglądarki. Stan bazowy przychodzi
 // z serwera; lokalne nadpisania trzymamy tylko do czasu, aż revalidate
 // przyniesie z bazy to samo — wtedy je czyścimy (sprzątanie w renderze,
 // zgodnie z reactowym "adjusting state when props change").
+//
+// `now` przychodzi z serwera, żeby etap lejka (czy follow-up już wypada)
+// był identyczny w SSR i przy hydracji.
 
 import { useMemo, useState, useTransition } from "react";
 import Link from "next/link";
 import Card from "@/components/ui/Card";
 import {
   blitzProgress,
+  blitzStage,
+  countFollowupsDue,
+  followupDmText,
   groupBlitzByNiche,
   senderInitial,
+  FOLLOWUP_AFTER_DAYS,
+  type BlitzStage,
   type CrmDmBlitz,
 } from "@/lib/crm/blitz";
-import { promoteDmToLead, toggleDmSent } from "@/lib/crm/actions";
+import { promoteDmToLead, toggleDmFollowup, toggleDmSent } from "@/lib/crm/actions";
 
-type Filter = "all" | "todo" | "done";
+type Filter = "all" | "todo" | "followup" | "done";
 
 const FILTERS: { key: Filter; label: string }[] = [
   { key: "all", label: "Wszystkie" },
   { key: "todo", label: "Do wysłania" },
+  { key: "followup", label: "Follow-up" },
   { key: "done", label: "Wysłane" },
 ];
 
+function matchesFilter(filter: Filter, row: CrmDmBlitz, stage: BlitzStage): boolean {
+  switch (filter) {
+    case "all":
+      return true;
+    case "todo":
+      return stage === "todo";
+    case "followup":
+      // Razem z już odhaczonymi, żeby pomyłkowe kliknięcie dało się cofnąć
+      // bez szukania wiersza w innym filtrze.
+      return stage === "followup_due" || stage === "followed_up";
+    case "done":
+      return row.sent_at !== null;
+  }
+}
+
 type Override = { sent: boolean; by: string | null };
 
-export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[] }) {
+export default function WysylkaList({
+  initialRows,
+  now,
+}: {
+  initialRows: CrmDmBlitz[];
+  now: number;
+}) {
   const [filter, setFilter] = useState<Filter>("all");
   const [overrides, setOverrides] = useState<Map<string, Override>>(new Map());
+  const [fuOverrides, setFuOverrides] = useState<Map<string, Override>>(new Map());
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [confirmId, setConfirmId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -47,24 +78,42 @@ export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[]
     for (const [id] of stale) next.delete(id);
     setOverrides(next);
   }
+  const staleFu = [...fuOverrides].filter(([id, o]) => {
+    const row = initialRows.find((r) => r.id === id);
+    return row ? (row.followup_sent_at !== null) === o.sent : true;
+  });
+  if (staleFu.length > 0) {
+    const next = new Map(fuOverrides);
+    for (const [id] of staleFu) next.delete(id);
+    setFuOverrides(next);
+  }
 
   const rows = useMemo(
     () =>
       initialRows.map((row) => {
         const o = overrides.get(row.id);
-        if (!o) return row;
-        return {
-          ...row,
-          sent_at: o.sent ? row.sent_at ?? new Date().toISOString() : null,
-          sent_by: o.sent ? o.by : null,
-        };
+        const fu = fuOverrides.get(row.id);
+        if (!o && !fu) return row;
+        const next = { ...row };
+        if (o) {
+          next.sent_at = o.sent ? row.sent_at ?? new Date().toISOString() : null;
+          next.sent_by = o.sent ? o.by : null;
+        }
+        if (fu) {
+          next.followup_sent_at = fu.sent
+            ? row.followup_sent_at ?? new Date().toISOString()
+            : null;
+          next.followup_sent_by = fu.sent ? fu.by : null;
+        }
+        return next;
       }),
-    [initialRows, overrides],
+    [initialRows, overrides, fuOverrides],
   );
 
   const groups = useMemo(() => groupBlitzByNiche(rows), [rows]);
   const progress = blitzProgress(rows);
   const pct = progress.total === 0 ? 0 : Math.round((100 * progress.sent) / progress.total);
+  const dueCount = useMemo(() => countFollowupsDue(rows, now), [rows, now]);
 
   function onToggle(row: CrmDmBlitz) {
     const sent = row.sent_at === null;
@@ -83,12 +132,29 @@ export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[]
     });
   }
 
-  async function onCopy(row: CrmDmBlitz) {
+  function onToggleFollowup(row: CrmDmBlitz) {
+    const sent = row.followup_sent_at === null;
+    setError(null);
+    setFuOverrides((prev) => new Map(prev).set(row.id, { sent, by: sent ? "ja" : null }));
+    startTransition(async () => {
+      const result = await toggleDmFollowup(row.id);
+      if (result.error) {
+        setFuOverrides((prev) => {
+          const next = new Map(prev);
+          next.delete(row.id);
+          return next;
+        });
+        setError(result.error);
+      }
+    });
+  }
+
+  async function onCopy(row: CrmDmBlitz, text: string) {
     try {
-      await navigator.clipboard.writeText(row.dm_text);
+      await navigator.clipboard.writeText(text);
     } catch {
       const t = document.createElement("textarea");
-      t.value = row.dm_text;
+      t.value = text;
       document.body.appendChild(t);
       t.select();
       document.execCommand("copy");
@@ -114,7 +180,7 @@ export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[]
 
   return (
     <div className="mx-auto max-w-3xl">
-      {/* Pasek postępu + filtry */}
+      {/* Pasek postępu + kolejka na dziś + filtry */}
       <div className="mb-5 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-3">
           <span className="tabular text-[22px] font-semibold text-ink">
@@ -128,6 +194,15 @@ export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[]
             />
           </div>
         </div>
+        {dueCount > 0 ? (
+          <button
+            type="button"
+            onClick={() => setFilter("followup")}
+            className="rounded-lg bg-warning/10 px-3 py-1.5 text-[13px] font-semibold text-warning transition hover:bg-warning/20"
+          >
+            Follow-upy na dziś: {dueCount}
+          </button>
+        ) : null}
         <div className="ml-auto flex rounded-lg bg-line/60 p-[3px]">
           {FILTERS.map((f) => (
             <button
@@ -152,11 +227,17 @@ export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[]
         </div>
       ) : null}
 
+      {filter === "followup" && dueCount === 0 ? (
+        <p className="mb-4 px-1 text-[13px] text-ink-2">
+          Kolejka pusta — follow-up wypada po {FOLLOWUP_AFTER_DAYS} dniach bez odpowiedzi na
+          DM #1.
+        </p>
+      ) : null}
+
       {groups.map((group) => {
-        const visible = group.rows.filter(
-          (r) => filter === "all" || (filter === "done") === (r.sent_at !== null),
-        );
+        const visible = group.rows.filter((r) => matchesFilter(filter, r, blitzStage(r, now)));
         if (visible.length === 0) return null;
+        const groupDue = countFollowupsDue(group.rows, now);
         return (
           <section key={group.niche} className="mb-7">
             <div className="mb-2 flex items-baseline justify-between px-1">
@@ -164,14 +245,23 @@ export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[]
                 {group.label}
               </h2>
               <span className="tabular text-[12px] text-ink-2">
+                {groupDue > 0 ? (
+                  <span className="font-semibold text-warning">{groupDue} do follow-upu · </span>
+                ) : null}
                 {group.sent} / {group.rows.length}
               </span>
             </div>
             <Card padding="sm" className="!p-0 overflow-hidden">
               <ul>
                 {visible.map((row) => {
+                  const stage = blitzStage(row, now);
                   const sent = row.sent_at !== null;
+                  const followedUp = row.followup_sent_at !== null;
                   const initial = senderInitial(row.sent_by);
+                  const fuInitial = senderInitial(row.followup_sent_by);
+                  // Po progu ciszy schowek podaje follow-up zamiast DM-a #1 —
+                  // pierwsza wiadomość i tak już poszła.
+                  const copyFollowup = stage === "followup_due" || stage === "followed_up";
                   return (
                     <li
                       key={row.id}
@@ -195,6 +285,29 @@ export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[]
                           </svg>
                         ) : null}
                       </button>
+                      {copyFollowup ? (
+                        <button
+                          type="button"
+                          onClick={() => onToggleFollowup(row)}
+                          aria-label={
+                            followedUp ? "Cofnij follow-up" : "Oznacz follow-up jako wysłany"
+                          }
+                          title="Follow-up"
+                          className={`grid h-6 w-6 shrink-0 place-items-center rounded-full border transition ${
+                            followedUp
+                              ? "border-warning bg-warning text-white"
+                              : "border-warning/50 bg-surface hover:border-warning"
+                          }`}
+                        >
+                          {followedUp ? (
+                            <svg viewBox="0 0 16 16" className="h-3 w-3 fill-none stroke-current stroke-[3]">
+                              <path d="M2.5 8.5 6 12l7.5-8" />
+                            </svg>
+                          ) : (
+                            <span className="text-[10px] font-bold text-warning">2</span>
+                          )}
+                        </button>
+                      ) : null}
 
                       <div className="min-w-0 flex-1">
                         <div
@@ -209,6 +322,10 @@ export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[]
                           {row.city ? ` · ${row.city}` : ""}
                           {row.followers ? ` · ${row.followers.toLocaleString("pl-PL")} obs.` : ""}
                           {initial ? ` · wysłał(a): ${initial}` : ""}
+                          {stage === "followup_due" ? (
+                            <span className="font-semibold text-warning"> · follow-up dziś</span>
+                          ) : null}
+                          {followedUp ? ` · follow-up: ${fuInitial ?? "✓"}` : ""}
                         </div>
                       </div>
 
@@ -243,12 +360,22 @@ export default function WysylkaList({ initialRows }: { initialRows: CrmDmBlitz[]
                         </a>
                         <button
                           type="button"
-                          onClick={() => onCopy(row)}
+                          onClick={() =>
+                            onCopy(row, copyFollowup ? followupDmText(row) : row.dm_text)
+                          }
                           className={`rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold text-white transition ${
-                            copiedId === row.id ? "bg-success" : "bg-sidebar hover:bg-accent-deep"
+                            copiedId === row.id
+                              ? "bg-success"
+                              : copyFollowup
+                                ? "bg-warning hover:bg-warning/80"
+                                : "bg-sidebar hover:bg-accent-deep"
                           }`}
                         >
-                          {copiedId === row.id ? "Skopiowano" : "Kopiuj DM"}
+                          {copiedId === row.id
+                            ? "Skopiowano"
+                            : copyFollowup
+                              ? "Kopiuj follow-up"
+                              : "Kopiuj DM"}
                         </button>
                       </div>
                     </li>

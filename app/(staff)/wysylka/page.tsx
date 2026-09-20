@@ -36,7 +36,8 @@ export default async function WysylkaPage() {
           hint="Zasiew z migracji 004 nie wszedł — uruchom ją ponownie na pustej tabeli."
         />
       ) : (
-        <WysylkaList initialRows={rows} />
+        // `now` z serwera: etap lejka liczy się tak samo w SSR i przy hydracji.
+        <WysylkaList initialRows={rows} now={Date.now()} />
       )}
     </>
   );
