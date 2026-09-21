@@ -1,24 +1,45 @@
 "use client";
 
-// Kopiowanie gotowego tekstu jednym kliknięciem. Fallback przez textarea,
-// bo Clipboard API bywa niedostępne poza HTTPS.
+// Kopiowanie gotowego tekstu jednym kliknięciem.
+//
+// Dwie drogi: `copySync` (textarea + execCommand) działa natychmiast, w tym
+// samym geście, zanim cokolwiek ukradnie fokus — to jedyna droga, gdy zaraz
+// po kopiowaniu otwieramy Instagram w nowej karcie. `copyToClipboard` (Clipboard
+// API) jest asynchroniczne i odmawia, gdy dokument straci fokus.
 
 import { useState } from "react";
 import { buttonClass } from "@/components/ui/Button";
 
-export async function copyToClipboard(text: string): Promise<void> {
+/** Synchroniczne kopiowanie. Zwraca true, gdy przeglądarka potwierdziła. */
+export function copySync(text: string): boolean {
   try {
-    await navigator.clipboard.writeText(text);
-  } catch {
     const t = document.createElement("textarea");
     t.value = text;
     t.setAttribute("readonly", "");
     t.style.position = "fixed";
+    t.style.top = "0";
+    t.style.left = "0";
     t.style.opacity = "0";
     document.body.appendChild(t);
+    t.focus();
     t.select();
-    document.execCommand("copy");
+    // iOS Safari ignoruje select() na readonly — zaznaczamy zakresem.
+    t.setSelectionRange(0, text.length);
+    const ok = document.execCommand("copy");
     t.remove();
+    return ok;
+  } catch {
+    return false;
+  }
+}
+
+export async function copyToClipboard(text: string): Promise<boolean> {
+  if (copySync(text)) return true;
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    return false;
   }
 }
 

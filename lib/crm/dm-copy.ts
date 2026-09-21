@@ -5,7 +5,8 @@
 // Szkielet pierwszego DM-a (ustalony z Adamem, 2026-09-21):
 // hook o NICH → co robimy (cyfrowe karty lojalnościowe w telefonie) → opinie
 // Google (nawet do 200 w miesiącu) → dowód (nasi klienci) → pierwszy miesiąc
-// testowy za darmo dla każdej lokalizacji → pytanie o 5 minut.
+// testowy za darmo dla każdej lokalizacji → pytanie, czy chcą poznać szczegóły
+// (nie o spotkanie — link do filmiku/strony idzie dopiero po odpowiedzi).
 // Bez linku w pierwszej wiadomości (linki od obcych kont lądują w spamie).
 
 export const SIGNATURE = "Adam";
@@ -53,7 +54,8 @@ export function firstDm(niche: string): string {
     `sposobów na opinie, u naszych klientów nawet do 200 nowych w miesiącu. ` +
     `Korzystają już m.in. ${proof}. ` +
     `Dla każdej lokalizacji pierwszy miesiąc jest testowy i za darmo — sprawdzacie bez ryzyka, ` +
-    `czy Wam się to opłaca. Mogę wpaść na 5 minut i pokazać na Waszym telefonie? ${SIGNATURE}`
+    `czy Wam się to opłaca. Myśleliście kiedyś o czymś takim? Jeśli chcecie poznać szczegóły, ` +
+    `dajcie znać — podeślę krótki filmik. Ustawienie jest bardzo proste, nic nie instalujecie. ${SIGNATURE}`
   );
 }
 
@@ -87,8 +89,9 @@ export const REPLIES: ReplyTemplate[] = [
     label: "Odpisał → filmik",
     when: "Na każdą pierwszą odpowiedź (nawet samo „ok”).",
     text:
-      `Super, dzięki! Tu 2-minutowy filmik, jak to działa u naszych klientów: ${filmLink()}. ` +
-      `Jeśli ma sens, wpadnę na 5 minut i pokażę na Waszym telefonie — pasuje [dzień] koło [godzina]?`,
+      `Super, dzięki! Tu krótki filmik, jak to działa u naszych klientów: ${filmLink()}. ` +
+      `Jeśli ma sens, ustawiamy Wam miesiąc testowy — zdalnie albo wpadnę na 5 minut i pokażę ` +
+      `na Waszym telefonie, jak wolicie. Co Wam bardziej pasuje?`,
   },
   {
     key: "info",

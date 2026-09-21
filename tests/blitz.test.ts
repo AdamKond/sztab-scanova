@@ -164,7 +164,8 @@ describe("teksty DM", () => {
     expect(text).toContain("200");
     expect(text).toContain("Google");
     expect(text).not.toMatch(/Świdnik|Lublin/);
-    expect(text).toMatch(/\?\s*Adam$/);
+    expect(text).toContain("?");
+    expect(text).not.toContain("5 minut");
   });
 
   it("każda nisza z Bazy ma swój hook, nieznana dostaje ogólny", () => {

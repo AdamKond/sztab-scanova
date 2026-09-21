@@ -13,7 +13,10 @@ export default function ReplyKit() {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
   async function onCopy(key: string, text: string) {
-    await copyToClipboard(text);
+    if (!(await copyToClipboard(text))) {
+      setOpenKey(key);
+      return;
+    }
     setCopiedKey(key);
     setTimeout(() => setCopiedKey((k) => (k === key ? null : k)), 1400);
   }

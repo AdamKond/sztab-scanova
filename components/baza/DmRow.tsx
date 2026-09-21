@@ -11,7 +11,7 @@ import { useState, useTransition } from "react";
 import Link from "next/link";
 import { buttonClass } from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
-import { copyToClipboard } from "@/components/crm/CopyTextButton";
+import { copySync, copyToClipboard } from "@/components/crm/CopyTextButton";
 import {
   blitzStage,
   firstDmText,
@@ -51,6 +51,7 @@ export default function DmRow({
     setLocal(row);
   }
   const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
   const [showText, setShowText] = useState(false);
   const [confirm, setConfirm] = useState<"reply" | "remove" | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -68,11 +69,22 @@ export default function DmRow({
     setTimeout(() => setCopied(false), 1400);
   }
 
-  /** Kopiuje tekst i otwiera profil — bez zmiany stanu (można powtórzyć, ile razy trzeba). */
+  /**
+   * Kopiuje tekst i otwiera profil — bez zmiany stanu (można powtórzyć, ile razy trzeba).
+   * Kopiowanie MUSI być synchroniczne i przed window.open: nowa karta zabiera fokus,
+   * a Clipboard API odmawia zapisu bez fokusu. Gdy się nie uda — pokazujemy tekst
+   * z własnym przyciskiem, zamiast udawać, że poszło.
+   */
   function onOpen() {
-    void copyToClipboard(text);
+    const ok = copySync(text);
+    if (ok) {
+      setCopyFailed(false);
+      flashCopied();
+    } else {
+      setCopyFailed(true);
+      setShowText(true);
+    }
     window.open(igUrl, "_blank", "noopener");
-    flashCopied();
   }
 
   function onSend() {
@@ -242,15 +254,21 @@ export default function DmRow({
 
           {showText ? (
             <div className="anim-in mt-2 rounded-xl bg-canvas p-3 text-[13.5px] leading-relaxed text-ink">
-              {text}
+              {copyFailed ? (
+                <p className="mb-2 text-[12.5px] font-semibold text-warning">
+                  Przeglądarka nie pozwoliła skopiować automatycznie — skopiuj przyciskiem niżej.
+                </p>
+              ) : null}
+              <p className="select-all">{text}</p>
               <div className="mt-2">
                 <button
                   type="button"
-                  onClick={() => {
-                    void copyToClipboard(text);
-                    flashCopied();
+                  onClick={async () => {
+                    const ok = await copyToClipboard(text);
+                    setCopyFailed(!ok);
+                    if (ok) flashCopied();
                   }}
-                  className={buttonClass("secondary", "sm")}
+                  className={buttonClass(copied ? "success" : "secondary", "sm")}
                 >
                   {copied ? "Skopiowano" : "Kopiuj sam tekst"}
                 </button>

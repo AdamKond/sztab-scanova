@@ -22,6 +22,8 @@ import { clampText, normalizeInstagram, normalizeName, normalizePhone } from "./
 import { STEP_STATUS, type Step } from "./steps";
 import { NICHES } from "./dm-copy";
 import { addDays, warsawToday } from "./dates";
+import { promoteBlitzRow, REPLIED_NEXT_ACTION } from "./promote";
+import type { CrmDmBlitz } from "./blitz";
 
 export interface ActionResult {
   error?: string;
@@ -61,7 +63,7 @@ async function backfillHistoryAuthor(leadId: string, email: string): Promise<voi
 
 // Następny krok wpisywany automatycznie przy przejściu — człowiek może nadpisać.
 const STEP_NEXT_ACTION: Record<Step, string | null> = {
-  odpisal: "Odpisać i wysłać filmik",
+  odpisal: REPLIED_NEXT_ACTION,
   rozmawia: "Umówić wizytę (5 min)",
   wizyta: "Wizyta i demo na miejscu",
   demo: "Domknąć pilot",
@@ -334,82 +336,14 @@ export async function promoteDmToLead(blitzId: string): Promise<ActionResult> {
   const { data: row, error } = await db.from("crm_dm_blitz").select("*").eq("id", blitzId).maybeSingle();
   if (error) return { error: `Błąd bazy: ${error.message}` };
   if (!row) return { error: "Nie znaleziono lokalu." };
-  // Idempotencja: drugi klik nie tworzy drugiej rozmowy.
-  if (row.lead_id) return { ok: true, id: row.lead_id };
 
-  const email = user.email!.toLowerCase();
-  const now = new Date().toISOString();
-
-  // Stare importy (np. 22 leady sushi z sierpnia) mają ten sam Instagram —
-  // podpinamy istniejący wpis zamiast dublować.
-  const candidates = await findDuplicateCandidates({
-    instagram: row.instagram,
-    normalized_name: normalizeName(row.name),
-  });
-  const existing = candidates.find(
-    (c) => c.instagram === row.instagram || c.normalized_name === normalizeName(row.name),
-  );
-
-  let leadId: string;
-  if (existing) {
-    leadId = existing.id;
-    const { error: updErr } = await db
-      .from("crm_leads")
-      .update({
-        status: "proba_kontaktu",
-        source: "ig_dm",
-        source_detail: "odpowiedź na DM z Bazy",
-        campaign: row.campaign,
-        owner: existing.owner ?? email,
-        next_action: STEP_NEXT_ACTION.odpisal,
-        next_action_at: null,
-      })
-      .eq("id", leadId);
-    if (updErr) return { error: `Nie udało się wznowić rozmowy: ${updErr.message}` };
-  } else {
-    const { data: lead, error: leadError } = await db
-      .from("crm_leads")
-      .insert({
-        name: row.name,
-        normalized_name: normalizeName(row.name),
-        category: row.niche,
-        city: row.city,
-        instagram: row.instagram,
-        source: "ig_dm",
-        source_detail: "odpowiedź na DM z Bazy",
-        campaign: row.campaign,
-        status: "proba_kontaktu",
-        priority: "B",
-        owner: email,
-        next_action: STEP_NEXT_ACTION.odpisal,
-      })
-      .select("id")
-      .single();
-    if (leadError) return { error: `Nie udało się utworzyć rozmowy: ${leadError.message}` };
-    leadId = lead.id;
+  try {
+    const { leadId } = await promoteBlitzRow(row as CrmDmBlitz, user.email!.toLowerCase(), "Odpowiedział na DM z Bazy.");
+    revalidateAll();
+    return { ok: true, id: leadId };
+  } catch (e) {
+    return { error: (e as Error).message };
   }
-
-  await db.from("crm_activities").insert({
-    lead_id: leadId,
-    type: "ig_dm",
-    outcome: "zainteresowany",
-    note: "Odpowiedział na DM z Bazy.",
-    created_by: email,
-  });
-  await backfillHistoryAuthor(leadId, user.email!);
-
-  await db
-    .from("crm_dm_blitz")
-    .update({
-      lead_id: leadId,
-      // Odpowiedź implikuje wysyłkę — odhacz, jeśli ktoś kliknął tylko "odpowiedział".
-      sent_at: row.sent_at ?? now,
-      sent_by: row.sent_by ?? email,
-    })
-    .eq("id", blitzId);
-
-  revalidateAll();
-  return { ok: true, id: leadId };
 }
 
 function campaignForToday(): string {
