@@ -68,11 +68,16 @@ export default function DmRow({
     setTimeout(() => setCopied(false), 1400);
   }
 
-  function onSend() {
-    setError(null);
+  /** Kopiuje tekst i otwiera profil — bez zmiany stanu (można powtórzyć, ile razy trzeba). */
+  function onOpen() {
     void copyToClipboard(text);
     window.open(igUrl, "_blank", "noopener");
     flashCopied();
+  }
+
+  function onSend() {
+    setError(null);
+    onOpen();
     const nowIso = new Date().toISOString();
     if (followupMode) {
       setLocal((l) => ({ ...l, followup_sent_at: nowIso, followup_sent_by: "ja" }));
@@ -198,7 +203,10 @@ export default function DmRow({
               </Link>
             ) : doneThisStep ? (
               <>
-                <button type="button" onClick={onReplied} className={buttonClass(confirm === "reply" ? "primary" : "secondary", "sm")}>
+                <button type="button" onClick={onOpen} className={buttonClass(copied ? "success" : "secondary", "sm")}>
+                  {copied ? "Skopiowano, otwieram IG" : "Otwórz IG i kopiuj"}
+                </button>
+                <button type="button" onClick={onReplied} className={buttonClass(confirm === "reply" ? "primary" : "ghost", "sm")}>
                   {confirm === "reply" ? "Na pewno odpisał?" : "Odpowiedział"}
                 </button>
                 <button type="button" onClick={onUndo} className={buttonClass("ghost", "sm")}>

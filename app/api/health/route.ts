@@ -39,5 +39,18 @@ export async function GET() {
     );
   }
 
+  // Migracja 005 dokłada kolumny follow-upu — bez nich kolejka follow-upów nie zapisze stanu.
+  const { error: fuError } = await db.from("crm_dm_blitz").select("followup_sent_at").limit(1);
+  if (fuError) {
+    return NextResponse.json(
+      {
+        ok: false,
+        status: "brak_migracji_005",
+        detail: "Brak kolumn follow-upu w crm_dm_blitz. Uruchom supabase/migration-005-lejek-dm.sql.",
+      },
+      { status: 503 },
+    );
+  }
+
   return NextResponse.json({ ok: true, status: "działa", tables: CORE_TABLES.length });
 }

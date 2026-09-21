@@ -8,11 +8,12 @@ import EmptyState from "@/components/ui/EmptyState";
 import MetricTile from "@/components/ui/MetricTile";
 import ConversationRow from "@/components/crm/ConversationRow";
 import DmRow from "@/components/baza/DmRow";
+import DmQueue from "@/components/dzis/DmQueue";
 import { buttonClass } from "@/components/ui/Button";
 import { requireStaff } from "@/lib/auth";
 import { listDmBlitz, listLeads } from "@/lib/crm/queries";
 import { conversationsDue, isClient, isConversation } from "@/lib/crm/steps";
-import { dailyQueue, followupQueue, DAILY_DM_LIMIT, FOLLOWUP_AFTER_DAYS } from "@/lib/crm/blitz";
+import { followupQueue, sentTodayBy, todoQueue, DAILY_DM_LIMIT, FOLLOWUP_AFTER_DAYS } from "@/lib/crm/blitz";
 import { fullDate, warsawDateOf, warsawToday } from "@/lib/crm/dates";
 
 const WEEKDAYS = ["niedziela", "poniedziałek", "wtorek", "środa", "czwartek", "piątek", "sobota"];
@@ -27,7 +28,8 @@ export default async function DzisPage() {
 
   const due = conversationsDue(leads, today, warsawDateOf);
   const followups = followupQueue(blitz, now);
-  const queue = dailyQueue(blitz, now, email, today, warsawDateOf);
+  const done = sentTodayBy(blitz, email, today, warsawDateOf);
+  const todo = todoQueue(blitz, now);
   const conversations = leads.filter(isConversation).length;
   const clients = leads.filter(isClient).length;
   const weekday = WEEKDAYS[new Date(now).getDay()];
@@ -40,8 +42,9 @@ export default async function DzisPage() {
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
           <MetricTile
             label="DM-y wysłane dziś"
-            value={`${queue.done.length} / ${DAILY_DM_LIMIT}`}
-            tone={queue.done.length >= DAILY_DM_LIMIT ? "success" : "default"}
+            value={`${done.length} / ${DAILY_DM_LIMIT}`}
+            tone={done.length >= DAILY_DM_LIMIT ? "success" : "default"}
+            sub={`${todo.length} w kolejce`}
           />
           <MetricTile label="Follow-upy do wysłania" value={String(followups.length)} tone={followups.length ? "warning" : "default"} />
           <MetricTile label="Rozmowy do ruszenia" value={String(due.all.length)} tone={due.overdue.length ? "danger" : "default"} sub={`${conversations} aktywnych rozmów`} />
@@ -82,43 +85,10 @@ export default async function DzisPage() {
         </Card>
 
         <Card>
-          <CardTitle
-            count={queue.done.length + queue.next.length}
-            action={<Link href="/baza" className={buttonClass("ghost", "sm")}>Cała Baza →</Link>}
-          >
+          <CardTitle action={<Link href="/baza" className={buttonClass("ghost", "sm")}>Cała Baza →</Link>}>
             Nowe DM-y na dziś
           </CardTitle>
-          <div className="mb-4 flex items-center gap-3">
-            <div className="h-2 flex-1 overflow-hidden rounded-full bg-canvas">
-              <div
-                className="h-full rounded-full bg-accent transition-all duration-300"
-                style={{ width: `${Math.min(100, Math.round((100 * queue.done.length) / DAILY_DM_LIMIT))}%` }}
-              />
-            </div>
-            <span className="tabular text-[13px] font-semibold text-ink-2">
-              {queue.done.length} / {DAILY_DM_LIMIT}
-            </span>
-          </div>
-          {queue.done.length + queue.next.length === 0 ? (
-            <EmptyState
-              title="Baza jest wyczerpana"
-              hint="Dodaj nowe lokale w Bazie — wklej listę Instagramów, a kolejka ułoży się sama."
-              action={<Link href="/baza" className={buttonClass("primary", "md")}>Dodaj lokale</Link>}
-            />
-          ) : (
-            <ul className="-mx-3 divide-y divide-line/70">
-              {queue.done.map((r) => (
-                <DmRow key={r.id} row={r} now={now} />
-              ))}
-              {queue.next.map((r) => (
-                <DmRow key={r.id} row={r} now={now} />
-              ))}
-            </ul>
-          )}
-          <p className="mt-4 text-[12.5px] text-ink-3">
-            Limit {DAILY_DM_LIMIT} DM-ów dziennie z jednego konta, rozłożonych na cały dzień — za więcej
-            Instagram blokuje pisanie na tydzień. Pierwsza wiadomość bez linku.
-          </p>
+          <DmQueue done={done} todo={todo} now={now} />
         </Card>
       </div>
     </>

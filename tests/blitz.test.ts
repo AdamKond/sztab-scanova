@@ -155,12 +155,16 @@ describe("countFollowupsDue / followupQueue / blitzCounts", () => {
 });
 
 describe("teksty DM", () => {
-  it("pierwszy DM jest krótki, bez linku i kończy się podpisem", () => {
+  it("pierwszy DM: bez linku, z darmowym miesiącem, opiniami Google i pytaniem na końcu", () => {
     const text = firstDmText(row({ niche: "pizza" }));
-    expect(text.length).toBeLessThan(400);
+    expect(text.length).toBeLessThan(800);
     expect(text).not.toMatch(/https?:|\.tech|\.pl\b/);
     expect(text).toMatch(/Adam$/);
-    expect(text).toContain("?");
+    expect(text).toContain("za darmo");
+    expect(text).toContain("200");
+    expect(text).toContain("Google");
+    expect(text).not.toMatch(/Świdnik|Lublin/);
+    expect(text).toMatch(/\?\s*Adam$/);
   });
 
   it("każda nisza z Bazy ma swój hook, nieznana dostaje ogólny", () => {

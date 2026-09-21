@@ -2,16 +2,16 @@
 // odpowiedzi na typowe reakcje. Czysty moduł bez dostępu do bazy — używa go
 // serwer (kolejka na Dziś) i klient (kopiowanie do schowka).
 //
-// Zasady copy (wynik testów kampanii sierpniowej + zasady IG):
-// - pierwszy DM krótki: hook o NICH, jedno zdanie co robimy, dowód, pytanie;
-// - BEZ linku w pierwszej wiadomości (linki od obcych kont lądują w spamie);
-// - konkret zamiast opisu: "5 minut, na Waszym telefonie", "pierwszy miesiąc za darmo";
-// - pełne argumenty dopiero po odpowiedzi (filmik / strona).
+// Szkielet pierwszego DM-a (ustalony z Adamem, 2026-09-21):
+// hook o NICH → co robimy (cyfrowe karty lojalnościowe w telefonie) → opinie
+// Google (nawet do 200 w miesiącu) → dowód (nasi klienci) → pierwszy miesiąc
+// testowy za darmo dla każdej lokalizacji → pytanie o 5 minut.
+// Bez linku w pierwszej wiadomości (linki od obcych kont lądują w spamie).
 
 export const SIGNATURE = "Adam";
 
-/** Dowód społeczny: restauracje vs. kawiarnie/desery — inne nazwy trafiają lepiej. */
-const PROOF_RESTAURANT = "MusiSushi w Lublinie i Kago Sushi w Świdniku";
+/** Dowód społeczny — bez miast, same nazwy. */
+const PROOF_RESTAURANT = "MusiSushi i Kago Sushi";
 const PROOF_CAFE = "Yōkai Matcha, MusiSushi i Kago Sushi";
 
 /**
@@ -30,7 +30,7 @@ const HOOKS: Record<string, string> = {
   burgery: "Wasi goście wracają średnio co ile? Da się to realnie skrócić.",
   "kebab/street food": "Stały klient na lunch to najtańszy klient — nie trzeba go zdobywać drugi raz.",
   kawiarnia: "Papierowe karty na kawę giną w portfelach. Telefon nie ginie.",
-  "cukiernia/lody": "Sobotni klient po Wasze wypieki to rytuał — można go wzmocnić.",
+  "cukiernia/lody": "Sobotni klient po Wasze wypieki to rytuał — a rytuały można wzmacniać.",
   "sniadania/brunch": "Weekendowa kolejka to jedno. Pytanie, gdzie ci sami ludzie jedzą we wtorek.",
   "sushi/azja": "Ile osób było u Was raz, pochwaliło jedzenie i nigdy nie wróciło?",
   "boba/matcha": "Wasi klienci żyją w telefonach. Karta lojalnościowa też powinna.",
@@ -41,23 +41,28 @@ const HOOKS: Record<string, string> = {
 
 export const NICHES = Object.keys(HOOKS);
 
-/** Pierwszy DM: ~4 zdania, kończy się pytaniem. Bez nazwy lokalu — nazwy z IG bywają dziwne. */
+/** Pierwszy DM: hook, co robimy, opinie Google, dowód, darmowy miesiąc testowy, pytanie. */
 export function firstDm(niche: string): string {
   const hook = HOOKS[niche] ?? HOOKS.restauracja;
   const proof = CAFE_NICHES.has(niche) ? PROOF_CAFE : PROOF_RESTAURANT;
   return (
-    `Cześć! ${hook} Robimy karty pieczątek w telefonie (Apple/Google Wallet) — ` +
-    `korzystają już ${proof}. Jesteśmy z Lublina, mogę wpaść na 5 minut i pokazać ` +
-    `na Waszym telefonie? Pierwszy miesiąc za darmo. ${SIGNATURE}`
+    `Cześć! ${hook} ` +
+    `Robimy cyfrowe karty lojalnościowe: gość dodaje Waszą kartę do Apple/Google Wallet ` +
+    `(bez żadnej aplikacji), zbiera pieczątki za wizyty i wraca po nagrodę — a Wy widzicie, kto wraca. ` +
+    `Ten sam system prosi zadowolonych gości o opinię w Google: to jeden z najskuteczniejszych ` +
+    `sposobów na opinie, u naszych klientów nawet do 200 nowych w miesiącu. ` +
+    `Korzystają już m.in. ${proof}. ` +
+    `Dla każdej lokalizacji pierwszy miesiąc jest testowy i za darmo — sprawdzacie bez ryzyka, ` +
+    `czy Wam się to opłaca. Mogę wpaść na 5 minut i pokazać na Waszym telefonie? ${SIGNATURE}`
   );
 }
 
 /** Follow-up po 3 dniach ciszy: krótko, prośba o jedno słowo, jasne wyjście. */
 export function followupDm(): string {
   return (
-    `Cześć, wracam na moment — wiem, że macie młyn. Jedno zdanie: karta pieczątek ` +
-    `w telefonie, pierwszy miesiąc za darmo. Odpiszcie „ok”, a wyślę 2-minutowy filmik, ` +
-    `jak to działa. Jak temat nie gra, dajcie znać — nie będę spamować. ${SIGNATURE}`
+    `Cześć, wracam na moment — wiem, że macie młyn. Jedno zdanie: cyfrowa karta lojalnościowa ` +
+    `w telefonie + więcej opinii w Google, pierwszy miesiąc testowy za darmo. Odpiszcie „ok”, ` +
+    `a wyślę 2-minutowy filmik, jak to działa. Jak temat nie gra, dajcie znać — nie będę spamować. ${SIGNATURE}`
   );
 }
 
@@ -92,16 +97,17 @@ export const REPLIES: ReplyTemplate[] = [
     text:
       `Jasne. Gość dodaje Waszą kartę do Apple/Google Wallet (bez żadnej aplikacji), przy wizycie ` +
       `dostaje pieczątkę przez NFC albo QR, po kilku odbiera nagrodę. Wy widzicie, kto wraca, ` +
-      `i możecie wysłać powiadomienie na telefon. Wszystko jest na ${LINKS.www}. ` +
-      `Najszybciej pokazać na żywo — 5 minut, kiedy pasuje?`,
+      `i możecie wysłać powiadomienie na telefon. System prosi też zadowolonych gości o opinię ` +
+      `w Google — u naszych klientów nawet do 200 nowych w miesiącu. Pierwszy miesiąc testowy za darmo. ` +
+      `Wszystko jest na ${LINKS.www}. Najszybciej pokazać na żywo — 5 minut, kiedy pasuje?`,
   },
   {
     key: "cena",
     label: "„Ile to kosztuje?”",
     when: "Pytanie o cenę przed spotkaniem.",
     text:
-      `Pierwszy miesiąc jest za darmo, potem [cena] zł/mies., bez umowy na czas określony — ` +
-      `rezygnacja w każdej chwili. Ustawiamy wszystko za Was, nic nie instalujecie. ` +
+      `Pierwszy miesiąc jest testowy i za darmo, potem [cena] zł/mies. za lokalizację, bez umowy ` +
+      `na czas określony — rezygnacja w każdej chwili. Ustawiamy wszystko za Was, nic nie instalujecie. ` +
       `Najlepiej pokazać na żywo, 5 minut — kiedy pasuje?`,
   },
   {
@@ -114,10 +120,10 @@ export const REPLIES: ReplyTemplate[] = [
   },
   {
     key: "po_demo",
-    label: "Po demo → pilot",
+    label: "Po demo → miesiąc testowy",
     when: "Tego samego dnia po pokazie.",
     text:
-      `Dzięki za spotkanie! Podsumowując: pierwszy miesiąc za darmo, kartę przygotowujemy w ` +
+      `Dzięki za spotkanie! Podsumowując: pierwszy miesiąc testowy za darmo, kartę przygotowujemy w ` +
       `[1–2 dni], Wy nic nie instalujecie, a po miesiącu sami zdecydujecie. Startujemy?`,
   },
   {

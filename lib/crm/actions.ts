@@ -289,9 +289,17 @@ export async function setDmSent(blitzId: string, sent: boolean): Promise<ActionR
   const db = getServiceClient();
   const updates = sent
     ? { sent_at: new Date().toISOString(), sent_by: user.email!.toLowerCase() }
-    : { sent_at: null, sent_by: null, followup_sent_at: null, followup_sent_by: null };
+    : { sent_at: null, sent_by: null };
   const { error } = await db.from("crm_dm_blitz").update(updates).eq("id", blitzId);
   if (error) return { error: `Nie udało się zapisać: ${error.message}` };
+  if (!sent) {
+    // Cofnięcie DM-a #1 cofa też follow-up. Osobne zapytanie: bez migracji 005
+    // tych kolumn nie ma i nie może to blokować samego cofnięcia.
+    await db
+      .from("crm_dm_blitz")
+      .update({ followup_sent_at: null, followup_sent_by: null })
+      .eq("id", blitzId);
+  }
   revalidateAll();
   return { ok: true };
 }
@@ -309,7 +317,12 @@ export async function setDmFollowup(blitzId: string, sent: boolean): Promise<Act
     ? { followup_sent_at: new Date().toISOString(), followup_sent_by: user.email!.toLowerCase() }
     : { followup_sent_at: null, followup_sent_by: null };
   const { error } = await db.from("crm_dm_blitz").update(updates).eq("id", blitzId);
-  if (error) return { error: `Nie udało się zapisać: ${error.message}` };
+  if (error) {
+    if (/followup_sent_at/.test(error.message)) {
+      return { error: "Baza nie ma jeszcze kolumn follow-upu — uruchom supabase/migration-005-lejek-dm.sql w SQL Editorze Supabase." };
+    }
+    return { error: `Nie udało się zapisać: ${error.message}` };
+  }
   revalidateAll();
   return { ok: true };
 }

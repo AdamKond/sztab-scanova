@@ -210,6 +210,11 @@ export function dailyQueue(
   return { done, next };
 }
 
+/** Wszystkie lokale bez wysłanego DM-a, w porządku uderzenia (kolejka bez limitu). */
+export function todoQueue(rows: CrmDmBlitz[], nowMs: number): CrmDmBlitz[] {
+  return rows.filter((r) => blitzStage(r, nowMs) === "todo").sort(compareBlitz);
+}
+
 /** Follow-upy, które wypadły: najdłużej czekające pierwsze. */
 export function followupQueue(rows: CrmDmBlitz[], nowMs: number): CrmDmBlitz[] {
   return rows
