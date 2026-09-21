@@ -1,24 +1,44 @@
 "use client";
 
-// Kopiowanie gotowego tekstu (np. DM-a z notatek leada) jednym kliknięciem.
-// Fallback przez textarea, bo Clipboard API bywa niedostępne poza HTTPS.
+// Kopiowanie gotowego tekstu jednym kliknięciem. Fallback przez textarea,
+// bo Clipboard API bywa niedostępne poza HTTPS.
 
 import { useState } from "react";
+import { buttonClass } from "@/components/ui/Button";
 
-export default function CopyTextButton({ text, label }: { text: string; label: string }) {
+export async function copyToClipboard(text: string): Promise<void> {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const t = document.createElement("textarea");
+    t.value = text;
+    t.setAttribute("readonly", "");
+    t.style.position = "fixed";
+    t.style.opacity = "0";
+    document.body.appendChild(t);
+    t.select();
+    document.execCommand("copy");
+    t.remove();
+  }
+}
+
+export default function CopyTextButton({
+  text,
+  label,
+  variant = "secondary",
+  size = "sm",
+  className = "",
+}: {
+  text: string;
+  label: string;
+  variant?: "primary" | "secondary" | "ghost";
+  size?: "sm" | "md";
+  className?: string;
+}) {
   const [copied, setCopied] = useState(false);
 
   async function onCopy() {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      const t = document.createElement("textarea");
-      t.value = text;
-      document.body.appendChild(t);
-      t.select();
-      document.execCommand("copy");
-      t.remove();
-    }
+    await copyToClipboard(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 1400);
   }
@@ -27,9 +47,7 @@ export default function CopyTextButton({ text, label }: { text: string; label: s
     <button
       type="button"
       onClick={onCopy}
-      className={`rounded-lg px-3 py-1.5 text-[12.5px] font-semibold text-white transition ${
-        copied ? "bg-success" : "bg-sidebar hover:bg-accent-deep"
-      }`}
+      className={buttonClass(copied ? "success" : variant, size, className)}
     >
       {copied ? "Skopiowano" : label}
     </button>

@@ -1,5 +1,9 @@
 # DM-y outbound per nisza — masowa kampania IG (od 2026-08-26)
 
+> **Archiwum.** Od września 2026 obowiązujące teksty (krótsze, bez linku,
+> z pytaniem na końcu) żyją w kodzie: `lib/crm/dm-copy.ts`. Ten plik zostaje
+> jako historia pierwszej wersji i zasady wysyłki.
+
 Jedna wiadomość na niszę. Przed wysłaniem podmień tylko **[NAZWA]** na nazwę
 lokalu — to wystarczy, żeby nie wyglądało jak masówka. Podpis Adam ↔ Oliwier
 do podmiany dowolnie.

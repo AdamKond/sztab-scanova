@@ -1,10 +1,12 @@
-// Zwarty kafelek statystyki — do rzędów KPI na pulpicie / w analizie.
-type Tone = "default" | "success" | "danger";
+// Kafelek liczby: duża wartość, mała etykieta. Do rzędu statystyk na Dziś i Klientach.
+type Tone = "default" | "success" | "danger" | "warning" | "accent";
 
 const VALUE_TONE_CLASSES: Record<Tone, string> = {
   default: "text-ink",
   success: "text-success",
   danger: "text-danger",
+  warning: "text-warning",
+  accent: "text-accent",
 };
 
 export default function MetricTile({
@@ -19,12 +21,14 @@ export default function MetricTile({
   tone?: Tone;
 }) {
   return (
-    <div className="rounded-xl border border-line bg-surface p-4">
-      <div className="text-[11px] font-medium uppercase tracking-wide text-ink-2">{label}</div>
-      <div className={`tabular mt-1 text-[24px] font-semibold leading-none ${VALUE_TONE_CLASSES[tone]}`}>
+    <div className="rounded-2xl bg-surface p-4 shadow-card md:p-5">
+      <div className="text-[12px] font-medium text-ink-2">{label}</div>
+      <div
+        className={`tabular mt-1.5 text-[28px] font-semibold leading-none tracking-tight ${VALUE_TONE_CLASSES[tone]}`}
+      >
         {value}
       </div>
-      {sub ? <div className="mt-1.5 text-[12px] text-ink-2">{sub}</div> : null}
+      {sub ? <div className="mt-1.5 text-[12px] text-ink-3">{sub}</div> : null}
     </div>
   );
 }

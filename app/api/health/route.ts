@@ -9,9 +9,8 @@ const CORE_TABLES = [
   "crm_leads",
   "crm_stage_history",
   "crm_activities",
-  "crm_tasks",
-  "sales_goals",
   "crm_settings",
+  "crm_dm_blitz",
 ] as const;
 
 export async function GET() {
@@ -34,7 +33,7 @@ export async function GET() {
       {
         ok: false,
         status: "brak_migracji",
-        detail: `Brak tabel: ${missing.join(", ")}. Uruchom supabase/migration-001-core.sql.`,
+        detail: `Brak tabel: ${missing.join(", ")}. Uruchom migracje z supabase/ (001–005).`,
       },
       { status: 503 },
     );

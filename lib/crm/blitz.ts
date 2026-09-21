@@ -1,8 +1,9 @@
-// Czysta logika ekranu "Wysyłka DM" — masowej kampanii Instagram.
+// Czysta logika Bazy lokali i kolejki DM (tabela crm_dm_blitz).
 //
-// Dlaczego osobny moduł bez "server-only": grupowanie i licznik postępu
-// wykonuje też client component (optymistyczne odhaczanie), więc kod musi
-// być czystą funkcją bez dostępu do bazy.
+// Bez "server-only": grupowanie, etapy i kolejkę liczy też client component
+// (optymistyczne odhaczanie), więc kod musi być czystą funkcją bez bazy.
+
+import { firstDm, followupDm } from "./dm-copy";
 
 export type CrmDmBlitz = {
   id: string;
@@ -11,6 +12,7 @@ export type CrmDmBlitz = {
   niche: string;
   instagram: string;
   followers: number | null;
+  /** Tekst z zasiewu (stara, długa wersja) — UI używa firstDmText(), nie tej kolumny. */
   dm_text: string;
   campaign: string;
   sent_at: string | null;
@@ -23,19 +25,30 @@ export type CrmDmBlitz = {
 };
 
 // ----------------------------------------------------------------------------
-// Lejek: DM #1 → (3 dni ciszy) follow-up → odpowiedź = awans do CRM.
+// Lejek: DM #1 → (3 dni ciszy) follow-up → odpowiedź = rozmowa w CRM.
 // Etap wyliczamy z timestampów zamiast trzymać kolumnę statusu — nie ma czego
 // synchronizować i cofnięcie odhaczenia automatycznie cofa etap.
 // ----------------------------------------------------------------------------
 
 export const FOLLOWUP_AFTER_DAYS = 3;
 
+/** Bezpieczny dzienny limit DM-ów z jednego konta IG — powyżej rośnie ryzyko blokady. */
+export const DAILY_DM_LIMIT = 30;
+
 export type BlitzStage =
   | "todo" // DM #1 jeszcze nie wysłany
   | "waiting" // DM #1 wysłany, cisza krótsza niż próg
   | "followup_due" // cisza ≥ progu — lokal czeka w kolejce follow-upu
   | "followed_up" // follow-up wysłany, dalej cisza
-  | "in_crm"; // odpowiedział — żyje już jako lead
+  | "in_crm"; // odpowiedział — żyje już jako rozmowa
+
+export const STAGE_LABELS: Record<BlitzStage, string> = {
+  todo: "Do wysłania",
+  waiting: "Czeka na odpowiedź",
+  followup_due: "Follow-up dziś",
+  followed_up: "Po follow-upie",
+  in_crm: "Rozmowa",
+};
 
 export function blitzStage(row: CrmDmBlitz, nowMs: number): BlitzStage {
   if (row.lead_id) return "in_crm";
@@ -49,17 +62,25 @@ export function countFollowupsDue(rows: CrmDmBlitz[], nowMs: number): number {
   return rows.filter((r) => blitzStage(r, nowMs) === "followup_due").length;
 }
 
-/**
- * Follow-up celowo krótki i z prośbą o jedno słowo — odpowiedź otwiera
- * oficjalne okno wiadomości i pozwala wysłać filmik z tablicą.
- */
-export function followupDmText(row: CrmDmBlitz): string {
-  return (
-    `Cześć ${row.name}! Wracam na moment, bo wiem, że DM-y łatwo giną. ` +
-    `W skrócie: cyfrowa karta pieczątek w Apple/Google Wallet dla Waszych stałych gości, ` +
-    `pierwszy miesiąc za darmo. Wystarczy, że odpiszecie „ok", a wyślę 2-minutowy filmik, ` +
-    `jak to działa w praktyce. Pozdrawiam, Adam`
-  );
+export function blitzCounts(rows: CrmDmBlitz[], nowMs: number): Record<BlitzStage, number> {
+  const counts: Record<BlitzStage, number> = {
+    todo: 0,
+    waiting: 0,
+    followup_due: 0,
+    followed_up: 0,
+    in_crm: 0,
+  };
+  for (const r of rows) counts[blitzStage(r, nowMs)] += 1;
+  return counts;
+}
+
+/** Tekst pierwszego DM-a — krótka wersja per nisza (lib/crm/dm-copy.ts). */
+export function firstDmText(row: Pick<CrmDmBlitz, "niche">): string {
+  return firstDm(row.niche);
+}
+
+export function followupDmText(): string {
+  return followupDm();
 }
 
 // Kolejność sekcji = kolejność uderzenia: od nisz o najwyższej częstotliwości
@@ -96,6 +117,17 @@ export function blitzNicheLabel(niche: string): string {
   return BLITZ_NICHE_LABELS[niche] ?? niche;
 }
 
+const NICHE_INDEX = new Map<string, number>(BLITZ_NICHE_ORDER.map((n, i) => [n, i]));
+
+/** Porządek uderzenia: nisza wg listy, w niszy większe profile pierwsze. */
+export function compareBlitz(a: CrmDmBlitz, b: CrmDmBlitz): number {
+  return (
+    (NICHE_INDEX.get(a.niche) ?? 99) - (NICHE_INDEX.get(b.niche) ?? 99) ||
+    (b.followers ?? 0) - (a.followers ?? 0) ||
+    a.name.localeCompare(b.name, "pl")
+  );
+}
+
 export type BlitzGroup = {
   niche: string;
   label: string;
@@ -105,11 +137,9 @@ export type BlitzGroup = {
 
 /**
  * Grupuje wpisy po niszy w kolejności uderzenia; w grupie najpierw największe
- * profile (followers malejąco) — social proof liczy się od góry. Nisze spoza
- * znanej listy lądują na końcu zamiast znikać.
+ * profile (followers malejąco). Nisze spoza znanej listy lądują na końcu.
  */
 export function groupBlitzByNiche(rows: CrmDmBlitz[]): BlitzGroup[] {
-  const order = new Map<string, number>(BLITZ_NICHE_ORDER.map((n, i) => [n, i]));
   const byNiche = new Map<string, CrmDmBlitz[]>();
   for (const row of rows) {
     const list = byNiche.get(row.niche);
@@ -117,14 +147,11 @@ export function groupBlitzByNiche(rows: CrmDmBlitz[]): BlitzGroup[] {
     else byNiche.set(row.niche, [row]);
   }
   const niches = [...byNiche.keys()].sort(
-    (a, b) => (order.get(a) ?? 99) - (order.get(b) ?? 99) || a.localeCompare(b, "pl"),
+    (a, b) => (NICHE_INDEX.get(a) ?? 99) - (NICHE_INDEX.get(b) ?? 99) || a.localeCompare(b, "pl"),
   );
   return niches.map((niche) => {
     const list = byNiche.get(niche)!;
-    list.sort(
-      (a, b) =>
-        (b.followers ?? 0) - (a.followers ?? 0) || a.name.localeCompare(b.name, "pl"),
-    );
+    list.sort(compareBlitz);
     return {
       niche,
       label: blitzNicheLabel(niche),
@@ -143,4 +170,49 @@ export function senderInitial(email: string | null): string | null {
   if (!email) return null;
   const first = email.trim()[0];
   return first ? first.toUpperCase() : null;
+}
+
+// ----------------------------------------------------------------------------
+// Kolejka na dziś
+// ----------------------------------------------------------------------------
+
+/** DM-y #1 wysłane danego dnia (YYYY-MM-DD wg Warszawy) przez daną osobę. */
+export function sentTodayBy(
+  rows: CrmDmBlitz[],
+  email: string,
+  today: string,
+  warsawDay: (iso: string) => string,
+): CrmDmBlitz[] {
+  const me = email.toLowerCase();
+  return rows
+    .filter((r) => r.sent_at && r.sent_by?.toLowerCase() === me && warsawDay(r.sent_at) === today)
+    .sort((a, b) => (a.sent_at ?? "").localeCompare(b.sent_at ?? ""));
+}
+
+/**
+ * Kolejka nowych DM-ów na dziś: to, co już wysłałem dziś (odhaczone, u góry)
+ * + kolejne lokale do wysłania w porządku uderzenia, razem do `limit`.
+ */
+export function dailyQueue(
+  rows: CrmDmBlitz[],
+  nowMs: number,
+  email: string,
+  today: string,
+  warsawDay: (iso: string) => string,
+  limit: number = DAILY_DM_LIMIT,
+): { done: CrmDmBlitz[]; next: CrmDmBlitz[] } {
+  const done = sentTodayBy(rows, email, today, warsawDay);
+  const room = Math.max(0, limit - done.length);
+  const next = rows
+    .filter((r) => blitzStage(r, nowMs) === "todo")
+    .sort(compareBlitz)
+    .slice(0, room);
+  return { done, next };
+}
+
+/** Follow-upy, które wypadły: najdłużej czekające pierwsze. */
+export function followupQueue(rows: CrmDmBlitz[], nowMs: number): CrmDmBlitz[] {
+  return rows
+    .filter((r) => blitzStage(r, nowMs) === "followup_due")
+    .sort((a, b) => (a.sent_at ?? "").localeCompare(b.sent_at ?? ""));
 }
