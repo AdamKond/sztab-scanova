@@ -61,6 +61,10 @@ export default function AddLokal() {
             <Label htmlFor="al-followers">Obserwujący (opcjonalnie)</Label>
             <Input id="al-followers" name="followers" inputMode="numeric" />
           </div>
+          <div className="sm:col-span-2">
+            <Label htmlFor="al-hook">Pierwsze zdanie o tym lokalu (opcjonalnie — zastąpi hook niszy)</Label>
+            <Input id="al-hook" name="hook" placeholder="np. Kolejka po Wasze croissanty w sobotę to już legenda." />
+          </div>
           <div className="flex items-end">
             <SubmitButton>Dodaj</SubmitButton>
           </div>
@@ -74,11 +78,11 @@ export default function AddLokal() {
               name="lines"
               rows={8}
               required
-              placeholder={"@pizzalover_pl | Pizza Lover | Lublin | pizza | 13000\n@kawa_na_rogu | Kawa na Rogu | Lublin | kawiarnia"}
+              placeholder={"@pizzalover_pl | Pizza Lover | Lublin | pizza | 13000 | Wasza neapolitańska ma najwięcej zdjęć na IG w Lublinie.\n@kawa_na_rogu | Kawa na Rogu | Lublin | kawiarnia"}
             />
             <p className="mt-1.5 text-[12px] text-ink-3">
-              Pola oddzielone | (albo ; lub tabulatorem). Wystarczy sam @instagram — reszta opcjonalna.
-              Nisze: {NICHES.join(", ")}.
+              Pola oddzielone | (albo ; lub tabulatorem): @instagram | nazwa | miasto | nisza | obserwujący | pierwsze zdanie.
+              Wystarczy sam @instagram — reszta opcjonalna. Nisze: {NICHES.join(", ")}.
             </p>
           </div>
           <SubmitButton>Dodaj wszystkie</SubmitButton>

@@ -168,6 +168,16 @@ describe("teksty DM", () => {
     expect(text).not.toContain("5 minut");
   });
 
+  it("hook z researchu (dm_text = HOOK: ...) zastępuje hook niszy, reszta bez zmian", () => {
+    const plain = firstDmText(row({ niche: "pizza" }));
+    const custom = firstDmText(row({ niche: "pizza", dm_text: "HOOK: Wasza neapolitańska to legenda na Czubach." }));
+    expect(custom).toContain("Cześć! Wasza neapolitańska to legenda na Czubach. Robimy");
+    expect(custom).not.toContain("Piątkowa pizza");
+    expect(custom.slice(custom.indexOf("Robimy"))).toBe(plain.slice(plain.indexOf("Robimy")));
+    // Stary długi tekst z zasiewu (bez prefiksu) jest ignorowany.
+    expect(firstDmText(row({ niche: "pizza", dm_text: "Cześć Pizza Lover! Piątkowa..." }))).toBe(plain);
+  });
+
   it("każda nisza z Bazy ma swój hook, nieznana dostaje ogólny", () => {
     const pizza = firstDmText(row({ niche: "pizza" }));
     const cafe = firstDmText(row({ niche: "kawiarnia" }));

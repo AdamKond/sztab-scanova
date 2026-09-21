@@ -74,9 +74,17 @@ export function blitzCounts(rows: CrmDmBlitz[], nowMs: number): Record<BlitzStag
   return counts;
 }
 
-/** Tekst pierwszego DM-a — krótka wersja per nisza (lib/crm/dm-copy.ts). */
-export function firstDmText(row: Pick<CrmDmBlitz, "niche">): string {
-  return firstDm(row.niche);
+/** Prefiks w dm_text oznaczający spersonalizowany hook (reszta DM-a z szablonu niszy). */
+export const HOOK_PREFIX = "HOOK:";
+
+export function customHookOf(row: Pick<CrmDmBlitz, "dm_text">): string | null {
+  const t = row.dm_text?.trim() ?? "";
+  return t.startsWith(HOOK_PREFIX) ? t.slice(HOOK_PREFIX.length).trim() || null : null;
+}
+
+/** Tekst pierwszego DM-a: szablon niszy z hookiem lokalu, jeśli research go dał. */
+export function firstDmText(row: Pick<CrmDmBlitz, "niche" | "dm_text">): string {
+  return firstDm(row.niche, customHookOf(row));
 }
 
 export function followupDmText(): string {

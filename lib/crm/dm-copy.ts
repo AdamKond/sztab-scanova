@@ -43,9 +43,12 @@ const HOOKS: Record<string, string> = {
 
 export const NICHES = Object.keys(HOOKS);
 
-/** Pierwszy DM: hook, co robimy, opinie Google, dowód, darmowy miesiąc testowy, pytanie. */
-export function firstDm(niche: string): string {
-  const hook = HOOKS[niche] ?? HOOKS.restauracja;
+/**
+ * Pierwszy DM: hook, co robimy, opinie Google, dowód, darmowy miesiąc testowy, pytanie.
+ * `customHook` — zdanie o TYM lokalu (z researchu); bez niego hook per nisza.
+ */
+export function firstDm(niche: string, customHook?: string | null): string {
+  const hook = customHook?.trim() || HOOKS[niche] || HOOKS.restauracja;
   const proof = CAFE_NICHES.has(niche) ? PROOF_CAFE : PROOF_RESTAURANT;
   return (
     `Cześć! ${hook} ` +

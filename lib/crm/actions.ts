@@ -23,7 +23,7 @@ import { STEP_STATUS, type Step } from "./steps";
 import { NICHES } from "./dm-copy";
 import { addDays, warsawToday } from "./dates";
 import { promoteBlitzRow, REPLIED_NEXT_ACTION } from "./promote";
-import type { CrmDmBlitz } from "./blitz";
+import { HOOK_PREFIX, type CrmDmBlitz } from "./blitz";
 
 export interface ActionResult {
   error?: string;
@@ -350,10 +350,18 @@ function campaignForToday(): string {
   return `baza-${warsawToday().slice(0, 7)}`;
 }
 
-type LokalInput = { name: string; city: string | null; niche: string; instagram: string; followers: number | null };
+type LokalInput = {
+  name: string;
+  city: string | null;
+  niche: string;
+  instagram: string;
+  followers: number | null;
+  /** "HOOK: ..." albo "" — patrz customHookOf w blitz.ts. */
+  dm_text: string;
+};
 
 function parseLokalLine(line: string): LokalInput | null {
-  // Format linii: @instagram | Nazwa | Miasto | nisza | obserwujący  (kolejne pola opcjonalne)
+  // Format linii: @instagram | Nazwa | Miasto | nisza | obserwujący | hook  (kolejne pola opcjonalne)
   const parts = line
     .split(/\s*[|;\t]\s*/)
     .map((p) => p.trim())
@@ -367,7 +375,8 @@ function parseLokalLine(line: string): LokalInput | null {
   const niche = NICHES.includes(nicheRaw) ? nicheRaw : "restauracja";
   const followersRaw = Number((parts[4] ?? "").replace(/\s/g, ""));
   const followers = Number.isFinite(followersRaw) && followersRaw > 0 ? Math.round(followersRaw) : null;
-  return { name, city, niche, instagram, followers };
+  const hook = clampText(parts[5] ?? "", 200);
+  return { name, city, niche, instagram, followers, dm_text: hook ? `${HOOK_PREFIX} ${hook}` : "" };
 }
 
 async function insertLokale(items: LokalInput[]): Promise<{ added: number; skipped: string[] }> {
@@ -377,11 +386,7 @@ async function insertLokale(items: LokalInput[]): Promise<{ added: number; skipp
   const skipped: string[] = [];
   for (const it of items) {
     // Wiersz po wierszu, żeby jeden duplikat (unikalny instagram) nie zablokował całej wklejki.
-    const { error } = await db.from("crm_dm_blitz").insert({
-      ...it,
-      dm_text: "",
-      campaign,
-    });
+    const { error } = await db.from("crm_dm_blitz").insert({ ...it, campaign });
     if (error) skipped.push(`@${it.instagram}`);
     else added += 1;
   }
@@ -394,12 +399,14 @@ export async function addLokal(formData: FormData): Promise<ActionResult> {
   if (!instagram) return { error: "Instagram lokalu jest wymagany." };
   const name = text(formData, "name", LIMITS.name) ?? instagram;
   const nicheRaw = (text(formData, "niche") ?? "").toLowerCase();
+  const hook = text(formData, "hook");
   const item: LokalInput = {
     name,
     city: text(formData, "city"),
     niche: NICHES.includes(nicheRaw) ? nicheRaw : "restauracja",
     instagram,
     followers: parsePositiveInt(formData.get("followers")),
+    dm_text: hook ? `${HOOK_PREFIX} ${hook}` : "",
   };
   const { added, skipped } = await insertLokale([item]);
   if (added === 0) return { error: `@${instagram} już jest w Bazie.` };
