@@ -1,0 +1,539 @@
+<title>Tablica Scanovy</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap">
+<style>
+  :root {
+    --board: #fcfcfa;
+    --frame: #d9d9d4;
+    --ink: #1c1c1c;
+    --ink-soft: #55555a;
+    --blue: #1d5fd1;
+    --red: #d2262e;
+    --green: #1f8f3e;
+    --paper: #f3f2ee;
+    --note-ink: #2a2a2e;
+    --hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
+    --print: "Patrick Hand", "Segoe Print", "Comic Sans MS", cursive;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #e9e8e3;
+    color: var(--ink);
+    font-family: var(--sans);
+    padding-block: 16px 32px;
+    padding-inline: 16px;
+  }
+  .wrap { max-width: 1240px; margin: 0 auto; }
+
+  .bar {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+    margin-bottom: 12px; font-size: 14px; color: var(--ink-soft);
+  }
+  .bar .name { font-family: var(--hand); font-size: 26px; font-weight: 700; color: var(--ink); margin-right: auto; }
+  .btn {
+    font: inherit; font-size: 14px; border: 1.5px solid #bdbdb6; background: #fff; color: var(--ink);
+    border-radius: 999px; padding: 6px 14px; cursor: pointer;
+  }
+  .btn:hover { background: #f5f5f2; }
+  .btn:focus-visible, .dot:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+  .dots { display: flex; gap: 6px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #9a9a94; background: #fff; padding: 0; cursor: pointer; }
+  .dot[aria-current="true"] { background: var(--blue); border-color: var(--blue); }
+  kbd { font-family: var(--sans); font-size: 12px; border: 1px solid #c8c8c2; border-bottom-width: 2px; border-radius: 4px; padding: 1px 6px; background: #fff; }
+
+  .board-frame {
+    background: var(--frame);
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12), inset 0 1px 0 #fff;
+  }
+  .board-frame:fullscreen { padding: 0; border-radius: 0; background: var(--board); display: grid; place-items: center; }
+  .board-frame:fullscreen .board { width: min(100vw, 177.7vh); aspect-ratio: 16 / 9; }
+  .board {
+    position: relative;
+    background: var(--board);
+    background-image: radial-gradient(circle at 20% 30%, rgba(0,0,0,.015), transparent 40%), radial-gradient(circle at 80% 70%, rgba(0,0,0,.02), transparent 40%);
+    border-radius: 6px;
+    overflow: hidden;
+    font-family: var(--print);
+    font-size: clamp(15px, 1.55vw, 21px);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  @media (min-width: 900px) { .board { aspect-ratio: 16 / 9; } }
+
+  /* Każda plansza: etykieta → tytuł → treść (flex:1) → stopka. Ten sam szkielet na wszystkich. */
+  .slide { display: none; height: 100%; padding: 3.5% 5% 3%; }
+  .slide.active { display: flex; flex-direction: column; }
+  .num { font-family: var(--hand); color: var(--ink-soft); font-size: 1.1em; letter-spacing: .04em; }
+  .slide h2 {
+    font-family: var(--hand); font-weight: 700; margin: 0 0 .45em; line-height: 1; font-size: 2.5em;
+    text-wrap: balance;
+  }
+  .slide h2 .u { text-decoration: underline; text-decoration-color: var(--blue); text-decoration-thickness: .12em; text-underline-offset: .12em; }
+  .body { flex: 1; min-height: 0; display: grid; gap: 3% 5%; align-items: center; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: 1fr 1fr 1fr; }
+  .g2.wide { grid-template-columns: 1.15fr 1fr; }
+  @media (max-width: 899px) { .g2, .g3, .g2.wide { grid-template-columns: 1fr; } .slide { padding: 24px 20px; } .slide h2 { font-size: 2em; } }
+  .col { display: flex; flex-direction: column; gap: .55em; min-width: 0; }
+  .blue { color: var(--blue); } .red { color: var(--red); } .green { color: var(--green); }
+  .marker { font-family: var(--hand); font-weight: 700; }
+  .lead { font-size: 1.2em; margin: 0; }
+  .muted { color: var(--ink-soft); margin: 0; }
+  ul.hand { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .45em; }
+  ul.hand li { padding-left: 1.5em; position: relative; }
+  ul.hand li::before { content: "→"; position: absolute; left: 0; color: var(--blue); font-family: var(--hand); font-weight: 700; }
+  ul.hand li.x::before { content: "✗"; color: var(--red); }
+  ul.hand li.ok::before { content: "✓"; color: var(--green); }
+  .sticky {
+    background: #fff4a8; color: var(--ink); padding: .5em .8em; font-family: var(--hand); font-size: 1.25em; font-weight: 700;
+    box-shadow: 2px 3px 6px rgba(0,0,0,.15); transform: rotate(-1.5deg); align-self: flex-start; line-height: 1.1;
+  }
+  .sticky.blue { background: #d9e8ff; }
+  .sticky.green { background: #d6f2de; }
+  svg.draw { width: 100%; height: auto; display: block; max-width: 100%; }
+  svg.draw text { font-family: var(--print); fill: var(--ink); }
+  svg.draw .hand { font-family: var(--hand); font-weight: 700; }
+  .wob { filter: url(#wobble); }
+  .foot { padding-top: .6em; color: var(--ink-soft); font-size: .95em; }
+
+  /* Przed / Po */
+  .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 4%; }
+  .cmp > div { border-top: 3px solid var(--ink); padding-top: .4em; }
+  .cmp > div.after { border-top-color: var(--blue); }
+  .cmp h3 { font-family: var(--hand); font-size: 1.7em; margin: 0 0 .3em; line-height: 1; }
+  @media (max-width: 899px) { .cmp { grid-template-columns: 1fr; } }
+
+  /* Kalkulator */
+  .calc { display: grid; grid-template-columns: 1fr 1.1fr; gap: 4%; align-items: start; }
+  @media (max-width: 899px) { .calc { grid-template-columns: 1fr; } }
+  .field { display: grid; grid-template-columns: 1fr auto; gap: .2em .8em; align-items: center; margin-bottom: .5em; }
+  .field label { grid-column: 1 / -1; }
+  .field input[type=range] { width: 100%; accent-color: var(--blue); }
+  .field output { font-family: var(--hand); font-weight: 700; font-size: 1.35em; min-width: 4.5em; text-align: right; font-variant-numeric: tabular-nums; }
+  .result { display: flex; flex-direction: column; gap: .45em; }
+  .big { font-family: var(--hand); font-weight: 700; font-size: 2.6em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .bars { display: grid; gap: .5em; }
+  .barrow { display: grid; grid-template-columns: 8.5em 1fr; gap: .6em; align-items: center; }
+  .track { height: 1.1em; background: #efefe9; border-radius: 3px; position: relative; }
+  .fill { position: absolute; inset: 0 auto 0 0; border-radius: 3px 4px 4px 3px; min-width: 2px; transition: width .25s; }
+  .fill.b { background: var(--blue); } .fill.g { background: #b8b8b0; }
+
+  /* Oś 30 dni */
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2%; position: relative; }
+  .timeline::before { content: ""; position: absolute; left: 3%; right: 3%; top: .55em; height: 3px; background: var(--blue); }
+  .tl { position: relative; padding-top: 1.4em; }
+  .tl::before { content: ""; position: absolute; left: 0; top: 0; width: 1.1em; height: 1.1em; border-radius: 50%; background: #fff; border: 3px solid var(--blue); }
+  .tl b { font-family: var(--hand); font-size: 1.3em; display: block; line-height: 1; margin-bottom: .2em; }
+  @media (max-width: 899px) { .timeline { grid-template-columns: 1fr 1fr; } .timeline::before { display: none; } }
+
+  .notes {
+    margin-top: 16px; background: var(--paper); border-radius: 12px; padding: 18px 22px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06); color: var(--note-ink); font-size: 15px; line-height: 1.5;
+  }
+  .notes[hidden] { display: none; }
+  .notes h3 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #6b6b70; font-weight: 600; }
+  .notes p { margin: 0 0 8px; max-width: 72ch; }
+  .notes .t { font-variant-numeric: tabular-nums; font-weight: 600; color: var(--blue); }
+  .notes .say { font-style: italic; }
+  @media (prefers-reduced-motion: reduce) { .fill { transition: none; } }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="wobble" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#1d5fd1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrg" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#1f8f3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arrr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9" fill="none" stroke="#d2262e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <div class="bar">
+    <span class="name">Tablica Scanovy</span>
+    <span>Plansza <span id="cur">1</span> / 8 · <kbd>←</kbd> <kbd>→</kbd> zmiana, <kbd>N</kbd> notatki, <kbd>F</kbd> pełny ekran</span>
+    <div class="dots" id="dots" role="tablist" aria-label="Plansze"></div>
+    <button class="btn" id="prev" type="button">← Wstecz</button>
+    <button class="btn" id="next" type="button">Dalej →</button>
+    <button class="btn" id="notesBtn" type="button" aria-pressed="true">Notatki</button>
+    <button class="btn" id="fsBtn" type="button">Pełny ekran</button>
+  </div>
+
+  <div class="board-frame">
+    <div class="board" id="board">
+
+      <!-- 1 -->
+      <section class="slide active" data-n="1">
+        <span class="num">SCANOVA · LUBLIN</span>
+        <h2>Ile osób było u Was <span class="red">raz</span> — i nigdy nie wróciło?</h2>
+        <div class="body g2">
+          <div class="col">
+            <p class="lead">Za miesiąc będziecie <span class="marker blue">wiedzieć, kto wraca</span> — i mieć takich gości więcej. Do tego opinie w Google, które same rosną.</p>
+            <p class="muted">Bez aplikacji. Bez papierowych kart. Obsługa nic nie klika.</p>
+            <div class="sticky">pierwszy miesiąc testowy — za darmo</div>
+          </div>
+          <svg class="draw wob" viewBox="0 0 320 300" role="img" aria-label="Telefon z kartą lojalnościową w portfelu">
+            <rect x="95" y="20" width="130" height="260" rx="22" fill="#fff" stroke="#1c1c1c" stroke-width="3.5"/>
+            <rect x="108" y="40" width="104" height="220" rx="10" fill="#f4f6fb"/>
+            <rect x="116" y="70" width="88" height="56" rx="8" fill="#1d5fd1"/>
+            <text x="124" y="92" font-size="11" fill="#fff" class="hand">Wasz lokal</text>
+            <g fill="#fff"><circle cx="128" cy="112" r="4"/><circle cx="141" cy="112" r="4"/><circle cx="154" cy="112" r="4"/><circle cx="167" cy="112" r="4" opacity=".35"/><circle cx="180" cy="112" r="4" opacity=".35"/><circle cx="193" cy="112" r="4" opacity=".35"/></g>
+            <rect x="116" y="134" width="88" height="18" rx="6" fill="#fff" stroke="#1c1c1c" stroke-width="1.5"/>
+            <text x="122" y="147" font-size="10">Wpadnij dziś: 6. kawa gratis</text>
+            <text x="116" y="180" font-size="10" fill="#55555a">Apple Wallet · Google Wallet</text>
+            <path d="M30 150 q40 -60 60 -20" fill="none" stroke="#1d5fd1" stroke-width="3" marker-end="url(#arr)"/>
+            <text x="10" y="175" font-size="15" class="hand" fill="#1d5fd1">zawsze w telefonie</text>
+            <path d="M255 60 q30 20 5 60" fill="none" stroke="#1d5fd1" stroke-width="3" marker-end="url(#arr)"/>
+            <text x="236" y="52" font-size="15" class="hand" fill="#1d5fd1">pieczątki</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="slide" data-n="2">
+        <span class="num">2 · DZIŚ</span>
+        <h2>Za każdego gościa płacicie <span class="u">drugi raz</span></h2>
+        <div class="body g3" style="align-items:start">
+          <div class="col">
+            <svg class="draw wob" viewBox="0 0 200 120" role="img" aria-label="Zmięta papierowa karta">
+              <path d="M40 30 l110 -8 l12 70 l-118 12 z" fill="#fff" stroke="#1c1c1c" stroke-width="3" stroke-linejoin="round"/>
+              <path d="M60 50 l70 -5 M62 66 l60 -4 M64 82 l40 -3" stroke="#9a9a94" stroke-width="2"/>
+              <path d="M30 20 L170 110 M170 20 L30 110" stroke="#d2262e" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+            <p style="margin:0"><span class="marker red">Papierowa karta</span> ginie w portfelu — po tygodniu gość zaczyna od zera.</p>
+          </div>
+          <div class="col">
+            <svg class="draw wob" viewBox="0 0 200 120" role="img" aria-label="Ekran telefonu z wieloma aplikacjami">
+              <rect x="70" y="8" width="60" height="105" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="3"/>
+              <g fill="#c9c9c3"><rect x="78" y="20" width="12" height="12" rx="3"/><rect x="94" y="20" width="12" height="12" rx="3"/><rect x="110" y="20" width="12" height="12" rx="3"/><rect x="78" y="36" width="12" height="12" rx="3"/><rect x="94" y="36" width="12" height="12" rx="3"/><rect x="110" y="36" width="12" height="12" rx="3"/><rect x="78" y="52" width="12" height="12" rx="3"/><rect x="94" y="52" width="12" height="12" rx="3"/></g>
+              <text x="8" y="80" font-size="13" class="hand" fill="#d2262e">„jeszcze jedna apka?"</text>
+              <path d="M22 84 q20 12 48 -6" fill="none" stroke="#d2262e" stroke-width="2.5" marker-end="url(#arrr)"/>
+            </svg>
+            <p style="margin:0"><span class="marker red">Aplikacji</span> nikt nie instaluje dla jednego lokalu.</p>
+          </div>
+          <div class="col">
+            <svg class="draw wob" viewBox="0 0 200 120" role="img" aria-label="Pięć gwiazdek, z których cztery są puste">
+              <g stroke="#1c1c1c" stroke-width="2.5" stroke-linejoin="round">
+                <path d="M30 60 l8 -20 l8 20 l20 2 l-15 14 l4 20 l-17 -10 l-17 10 l4 -20 l-15 -14 z" fill="#f4c542"/>
+                <path d="M72 60 l8 -20 l8 20 l20 2 l-15 14 l4 20 l-17 -10 l-17 10 l4 -20 l-15 -14 z" fill="#fff"/>
+                <path d="M114 60 l8 -20 l8 20 l20 2 l-15 14 l4 20 l-17 -10 l-17 10 l4 -20 l-15 -14 z" fill="#fff"/>
+                <path d="M156 60 l8 -20 l8 20 l20 2 l-15 14 l4 20 l-17 -10 l-17 10 l4 -20 l-15 -14 z" fill="#fff"/>
+              </g>
+              <text x="14" y="112" font-size="13" class="hand" fill="#55555a">zadowoleni milczą, niezadowoleni piszą</text>
+            </svg>
+            <p style="margin:0"><span class="marker red">Opinie Google</span> zostawiają głównie niezadowoleni — bo zadowolonych nikt nie prosi.</p>
+          </div>
+        </div>
+        <div class="foot">Efekt: nowych gości przyprowadza reklama i portale z prowizją. Stali nie mają powodu, żeby wrócić — i nie wiecie nawet, ilu ich jest.</div>
+      </section>
+
+      <!-- 3 -->
+      <section class="slide" data-n="3">
+        <span class="num">3 · JAK TO DZIAŁA</span>
+        <h2>Jedna karta w telefonie gościa — <span class="u">wszystko dzieje się samo</span></h2>
+        <div class="body" style="grid-template-columns:1fr">
+        <svg class="draw wob" viewBox="0 0 1000 330" role="img" aria-label="Schemat: QR lub NFC, karta w Wallet, pieczątka, nagroda, powiadomienie, opinia Google, panel właściciela">
+          <g stroke="#1c1c1c" stroke-width="3" fill="#fff" stroke-linejoin="round">
+            <rect x="20" y="70" width="150" height="110" rx="14"/>
+            <rect x="215" y="70" width="150" height="110" rx="14"/>
+            <rect x="410" y="70" width="150" height="110" rx="14"/>
+            <rect x="605" y="70" width="150" height="110" rx="14"/>
+            <rect x="800" y="70" width="180" height="110" rx="14"/>
+            <rect x="300" y="225" width="400" height="80" rx="14" stroke="#1f8f3e"/>
+          </g>
+          <g stroke="#1d5fd1" stroke-width="3.5" fill="none" marker-end="url(#arr)">
+            <path d="M172 125 L210 125"/><path d="M367 125 L405 125"/><path d="M562 125 L600 125"/><path d="M757 125 L795 125"/>
+          </g>
+          <path d="M485 182 L500 220" stroke="#1f8f3e" stroke-width="3.5" fill="none" marker-end="url(#arrg)"/>
+          <g font-size="22" class="hand" text-anchor="middle">
+            <text x="95" y="60">1. przy kasie</text>
+            <text x="290" y="60">2. w Wallecie</text>
+            <text x="485" y="60">3. każda wizyta</text>
+            <text x="680" y="60">4. po kilku</text>
+            <text x="890" y="60">5. między wizytami</text>
+          </g>
+          <g transform="translate(60,92)">
+            <rect x="0" y="0" width="34" height="34" fill="none" stroke="#1c1c1c" stroke-width="3"/><rect x="8" y="8" width="18" height="18" fill="#1c1c1c"/>
+            <path d="M52 8 q14 10 0 20 M60 0 q28 18 0 36 M68 -8 q42 26 0 52" fill="none" stroke="#1c1c1c" stroke-width="3" stroke-linecap="round"/>
+          </g>
+          <text x="95" y="165" font-size="17" text-anchor="middle">QR albo NFC · 2 sekundy</text>
+          <rect x="245" y="92" width="90" height="46" rx="8" fill="#1d5fd1"/>
+          <g fill="#fff"><circle cx="258" cy="122" r="4"/><circle cx="271" cy="122" r="4"/><circle cx="284" cy="122" r="4" opacity=".35"/><circle cx="297" cy="122" r="4" opacity=".35"/><circle cx="310" cy="122" r="4" opacity=".35"/><circle cx="323" cy="122" r="4" opacity=".35"/></g>
+          <text x="290" y="165" font-size="17" text-anchor="middle">bez aplikacji, bez konta</text>
+          <circle cx="470" cy="118" r="20" fill="#fff" stroke="#1c1c1c" stroke-width="3"/><path d="M460 118 l7 7 l14 -16" fill="none" stroke="#1f8f3e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M498 100 q14 18 0 36" fill="none" stroke="#1c1c1c" stroke-width="3" stroke-linecap="round"/>
+          <text x="485" y="165" font-size="17" text-anchor="middle">pieczątka telefonem · obsługa nic nie klika</text>
+          <path d="M660 112 l8 -18 l8 18 l19 2 l-14 13 l4 19 l-17 -10 l-17 10 l4 -19 l-14 -13 z" fill="#f4c542" stroke="#1c1c1c" stroke-width="2.5" stroke-linejoin="round"/>
+          <text x="720" y="118" font-size="20" class="hand">gratis</text>
+          <text x="680" y="165" font-size="17" text-anchor="middle">nagroda — jaką ustawicie</text>
+          <rect x="820" y="90" width="140" height="40" rx="8" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/>
+          <circle cx="836" cy="110" r="7" fill="#1d5fd1"/>
+          <text x="850" y="106" font-size="12">Wasz lokal</text>
+          <text x="850" y="122" font-size="12">Wpadnij dziś, masz…</text>
+          <text x="890" y="165" font-size="17" text-anchor="middle">powiadomienie — gość wraca</text>
+          <text x="500" y="258" font-size="22" class="hand" text-anchor="middle" fill="#1f8f3e">po pieczątce: „Podobało się? Zostaw opinię"</text>
+          <text x="500" y="290" font-size="17" text-anchor="middle">jeden klik prosto do Google · pytamy tylko zadowolonych</text>
+          <rect x="745" y="235" width="235" height="60" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5" stroke-dasharray="6 5"/>
+          <text x="862" y="260" font-size="17" text-anchor="middle" class="hand">Wasz panel</text>
+          <text x="862" y="283" font-size="15" text-anchor="middle">kto wraca · ile razy · ile opinii</text>
+        </svg>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="slide" data-n="4">
+        <span class="num">4 · CO SIĘ ZMIENIA</span>
+        <h2>Dziś → <span class="u">za 30 dni</span></h2>
+        <div class="body" style="grid-template-columns:1fr; align-items:start">
+          <div class="cmp">
+            <div>
+              <h3>Dziś</h3>
+              <ul class="hand">
+                <li class="x">nie wiecie, ilu gości wraca ani którzy</li>
+                <li class="x">do stałych gości nie ma jak dotrzeć — chyba że przez portal z prowizją</li>
+                <li class="x">opinie przychodzą przypadkiem, częściej złe</li>
+                <li class="x">nagrodę dostaje ten, kto nie zgubił karteczki</li>
+              </ul>
+            </div>
+            <div class="after">
+              <h3 class="blue">Za 30 dni</h3>
+              <ul class="hand">
+                <li class="ok"><span class="marker">lista stałych gości</span> w panelu — z liczbą wizyt</li>
+                <li class="ok"><span class="marker">własny kanał</span>: jedno powiadomienie i słabszy wtorek się zapełnia</li>
+                <li class="ok">opinie Google <span class="marker">codziennie</span>, od zadowolonych</li>
+                <li class="ok">gość wie, ile brakuje do nagrody — i wraca po nią</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="foot"><span class="sticky blue" style="display:inline-block; transform:rotate(-1deg)">macie kilka lokali? jedna karta działa we wszystkich — i widać, który ma stałych</span></div>
+      </section>
+
+      <!-- 5 -->
+      <section class="slide" data-n="5">
+        <span class="num">5 · SKĄD NOWI GOŚCIE</span>
+        <h2>Więcej opinii → wyżej w Mapach → <span class="u">nowi goście</span></h2>
+        <div class="body g2">
+          <svg class="draw wob" viewBox="0 0 420 260" role="img" aria-label="Pętla: wizyta i pieczątka, prośba o opinię, wyżej w Google, nowy gość">
+            <ellipse cx="210" cy="130" rx="170" ry="95" fill="none" stroke="#1d5fd1" stroke-width="3.5"/>
+            <g font-size="18" class="hand" text-anchor="middle">
+              <rect x="150" y="12" width="120" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="210" y="38">wizyta + pieczątka</text>
+              <rect x="300" y="110" width="110" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="355" y="136" fill="#1f8f3e">„zostaw opinię"</text>
+              <rect x="150" y="208" width="120" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="210" y="234">wyżej w Google</text>
+              <rect x="8" y="110" width="110" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="63" y="136" fill="#1d5fd1">nowy gość</text>
+            </g>
+            <g stroke="#1d5fd1" stroke-width="3" fill="none" marker-end="url(#arr)">
+              <path d="M282 40 q60 20 60 62"/><path d="M355 155 q0 50 -70 62"/><path d="M140 224 q-80 -20 -80 -66"/><path d="M63 105 q0 -55 78 -60"/>
+            </g>
+            <text x="210" y="138" font-size="20" class="hand" text-anchor="middle" fill="#55555a">nakręca się samo</text>
+          </svg>
+          <div class="col">
+            <p class="lead">Ktoś szuka „pizza Lublin" w Mapach. Wyżej jest ten, kto ma więcej świeżych opinii. Ten nowy gość dostaje kartę — i pętla się zamyka.</p>
+            <div class="big green">do 200 opinii / mies.</div>
+            <p class="muted">tyle zbiera jeden lokal u naszych klientów — bez proszenia przy kasie</p>
+            <div class="sticky green">pytamy w chwili, gdy gość jest zadowolony. Niezadowolony trafia do Was, nie do internetu.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="slide" data-n="6">
+        <span class="num">6 · ILE TO DAJE</span>
+        <h2>Policzmy na <span class="u">Waszych</span> liczbach</h2>
+        <div class="body" style="grid-template-columns:1fr; align-items:start">
+          <div class="calc">
+            <div>
+              <div class="field">
+                <label for="f-guests">Gości dziennie</label>
+                <input id="f-guests" type="range" min="30" max="600" step="10" value="150">
+                <output id="o-guests">150</output>
+              </div>
+              <div class="field">
+                <label for="f-bill">Średni rachunek</label>
+                <input id="f-bill" type="range" min="10" max="150" step="5" value="35">
+                <output id="o-bill">35 zł</output>
+              </div>
+              <div class="field">
+                <label for="f-extra">Ilu z nich dzięki karcie wróci jeden raz więcej w miesiącu</label>
+                <input id="f-extra" type="range" min="1" max="20" step="1" value="5">
+                <output id="o-extra">5%</output>
+              </div>
+              <div class="field">
+                <label for="f-fee">Abonament miesięczny</label>
+                <input id="f-fee" type="range" min="0" max="800" step="10" value="300">
+                <output id="o-fee">300 zł</output>
+              </div>
+              <p class="muted" style="font-size:.85em">Ostrożnie: liczymy tylko dodatkowe powroty. Nowych gości z opinii Google nie liczymy wcale.</p>
+            </div>
+            <div class="result">
+              <span class="marker">Dodatkowo w miesiącu</span>
+              <div class="big blue" id="o-rev">+7 875 zł</div>
+              <p class="muted" id="o-visits">to 225 dodatkowych wizyt</p>
+              <div class="bars" role="img" aria-label="Porównanie dodatkowego przychodu z abonamentem">
+                <div class="barrow"><span>dodatkowy przychód</span><div class="track"><div class="fill b" id="bar-rev" style="width:100%"></div></div></div>
+                <div class="barrow"><span>abonament</span><div class="track"><div class="fill g" id="bar-fee" style="width:4%"></div></div></div>
+              </div>
+              <p style="margin:0" id="o-ratio"></p>
+              <div class="sticky">a pierwszy miesiąc i tak macie za darmo</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="slide" data-n="7">
+        <span class="num">7 · JAK TO WYGLĄDA</span>
+        <h2>Pierwszy miesiąc testowy <span class="u">za darmo</span> — dla każdej lokalizacji</h2>
+        <div class="body" style="grid-template-columns:1fr; align-items:start">
+          <div class="col" style="gap:1.2em">
+            <div class="timeline">
+              <div class="tl"><b>dzień 1–2</b>ustawiamy kartę, nagrodę i tabliczkę przy kasie — Wy nic nie instalujecie</div>
+              <div class="tl"><b>tydzień 1</b>pierwsi goście z kartą w telefonie, pierwsze pieczątki</div>
+              <div class="tl"><b>tydzień 2–3</b>pierwsze powroty po nagrodę, pierwsze opinie w Google</div>
+              <div class="tl"><b>dzień 30</b>patrzycie w panel: ilu wróciło, ile opinii — i sami decydujecie</div>
+            </div>
+            <div class="g2" style="display:grid; gap:4%; align-items:center">
+              <ul class="hand" style="font-size:1.1em">
+                <li class="ok">bez umowy na czas określony — rezygnacja w każdej chwili</li>
+                <li class="ok">obsługa: zero nowych obowiązków</li>
+                <li class="ok">jedna karta na wszystkie Wasze lokale</li>
+              </ul>
+              <div class="col">
+                <span class="marker" style="font-size:1.15em">Korzystają już m.in.</span>
+                <svg class="draw wob" viewBox="0 0 360 120" role="img" aria-label="Loga klientów: MusiSushi, Kago Sushi, Yōkai Matcha">
+                  <g stroke="#1c1c1c" stroke-width="2.5" fill="#fff">
+                    <rect x="6" y="10" width="110" height="44" rx="10"/><rect x="126" y="10" width="110" height="44" rx="10"/><rect x="246" y="10" width="110" height="44" rx="10"/>
+                  </g>
+                  <g font-size="19" class="hand" text-anchor="middle"><text x="61" y="39">MusiSushi</text><text x="181" y="39">Kago Sushi</text><text x="301" y="39">Yōkai Matcha</text></g>
+                  <text x="180" y="95" font-size="16" text-anchor="middle" fill="#55555a">Lublin · Świdnik</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="slide" data-n="8">
+        <span class="num">8 · CO DALEJ</span>
+        <h2>Chcecie zobaczyć, ilu gości <span class="blue">u Was</span> wraca?</h2>
+        <div class="body g2">
+          <div class="col">
+            <p class="lead">Odpiszcie w tej rozmowie <span class="marker" style="font-size:1.4em">„ok"</span> — ustawimy miesiąc testowy jeszcze w tym tygodniu.</p>
+            <p class="muted">Albo 5 minut na miejscu, na Waszym telefonie — jak wolicie.</p>
+            <div class="sticky">scanova.tech · Adam</div>
+          </div>
+          <svg class="draw wob" viewBox="0 0 320 240" role="img" aria-label="Dymek wiadomości z odpowiedzią ok">
+            <path d="M40 40 h220 a20 20 0 0 1 20 20 v90 a20 20 0 0 1 -20 20 h-120 l-40 40 v-40 h-60 a20 20 0 0 1 -20 -20 v-90 a20 20 0 0 1 20 -20 z" fill="#fff" stroke="#1c1c1c" stroke-width="3.5" stroke-linejoin="round"/>
+            <text x="160" y="118" font-size="64" class="hand" text-anchor="middle" fill="#1d5fd1">ok</text>
+          </svg>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <aside class="notes" id="notes" aria-live="polite">
+    <h3>Co mówisz · <span id="ntime" class="t"></span></h3>
+    <div id="ntext"></div>
+  </aside>
+</div>
+
+<script>
+  const NOTES = [
+    { t: "0:00–0:12", html: "<p class='say'>„Ile osób było u Was raz, pochwaliło jedzenie i nigdy nie wróciło? Za miesiąc będziecie to wiedzieć — i będziecie mieć takich gości więcej. Pokażę w dwie minuty, jak.”</p><p>Patrz w kamerę. Jedno zdanie o sobie: „Adam, Scanova, Lublin” — i dalej.</p>" },
+    { t: "0:12–0:32", html: "<p class='say'>„Dziś za każdego gościa płacicie drugi raz. Papierowa karta ginie w portfelu, więc gość zaczyna od zera. Aplikacji nikt nie instaluje dla jednego lokalu. A opinie w Google zostawiają głównie niezadowoleni — bo zadowolonych nikt nie prosi. Efekt: nowych przyprowadza reklama i portale z prowizją, a stałych… nawet nie umiecie policzyć.”</p><p>Wskaż każdy z trzech rysunków. Nie rozwijaj — to plansza o ich dniu dzisiejszym.</p>" },
+    { t: "0:32–1:12", html: "<p class='say'>„U nas wszystko dzieje się samo. Gość skanuje kod albo przykłada telefon — karta wskakuje do Apple czy Google Wallet. Bez aplikacji, bez konta, dwie sekundy. Przy każdej wizycie przykłada telefon: pieczątka. Obsługa nic nie klika. Po kilku wizytach nagroda — jaką ustawicie. Między wizytami karta sama wysyła mu powiadomienie: ‚wpadnij dziś’. A po pieczątce zadaje jedno pytanie: podobało się? Zadowolony jednym klikiem trafia do opinii Google. Wy w panelu widzicie, kto wraca i ile razy.”</p><p><b>Najważniejsza plansza.</b> Palcem od 1 do 5, potem w dół do opinii i panelu. Tu wetnij ujęcia prawdziwego telefonu z kartą.</p>" },
+    { t: "1:12–1:30", html: "<p class='say'>„Co się zmienia po miesiącu: macie listę stałych gości z liczbą wizyt. Macie własny kanał — jedno powiadomienie i słabszy wtorek się zapełnia, bez prowizji dla portalu. Opinie przychodzą codziennie, od zadowolonych. A gość wie, ile mu brakuje do nagrody, więc wraca po nią.”</p><p>Jeśli lokal ma 2+ punkty — przeczytaj żółtą karteczkę na głos.</p>" },
+    { t: "1:30–1:50", html: "<p class='say'>„Skąd biorą się nowi goście: ktoś wpisuje w Mapy ‚pizza Lublin’. Wyżej jest ten, kto ma więcej świeżych opinii. Nowy gość przychodzi, dostaje kartę, zostawia opinię — pętla się nakręca sama. Jeden lokal u naszych klientów zbiera nawet do dwustu opinii w miesiącu.”</p><p>Obrysuj pętlę palcem. To jest moment, w którym rozumieją, że to nie jest ‚program lojalnościowy’, tylko maszynka do nowych gości.</p>" },
+    { t: "1:50–2:20", html: "<p class='say'>„Policzmy ostrożnie. 150 gości dziennie, rachunek 35 zł. Jeśli tylko 5% z nich dzięki karcie wróci jeden raz więcej w miesiącu — to 225 dodatkowych wizyt i prawie 8 tysięcy złotych. Abonament to ułamek tego, zwrot w dwa dni. I nie liczę tu w ogóle nowych gości z opinii.”</p><p>Przed nagraniem ustaw suwak abonamentu na Waszą cenę. Jeśli znasz liczby tego lokalu — przesuń suwaki na żywo. Mów ‚jeśli tylko’, nie obiecuj procentu.</p>" },
+    { t: "2:20–2:38", html: "<p class='say'>„Jak to wygląda: dzień pierwszy–drugi ustawiamy wszystko za Was, nic nie instalujecie. W pierwszym tygodniu pierwsze karty i pieczątki. W drugim–trzecim pierwsze powroty i opinie. Trzydziestego dnia patrzycie w panel i sami decydujecie. Bez umowy na czas określony. Korzystają już MusiSushi, Kago Sushi, Yōkai Matcha.”</p>" },
+    { t: "2:38–2:50", html: "<p class='say'>„Chcecie zobaczyć, ilu gości u Was wraca? Odpiszcie w tej rozmowie ‚ok’ — ustawimy miesiąc testowy jeszcze w tym tygodniu. Albo wpadnę na 5 minut i pokażę na Waszym telefonie.”</p><p>Koniec. Ostatnie słowo: ‚ok’ albo ‚na Waszym telefonie’. Nic po tym.</p>" },
+  ];
+
+  const slides = [...document.querySelectorAll(".slide")];
+  const dots = document.getElementById("dots");
+  const cur = document.getElementById("cur");
+  const notes = document.getElementById("notes");
+  const ntext = document.getElementById("ntext");
+  const ntime = document.getElementById("ntime");
+  let i = 0;
+
+  slides.forEach((_, k) => {
+    const d = document.createElement("button");
+    d.className = "dot"; d.type = "button"; d.setAttribute("role", "tab"); d.setAttribute("aria-label", `Plansza ${k + 1}`);
+    d.addEventListener("click", () => go(k));
+    dots.appendChild(d);
+  });
+
+  function go(k) {
+    i = (k + slides.length) % slides.length;
+    slides.forEach((s, j) => s.classList.toggle("active", j === i));
+    [...dots.children].forEach((d, j) => d.setAttribute("aria-current", j === i ? "true" : "false"));
+    cur.textContent = i + 1;
+    ntime.textContent = NOTES[i].t;
+    ntext.innerHTML = NOTES[i].html;
+    try { localStorage.setItem("tablica-slide", String(i)); } catch {}
+  }
+  document.getElementById("prev").addEventListener("click", () => go(i - 1));
+  document.getElementById("next").addEventListener("click", () => go(i + 1));
+  const notesBtn = document.getElementById("notesBtn");
+  function toggleNotes() {
+    notes.hidden = !notes.hidden;
+    notesBtn.setAttribute("aria-pressed", String(!notes.hidden));
+  }
+  notesBtn.addEventListener("click", toggleNotes);
+  document.getElementById("fsBtn").addEventListener("click", () => {
+    const el = document.querySelector(".board-frame");
+    try { if (document.fullscreenElement) document.exitFullscreen(); else el.requestFullscreen(); } catch {}
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.target.tagName === "INPUT") return;
+    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { e.preventDefault(); go(i + 1); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); go(i - 1); }
+    else if (e.key.toLowerCase() === "n") toggleNotes();
+    else if (e.key.toLowerCase() === "f") document.getElementById("fsBtn").click();
+  });
+
+  const pln = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0 });
+  const $ = (id) => document.getElementById(id);
+  function calc() {
+    const guests = +$("f-guests").value, bill = +$("f-bill").value, extra = +$("f-extra").value, fee = +$("f-fee").value;
+    $("o-guests").textContent = guests;
+    $("o-bill").textContent = bill + " zł";
+    $("o-extra").textContent = extra + "%";
+    $("o-fee").textContent = fee + " zł";
+    const visits = Math.round(guests * 30 * (extra / 100));
+    const rev = visits * bill;
+    $("o-rev").textContent = "+" + pln.format(rev) + " zł";
+    $("o-visits").textContent = `to ${pln.format(visits)} dodatkowych wizyt — gości, którzy już Was znają`;
+    const max = Math.max(rev, fee, 1);
+    $("bar-rev").style.width = (100 * rev / max) + "%";
+    $("bar-fee").style.width = (100 * fee / max) + "%";
+    if (fee === 0) {
+      $("o-ratio").innerHTML = "<span class='marker green'>Bez abonamentu</span> — cały dodatkowy przychód zostaje u Was.";
+    } else {
+      const ratio = rev / fee;
+      const days = Math.max(1, Math.ceil(fee / (rev / 30)));
+      $("o-ratio").innerHTML = `<span class='marker green'>${ratio >= 10 ? Math.round(ratio) : ratio.toFixed(1).replace(".", ",")}×</span> więcej niż kosztuje. <span class='marker'>Zwraca się po ${days} ${days === 1 ? "dniu" : "dniach"}.</span>`;
+    }
+  }
+  ["f-guests", "f-bill", "f-extra", "f-fee"].forEach((id) => $(id).addEventListener("input", calc));
+  calc();
+
+  let start = 0;
+  try { start = Math.min(slides.length - 1, Math.max(0, +localStorage.getItem("tablica-slide") || 0)); } catch {}
+  go(start);
+</script>
