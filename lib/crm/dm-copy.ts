@@ -16,12 +16,13 @@ const PROOF_RESTAURANT = "MusiSushi i Kago Sushi";
 const PROOF_CAFE = "Yōkai Matcha, MusiSushi i Kago Sushi";
 
 /**
- * Linki wysyłane dopiero PO odpowiedzi. `film` uzupełnij, gdy nagracie
- * 2-minutowy filmik — do tego czasu gotowe odpowiedzi pokazują "[link do filmiku]".
+ * Linki wysyłane dopiero PO odpowiedzi. Filmik ustawia się zmienną
+ * NEXT_PUBLIC_FILM_URL (Vercel → Environment Variables) — bez niej gotowe
+ * odpowiedzi pokazują "[link do filmiku]", a bot na IG NIE odpisuje sam.
  */
 export const LINKS = {
   www: "scanova.tech",
-  film: null as string | null,
+  film: (process.env.NEXT_PUBLIC_FILM_URL?.trim() || null) as string | null,
 };
 
 const CAFE_NICHES = new Set(["kawiarnia", "cukiernia/lody", "boba/matcha", "vegan", "sniadania/brunch"]);
