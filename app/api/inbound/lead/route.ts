@@ -41,12 +41,12 @@ function str(v: unknown, max = 200): string | null {
 }
 
 export async function POST(request: NextRequest) {
-  const secret = process.env.INBOUND_WEBHOOK_SECRET;
+  const secret = process.env.INBOUND_WEBHOOK_SECRET?.trim();
   // Funkcja wyłączona (brak sekretu) = endpoint nie istnieje.
   if (!secret || !isSupabaseConfigured()) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
-  const token = request.headers.get("x-inbound-token") ?? request.nextUrl.searchParams.get("token");
+  const token = (request.headers.get("x-inbound-token") ?? request.nextUrl.searchParams.get("token"))?.trim();
   if (token !== secret) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }

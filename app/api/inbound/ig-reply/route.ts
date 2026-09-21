@@ -26,11 +26,12 @@ function rateLimited(ip: string): boolean {
 }
 
 export async function POST(request: NextRequest) {
-  const secret = process.env.INBOUND_WEBHOOK_SECRET;
+  // trim: wartość wklejona do Vercela przez stdin potrafi mieć końcówkę linii.
+  const secret = process.env.INBOUND_WEBHOOK_SECRET?.trim();
   if (!secret || !isSupabaseConfigured()) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
-  const token = request.headers.get("x-inbound-token") ?? request.nextUrl.searchParams.get("token");
+  const token = (request.headers.get("x-inbound-token") ?? request.nextUrl.searchParams.get("token"))?.trim();
   if (token !== secret) {
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
