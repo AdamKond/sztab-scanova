@@ -1,0 +1,123 @@
+@chmurka_kawiarnia_lukow | Chmurka Kawiarnia | Łuków | kawiarnia |  | W Łukowie Chmurka to jedno z niewielu miejsc, gdzie ludzie siedzą dłużej niż na kawę na szybko.
+@coffee_room_lukow | Kawiarnia Coffee Room | Łuków | kawiarnia | 1889 | 464 posty i 1,9 tys. obserwujących w Łukowie - macie stałych bywalców, tylko nigdzie ich nie liczycie.
+@dagrassolukow | Da Grasso Łuków | Łuków | pizza | 1485 | Ponad 3,8 tys. postów - w Łukowie nikt nie pokazuje pizzy tak regularnie jak Wy.
+@pizzalukow | Pizza Łuków | Łuków | pizza |  | Pizza, żeberka i burgery z dowozem po Łukowie - część zamówień wraca, ale nie wiadomo które.
+@siedemcztery.pizza | SiedemCztery Pizza | Łuków | pizza | 3442 | 3,4 tys. obserwujących przy pizzy z Łukawca to lepszy wynik niż większość pizzerii w Łukowie.
+@pizzeriagiuseppelukow | Pizzeria Giuseppe Łuków | Łuków | pizza |  | Giuseppe ma w Łukowie własną stronę i stałe grono, ale po wizycie nic do Was nie wraca.
+@burgerbarlukow | BurgerBar Łuków | Łuków | burgery | 337 | BurgerBar ma w Łukowie mocną opinię, a 337 obserwujących to mniej niż realnych stałych klientów.
+@dubaj_lukow | Dubaj | Łuków | burgery | 118 | Warszawska 20 kręci się na co dzień, a profil ma 118 osób - szkoda tego ruchu.
+@kaukaz_grill_kebab | Kaukaz Grill & Kebab | Łuków | kebab/street food |  | Kebab z dowozem na Nowopijarskiej to klient co tydzień - idealny pod kartę na powroty.
+@cukiernia.lukowa | Cukiernia Łukowa | Łuków | cukiernia/lody |  | Nazwa w Łukowie rozpoznawalna, brakuje tylko czegoś, co wiąże klienta na stałe.
+@bistro32_bialapodlaska | Bistro 32 | Biała Podlaska | restauracja |  | Codzienne świeże lunche na Moniuszki 32 - klient wraca co tydzień, tylko nikt tego nie zapisuje.
+@bistromappy | Cafe Bistro Bar Mappy | Biała Podlaska | kawiarnia |  | Reformacka 10 to kawa plus lunch, czyli dobra baza pod kartę na dziesiątą kawę.
+@capitol_biala_podlaska | Hotel Restauracja Capitol | Biała Podlaska | restauracja |  | Capitol żyje z gości hotelowych i bialczan - te dwie grupy warto rozdzielić w bazie.
+@bulaispolabialapodlaska | Buła i Spóła | Biała Podlaska | kebab/street food |  | CH Rywal to ruch impulsowy, a tam karta na powroty robi największą różnicę.
+@pysznykebabbialapodlaska | Pyszny Kebab Biała Podlaska | Biała Podlaska | kebab/street food | 20 | 204 posty i 20 obserwujących - klientów macie, kontaktu do nich nie.
+@slodkiego_milego | Cukiernia Słodkiego Miłego | Biała Podlaska | cukiernia/lody |  | Torty na zamówienie to komunie, urodziny i wesela, czyli zamówienia, które wracają cyklicznie.
+@slodko_upieczone | Słodko Upieczone | Biała Podlaska | cukiernia/lody |  | Pracownia tortów w Białej - klient wraca raz na rok, chyba że mu się o tym przypomni.
+@moscafezamosc | MOS Cafe | Zamość | kawiarnia |  | Otwarte od 7:00 - ranna kawa to najłatwiejszy nawyk do zamknięcia w karcie lojalnościowej.
+@arabeska_kawiarnia | Arabeska Kawiarnia Artystyczna i Cukiernia | Zamość | kawiarnia |  | Kawiarnia z wydarzeniami artystycznymi ma stałych bywalców, brakuje im tylko powodu do liczenia wizyt.
+@cukierniaturek | Cukiernia Turek | Zamość | cukiernia/lody | 717 | Nowy Rynek 21a i 717 obserwujących - jedna z najbardziej rozpoznawalnych cukierni w Zamościu.
+@zamojskie.atelier.tortowe | Zamojskie Atelier Tortowe | Zamość | cukiernia/lody |  | Torty na Zamość i Roztocze idą głównie z polecenia, a polecenia da się nagradzać.
+@dwapstragibistro | Dwa Pstrągi Bistro & Sklep | Zamość | restauracja |  | Bistro i sklep to dwa różne powody powrotu - obie ścieżki obsłuży jedna karta.
+@istanbulkebabzamosc | Istanbul Kebab Zamość | Zamość | kebab/street food | 762 | Orla 1B i 762 obserwujących - kebab żyje z powrotów, a te da się policzyć.
+@powerkebab_zamosc | Power Kebab | Zamość | kebab/street food | 889 | Piszecie "najlepszy kebab Zamość" - takie hasło najlepiej podpierać opiniami Google.
+@kebabwypas | Kebab Wypas | Zamość | kebab/street food | 513 | Przemysłowa 4E to klienci z pracy w kółko - dziesiąty kebab gratis sam się prosi.
+@kebabswojakpl | Kebab Swojak | Zamość | kebab/street food | 306 | Dwa punkty w Zamościu, a jedna karta działa w obu - klient zbiera niezależnie gdzie wpadnie.
+@noor_kebab_zamosc | Noor Kebab Zamość | Zamość | kebab/street food | 149 | 68 postów i 149 obserwujących - w Zamościu wyprzedza Was kilka kebabów, choć jedzenie tego nie tłumaczy.
+@houseofkebab22400 | House of Kebab 22-400 | Zamość | kebab/street food | 132 | Rzemieślniczy kebab z Gminnej, a zasięg profilu w ogóle tego nie oddaje.
+@rolujemysushichelm | Rolujemy Sushi Chełm | Chełm | sushi/azja | 1044 | Piszecie, że najlepsze sushi w Chełmie - taką deklarację warto podeprzeć opiniami Google.
+@cukiernia_kijewscy | Cukiernia Kijewscy | Chełm | cukiernia/lody |  | Pierwsza cukiernia w Chełmie od 1973 - pół wieku stałych klientów bez żadnego programu lojalnościowego.
+@cukiernia_grela_torty | Cukiernia Grela | Chełm | cukiernia/lody |  | Warzywna 2a i ciastka bez cukru - asortyment, po który ludzie wracają regularnie.
+@burgerownia_zkurczybyk | zKURczyBYK | Chełm | burgery | 1118 | 1,1 tys. obserwujących na burgerach 100% wołowych w Chełmie to gotowa baza pod kartę.
+@kebabarmenski_chelm | Amaras Kebab Ormiański | Chełm | kebab/street food |  | Ormiański kebab to w Chełmie nisza jednoosobowa - tym łatwiej zbudować grono stałych.
+@elturko_kebab | El Turko Kebab Chełm | Chełm | kebab/street food | 29 | 32 posty i 29 obserwujących - ruch macie większy niż zasięg tego profilu.
+@crazybubble.chelm | Crazy Bubble Chełm | Chełm | boba/matcha |  | Galeria Chełm i bubble tea to klientela nastoletnia, która pieczątki w telefonie zbiera najszybciej.
+@restauracjatradycyjna | Restauracja Tradycyjna Puławy | Puławy | restauracja | 256 | 351 postów i 256 obserwujących - gubicie kontakt do gości, którzy już u Was byli.
+@krainaslodkosci | Kraina Słodkości | Puławy | cukiernia/lody |  | Torty i słodkie stoły w Puławach wracają cyklicznie, jeśli ktoś o tych terminach pamięta.
+@ciachobezcukru.pulawy | Ciacho bez Cukru Puławy | Puławy | cukiernia/lody |  | Ciasta bez cukru mają wąską, ale bardzo powracającą grupę - wymarzona pod kartę.
+@slodkiesekrety_wypieki | Słodkie Sekrety - Sylwia Dudzińska | Puławy | cukiernia/lody |  | Torty w Puławach idą z polecenia, a polecenia można policzyć i nagrodzić.
+@bellavitaswidnik | Bella Vita Świdnik | Świdnik | pizza |  | Bankowa 8A to pizza, makarony i lody naraz - trzy powody powrotu na jednej karcie.
+@bankietowe_stylove | Bankietowe Stylove | Świdnik | restauracja |  | Przyjęcia to klient raz na kilka lat, chyba że zostanie w bazie i dostanie przypomnienie.
+@kawaizabawaswidnik | Kawa i Zabawa | Świdnik | kawiarnia |  | Kawiarnia z bawialnią to rodzice wracający co tydzień - najprostszy program lojalnościowy, jaki jest.
+@bistro.na.pietrze | Bistro Na Piętrze | Biłgoraj | restauracja |  | Kopernika 9 i lunche to klient codzienny, którego nigdzie nie zapisujecie.
+@hotel.restauracja.sitarska | Hotel i Restauracja Sitarska | Biłgoraj | restauracja |  | Sitarska to w Biłgoraju adres na większe okazje - warto wiedzieć, kto wraca co roku.
+@zebroispolka | Zebro i Spółka | Biłgoraj | restauracja |  | Kuchnia kreatywna na Kościuszki 46a to w Biłgoraju rzadkość i własna grupa wiernych gości.
+@deshikebabbilgoraj | Deshi Kebab Biłgoraj | Biłgoraj | kebab/street food |  | Deshi żyje z powtarzalnych zamówień, a karta w telefonie robi tu całą robotę.
+@kebabhebe | Kebab Hebe | Biłgoraj | kebab/street food |  | Przy dowozie po Biłgoraju najłatwiej zgubić klienta, jeśli nic go do Was nie wiąże.
+@palacowarestauracja | Pałacowa Restauracja & Hotel | Radzyń Podlaski | restauracja |  | Restauracja w Pałacu Potockich z burgerami i street foodem to dwie różne grupy gości do policzenia.
+@pauza_restauracja | Pauza Restauracja & Hotel | Radzyń Podlaski | restauracja |  | Sezonowe menu na Budowlanych 1 - goście wracają po zmianach w karcie, jeśli się o nich dowiedzą.
+@restoriahotel | Restoria Hotel | Radzyń Podlaski | restauracja |  | 15 lat w Radzyniu to spory zbiór klientów, których nigdzie nie macie zapisanych.
+@restauracjawietnamskaradzyn | Phúc Radzyń Podlaski | Radzyń Podlaski | sushi/azja |  | Kuchnia wietnamska w Radzyniu to jedyny taki adres - stali klienci robią tu większość obrotu.
+@farinapizzeria | Farina Pizzeria | Radzyń Podlaski | pizza |  | Pocztowa 4, włoska pizza i drinki - klasyczny lokal na powtarzalne piątki.
+@kawiarnia_kofiti | Kofi&Ti Kawiarnia i Herbaciarnia Artystyczna | Radzyń Podlaski | kawiarnia | 1271 | 1,3 tys. obserwujących przy kawiarni w Radzyniu to wynik, jakiego nie ma większość lokali w powiecie.
+@slodko.gorzka.cafe | Kawiarnia Słodko-Gorzka | Międzyrzec Podlaski | kawiarnia | 1742 | 1,7 tys. obserwujących z Lubelskiej 56 to najmocniejszy profil gastro w Międzyrzecu.
+@dagrasso.miedzyrzec.podlaski | Da Grasso Międzyrzec Podlaski | Międzyrzec Podlaski | pizza | 1620 | 1,6 tys. obserwujących i dowóz do 23 - klient wraca często, tylko nic z tego nie zostaje.
+@pizzeriaitalianamc | Pizzeria Italiana MC | Międzyrzec Podlaski | pizza |  | Partyzantów 2 to adres znany od lat, brakuje tylko powodu, by wracać częściej.
+@cela_cafe_restaurant | Cela Cafe & Restaurant | Janów Lubelski | restauracja | 1732 | 1,7 tys. obserwujących to najlepszy wynik gastro w Janowie - szkoda tego nie wykorzystać.
+@hotelduo | Hotel DUO Janów Lubelski | Janów Lubelski | restauracja | 1111 | Restauracja nad jeziorem żyje z sezonu, więc poza sezonem trzeba mieć czym ściągnąć miejscowych.
+@pysznewypiekipl | PyszneWypieki | Janów Lubelski | cukiernia/lody | 1553 | Torty, słodkie stoły i piekarnia pod Janowem - 1,5 tys. obserwujących to gotowa baza klientów.
+@takiedobre_werescy | Takie Dobre - obiady i catering | Janów Lubelski | restauracja |  | Obiady na telefon to klient codzienny, przy którym karta działa jak abonament.
+@si_wloska | Si! Włoska | Kraśnik | wloska |  | 4,6 z ponad tysiąca opinii w Kraśniku - taki wynik warto podtrzymywać systematycznie, nie zrywami.
+@pysznykebabkrasnik | Pyszny Kebab Kraśnik | Kraśnik | kebab/street food |  | Kebab w Kraśniku to klient co tydzień, ale bez karty nie wiecie, który to który.
+@rimi.kebab | Rimi Kebab | Kraśnik | kebab/street food |  | Zamówienia idą na telefon - numer macie, historii wizyt już nie.
+@the_papillon_pub | The Papillon Pub | Parczew | wloska | 1253 | 1,2 tys. obserwujących przy Kościelnej 26 to w Parczewie absolutny top.
+@stara__szwalnia_parczew | Stara Szwalnia | Parczew | restauracja | 528 | 160 postów i 528 obserwujących - markę budujecie, brakuje narzędzia na powroty.
+@lubieplacki_kochampizze | Lubię Placki Kocham Pizzę | Parczew | pizza |  | Pizza przy MOSiR to ruch sezonowy i eventowy, idealny pod zbieranie pieczątek.
+@boskawa_trattoria_pizzeria | Boskawa Trattoria Pizzeria | Ryki | pizza | 461 | Trattoria w Rykach to rzadkość, a 461 obserwujących pokazuje, że miasto Was zauważyło.
+@pizzeria_vega_ryki | Pizzeria Vega | Ryki | pizza | 59 | 17 postów i 59 obserwujących - klienci są, tylko profil o tym nie wie.
+@balan.deblin | Ba Lan Dęblin | Dęblin | sushi/azja |  | Kuchnia orientalna ma w Dęblinie 4,7 tys. fanów na Facebooku, a na Instagramie tego nie widać.
+@bordo_pizzeriarestauracja | Pizzeria & Restauracja Bordo | Włodawa | pizza |  | Rodzinny lokal na Mickiewicza 1 to jeden z niewielu adresów we Włodawie z polską i włoską kuchnią.
+@restauracja_hotel_gniecki | Restauracja & Hotel Gniecki | Hrubieszów | restauracja |  | Ponad tysiąc opinii na Booking i jedyna kręgielnia w Hrubieszowie - goście wracają, warto ich policzyć.
+@restauracjastorczyk | Restauracja Storczyk | Krasnystaw | restauracja | 174 | Mostowa 27 to wesela i przyjęcia, czyli goście, którzy wracają, jeśli im się przypomni.
+@habanero.kebab | Habanero Kebab | Lubartów | kebab/street food |  | Kebab i pizza w jednym miejscu to dwa powody powrotu na jednej karcie.
+@kebabcenterlubartow | Kebab Center Lubartów | Lubartów | kebab/street food |  | Macie własną stronę z zamówieniami, brakuje tylko czegoś, co trzyma klienta przy Was.
+@deshikebabtomaszowlubelski | Deshi Kebab Tomaszów Lubelski | Tomaszów Lubelski | kebab/street food | 172 | 34 posty i 172 obserwujących - kebab sprzedaje się sam, ale profil nie pracuje.
+@restauracjacukrownia | Restauracja & Pub Cukrownia | Opole Lubelskie | restauracja |  | Fabryczna 23 plus punkt w Bełżycach - dwie lokalizacje, a baza klientów mogłaby być jedna.
+
+### NIEPEWNE
+@lyk_kawy | ŁYK KAWY kawiarnia | wyszła przy zapytaniu o Łuków, ale miasta nie potwierdzono
+@tlok.kawiarnia | TŁOK kawiarnia i bar z winem | miasto niepotwierdzone
+@lyk.coffeenwine | ŁYK kawa | wino | miasto niepotwierdzone
+@da_grasso_lukow | Da Grasso Łuków | drugie konto tej samej pizzerii (w bazie zostaje @dagrassolukow)
+@krowia_wyspa_place | Burger Krowia Wyspa Puławy | drugie konto marki już obecnej w bazie
+@bistrokebabpl | Bistro Kebab Zamość | profil praktycznie martwy (4 obserwujących)
+@atmosferacaffe | Atmosfera Caffe | profil istnieje, ale związek z Włodawą niepotwierdzony
+@paracoffeeandmore | para coffee and more | Kraśnik niepotwierdzony
+@piekarniacukierniasmaga | Piekarnia-Cukiernia SMAGA | miasto niepotwierdzone
+@wieledobrego | Wiele Dobrego bistro & eko sklep | miasto niepotwierdzone (prawdopodobnie nie Chełm)
+@nomo_cake_cafe | NOMO Cake & Cafe | miasto niepotwierdzone
+@bistrougebalskich | Bistro u rodziny Gębalskich | miasto niepotwierdzone
+@kuchniagrecka | Kuchnia Grecka APOLLO | miasto niepotwierdzone
+@nowakuchniapolska | Nowa Kuchnia Polska | miasto niepotwierdzone
+@kawiarniawidokowka | Kawiarnia Widokówka | Biłgoraj niepotwierdzony
+@kulanica | Kulanica Bakery & Café | Biłgoraj niepotwierdzony
+@bistrozawijane | Restauracja Zawijane bistro | Świdnik niepotwierdzony
+@doki.kebab.burger | DOKI Kebab&Burger | Puławy niepotwierdzone
+@bafra.kebab.chelm | Bafra Kebab | w bio adres gdański, mimo handle'a z "chelm"
+@crazybubble4you | Crazy Bubble Zamość | potwierdzony tylko TikTok, nie Instagram
+@pizzeria.ludowa | Pizzeria Ludowa | miasto niepotwierdzone
+(bez potwierdzonego Instagrama - tylko Facebook lub strona www)
+Restauracja Staropolska, Restauracja Magistrat, Hotel/Restauracja Platinum, United Kebab, Kebab Point - Hrubieszów
+Kawiarnia Centrum - Włodawa
+Restauracja Zamkowa, Restauracja Staromiejska, Insomnia, Kawiarnia Dworek - Krasnystaw
+Kawiarnia Ewelina, Karczma Nałęczowska, Zabytkowe Podziemia, Niezapominajka, U Hanysa, Retro - Nałęczów
+Pizzeria JACQ, Pizzeria & Pub 77, Restauracja Nad Wisłą, Restauracja Piekiełko, Kawiarnia Pułap, Kawiarnia EWEX - Dęblin
+Pizzeria 112, Pizzeria Ratel, Kawiarnia Oskar - Międzyrzec Podlaski
+Pizzeria Golińska, Restauracja U Górala - Kraśnik
+Metro Kebab, Kreuzberg Kraft Kebap - Biłgoraj
+Michele (pizza neapolitańska), Karczma u Wargockich - Łęczna
+Luxer Kebab, Bafra Kebab, Kohinoor Kebab, Kebab po Turecku, Alle Pizza, Pizzeria 105, Pizzeria Tam Gdzie Zawsze, Jagodowy Smak - Świdnik
+Kebab Łasuch, Antalya Döner Kebab, Beef Burger - Tomaszów Lubelski
+Pyszny Kebab, My Kebab, Hayati Kebab - Lubartów
+Pyszny Kebab, My Kebab, Kebab Boss - Radzyń Podlaski
+Pizzeria Imperial, O Sole Mio - Parczew
+Restauracja Staroopolska, Nowa Piwnica Smaku - Opole Lubelskie
+Pizzeria Amici, Pizzeria Gusto, Pizzeria Kozak, Da Grasso - Chełm
+Darul Kebab, Kebab u Szwagra, Kebso-Żerka, Piekarnia Abramowicz Piłat - Puławy
+Gastro Pizzeria - Ryki
+Cukiernia Arabeska (osobne konto cukierni), Antalya Döner Kebab, Food Truck Strefa Burgera - Zamość
+Asian Kebab & Grill, Pizzeria Giuseppe - Biała Podlaska
+
+### NOTATKI
+Najmocniejsze miasta pod DM to Łuków, Radzyń Podlaski i Międzyrzec Podlaski - są praktycznie nietknięte w obecnej bazie, a mają po kilka lokali z realnym, aktywnym Instagramem. W Łukowie wyróżnia się SiedemCztery Pizza (3,4 tys. obserwujących) i Coffee Room (1,9 tys.), czyli lokale, które już umieją w social media i najszybciej zrozumieją wartość karty w Wallecie. W Radzyniu komplet: Pałacowa, Pauza, Restoria, Phúc, Farina i Kofi&Ti pokrywają całe miasto - można uderzyć do wszystkich w jednym dniu i zbudować lokalny efekt sieci. Międzyrzec ma dwa bardzo silne profile (Słodko-Gorzka 1,7 tys., Da Grasso 1,6 tys.) przy małym mieście, co oznacza, że ich obserwujący to głównie realni klienci z okolicy. Janów Lubelski jest ciekawy, bo Cela Cafe (1,7 tys.) i PyszneWypieki (1,5 tys.) mają zasięgi nieproporcjonalnie duże do wielkości miasta. W Zamościu i Chełmie najlepszą niezagospodarowaną niszą są kebaby - sześć zamojskich profili i trzy chełmskie, wszystkie z wysoką powtarzalnością zakupu, czyli idealne pod "dziesiąty gratis". Osobna, bardzo wdzięczna grupa to cukiernie i pracownie tortów (Turek i Zamojskie Atelier w Zamościu, Kijewscy i Grela w Chełmie, Słodkiego Miłego i Słodko Upieczone w Białej, Kraina Słodkości i Słodkie Sekrety w Puławach) - u nich zamówienia są cykliczne i sezonowe, więc przypomnienie przez kartę realnie zwiększa liczbę zamówień. Lokale z niskimi licznikami (Pyszny Kebab Biała 20, El Turko 29, Pizzeria Vega 59, Dubaj 118) warto brać jako drugi rzut - mają ruch, ale nie mają zasięgu, więc argument "zbierzcie kontakty i opinie" trafia u nich najmocniej. Najsłabiej wypadły Nałęczów, Dęblin, Bełżyce, Poniatowa, Hrubieszów i Krasnystaw - tam gastronomia siedzi niemal wyłącznie na Facebooku, więc pod DM na Instagramie to ślepy zaułek i nie ma sensu tam wracać. Uwaga operacyjna: budżet wyszukiwarki wyczerpał się w trakcie zadania, więc listę da się jeszcze rozszerzyć o Świdnik, Łęczną i Kazimierz Dolny przy kolejnym przebiegu.

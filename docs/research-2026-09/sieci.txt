@@ -1,0 +1,99 @@
+@dara_kebab | DARA Kebab | Rzeszów | kebab/street food | 4667 | Przy 6 lokalach w Rzeszowie jedna karta w telefonie gościa działa we wszystkich i widać, który punkt ma stałych
+@cukierniakeks | Cukiernia KEKS | Rzeszów | cukiernia/lody | 1552 | Pani Agato, przy 10 cukierniach jedna karta w Apple Wallet działa w każdym mieście i pokazuje, gdzie wracają stali
+@cukiernia.mikolaj.rzeszow | Cukiernia Mikołaj | Rzeszów | cukiernia/lody | 205 | Przy 3 lokalach jedna karta w telefonie gościa działa we wszystkich i widać, który punkt ma stałych klientów
+@cukierniateodora | Cukiernia Teodora | Rzeszów | cukiernia/lody | 81 | Przy 6 punktach Teodory jedna karta w telefonie zastępuje pieczątki i pokazuje, gdzie gość wraca najczęściej
+@palmsmoothiebar | Palm Smoothie Bar | Rzeszów | boba/matcha | 710 | Przy 3 lokalach jedna karta w Apple Wallet działa w galeriach i w Przemyślu, bez papierowych pieczątek
+@pierozarniarzeszowska | Pierożarnia Rzeszowska | Rzeszów | restauracja | 829 | Przy 2 lokalach jedna karta w telefonie gościa działa w obu i pokazuje, który ma więcej stałych
+@almetro.rzeszow | Al Metro | Rzeszów | pizza | 2743 | Przy 2 lokalach jedna karta w Apple Wallet działa i na Budziwoju, i w Śródmieściu
+@missione.pizza.rzeszow | Missione Pizza | Rzeszów | pizza | 2108 | Panowie Piotrze i Bartku, przy 2 lokalach jedna karta w telefonie gościa działa w obu i pokazuje powroty
+@lodziarnia_fragola_rzeszow | Lodziarnia Fragola | Rzeszów | cukiernia/lody | 374 | Przy 2 lodziarniach jedna karta w telefonie zastępuje pieczątki i działa w Rzeszowie i Jarosławiu
+@piekarniaciastkarniaklos | Piekarnia Ciastkarnia Kłos | Przemyśl | cukiernia/lody | 1815 | Przy 2 sklepach jedna karta w Apple Wallet zastępuje pieczątki i pokazuje, kto wraca po chleb
+@cukiernia_kukulka | Cukiernia Kukułka | Rzeszów | cukiernia/lody | 128 | Przy 2 cukierniach jedna karta w telefonie gościa działa w obu punktach i zbiera opinie Google
+@makaroniarze | Makaroniarze | Rzeszów | restauracja | 252 | Przy 2 lokalach jedna karta w telefonie gościa działa w obu i widać, który przyciąga stałych
+@cukierniapokusa | Cukiernia Pokusa | Rzeszów | cukiernia/lody | 1597 | Przy 2 cukierniach jedna karta w Apple Wallet zastępuje pieczątki i pokazuje powroty gości
+@cukierniajoasia | Cukiernia JoAsia | Rzeszów | cukiernia/lody | 334 | Przy 2 lokalach jedna karta w telefonie działa w obu i widać, który punkt ma stałych klientów
+@dobrapaczkarnia | Dobra Pączkarnia | Rzeszów | cukiernia/lody | 8325 | Przy 2 punktach jedna karta w Apple Wallet zastępuje pieczątki, a 8 tys. obserwujących ma gdzie wrócić
+@big.city.pizza.rzeszow | Big City Pizza | Rzeszów | pizza | 75 | Przy 2 lokalach jedna karta w telefonie gościa działa w obu i pokazuje, który ma stałych
+@sapori899_rzeszow | Sapori di Napoli | Rzeszów | wloska | | Przy 2 lokalach jedna karta w Apple Wallet działa i przy Bernardyńskiej, i w Millenium Hall
+@piekarnia.chlebak | Piekarnia Chlebak | Krosno | cukiernia/lody | 537 | Przy 3 piekarniach jedna karta w telefonie zastępuje pieczątki w Krośnie, Jaśle i Rymanowie
+@piekarnia_krukierek | Piekarnia Krukierek | Krosno | cukiernia/lody | 551 | Przy 2 piekarniach jedna karta w Apple Wallet zastępuje pieczątki i pokazuje, kto wraca
+@zapiekankirzeszowskie | Zapiekanki Rzeszowskie | Rzeszów | kebab/street food | 821 | Przy 2 punktach jedna karta w telefonie gościa działa w obu i widać, który ma stałych
+@lodowapokusa | Lodowa Pokusa | Rzeszów | cukiernia/lody | 754 | Przy 2 lodziarniach jedna karta w Apple Wallet zastępuje pieczątki i zbiera opinie Google
+@karpat_kebab | Karpat Kebab | Rzeszów | kebab/street food | 215 | Przy 2 lokalach jedna karta w telefonie gościa działa w obu punktach, bez papierowych pieczątek
+@czarny_wol | Czarny Wół | Rzeszów | kebab/street food | 96 | Przy 2 lokalach berlińskiego kebaba jedna karta w telefonie działa w obu i pokazuje powroty
+@cukierniababeczka | Cukiernia Babeczka | Rzeszów | cukiernia/lody | 266 | Przy 2 cukierniach jedna karta w Apple Wallet zastępuje pieczątki i pokazuje, kto wraca
+@casa.della.pizza | Casa Della Pizza | Jarosław | pizza | 184 | Przy 2 lokalach jedna karta w telefonie gościa działa w obu i widać, który ma stałych
+@piripirikebab | Piri-Piri Kebab | Lublin | kebab/street food | 49000 | Przy 3 lokalach w Lublinie jedna karta w telefonie gościa działa we wszystkich i pokazuje powroty
+@czteryporyroku.kielce | Cztery Pory Roku | Kielce | kawiarnia | 626 | Przy 2 lokalach na Sienkiewicza i Bocianku jedna karta w Apple Wallet zastępuje pieczątki
+@kukulkacukiernia | Kukułka Cukiernie w Warszawie | Warszawa | cukiernia/lody | 9317 | Przy kilku cukierniach jedna karta w telefonie gościa działa we wszystkich i pokazuje powroty
+@milosc_speciality | MIŁOŚĆ Kawiarnia | Warszawa | kawiarnia | 2858 | Przy 2 lokalach na Pradze i Powiślu jedna karta w Apple Wallet zastępuje pieczątki
+@aromacaffee | AROMA COFFEE | Warszawa | kawiarnia | 3756 | Przy 2 kawiarniach na Woli i Ursusie jedna karta w telefonie gościa działa w obu
+@starypiernik | Stary Piernik | Rzeszów | kawiarnia | 4399 | Przy 1 lokalu i planach rozwoju jedna karta w Apple Wallet od razu działa w każdym kolejnym punkcie
+@kawarzeszowska | Kawa Rzeszowska | Rzeszów | kawiarnia | 15000 | Przy 1 kawiarni i 15 tys. obserwujących jedna karta w telefonie zamienia obserwujących w stałych gości
+@anatomiakawy | Anatomia Kawy | Rzeszów | kawiarnia | 1672 | Przy 1 palarni i kawiarni jedna karta w Apple Wallet zastępuje pieczątki i zbiera opinie Google
+@warsztat_pizza_rzeszow | Warsztat Pizza & Restaurant | Rzeszów | pizza | 1962 | Przy 1 lokalu jedna karta w telefonie gościa zastępuje pieczątki i pokazuje, kto wraca
+@capital_pizza_rzeszow | Capital Pizza | Rzeszów | pizza | 302 | Przy 1 lokalu jedna karta w Apple Wallet zastępuje pieczątki i zbiera opinie Google
+@wielka_pizza_rzeszow | Wielka Pizza | Rzeszów | pizza | 97 | Przy 1 lokalu jedna karta w telefonie gościa zastępuje pieczątki i pokazuje powroty
+@rzeszowskiekulinaria | Rzeszowskie Kulinaria | Rzeszów | restauracja | 7057 | Przy 2 lokalach jedna karta w telefonie gościa działa w obu i widać, który ma stałych
+@waniliowy_domek | Waniliowy Domek | Rzeszów | cukiernia/lody | 393 | Przy 1 cukierni jedna karta w Apple Wallet zastępuje pieczątki i zbiera opinie Google
+
+### SZCZEGÓŁY
+DARA Kebab (Rzeszów) — 6 lokali: Millenium Hall, Grunwaldzka 24, Hetmańska 42, Rynek 18, Obrońców Poczty Gdańskiej 14, Witolda 8B. Program lojalnościowy: brak informacji. Źródło: https://cozjescw.pl/lokale/
+Cukiernia KEKS — ok. 10 lokali: Rzeszów x4 (Lwowska 6, Lisa Kuli 19, Galeria Rzeszów, Obr. Poczty Gdańskiej 14), Dębica x2, Brzozów, Krosno (VIVO!), Jasło x2, Skołyszyn. Właściciel: Agata Śliż (nagłówek strony „Cukiernia KEKS Agata Śliż”). Źródło: https://keks.com.pl/
+Cukiernia Mikołaj — 3 lokale: Galeria Rzeszów, Pelczara 11 (Rzeszów), Przemyśl Brudzewskiego 1. Źródło: https://www.cukiernia-mikolaj.pl/
+Cukiernia Teodora — 6 punktów: Hala Targowa, Plac Wolności, Starzyńskiego, Kraczkowa, Łańcut Rynek 23 + Cafe Teodora (al. Niepodległości, Podpromie). Źródła: https://cozjescw.pl/lokale/, https://cukierniateodora.pl/
+Palm Smoothie Bar — 3 lokale: Galeria Rzeszów, Millenium Hall, Przemyśl. Źródło: https://cozjescw.pl/lokale/
+Pierożarnia Rzeszowska — 2 lokale: Dąbrowskiego 31, Rejtana 31E. Źródło: profil na https://cozjescw.pl/lokale/profil/pierozarnia-rzeszowska-rejtana/
+Al Metro — 2 lokale: Budziwój (Senatorska 135A), Śródmieście (Plac Wolności 16/1). Źródło: https://cozjescw.pl/lokale/profil/al-metro-srodmiescie/
+Missione Pizza — 2 lokale: Brydaka 13, Rejtana 26B. Właściciele: Piotr i Bartek (imiona z artykułu). Źródło: https://cozjescw.pl/missione-pizza-drugi-lokal/
+Lodziarnia Fragola — 2 lokale: Rzeszów Grunwaldzka 7, Jarosław Plac św. Michała 1. Źródło: https://cozjescw.pl/lokale/
+Piekarnia Ciastkarnia Kłos — 2 lokale w Przemyślu (Drużbackiej 13, Plac Na Bramie 12). Źródło: https://piekarniaklos.pl/
+Cukiernia Kukułka — 2 lokale w Rzeszowie: Leszka Czarnego 2a, al. Powstańców Warszawy 7 (nowy lokal otwarty 2025). Źródła: https://cukierniakukulka.pl/o-nas/, https://cozjescw.pl/nowy-lokal-kukulki/
+Makaroniarze — 2 lokale w Rzeszowie, drugi przy Dąbrowskiego 79 (otwarcie 17.03.2025). Źródło: https://cozjescw.pl/makaroniarze-otwarcie-drugiego-lokalu/
+Cukiernia Pokusa / Cukiernia JoAsia / Cukiernia Babeczka — po 2 punkty na Podkarpaciu. Źródło: katalog https://cozjescw.pl/lokale/
+Dobra Pączkarnia — 2 punkty, 8,3 tys. obserwujących na IG. Źródło: katalog https://cozjescw.pl/lokale/ + IG
+Big City Pizza — 2 lokale w Rzeszowie. Źródło: https://cozjescw.pl/lokale/
+Sapori di Napoli — 2 lokale: Bernardyńska 2 i Millenium Hall (osobny profil @sapori_milleniumhall_rzeszow). Źródło: https://cozjescw.pl/lokale/
+Piekarnia Chlebak — 3 lokale: Krosno (Kisielewskiego 4), Jasło (Rynek 23), Rymanów (Rynek 20). Źródło: https://cozjescw.pl/lokale/
+Piekarnia Krukierek — 2 lokale w Krośnie (Naftowa 21, Kisielewskiego 2), „piekarnia pokoleniowa”. Źródło: https://cozjescw.pl/lokale/ + IG
+Zapiekanki Rzeszowskie — 2 punkty w Rzeszowie. Źródło: Wolt Rzeszów + katalog cozjescw.pl
+Lodowa Pokusa — 2 lodziarnie na Podkarpaciu. Źródło: https://cozjescw.pl/lokale/
+Karpat Kebab — 2 lokale w Rzeszowie. Źródło: Wolt Rzeszów
+Czarny Wół — 2 lokale w Rzeszowie, kebab w stylu berlińskim, drugi lokal otwarty w maju. Źródło: https://www.resinet.pl/rzeszowskie-smaki/aktualnosci/w-rzeszowie-otwiera-sie-nowa-burgerownia
+Casa Della Pizza — 2 lokale w Jarosławiu. Źródło: https://cozjescw.pl/lokale/
+Piri-Piri Kebab (Lublin) — 3 lokale: Wojciechowska 9a, Galeria Olimp (al. Spółdzielczości Pracy 34), Nałęczowska 67 (pierwszy lokal od 2014). Źródła: https://piripirikebab.pl/, https://spottedlublin.pl/ (otwarcie w Galerii Olimp)
+Cztery Pory Roku (Kielce) — 2 lokale: kawiarnia Sienkiewicza 10/12a i cukiernia Konopnickiej 5 (Bocianek), firma od 1991 r. Źródło: https://4poryroku.com/cukiernia/
+Kukułka Cukiernie w Warszawie — sieć cukierni warszawskich, 9,3 tys. obserwujących. Liczba lokali do potwierdzenia. Źródło: IG @kukulkacukiernia
+MIŁOŚĆ Kawiarnia (Warszawa) — 2 lokale: Praga i Powiśle. Źródło: IG @milosc_speciality
+AROMA COFFEE (Warszawa) — 2 lokale: Wola (Ordona 12D) i Ursus (Silnikowa 14). Źródło: IG @aromacaffee
+Stary Piernik, Kawa Rzeszowska, Anatomia Kawy, Warsztat Pizza, Capital Pizza, Wielka Pizza, Waniliowy Domek — na dziś 1 lokal, ale mocne profile IG i potencjał drugiego punktu; źródło: katalog https://cozjescw.pl/lokale/
+Rzeszowskie Kulinaria — 2 punkty (m.in. Podwisłocze 30/6). Źródło: https://cozjescw.pl/lokale/
+Żadna z powyższych sieci nie deklaruje publicznie aplikacji lojalnościowej — w Podkarpaciu dominują papierowe pieczątki lub brak programu (brak wzmianek na stronach i profilach).
+
+### NIEPEWNE
+Piekarnia Rostek (Rzeszów, Stalowa Wola, Nisko, Nowa Sarzyna) — 15 punktów (10 „Rostek” + 5 „Piekarnia Rostek”), strona https://piekarniarostek.pl/ nie podaje Instagrama; handle niepotwierdzony
+Cukiernia i Garmażernia Wulkan (Krosno, Sanok, Brzozów, Jasło) — 9 punktów, brak potwierdzonego profilu IG
+Santos (Krosno, Jasło) — 4 punkty, strona http://www.santos.pl/ bez linku do IG
+Pierogarnia Rzeszowska PREIS — 2 lokale (Hetmańska 22, Podwisłocze 10B), handle niepotwierdzony
+YAPRAK Restaurant / YAPRAK Express (Rzeszów) — 3 lokale (Galeria Rzeszów, Rejtana 18, Rynek), tylko Facebook /yaprakrestaurant
+Pizzeria Aniela (Łańcut, Leżajsk, Nowa Sarzyna) — 3 lokale, strona https://aniela.com.pl/ bez IG
+Bianco (Łańcut, Jarosław, Sieniawa) — 3 lokale, handle niepotwierdzony
+Samir Kebab (Jarosław, Żurawica, Dubiecko, Stubno, Fredropol) — 5 lokali, handle niepotwierdzony
+Pączek (Nisko, Nowa Dęba, Rudnik nad Sanem) — 4 punkty, handle niepotwierdzony
+Smakosz (Krosno, Horyniec-Zdrój, Skopanie) — 3 lokale, handle niepotwierdzony
+Da Federico (Rzeszów) — 2 punkty (Hala Targowa, Jagiellońska 18), właściciele Alfio i Kinga; handle niepotwierdzony
+Piekarnia-Cukiernia Marcin Orlikowski (Lublin) — kilka punktów, drugi przy Lubartowskiej 15; handle niepotwierdzony
+Pizzeria Joker (Lublin) — 2 lokale (otwarcie drugiego 1 lutego); handle niepotwierdzony
+My Kebab (Lublin) — 3 lokale wg Wolt; handle niepotwierdzony
+Crazy Bubble (Lublin 3, Rzeszów 2) — bubble tea; handle niepotwierdzony
+Plackarnia (Lublin) — 2 lokale wg Wolt; handle niepotwierdzony
+Nova Sushi (Lublin) — 2 lokale; handle niepotwierdzony
+The Royals (Lublin) — 2 lokale; handle niepotwierdzony
+Lodziarnia Croco (Lublin) — ogródek na deptaku, liczba lokali do potwierdzenia
+NOVA Gelato & Café (Kielce) — 2 lokale (Kielce, Elbląg), założycielka Izabela Sikora (Raszczyk)
+Cukiernia Dorotka (Kielce) — 2 lokale wg sitemap gdziejemy.pl
+T Pizza (Radom) — 2 lokale; Marhaba Kebab (Radom) — 2 lokale; Ręcznie Lepione Pierogi (Radom) — 2 lokale — handle niepotwierdzone
+Cukiernia Lukullus (Warszawa) — 4–5 lokali (Chmielna 32, Mokotowska 52a, Walecznych, Rozbrat 22/24), właściciele Albert Judycki i Jacek Malarski; handle niepotwierdzony
+
+### NOTATKI
+Najmocniejsze pierwsze strzały to sieci, które same komunikują ekspansję i mają realny ruch w social mediach. Pierwsza dziesiątka: DARA Kebab (6 lokali, 4,7 tys. obserwujących, kebab z dużą rotacją), Cukiernia KEKS (10 punktów i znane nazwisko właścicielki Agaty Śliż), Piri-Piri Kebab Lublin (3 lokale i 49 tys. obserwujących, czyli gotowa baza do kampanii karty), Dobra Pączkarnia (8,3 tys. obserwujących przy 2 punktach), Missione Pizza (2 lokale, znani z imienia właściciele Piotr i Bartek, świetnie prowadzone social media), Al Metro (2 lokale, 2,7 tys. obserwujących), Cukiernia Teodora (6 punktów pod dwiema markami, karta spina je w jeden program), Cukiernia Pokusa (2 lokale, 1,6 tys. obserwujących), Piekarnia Kłos Przemyśl (2 sklepy, 1,8 tys. obserwujących, typowy klient na pieczątki za chleb) oraz Cztery Pory Roku w Kielcach (2 lokale, 35 lat historii, kawiarnia plus cukiernia). W żadnym z tych przypadków nie znalazłem śladu aplikacji lojalnościowej, więc argument o jednej karcie działającej we wszystkich lokalach jest świeży. Sieci cukiernicze i piekarnicze z Podkarpacia mają najwięcej punktów, ale najsłabsze profile IG, więc do nich lepiej pisać z konkretem o liczbie lokali niż o zasięgach. Największą niewykorzystaną pulą są Lublin, Kielce i Radom, gdzie potwierdziłem istnienie sieci, ale nie zdążyłem dobić handli — to pierwszy kierunek na dokończenie researchu. W Warszawie warto zacząć od Lukullusa i Kukułki, bo obie marki mają kilka lokali i mocną rozpoznawalność, a program lojalnościowy w cukierni premium jest naturalny.

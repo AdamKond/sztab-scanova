@@ -1,0 +1,114 @@
+@dirtyjoe_lublin | Dirty Joe Lublin | Lublin | burgery | 6480 | 4,7 przy 2100 opiniach na Krakowskim, a Philly cheesesteak wraca u Was w rolkach częściej niż burgery.
+@red_rock_city | Red Rock City | Lublin | burgery | 1754 | 4141 opinii w Google przy 1,7 tys. obserwujących - ruch w lokalu macie większy niż zasięgi na IG.
+@czarna_owca_gastro_pub | Czarna Owca Gastro Pub | Lublin | burgery | 3431 | Narutowicza 9 i własna dostawa przez dostawazowcy.pl - sami sobie robicie logistykę, a bazy gości brak.
+@bobby_burger_lublin | Bobby Burger Lublin | Lublin | burgery |  | Lokalny profil w Lublinie zbiera studentów z okolicy, tylko nigdzie nie jest zapisane, którzy wracają.
+@piripirikebablublin | Piri-Piri Kebab Lublin | Lublin | kebab/street food |  | Prawie 17 tys. opinii w Google przy ocenie 4,3 - przy takim ruchu powracający gość to zupełnie inne pieniądze.
+@ankara_kebab_lublin | Ankara Kebab | Lublin | kebab/street food |  | 4,5 przy 1,1 tys. opinii na Głuskiej - kebab na obrzeżach żyje ze stałych, nie z przypadkowych.
+@zahirkebab | Zahir Kebab | Lublin | kebab/street food |  | Macie własną stronę i menu online, więc zbieranie stałych klientów to u Was naturalny kolejny krok.
+@takimykfoodtruck | Taki Myk! Food Truck | Lublin | kebab/street food | 861 | Sodziaka z Waszego trucka ludzie rozpoznają po zdjęciu, tylko nie macie jak do nich wrócić.
+@masna_pizza_lublin | Masna Pizza Lublin | Lublin | pizza |  | Langiewicza 10 i hasło o najlepszej klasycznej pizzy w mieście - odbiór osobisty aż się prosi o kartę.
+@plackarniapl | Plackarnia | Lublin | pizza | 982 | Pięć lokali w Lublinie, a na IG mniej niż tysiąc osób - ruch z Bursztynowej nigdzie Wam nie zostaje.
+@pizzerialasera | Pizzeria La Sera | Lublin | pizza |  | Własna strona i dowóz, więc przy każdej pizzy z portalu prowizja zjada Wam sporą część marży.
+@zonalublin | ZONA Pizza Ristorante | Lublin | wloska |  | Neapolitańska na Krakowskim 51 i menu sezonowe co kwartał - takie miejsce stoi stałymi gośćmi.
+@queenmama.lublin | Queen Mama Lublin | Lublin | wloska | 10000 | 10 tys. na IG i 4104 opinie przy Grodzkiej - po przebudowie to dobry moment na program dla stałych.
+@sexyduck_lublin | Sexy Duck by Enzo Muratore | Lublin | wloska |  | 4,7 przy 2656 opiniach na Staszica - kaczka i gelato ściągają tych samych ludzi co tydzień.
+@bombardino_czechow | Bombardino Trattoria Czechów | Lublin | wloska |  | Otwarte od 7 rano na Północnej - śniadanie i kolacja u tego samego gościa to dwa punkty dziennie.
+@restauracjagiuseppe | Restauracja Giuseppe | Lublin | wloska |  | Włoska kuchnia z własną stroną i rezerwacjami - lojalność wychodzi taniej niż kolejna kampania.
+@restauracjaportofino_lublin | Restauracja Portofino | Lublin | wloska |  | Portofino trzyma się Lublina od lat, a takie miejsca żyją z powrotów, nie z nowych twarzy.
+@kage_lublin | Kage Ramen Bar | Lublin | sushi/azja |  | 1 Maja 43, tylko walk-in, bez rezerwacji - kolejka to Wasz kapitał, szkoda go nie policzyć.
+@kago_sushi_lublin | Kago Sushi Lublin | Lublin | sushi/azja |  | 4,8 przy 262 opiniach na Rynku 16 - najwyższa ocena sushi w mieście przy najmniejszej liczbie opinii.
+@cloud.sushi.lounge | Cloud Sushi & Lounge Bar | Lublin | sushi/azja |  | Wileńska 21A i własny dowóz - w sushi powracający gość jest wart kilka razy więcej niż nowy.
+@musi.sushi.lublin | Musi Sushi Północna | Lublin | sushi/azja |  | Północna 30A - sushi na Czechowie żyje z osiedla, a osiedle wraca, jeśli ma po co.
+@go_sushi_lublin | Go Sushi Lublin | Lublin | sushi/azja | 104 | Świeży profil i 104 obserwujących - teraz jest najtaniej zbudować bazę stałych gości.
+@parownia_dim_sum_lublin | Parownia Dim Sum Bar | Lublin | sushi/azja | 1849 | Dwa lokale, Północna i Wileńska, baozi lepione ręcznie - dim sum kupuje się seriami, nie raz.
+@chinkalnia_lublin | Chinkalnia Restauracja Gruzińska | Lublin | restauracja |  | Pierwsza gruzińska w Lublinie - ludzie wracają do Was po chaczapuri, a nie po nowość.
+@armenialublin | Restauracja Armenia | Lublin | restauracja |  | Ormiańska kuchnia bez konkurencji w mieście - stałych gości macie, tylko nikt ich nie liczy.
+@kalyna.lublin | Kalyna Kuchnia Ukraińska | Lublin | restauracja | 1854 | Jedyna ukraińska w Lublinie - syrniki i barszcz to dania, po które wraca się co tydzień.
+@chisza | CHISZA | Lublin | restauracja | 9344 | 9,3 tys. na IG i szaszłyki robione przy gościu - Świętoduska ma ruch, który warto zatrzymać.
+@chisza_nad_zalewem | Chisza nad Zalewem | Lublin | restauracja | 6969 | Nad Zemborzyckim sezon trwa pół roku, a karta stałego gościa ratuje miesiące poza sezonem.
+@czarcialapa | Czarcia Łapa | Lublin | restauracja |  | Rynek 19, w piątki i soboty do drugiej - nocny ruch to najłatwiejsi ludzie do przywiązania.
+@restauracja.magia | Restauracja Magia | Lublin | restauracja |  | Ogród na Starym Mieście i kawa na kilka sposobów - turysta przyjdzie raz, lublinianin może wracać.
+@restauracja_kardamon | Kardamon | Lublin | restauracja |  | Kuchnia europejska w centrum i rezerwacje mailem - stały gość to u Was pewny stolik w środku tygodnia.
+@perliczkalublin | Perliczka | Lublin | restauracja |  | Kamienica Pod Lwami i perliczka jako danie firmowe - takiego dania nie zamawia się jednorazowo.
+@16stolow | Restauracja 16 Stołów | Lublin | restauracja |  | Szesnaście stolików na Rynku 16 - przy tej skali liczy się kto wraca, a nie ilu przyjdzie.
+@prusa8_lublin | Prusa 8 Lokal Kulinarny | Lublin | restauracja |  | Lokal kulinarny na Prusa 8 - dzielnicowa restauracja stoi stałymi gośćmi z sąsiedztwa.
+@2pierrestauracja | Restauracja 2 PI ER | Lublin | restauracja |  | Trzymacie własny styl i stałe menu - warto wiedzieć, którzy goście wracają co miesiąc.
+@perlowapijalniapiwa | Perłowa Pijalnia Piwa | Lublin | restauracja | 3691 | Sezonowa kuchnia lokalna przy Perle - pijalnia żyje z tych samych twarzy w czwartki.
+@pubuszewca | Irish Pub u Szewca | Lublin | restauracja | 1699 | Bywalców macie od lat, tylko nigdzie nie jest zapisane, którzy to są i jak często wpadają.
+@nocny.portier | Nocny Portier | Lublin | restauracja | 8377 | 8,3 tys. na IG i 4,7 w Google - koktajlbar na Krakowskim żyje z powrotów, nie z przypadku.
+@u_fotografa | U Fotografa Craft Beer Pub | Lublin | restauracja | 1903 | 16 kranów, 8 z własnego browaru i burgery na Złotej - stały bywalec to u Was norma, nie wyjątek.
+@mojo.lublin | MOJO Kuchnia & Przyjaciele | Lublin | restauracja |  | Kuchnia, drinki i znajomi w jednym miejscu - taki format sprzedaje się powtarzalnością.
+@apetitolublin | Apetito Lunch Bar | Lublin | restauracja |  | Zana 32B i lunche do 16:30 - ten sam gość może u Was jeść pięć razy w tygodniu.
+@eterbistro | Bistro Eter | Lublin | restauracja |  | Obiady domowe w budynku Radia Lublin tylko w dni robocze - biurowy gość wraca albo nie wraca wcale.
+@bursaki_bistro | Bursaki Bistro | Lublin | restauracja |  | Zestawy lunchowe zmieniane codziennie na Bursakach - przy takim rytmie liczy się stały klient.
+@wieniawa_hotel_restauracja_pub | Hotel & Restauracja Wieniawa | Lublin | restauracja |  | Restauracja, pub i dowóz przez pyszne.pl - prowizje portali zjadają to, co mogłoby zostać u Was.
+@megustaspoland | Megustas Mexican Food | Lublin | restauracja |  | Meksyk na Spółdzielczości Pracy 36 - tacos to jedzenie nawykowe, jeśli dać ludziom powód.
+@holatacoslublin | Hola Tacos | Lublin | restauracja | 513 | 513 obserwujących przy dowozie po całym Lublinie - zamówienia macie, bazy gości nie.
+@lola_taqueria | LOLA taqueria & bar | Lublin | restauracja |  | Świętoduska 12 i otwarcie na wiosnę - pierwszy rok to najlepszy moment na program lojalnościowy.
+@rani_restaurant_lublin | Rani Indian Restaurant | Lublin | restauracja | 327 | 327 obserwujących przy kuchni indyjskiej w Lublinie - curry kupują ci sami ludzie co miesiąc.
+@indyjskie_curry_restauracja | Indyjskie Curry | Lublin | restauracja | 504 | Rodzinna indyjska otwarta siedem dni w tygodniu - stałych macie pewnie więcej, niż widzicie.
+@maleindielublin | Małe Indie | Lublin | restauracja |  | Dwa lokale, Rybna 2 i Rynek 5, plus lunch w tygodniu - wege gość w Lublinie wraca do swoich miejsc.
+@galeriasmakulublin | Galeria Smaku | Lublin | restauracja |  | Galeria Smaku działa w Lublinie od lat - stała klientela jest, tylko nikt jej nie mierzy.
+@kuznialublin | Restauracja Kuźnia | Lublin | restauracja |  | Macie stronę i rezerwacje, brakuje tylko powodu, żeby gość wrócił w kolejnym miesiącu.
+@restauracja_legendy_miasta | Restauracja Legendy Miasta | Lublin | restauracja |  | Gracie lubelską historią - turysta przyjdzie raz, mieszkaniec może przyjść dziesięć razy.
+@restauracja_ansaldo | Restauracja Ansaldo | Lublin | restauracja |  | Ansaldo w centrum z własną stroną - przy tej skali stały gość wychodzi taniej niż reklama.
+@zaczarowanadorozka | Zaczarowana Dorożka | Lublin | restauracja |  | To adres, który lublinianie znają z nazwy - szkoda nie wiedzieć, którzy z nich wracają.
+@tintolublin | Tinto | Lublin | restauracja |  | Wino i kuchnia to goście, którzy przychodzą cyklicznie, a nie raz na sezon.
+@przystanrestauracja.lublin | Przystań Restauracja i Hotel | Lublin | restauracja |  | Restauracja przy hotelu żyje z gości z miasta, a ci wracają tylko, jeśli mają po co.
+@chilipub | Restauracja & Pub Chili | Lublin | restauracja |  | Łączycie restaurację z pubem, czyli dwa powody do powrotu pod jednym adresem.
+@browarlublin | Restauracja Browar Lublin | Lublin | restauracja |  | Browar Lublin to miejsce na wieczory z ludźmi - bywalcy są, tylko nie ma jak ich rozpoznać.
+@kabaretlublin | Kabaret Pub | Lublin | restauracja |  | Wieczorami trzymacie stałą ekipę - karta w telefonie działa lepiej niż pieczątki na papierze.
+@restauracjacalvados | Villa Calvados | Lublin | restauracja |  | Robicie eventy i obiady, a goście z wesel wracają prywatnie, jeśli ktoś im o tym przypomni.
+@rafaellolublin | Restauracja Rafaello | Lublin | restauracja |  | Świętochowskiego i klientela z sąsiedztwa - to najtańsza lojalność, jaką można mieć.
+@zajazdhajduk | Zajazd Hajduk | Lublin | restauracja |  | Żyjecie z powtarzalnych gości i imprez - ci sami ludzie mogliby mieć Waszą kartę w telefonie.
+@perlasportpub | Perła Sport Pub | Lublin | restauracja |  | Lokal zapełnia się przy każdym meczu, a ci sami ludzie wracają co kolejkę bez żadnego programu.
+@hotelbrowarlwow | Hotel Restauracja Browar Lwów | Lublin | restauracja | 428 | Własny browar przy Bronowickiej i 20 lat na rynku, a 428 obserwujących to mniej, niż Wam się należy.
+@greenhousebistroweganskie | GreenHouse Bistro Wegańskie | Lublin | vegan | 3404 | 3,4 tys. obserwujących i jedyne w pełni wegańskie w regionie - ta grupa wraca najczęściej.
+@spokojna2 | Spokojna2 | Lublin | sniadania/brunch | 8200 | 8,2 tys. na IG, śniadania i własny chleb codziennie - breakfast club sam się prosi o kartę.
+@bafflolublin | Bafflo Lublin | Lublin | sniadania/brunch |  | Gęsia 3A, śniadania i lunche na rezerwację - śniadaniowi goście to najbardziej powtarzalny ruch.
+
+### NIEPEWNE
+Pizzeria Sotto i Denti (Lublin, sid-pizza.pl) - konto @sottoidenti istnieje, ale strona lokalu linkuje wyłącznie Facebooka, brak potwierdzenia że to ten sam podmiot
+Gruby Benek Lublin (Droga Męczenników Majdanka 9) - lokal ma tylko fanpage facebook.com/grubybeneklublin, IG @grubybenekpizza to konto ogólnopolskie sieci
+Kura Warzyw Lublin (Prosta 70) - @kurawarzyw to konto ogólnopolskie, brak osobnego profilu lubelskiego
+Pasibus Lublin (al. Unii Lubelskiej 2) - sieciówka bez lokalnego konta IG
+Black Jack Kebab Lublin - tylko fanpage na Facebooku
+Pyszny Kebab Lublin - brak potwierdzonego konta IG
+Faraon Kebab i Burger (Choiny 1) - @faraonkebab to konto prywatne osoby, nie lokalu
+Habiby (@habiby__kebab) - drugie konto lokalu, który jest już w bazie jako @habibykebab
+Pizza Al Nero (alnero.pl) - ikona Instagrama na stronie prowadzi donikąd, brak handle
+Pizza Pub Acerna's - brak konta IG
+Restauracja Koncertowa (koncertowa.pl) - brak konta IG
+Insomnia (insomnia-restauracja.pl) - strona nie odpowiada, brak potwierdzonego IG
+Just Crafted (just-crafted.ontap.pl) - brak konta IG
+Trakt Królewski - brak konta IG
+Dworek Staropolski - brak konta IG
+Restauracja Oranżeria - brak konta IG
+Padbar Lublin - brak konta IG
+Chata Karczma Regionalna - brak strony i konta IG
+Rezerwat Kulinarny (Szwajcarska 17) - tylko strona i fanpage, brak IG
+Indian Palace (indianpalace.pl) - brak konta IG na stronie
+Ivy's Kitchen Asian Restaurant & Bubble Tea (Lubartowska 23) - brak potwierdzonego handle
+Khinkali Room (@khinkaliroom) - nie potwierdzono, że to lokal w Lublinie
+Vinna Bistro (@bistro.vinna) - profil istnieje, miasto niepotwierdzone
+Felicity (@felicitylublin) - profil istnieje, nie potwierdzono że to lokal gastronomiczny
+Restauracja Trzy Romanse (Hotel Wieniawski) - @hotelwieniawski to konto hotelu, nie restauracji
+Restauracja Kulturalna - @archehotellublin to konto hotelu Arche, nie restauracji
+Restauracja Hotelu Victoria - @hotelvictoria.lublin to konto hotelu
+Bistro Przy Peronie (Krochmalna 4) - tylko Facebook
+Pierogarnia U Kucharek - brak konta IG
+Królewska Gruzja - tylko Facebook
+Umea (Orla 4) - @umealublin, lokal zamknięty na stałe
+Bistro Bielany (@bistrobielany) - miasto niepotwierdzone, prawdopodobnie spoza Lublina
+Restauracja Ukraineczka (@restauracja_ukraineczka) - profil opisany jako Szczecin, odrzucone
+
+### NOTATKI
+Najmocniejsze leady to lokale, które mają jednocześnie duży ruch w Google i realny profil na IG: Dirty Joe (6,5 tys. obs., 4,7 przy ~2100 opiniach), CHISZA (9,3 tys. obs. plus drugi lokal nad Zalewem z 7 tys.), Spokojna2 (8,2 tys. obs., śniadania i własna piekarnia) oraz Nocny Portier (8,4 tys. obs., 4,7 w Google). To miejsca, które już inwestują w social i rozumieją, po co im powracający gość - rozmowa o karcie w Apple/Google Wallet nie wymaga tam tłumaczenia podstaw.
+Druga grupa to sieci wielolokalowe w Lublinie, gdzie jedna karta obsługuje kilka adresów: Plackarnia (5 lokali, a zaledwie 982 obserwujących - ogromna dysproporcja między ruchem a bazą kontaktów), Parownia Dim Sum (2 lokale), Małe Indie (Rybna 2 i Rynek 5), Chisza (Świętoduska plus Zalew), Habiby (3 adresy) i Piri-Piri Kebab (2 lokale).
+Piri-Piri to osobny przypadek: prawie 17 tys. opinii w Google przy ocenie 4,3 oznacza gigantyczny wolumen i jednocześnie problem z powtarzalnością - dokładnie tam, gdzie program lojalnościowy zarabia najszybciej, a zbieranie opinii może podnieść ocenę.
+Lokale z własnym zamawianiem online i dowozem (Pizzeria La Sera, Hola Tacos, Cloud Sushi, Plackarnia, Zahir Kebab, Hotel & Restauracja Wieniawa) to najlepszy argument prowizyjny - płacą portalom za klientów, których mogliby mieć u siebie.
+Świeże otwarcia z ostatniego roku, czyli LOLA taqueria, Hola Tacos, Kage Ramen Bar, Parownia i Go Sushi (104 obserwujących), są tanie w pozyskaniu i wdzięczne we współpracy, bo dopiero budują bazę - u nich karta od pierwszego miesiąca ma sens.
+Kuchnie niszowe bez konkurencji w mieście - Kalyna (jedyna ukraińska), Chinkalnia (pierwsza gruzińska), Armenia, GreenHouse (jedyne w pełni wegańskie w regionie) - mają najbardziej lojalną i powtarzalną publiczność, więc konwersja na program stałego gościa będzie tam najwyższa.
+Segment lunchowy, czyli Apetito, Bistro Eter i Bursaki Bistro, to najwyższa częstotliwość wizyt w całej liście: ten sam gość potrafi przyjść pięć razy w tygodniu, co idealnie pasuje do karty stemplowej w Wallet.
+Słabsze, ale nadal warte DM-a, są lokale z niską liczbą obserwujących przy dobrych ocenach - Kago Sushi (4,8 przy 262 opiniach), Rani, Indyjskie Curry, Hotel Browar Lwów - tam głównym argumentem będzie zbieranie opinii Google, a nie sama lojalność.
+Zupełnie pominąłem sieciówki (McDonald's, KFC, Popeyes, Bobby Burger na poziomie centrali, Pasibus), bo decyzje zapadają poza Lublinem; Bobby Burger zostawiłem tylko dlatego, że prowadzi osobny lubelski profil.
