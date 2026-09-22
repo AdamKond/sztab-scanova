@@ -1,0 +1,93 @@
+@coffeina_rz | Coffeina | Rzeszów | kawiarnia | 2255 | Kawiarnia przy Kościuszki 5 z sezonowymi kawami i opcjami wegańskimi
+@domstrawy | DOM sTRAWY | Kielce | burgery | 7673 | Burgery sous vide opalane ogniem z paszczy smoka, kultowe miejsce w Kielcach
+@puszczykradom | Puszczyk kawiarnia & herbaciarnia | Radom | kawiarnia |  | Kawiarnia i herbaciarnia z oceną 4,8, chwalona za tarty i obsługę
+@fletcherhouserz | Fletcher House | Rzeszów | burgery | 2375 | Burgery i BBQ z własnej produkcji mięsa i kiełbas
+@redbuffaloburger | Red Buffalo Burger | Rzeszów | burgery | 265 | Amerykańskie burgery na własnych bułkach z wołowiną 100 procent
+@theburgerpointrzeszow | The Burger Point | Rzeszów | burgery | 2164 | Rzemieślnicze burgery, własne bułki i mięso mielone na miejscu
+@_yaprak_restaurant_ | YAPRaK Restaurant | Rzeszów | restauracja | 13000 | Pierwsza autentyczna restauracja turecka w Rzeszowie i na Podkarpaciu
+@habibikebabrzeszow | HABIBI KEBAB Rzeszów | Rzeszów | kebab/street food | 147 | Kebab przy Jałowego 14 reklamujący największe porcje w mieście
+@hajp_pub | Hajp Burgers & Pub | Kielce | burgery |  | Smashburgery i piwo rzemieślnicze przy Piotrkowskiej 2 w centrum Kielc
+@lodziarnia_lodotworca | Lodziarnia Lodotwórca | Rzeszów | cukiernia/lody | 433 | Lody naturalne i sorbety robione na miejscu bez konserwantów
+@pracownianaturalnegopieczywa | Pracownia Naturalnego Pieczywa | Rzeszów | cukiernia/lody | 802 | Piekarnia przy Strażackiej stawiająca na tradycyjny wypiek i naturalne składniki
+@cafe_zielony_zakatek | Cafe Zielony Zakątek | Radom | kawiarnia |  | Kawiarnia przy Witolda 7 z wypiekami bez cukru i glutenu, keto i wegańskimi
+@fabbropizzaradom | Fabbro Pizza Radom | Radom | pizza |  | Pizza z pieca opalanego drewnem, projekt Agnieszki i Marcina Kowalów
+@_a_noz_widelec | A nóż widelec | Radom | restauracja |  | Kuchnia polsko-ukraińska przy Kilińskiego, obiady domowe i catering
+@8cudkielce | 8Cud Kielce | Kielce | cukiernia/lody | 127 | Domowe torty śmietanowe, słodkie stoły i latem lody rzemieślnicze
+@lacrepaskielce | La Crepas Naleśnikarnia | Kielce | sniadania/brunch |  | Ponad 30 wariantów naleśników przy Bodzentyńskiej 2 w centrum Kielc
+@ukucharek | Pierogarnia U Kucharek | Lublin | restauracja |  | Ręcznie lepione pierogi z produktów od lokalnych gospodarstw ekologicznych
+@indianpalacerestaurantlublin | Indian Palace Restaurant | Lublin | restauracja |  | Kuchnia indyjska przy Kościuszki 7, szef kuchni Sunil Kumar Kanswal
+@chrupko.lbn | CHRUPKO | Lublin | sniadania/brunch |  | Śniadaniownia przy Koralowej znana z gofrów, burraty i świeżej kawy
+@bistrotancereczka | Bistro Tancereczka | Lublin | restauracja | 2443 | Kuchnia polska otwarta 24/7 przy Krakowskim Przedmieściu, znana z nalewek
+@wulkan.ciastka | Wulkan Cukiernia i Garmażernia | Krosno | cukiernia/lody |  | Cukiernia od 1982 roku, ponad 150 rodzajów ciast, lokale w Krośnie, Jaśle, Brzozowie i Sanoku
+@novasushilublin | Nova Sushi Lublin | Lublin | sushi/azja | 2176 | Dwa lokale, Krochmalna 22B i Króla Rogera 4A, sushi w przystępnych cenach
+@cukierniadorotkakielce | Cukiernia Dorotka | Kielce | cukiernia/lody | 1684 | Torty i torciki bezowe z naturalnych składników przy Wspólnej 19
+@lukullus_warszawa | Cukiernia Lukullus | Warszawa | cukiernia/lody | 23000 | Warszawska cukiernia działająca od 1946 roku, odnowiony lokal na Chmielnej
+@recznielepionebyzajazdbajka | Ręcznie Lepione by Zajazd Bajka | Radom | restauracja | 268 | Cztery punkty w Radomiu z ręcznie lepionymi pierogami, kopytkami i leniwymi
+@crazybubble_lublin_plaza | Crazy Bubble Lublin Plaza | Lublin | boba/matcha | 1195 | Punkt na pierwszym piętrze Lublin Plaza obok Reserved
+@kawiarniawidokowka | Kawiarnia Widokówka | Biłgoraj | kawiarnia | 880 | Kawa palona na miejscu i ciasta od biłgorajskich producentów, Zamojska 1
+@kulanica | Kulanica Bakery & Café | Biłgoraj | cukiernia/lody | 1879 | Codziennie świeże wypieki, dobra kawa i coś słodkiego
+@paracoffeeandmore | para coffee and more | Kraśnik | kawiarnia | 2525 | Dwa punkty w Kraśniku, Pl. Wolności 6 i Al. Niepodległości 44
+@piekarniacukierniasmaga | Piekarnia-Cukiernia SMAGA | Opole Lubelskie | cukiernia/lody | 624 | Rzemieślnicza piekarnia na naturalnym zakwasie, torty i słodkie stoły
+@bulkarnia | Bułkarnia Piekarnia Kawiarnia | Lublin | cukiernia/lody | 796 | Trzy lokale w Lublinie, Lipowa 17, Lipowa 11 i Lotnicza 8, codziennie świeże wypieki
+@game_of_coffee_ | Game of Coffee | Lublin | kawiarnia |  | Kawiarnia z lunchami, grami planszowymi i książkami przy Skłodowskiej 2
+
+### NIEPOTWIERDZONE
+
+--- odrzucone: profil istnieje, ale to inne miasto / inny podmiot ---
+@tlok.kawiarnia | TŁOK kawiarnia i bar z winem | to lokal w GDYNI (Wybickiego 3/1), nie w lubelskiem
+@doki.kebab.burger | DOKI Kebab&Burger | to lokal w GDAŃSKU (Popiełuszki 22), nie w Puławach
+@nomo_cake_cafe | NOMO Cake & Cafe | to lokal w BOLESŁAWCU
+@bistrougebalskich | Bistro u rodziny Gębalskich | to lokal w BIELSKU-BIAŁEJ (Komorowicka 110)
+@lodolubni | Lodolubni | to lodziarnia w WIELICZCE (Dembowskiego 5)
+@los_lodos | Los Lodos | to lodziarnia w LUBINIE (1 Maja 16A), nie Lublin
+@kawiarniakawalek | Kawałek Specialty Coffee | to kawiarnia w WARSZAWIE (Łucka 18), nie Kielce
+@milospecialitycoffee | MIŁO Speciality Coffee | to lokal w BABICACH NOWYCH pod Warszawą, nie Kielce
+@kurawarzyw | Kura Warzyw | Prosta 70 to WARSZAWA, nie Lublin
+@cukierniabeza | Cukiernia Beza | konto cukierni z Bielska-Białej, nie lubelskiej Bezy
+@gruzinska_dusza | Gruzińska Dusza | piekarnia w Grójcu, nie restauracja w Radomiu
+Pho Okejjj | lokal w Warszawie (Rembrandta 4), nie Radom
+
+--- pominięte jako duplikaty: handle juz jest w bazie-obecnej ---
+@dara_kebab (DARA Kebab Rzeszów), @perliczkalublin (Perliczka Lublin),
+@plackarniapl (Plackarnia Lublin), @crazybubblelublin (Crazy Bubble Olimp),
+@arabeska_kawiarnia (Arabeska Zamość)
+
+--- brak potwierdzonego konta IG (tylko Facebook / strona www) ---
+Bistro Brunch, Rzeszów - tylko Facebook /bistro.brunch.rzeszow
+Piekarnia Rostek (Rzeszów, Stalowa Wola, Nisko, Nowa Sarzyna) - tylko FB /piekarniarostek
+Pierogarnia Rzeszowska PREIS - tylko strona pierogarnia-rzeszowska.pl
+Pizzeria Aniela (Łańcut, Leżajsk, Nowa Sarzyna, Rudnik) - tylko Facebook
+Da Federico, Rzeszów (Hala Targowa, Jagiellońska 18) - tylko Facebook i TikTok
+Piekarnia-Cukiernia Marcin Orlikowski, Lublin - tylko Facebook
+Pizzeria Joker, Lublin - brak potwierdzonego konta IG
+My Kebab, Lublin - brak potwierdzonego konta IG
+Lodziarnia Croco, Lublin - brak potwierdzonego konta IG
+NOVA Gelato & Café, Kielce - tylko Facebook /kawiarnianova
+Limonka & Truskawka, Kielce - tylko Facebook /LodyNaturalnieRzemieslnicze
+Bosko Kielce - istnieje tylko konto ogólnopolskie @lody_bosko
+Marhaba Kebab, Radom - brak potwierdzonego konta IG
+Pizzeria Amici, Chełm - tylko Facebook /PizzeriaAmiciChelm
+Badu, Radom (Żeromskiego 37) - brak potwierdzonego konta IG
+KolejNY Burger, Radom (Królowej Jadwigi 12A) - tylko Facebook
+Rezerwat Kulinarny, Lublin - tylko Facebook i strona
+Królewska Gruzja, Lublin - tylko Facebook
+Bistro Przy Peronie, Lublin - tylko Facebook
+Restauracja Koncertowa, Lublin - tylko Facebook
+Gofry u Ireny, Lublin (Wileńska 21) - tylko Facebook
+Behemot Cafe, Lublin - brak potwierdzonego konta IG
+Kulinarny KADR, Lublin (Raabego 2) - tylko Facebook
+Czarna Inez, Lublin (Rybna 9) - IG deklarowany na stronie, handle niepotwierdzony
+The Royals, Lublin - brak potwierdzonego konta IG
+Piekarnia Lokalna, Lublin - potwierdzony tylko Facebook i TikTok
+Ivys Kitchen Asian Restaurant, Lublin (Lubartowska 23) - tylko Facebook
+@bistrozawijane | Restauracja Zawijane bistro (279 obs.) - profil istnieje, Świdnik nadal niepotwierdzony
+
+--- nie zdążono sprawdzić: wyczerpany limit wyszukiwarki ---
+@lyk_kawy, @lyk.coffeenwine, @wieledobrego, @kuchniagrecka, @nowakuchniapolska, @pizzeria.ludowa
+@atmosferacaffe, @bistrokebabpl, @crazybubble4you, @bafra.kebab.chelm
+@cukierniababielato, @kawiarnia.to.lubie, @lodowy_mis, @lody_z_farmy_, @sexyduck_lublin, @babielato_pl
+@sottoidenti, @khinkaliroom, @bistro.vinna, @felicitylublin
+Lokale bez handli z list miast: Hrubieszów, Włodawa, Krasnystaw, Nałęczów, Dęblin, Międzyrzec Podlaski,
+Kraśnik, Biłgoraj, Łęczna, Świdnik, Tomaszów Lubelski, Lubartów, Radzyń Podlaski, Parczew,
+Opole Lubelskie, Chełm, Puławy, Ryki, Zamość, Biała Podlaska
+Sieci bez potwierdzonych handli: Santos, Bianco, Samir Kebab, Pączek, Smakosz, T Pizza

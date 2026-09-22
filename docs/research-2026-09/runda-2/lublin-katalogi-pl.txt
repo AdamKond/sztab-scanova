@@ -1,0 +1,111 @@
+@chapter_one_lublin | Chapter One by Piotr Kwiatosz | Lublin | restauracja | 755 | Pierwsza restauracja fine dining w Lublinie, menu degustacyjne na Starym Mieście
+@grande_appetito | Grande Appetito | Lublin | pizza |  | Od 2012 przy Al. Unii Lubelskiej: pizza, domowe obiady i śniadania
+@lapuri.lublin | La Puri Gruzińska Piekarnia Lublin | Lublin | restauracja |  | Gruzińska piekarnia, chaczapuri prosto z pieca
+@noto.sushi.lublin | NOTO Sushi Lublin | Lublin | sushi/azja |  | Sushi hosomaki, nigiri, futomaki plus catering na imprezy
+@pandasushilublin | Panda Sushi Lublin | Lublin | sushi/azja |  | Sushi właściciela Arkadiusza Wnuka, dowóz i odbiór osobisty w Lublinie
+@ricetta_lublin | Ricetta Trattoria | Lublin | wloska | 227 | Trattoria o prawdziwie włoskim charakterze
+@pizzeria.planeta.6b | Pizzeria Planeta | Lublin | pizza | 110 | Pizzeria przy Nowowiejskiego 6b: pizza, sałatki i zapiekanki
+@restauracjakulturalna | Kulturalna | Lublin | restauracja |  | Nowoczesna kuchnia polska przy Zamojskiej 30
+@restauracja_nieznana_ | Nieznana | Lublin | restauracja |  | Restauracja w sercu Lublina przy hotelu IBB, regionalne specjały, sala na 150 osób
+@salti_restauracja_pizzeria | Salti Restauracja Pizzeria | Lublin | pizza |  | Restauracja i pizzeria w Lublinie
+@studnialublin | Studnia | Lublin | restauracja |  | Restauracja w Lublinie z regularnie odświeżanym menu
+@padbar_lublin | PadBar | Lublin | restauracja |  | Bar i lokal gastronomiczny w centrum Lublina
+@karczmakocanka | Karczma Kocanka | Lublin | restauracja |  | Karczma w lubelskim skansenie, forszmak lubelski, golonka i pierogi
+@restauracja_zielony_wiatrak | Zielony Wiatrak | Lublin | restauracja |  | Restauracja Spa Orkana przy Szaserów 2, nowoczesna kuchnia europejska
+@restauracja_skladanka | Składanka Restauracja i Delikatesy | Lublin | restauracja |  | Restauracja połączona z delikatesami
+@atelierpysznoscilublin | Atelier Pyszności | Lublin | cukiernia/lody | 8847 | Pracownia tortów, słodkich stołów i pierniczków przy ul. Laurowej 16
+@restauracja_bianco_lublin | Restauracja Bianco | Lublin | restauracja |  | Restauracja w Lublinie
+@mykebablublin1 | My Kebab Lublin | Lublin | kebab/street food |  | Kebab w Lublinie
+
+### NIEPEWNE
+Portobello Pizza / Portobello Pizza Radości | pizza | brak potwierdzonego handle
+Pizza di Montagna | pizza | brak potwierdzonego handle
+ParaBuch Hot Pot | sushi/azja | hot pot i malatang, brak potwierdzonego handle
+Viking Point Lublin | restauracja | brak potwierdzonego handle
+Osiedlowy Zakładowy - pizza i piwo | pizza | brak potwierdzonego handle
+Kebab King Royal | kebab/street food | brak potwierdzonego handle
+Sushipak | sushi/azja | brak potwierdzonego handle
+Palmira Kebab i Pizza (ul. Kreźnicka 1A) | kebab/street food | tylko FB /PalmiraKebabPizza
+Kebab Skarpa (ul. Sympatyczna 5A) | kebab/street food | tylko FB /KebabSkarpa
+Maspindzieli (gruzińska) | restauracja | tylko FB /Maspindzieli-61584733678918
+Manekin Lublin (naleśniki, Narutowicza 19) | sniadania/brunch | tylko FB /ManekinLublin
+Hades Szeroka (Grodzka 21) | restauracja | tylko FB
+Pijana Wiśnia Lublin (Krak. Przedmieście 13) | kawiarnia | tylko FB /pijanawisnia.lublin
+Cukiernia i Piekarnia Beza (beza.lublin.pl) | cukiernia/lody | handle niepotwierdzony
+Głodny Królik Bar | pizza | brak IG na stronie
+Między Blokami (Niepodległości 7B) | pizza | tylko FB
+Między Kromkami Pastrami | kebab/street food | tylko FB /pastramilublin
+Garmazerka SMAQ (Wigilijna 2b) | restauracja | tylko FB /smacznakuchnia
+Takami Sushi i Thai | sushi/azja | brak potwierdzonego handle
+Tendur Kebab | kebab/street food | brak potwierdzonego handle
+Shahada Kebab Lublin | kebab/street food | brak potwierdzonego handle
+Viet Home Lublin | sushi/azja | brak potwierdzonego handle
+Restauracja Hai Anh | sushi/azja | brak potwierdzonego handle
+Biga Gastronomia Italiana | wloska | brak potwierdzonego handle
+PRIMITIVO Lublin | wloska | brak potwierdzonego handle
+Oso Sushi | sushi/azja | brak potwierdzonego handle
+Akari Sushi Lublin | sushi/azja | brak potwierdzonego handle
+Fishka Sushi Lublin | sushi/azja | brak potwierdzonego handle
+Bar a Boo | wloska | brak potwierdzonego handle
+Lampadina La Pizza | pizza | brak potwierdzonego handle
+Pizza Pub ACERNAS | pizza | brak potwierdzonego handle
+PizzaBros | pizza | brak potwierdzonego handle
+Kumple Rogera | pizza | brak potwierdzonego handle
+Pizzeria Brooklyn Syndicate | pizza | brak potwierdzonego handle
+10Okien Dieci Finestre | pizza | brak potwierdzonego handle
+Czerwona Rukola | wloska | brak potwierdzonego handle
+Kurczaki od Eliasza | kebab/street food | brak potwierdzonego handle
+Bistro Przy Peronie | restauracja | brak potwierdzonego handle
+Smażalnia Ryb Raja | restauracja | brak potwierdzonego handle
+Smażalnia Ryb Rybka Jak Dawniej | restauracja | brak potwierdzonego handle
+Smażalnia Dobrych Ryb Sola | restauracja | brak potwierdzonego handle
+Rybka z PRL-u | restauracja | brak potwierdzonego handle
+Malibu Lublin | restauracja | brak potwierdzonego handle
+Może (restauracja) | restauracja | brak potwierdzonego handle
+Grab Fresh Kebab | kebab/street food | brak potwierdzonego handle
+Kohinoor Kebab | kebab/street food | brak potwierdzonego handle
+Sajgon Żana | sushi/azja | brak potwierdzonego handle
+Delikatesy Własnej Roboty | restauracja | brak potwierdzonego handle
+Restauracja Na Fali | restauracja | brak potwierdzonego handle
+Tim Tim Asian | sushi/azja | brak potwierdzonego handle
+Encanto Turystyczna | burgery | brak potwierdzonego handle
+Piekarnia-cukiernia Marcin Orlikowski | cukiernia/lody | brak potwierdzonego handle
+EAT and GO Racławickie 21 | sushi/azja | brak potwierdzonego handle
+Pizza Company Lublin | pizza | brak potwierdzonego handle
+500 Stopni Pizza Neapolitańska Lublin | pizza | IG istnieje, handle niepotwierdzony
+Trattoria Pizzeria Angelo Czechow i Czuby | pizza | brak potwierdzonego handle
+Bar Pośpiech | restauracja | brak potwierdzonego handle
+Stara Winiarnia | restauracja | brak potwierdzonego handle
+Al Lago by Emaus | restauracja | brak potwierdzonego handle
+Le Monde Lublin | restauracja | brak potwierdzonego handle
+Restauracja Trzy Romanse | restauracja | brak potwierdzonego handle
+Queso Mexican Bar | restauracja | brak potwierdzonego handle
+Milkbar Kaprys | restauracja | brak potwierdzonego handle
+Fresca Ristorante | wloska | brak potwierdzonego handle
+Bezzz Cafe | kawiarnia | brak potwierdzonego handle
+Radość (lokal) | restauracja | brak potwierdzonego handle
+Restauracja Sao Mai | sushi/azja | brak potwierdzonego handle
+Dworek Mieszczański | restauracja | brak potwierdzonego handle
+Browar Zakładowy Wielokran | restauracja | brak potwierdzonego handle
+The Olive | restauracja | brak potwierdzonego handle
+Pałeczkami Sushi | sushi/azja | brak potwierdzonego handle
+Taj Express | restauracja | brak potwierdzonego handle
+Polish Burger Nałęczowska | burgery | brak potwierdzonego handle
+Chata Karczma Regionalna | restauracja | brak potwierdzonego handle
+Gospoda Wiejska | restauracja | brak potwierdzonego handle
+Zajazd Gościnny | restauracja | brak potwierdzonego handle
+Zajazd Pod Gwiazdami | restauracja | brak potwierdzonego handle
+Pyszny Zajazd | restauracja | brak potwierdzonego handle
+Pyszna Pizza | pizza | brak potwierdzonego handle
+Pizza Take and Go | pizza | brak potwierdzonego handle
+EatGo Restaurant | restauracja | brak potwierdzonego handle
+Szwejk Olimp i Szwejk Felicity | restauracja | brak potwierdzonego handle
+Insomnia | restauracja | brak potwierdzonego handle
+Trybunalska City Pub | restauracja | tylko FB /Trybunalska
+@lokalburger_ Lokalburger Bistro | burgery | miasto niepotwierdzone
+@lubudububar Łubu Dubu Burger House | burgery | miasto niepotwierdzone
+@sushimiyu miyu | sushi/azja | miasto niepotwierdzone
+@bezownia Bezownia | cukiernia/lody | miasto niepotwierdzone
+@donerking_kebab Doner King Kebab | kebab/street food | miasto niepotwierdzone
+@donerhauskraftkebab Doner Haus | kebab/street food | miasto niepotwierdzone
+@by_doner_kebab BY Doner Kebab | kebab/street food | miasto niepotwierdzone

@@ -1,0 +1,102 @@
+@benvenuti_pizza | Benvenuti | Radom | pizza | 1222 | Włoska pizza w centrum Radomia, mocne zdjęcia dań na Instagramie
+@proza_bistro | PROZA Bistro Pizza & Pasta | Radom | pizza | | Bistro z pizzą i makaronami w centrum, stała grupa bywalców
+@americandreamradom | American Dream Restaurant | Radom | burgery | | Smash burgery z wyselekcjonowanej wołowiny przy Żeromskiego 39
+@lubudububar | Łubu Dubu Burger House | Radom | burgery | | Burgery i piwa kraftowe, lunch w tygodniu za 29 zł
+@faraon_kebab_radom | Faraon Kebab | Radom | kebab/street food | 168 | Domowy doner i własne sosy, mały profil z dużym potencjałem
+@kebab_u_pajdy_radom | Kebab u Pajdy | Radom | kebab/street food | | Osiedlowy kebab z regularnymi godzinami i stałymi klientami
+@samiraradom | Samira Kebab Cafe Bar | Radom | kebab/street food | | Kebab i kawiarnia w jednym, klienci wracają na lunch
+@czasnachleb | Czas na Chleb | Radom | cukiernia/lody | | Piekarnia i cukiernia z dwoma punktami w Radomiu, dodatkowo catering
+@piekarnia.cukiernia.gajda | Piekarnia Cukiernia Gajda | Radom | cukiernia/lody | | Rodzinna piekarnia z tradycją, stali klienci przychodzą codziennie po pieczywo
+@piekarniakazana | Piekarnia Kazana | Radom | cukiernia/lody | | Piecze z pasją od 1993 roku, kilka punktów w Radomiu
+@cukiernia_grzeszczyk | Cukiernia Grzeszczyk | Radom | cukiernia/lody | | Rodzinna cukiernia z tradycją od 1952 roku, przy Wałowej 7
+@piekarnia.cukiernia.pastuszka | Piekarnia Cukiernia Pastuszka | Radom | cukiernia/lody | | Trzy pokolenia piekarzy, specjalizacja w tortach okolicznościowych
+@slodkistolbypastuszka | Słodkie Stoły by Pastuszka | Radom | cukiernia/lody | | Kawiarnia i słodkie stoły, dużo zamówień na wesela
+@bankazmlekiem | Bańka z Mlekiem | Radom | cukiernia/lody | 244 | Kawiarnia i lodziarnia z naturalnymi lodami, goframi i naleśnikami
+@mlecznaradom | Mleczna Radom | Radom | cukiernia/lody | 536 | Lodziarnia z własną produkcją, lojalna grupa stałych klientów
+@dwa_swiaty_radom | Dwa Światy | Radom | restauracja | 903 | Restauracja, bar i miejsce spotkań przy 11 Listopada 61A
+@meritumrestaurant | Restauracja Meritum | Radom | restauracja | 416 | Restauracja w Hilton Garden Inn, menu oparte na lokalnych dostawcach
+@parkowa_radom | Restauracja Parkowa | Radom | restauracja | | Restauracja z zapleczem pod imprezy okolicznościowe
+@square.restaurant.coctails | SQUARE Restaurant & Coctails | Radom | restauracja | | Restauracja koktajlowa, mocno wieczorowy profil gościa
+@kraftbistro | Kraftbistro | Radom | restauracja | | Steki z grilla Josper i koktajle, z rekomendacją Michelin
+@planty9bistro | Planty 9 Bistro | Radom | restauracja | | Bistro z roślinnym wnętrzem, otwarte 7 dni w tygodniu
+@pierogi_smakosz | Pierogi Smakosz | Radom | restauracja | | Domowe pierogi i naleśniki z cateringiem, działa od 1999 roku
+@krol.pierogow | Król Pierogów | Radom | restauracja | | Pierogarnia ze stałym ruchem lunchowym
+@recznielepionebyzajazdbajka | Ręcznie Lepione by Zajazd Bajka | Radom | restauracja | | Ręcznie lepione pierogi i kopytka, sprzedaż na kilku targowiskach
+@ancymonek_radom | Ancymonek Naleśnikarnia | Radom | restauracja | | Naleśnikarnia z deserowym menu, dobry kandydat na kartę lojalnościową
+@tamashi_sushi_radom | Tamashi Sushi | Radom | sushi/azja | 1300 | Sushi z dowozem po Radomiu, aktywny profil na Instagramie
+@senshi_sushi_radom | Senshi Sushi | Radom | sushi/azja | 712 | Sushiarnia z dowozem, stałe zamówienia w weekendy
+@marcus_cafe_radom | Marcus Cafe | Radom | kawiarnia | | Kawiarnia z kawą i deserami w centrum Radomia
+@przytulasek.radom | Przytulasek Bawialnia i Kawiarnia | Radom | kawiarnia | | Kawiarnia z bawialnią dla dzieci przy Wolność 8, rodziny wracają co tydzień
+@otwarta_radom | OTWARTA Wine Cafe | Radom | kawiarnia | | Kawiarnia i wine bar w centrum, klientela głównie wieczorna
+@baldoria_restobar_kielce | Baldoria Restobar | Kielce | pizza | 1870 | Pizza neapolitańska plus śniadania i drink bar, ruch przez cały dzień
+@terazpizzack | Teraz Pizza | Kielce | pizza | | Pizzeria na Ślichowicach z dowozem, ul. Karbońska 3C
+@tasty_pizza_kielce | Tasty Pizza | Kielce | pizza | | Pizza na wynos przy Warszawskiej 34a, prosty model pod kartę lojalnościową
+@lacasa_kielce | La Casa | Kielce | pizza | | Pizza z pieca opalanego drewnem, szybka dostawa z Pakosz 21
+@pieprzibazylia_ | Pizzeria Pieprz i Bazylia | Kielce | pizza | | Pizzeria przy Placu Wolności, przyjazna psom
+@koralowapizza_kielce | Koralowa Pizza | Kielce | pizza | | Osiedlowa pizzeria na Ślichowicach z dowozem
+@pizzeria_bar_kadzielnia_kielce | Pizzeria Bar Kadzielnia | Kielce | pizza | | Pizzeria przy Kadzielni, sezonowy ruch turystyczny
+@famiglia.kielce | Famiglia Pizza Pasta Gelato | Kielce | wloska | | Włoskie menu: pizza, makarony i lody gelato
+@nabogatobistrokielce | Bistro Nabogato | Kielce | restauracja | 783 | Dwa punkty w Kielcach: Klonowa 67 i Zagnańska 200, duży ruch lunchowy
+@hajp_pub | Hajp Burgers & Pub | Kielce | burgery | | Burgery i pub w jednym, wieczorna klientela
+@good_food_kielce | Good Food Kielce | Kielce | restauracja | | Lokalne bistro z menu dnia
+@sisenorkielce | Restauracja Si Señor | Kielce | restauracja | 1738 | Kuchnia hiszpańska, 20 lat doświadczenia, owoce morza i koktajle
+@ukucharzykielce | U Kucharzy | Kielce | restauracja | 1166 | Rodzinna restauracja ze stałą klientelą na obiady
+@restauracja_antresola_kielce | Restauracja Antresola | Kielce | restauracja | | Restauracja w centrum z menu sezonowym
+@stary.browar.kielce | Restauracja Stary Browar | Kielce | restauracja | | Kuchnia polska i europejska przy kieleckim Rynku
+@s7hotel_kielce | Restauracja BlueLine S7 Hotel | Kielce | restauracja | 614 | Nowoczesna kuchnia polska w hotelu, obsługa eventów
+@cukiernia_nova_lodziarnia | Cukiernia Nova | Kielce | cukiernia/lody | | Nowa cukiernia i lodziarnia na tradycyjnych recepturach
+@cukierniawalenciak | Cukiernia Walenciak | Kielce | cukiernia/lody | | Piekarnia, cukiernia i lodziarnia działająca od 1995 roku
+@sho_ramen_kielce | Sho Ramen | Kielce | sushi/azja | | Nowy ramen shop przy Koziej 2, siostrzany lokal Sushiya
+@sushiya_kielce | Sushiya | Kielce | sushi/azja | | Sushiarnia w Kielcach z własnym ramen barem
+@pierogarnia_na_wspolnej | Pierogarnia na Wspólnej | Kielce | restauracja | 642 | Pierogarnia z 17-letnim stażem, stały ruch lunchowy
+@sultankebabpizza2025 | Sultan Kebab Pizza | Kielce | kebab/street food | | Kebab i pizza przy Sienkiewicza 49, sam środek miasta
+@astanakebab | Astana Kebab | Kielce | kebab/street food | | Kebab ze stałą klientelą, świeży profil na Instagramie
+@pierogowapiwniczkakozia3a | Pierogowa Piwniczka Kozia 3A | Kielce | restauracja | | Pierogarnia w piwnicy przy Koziej, klimatyczne wnętrze
+@bistrodziendobryrzeszow | Bistro Dzień Dobry Rzeszów | Rzeszów | restauracja | | Catering, spotkania biznesowe i domowe pierogi w menu dnia
+@doremibistro | DoReMi Bistro | Rzeszów | restauracja | | Bistro z menu dnia i stałymi gośćmi na lunchu
+@nobo_restauracja | NOBO Restauracja Pizza Bar | Rzeszów | restauracja | | Śniadania i lunche w bistro, wieczorem bar
+@mexico_rzeszow | Mexico Bar Rzeszów | Rzeszów | restauracja | | Kuchnia meksykańska i koktajle, mocny profil wieczorowy
+@muro_restauracja | MURO Restauracja | Rzeszów | restauracja | | Restauracja z autorskim menu w centrum Rzeszowa
+@theburgerpointrzeszow | The Burger Point | Rzeszów | burgery | 2164 | Burgery rzemieślnicze na własnych bułkach, świeżo mielone mięso
+@habibikebabrzeszow | Habibi Kebab | Rzeszów | kebab/street food | 147 | Największe porcje w mieście według własnego opisu, mały profil
+@deshikebabrzeszow | Deshi Kebab Rzeszów | Rzeszów | kebab/street food | | Kebab z rozpoznawalną marką, kilka lokalizacji w regionie
+@mr.kebab_rzeszow | Mr. Kebab | Rzeszów | kebab/street food | | Kebab z dowozem, stali klienci głównie studenci
+@bagatela_rzeszow | Bagatela Grill & Kebab | Rzeszów | kebab/street food | | Grill i kebab, dobry kandydat na kartę za dziesiątą wizytę
+@side_kebab | Side Kebab Restaurant | Rzeszów | kebab/street food | | Kebab w formacie restauracyjnym, jedzenie na miejscu
+@fikacakerzeszow | Cukiernia Fika | Rzeszów | cukiernia/lody | | Kawa, wypieki, lunch bar i lody przy Rynku 24
+@lacrepes_rynek25 | La Crepes Rynek 25 | Rzeszów | sniadania/brunch | | Francuskie śniadania, naleśniki i croissanty w sercu Rynku
+@cafeparkrzeszow | Cafe Park | Rzeszów | kawiarnia | | Kawa 100 procent arabika plus tosty i bułki na śniadanie
+@kawa.na.lawe.rzeszow | Kawa na Ławę | Rzeszów | kawiarnia | | Kawa, desery i śniadania codziennie od 9 do 20
+@kotlownia.cafe | Kocia Kawiarnia Kotłownia | Rzeszów | kawiarnia | | Kocia kawiarnia, goście wracają regularnie i chętnie zbierają pieczątki
+@cafetta.rzeszow | Cafetta | Rzeszów | kawiarnia | | Kawiarnia z deserami w Rzeszowie
+@niebowmiescie.rzeszow | Niebo w Mieście | Rzeszów | kawiarnia | | Kawiarnia i miejsce spotkań z autorskim menu
+### NIEPEWNE
+(lokale z katalogu Glovo Radom - nazwa potwierdzona, handle IG do domknięcia ręcznie; IG blokuje weryfikację bez logowania)
+? | Tandyr House Piekarnia Gruzińska | Radom | cukiernia/lody | | Gruzińska piekarnia z chlebem z pieca tandyr
+? | Gruzińska Dusza Piekarnia i Bistro | Radom | restauracja | | Gruzińskie bistro i piekarnia, chaczapuri na miejscu
+? | Bulka i Kulka Burger & Pizza Detroit | Radom | burgery | | Burgery i pizza w stylu Detroit
+? | Lisia Nora Restaurant & Pizza | Radom | pizza | | Restauracja z pizzą, osobny lokal Pizza w Lisiej
+? | JACKS Restaurant & Cafe | Radom | restauracja | | Restauracja i kawiarnia w jednym
+? | PaTaThai | Radom | sushi/azja | | Kuchnia tajska z dowozem
+? | Paro Radom | Radom | restauracja | | Lokal w Radomiu z dowozem przez Glovo
+? | Sushi Room | Radom | sushi/azja | | Sushiarnia z dowozem po Radomiu
+? | A Nóż Widelec | Radom | restauracja | | Bistro z menu dnia
+? | Bar Karmnik | Radom | restauracja | | Bar z kuchnią domową
+? | Tre Colori | Radom | wloska | | Włoskie menu, makarony i pizza
+? | Marsimo | Radom | pizza | | Pizzeria z dowozem
+? | Pizza Gusto | Radom | pizza | | Pizzeria z dowozem po Radomiu
+? | Amerykański Burger | Radom | burgery | | Burgery w stylu amerykańskim
+? | Curry Kitchen | Radom | sushi/azja | | Kuchnia indyjska z dowozem
+? | Sałata i Szok | Radom | restauracja | | Lokal gastronomiczny w Radomiu
+? | Turas Kebab Radom | Radom | kebab/street food | | Kebab z dowozem
+? | Tendur Kebap Radom | Radom | kebab/street food | | Kebab turecki z dowozem
+? | Bafra Kebab | Radom | kebab/street food | | Kebab z dowozem po Radomiu
+? | Capital Kebab | Radom | kebab/street food | | Kebab z dowozem
+? | Anadolu Kebab | Radom | kebab/street food | | Kebab turecki w Radomiu
+? | Olympic Kebab & Pizza | Radom | kebab/street food | | Kebab i pizza w jednym lokalu
+? | Używki Świata | Radom | kawiarnia | | Kawa i herbata, sklep z używkami
+? | Lody Ice Cream Now | Radom | cukiernia/lody | | Lodziarnia z dowozem
+? | Grillowany Kurczak | Radom | restauracja | | Kurczak z rożna i dania na wynos
+? | Soczyste Steki | Radom | restauracja | | Steki i dania mięsne z dowozem
+@lakocie.kawiarnia | Łakocie Kawiarnia | Kielce | kawiarnia | | Handle potwierdzony, miasto do weryfikacji
+@restauracjaradosc | Restauracja Radość | Rzeszów | restauracja | | Handle potwierdzony, miasto do weryfikacji
