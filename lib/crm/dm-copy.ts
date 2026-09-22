@@ -22,6 +22,7 @@ const PROOF_CAFE = "Yōkai Matcha, MusiSushi i Kago Sushi";
  */
 export const LINKS = {
   www: "scanova.tech",
+  kalkulator: "scanova.tech/kalkulator",
   film: (process.env.NEXT_PUBLIC_FILM_URL?.trim() || null) as string | null,
 };
 
@@ -113,9 +114,19 @@ export const REPLIES: ReplyTemplate[] = [
     label: "„Ile to kosztuje?”",
     when: "Pytanie o cenę przed spotkaniem.",
     text:
-      `Pierwszy miesiąc jest testowy i za darmo, potem [cena] zł/mies. za lokalizację, bez umowy ` +
-      `na czas określony — rezygnacja w każdej chwili. Ustawiamy wszystko za Was, nic nie instalujecie. ` +
+      `Pierwszy miesiąc jest testowy i za darmo. Potem od 250 zł miesięcznie za lokal, a pakiet ` +
+      `z opiniami Google i przypomnieniami — 339 zł. Bez umowy na czas określony, rezygnacja w każdej chwili, ` +
+      `stojak i karty w cenie. Ustawiamy wszystko za Was w 1–3 dni, nic nie instalujecie. ` +
       `Najlepiej pokazać na żywo, 5 minut — kiedy pasuje?`,
+  },
+  {
+    key: "kalkulator",
+    label: "„Czy to się opłaca?”",
+    when: "Gdy wahają się, czy to ma sens finansowo.",
+    text:
+      `Policzmy na Waszych liczbach — tu jest prosty kalkulator: ${LINKS.kalkulator}. Wpisujecie gości ` +
+      `dziennie, średni rachunek i marżę; liczy tylko dodatkowe wizyty stałych gości, ostrożnie. ` +
+      `Zwykle wychodzi, że plan zwraca się po kilku dniach. A pierwszy miesiąc i tak jest za darmo.`,
   },
   {
     key: "umow",
