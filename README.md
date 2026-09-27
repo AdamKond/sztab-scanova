@@ -1,5 +1,8 @@
 # SZTAB — kolejka sprzedaży SCANOVY
 
+> **Nowy komputer / nowa sesja?** Zacznij od `docs/START.md` — stan projektu, decyzje, co dalej,
+> i `scripts/setup-nowy-komputer.ps1`, który konfiguruje wszystko w 10 minut.
+
 Wewnętrzne narzędzie dla dwóch osób (Adam, Oliwier). Odpowiada na jedno
 pytanie: **co dziś zrobić, żeby zdobyć klientów**. Osobny projekt Supabase
 i osobny projekt Vercel, niezależne od aplikacji lojalnościowej.

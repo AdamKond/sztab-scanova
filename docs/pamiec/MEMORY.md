@@ -1,0 +1,3 @@
+- [Adam / Scanova](user-adam-scanova.md) — kim jest użytkownik, jak z nim pracować (po polsku, konkretnie, bez pytań o technikalia)
+- [Projekt Sztab](projekt-sztab-scanova.md) — stan po przebudowie 2026-09-21, ścieżki, deploy Vercel, co dalej
+- [Środowisko Windows](srodowisko-windows-adam.md) — zainstalowane narzędzia, PATH, pułapki sandboxa i PowerShella
