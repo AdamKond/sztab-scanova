@@ -49,6 +49,19 @@
   .cmp h3 { font-size: 1.3em; margin: 0 0 .5em; line-height: 1; }
   @media (max-width: 899px) { .cmp { grid-template-columns: 1fr; } }
 
+  /* Zrzuty z systemu: wrzuć PNG do docs/zrzuty/ (nazwy w data-img), a tablica
+     sama podmieni odręczny rysunek na prawdziwy ekran. Brak pliku = zostaje rysunek. */
+  figure.shot { margin: 0; position: relative; display: flex; flex-direction: column; gap: .5em; }
+  .shot img { display: none; width: 100%; height: auto; border: 3px solid var(--ink); border-radius: 16px; box-shadow: 4px 6px 0 rgba(0,0,0,.08); }
+  .shot.loaded img { display: block; }
+  .shot.loaded svg.draw { display: none; }
+  .shot .cap { font-size: .72em; color: var(--ink-soft); text-align: center; }
+  .shot .cap .real { display: none; } .shot .cap .ph { display: inline; }
+  .shot.loaded .cap .real { display: inline; font-weight: 700; color: var(--green); } .shot.loaded .cap .ph { display: none; }
+  .shot.tall { max-width: 250px; justify-self: center; }
+  .shots { display: grid; grid-template-columns: 2fr 1fr; gap: 4%; align-items: start; margin-top: 1.2em; }
+  @media (max-width: 899px) { .shots { grid-template-columns: 1fr; } .shot.tall { justify-self: start; } }
+
   .chips { display: flex; flex-wrap: wrap; gap: .4em; margin-bottom: 1em; }
   .chip { font: inherit; font-weight: 600; font-size: .9em; border: 2px solid var(--ink); background: #fff; border-radius: 999px; padding: .25em .9em; cursor: pointer; color: var(--ink); }
   .chip[aria-pressed=true] { background: var(--ink); color: #fff; }
@@ -103,52 +116,56 @@
 
   <div class="board-frame"><div class="board" id="board">
 
+    <!-- 0 · OTWARCIE: trzy zyski, zanim padnie słowo o systemie -->
     <section class="sec" data-n="0">
       <span class="num">Scanova · Lublin</span>
-      <h2>Co możemy zrobić dla Waszego lokalu <span class="u">w 30 dni</span></h2>
+      <h2>Trzy rzeczy, które <span class="u">zyska Wasz lokal</span></h2>
       <div class="body g2">
         <div class="col">
           <div class="tiles">
-            <div class="tile"><b class="blue">+25%</b><span>częstsze powroty gości z kartą</span></div>
-            <div class="tile"><b class="green">≈ 100</b><span>nowych opinii w Google miesięcznie</span></div>
-            <div class="tile"><b>0 zł</b><span>przez pierwsze 30 dni</span></div>
+            <div class="tile"><b class="blue">1 · zł</b><span>goście wracają częściej — więcej utargu z tych samych ludzi</span></div>
+            <div class="tile"><b class="green">2 · opinie</b><span>setki opinii w Google → nowi goście z Map</span></div>
+            <div class="tile"><b>3 · kontakt</b><span>własny kanał do gości, zero prowizji portali</span></div>
           </div>
-          <p class="lead">Karta lojalnościowa w telefonie gościa. Bez aplikacji, bez papierowych kart, bez klikania przy kasie.</p>
-          <p class="muted">Po miesiącu widzicie w panelu, kto wraca — i decydujecie.</p>
+          <p class="lead">Wszystko przez jedną kartę w telefonie gościa. Bez aplikacji, bez papierowych kart, bez klikania przy kasie.</p>
+          <span class="sticky">pierwszy miesiąc za darmo</span>
         </div>
-        <svg class="draw wob" viewBox="0 0 420 320" role="img" aria-label="Telefon z kartą lojalnościową w portfelu: pieczątki, nagroda, przypomnienie">
-          <!-- telefon na środku, podpisy na zewnątrz z liniami — nic nie nachodzi na ekran -->
-          <rect x="150" y="18" width="120" height="250" rx="20" fill="#fff" stroke="#1c1c1c" stroke-width="3.5"/>
-          <rect x="161" y="36" width="98" height="214" rx="9" fill="#f4f6fb"/>
-          <rect x="169" y="66" width="82" height="54" rx="8" fill="#1d5fd1"/>
-          <text x="177" y="86" font-size="10" fill="#fff" class="h">Wasz lokal</text>
-          <g fill="#fff"><circle cx="180" cy="106" r="4"/><circle cx="193" cy="106" r="4"/><circle cx="206" cy="106" r="4"/><circle cx="219" cy="106" r="4"/><circle cx="232" cy="106" r="4" opacity=".35"/><circle cx="245" cy="106" r="4" opacity=".35"/></g>
-          <rect x="169" y="130" width="82" height="20" rx="6" fill="#fff" stroke="#1c1c1c" stroke-width="1.5"/>
-          <circle cx="179" cy="140" r="4" fill="#1d5fd1"/><text x="187" y="144" font-size="8.5">Wpadnij dziś: kawa gratis</text>
-          <text x="210" y="175" font-size="9" fill="#5d5d62" text-anchor="middle">Apple Wallet · Google Wallet</text>
-          <g stroke="#1d5fd1" stroke-width="2.5" fill="none" marker-end="url(#arr)">
-            <path d="M92 92 L164 92"/>
-            <path d="M330 106 L256 106"/>
-            <path d="M330 176 L256 140"/>
-          </g>
-          <g font-size="13" class="h" fill="#1d5fd1">
-            <text x="8" y="86">karta w Wallecie</text>
-            <text x="8" y="102" font-size="11" fill="#5d5d62" font-weight="400">bez aplikacji</text>
-            <text x="336" y="100">pieczątki</text>
-            <text x="336" y="116" font-size="11" fill="#5d5d62" font-weight="400">4 z 6 do nagrody</text>
-            <text x="336" y="170">przypomnienie</text>
-            <text x="336" y="186" font-size="11" fill="#5d5d62" font-weight="400">gość wraca</text>
-          </g>
-          <text x="210" y="300" font-size="13" text-anchor="middle" fill="#5d5d62">zawsze w telefonie, obok karty płatniczej</text>
-        </svg>
+        <figure class="shot tall" data-img="zrzuty/karta-wallet.png" data-alt="Prawdziwa karta Scanovy w Apple Wallet">
+          <svg class="draw wob" viewBox="0 0 420 320" role="img" aria-label="Telefon z kartą lojalnościową w portfelu: pieczątki, nagroda, przypomnienie">
+            <rect x="150" y="18" width="120" height="250" rx="20" fill="#fff" stroke="#1c1c1c" stroke-width="3.5"/>
+            <rect x="161" y="36" width="98" height="214" rx="9" fill="#f4f6fb"/>
+            <rect x="169" y="66" width="82" height="54" rx="8" fill="#1d5fd1"/>
+            <text x="177" y="86" font-size="10" fill="#fff" class="h">Wasz lokal</text>
+            <g fill="#fff"><circle cx="180" cy="106" r="4"/><circle cx="193" cy="106" r="4"/><circle cx="206" cy="106" r="4"/><circle cx="219" cy="106" r="4"/><circle cx="232" cy="106" r="4" opacity=".35"/><circle cx="245" cy="106" r="4" opacity=".35"/></g>
+            <rect x="169" y="130" width="82" height="20" rx="6" fill="#fff" stroke="#1c1c1c" stroke-width="1.5"/>
+            <circle cx="179" cy="140" r="4" fill="#1d5fd1"/><text x="187" y="144" font-size="8.5">Wpadnij dziś: kawa gratis</text>
+            <text x="210" y="175" font-size="9" fill="#5d5d62" text-anchor="middle">Apple Wallet · Google Wallet</text>
+            <g stroke="#1d5fd1" stroke-width="2.5" fill="none" marker-end="url(#arr)">
+              <path d="M92 92 L164 92"/>
+              <path d="M330 106 L256 106"/>
+              <path d="M330 176 L256 140"/>
+            </g>
+            <g font-size="13" class="h" fill="#1d5fd1">
+              <text x="8" y="86">karta w Wallecie</text>
+              <text x="8" y="102" font-size="11" fill="#5d5d62" font-weight="400">bez aplikacji</text>
+              <text x="336" y="100">pieczątki</text>
+              <text x="336" y="116" font-size="11" fill="#5d5d62" font-weight="400">4 z 6 do nagrody</text>
+              <text x="336" y="170">przypomnienie</text>
+              <text x="336" y="186" font-size="11" fill="#5d5d62" font-weight="400">gość wraca</text>
+            </g>
+            <text x="210" y="300" font-size="13" text-anchor="middle" fill="#5d5d62">zawsze w telefonie, obok karty płatniczej</text>
+          </svg>
+          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">tu wskoczy zrzut: docs/zrzuty/karta-wallet.png</span></figcaption>
+        </figure>
       </div>
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
+    <!-- 1 · PROBLEM: dlaczego te pieniądze dziś przepadają -->
     <section class="sec" data-n="1">
       <span class="num">Dziś</span>
-      <h2>Ile osób było u Was <span class="red">raz</span> i nigdy nie wróciło?</h2>
-      <p class="muted" style="margin-bottom:1.2em; max-width:40ch">Za każdego gościa płacicie drugi raz — bo nic nie sprowadza go z powrotem.</p>
+      <h2>Te pieniądze dziś <span class="red">przepadają</span></h2>
+      <p class="muted" style="margin-bottom:1.2em; max-width:44ch">Gość był, pochwalił, zniknął. Za nowego płacicie reklamą i prowizją — a nic nie sprowadza z powrotem tego, który już Was lubi.</p>
       <div class="body g3" style="align-items:start">
         <div class="col">
           <svg class="draw wob" viewBox="0 0 200 120" role="img" aria-label="Zmięta papierowa karta"><path d="M40 30 l110 -8 l12 70 l-118 12 z" fill="#fff" stroke="#1c1c1c" stroke-width="3" stroke-linejoin="round"/><path d="M60 50 l70 -5 M62 66 l60 -4 M64 82 l40 -3" stroke="#9a9a94" stroke-width="2"/><path d="M30 20 L170 110 M170 20 L30 110" stroke="#d2262e" stroke-width="4" stroke-linecap="round"/></svg>
@@ -160,15 +177,105 @@
         </div>
         <div class="col">
           <svg class="draw wob" viewBox="0 0 200 120" role="img" aria-label="Jedna gwiazdka z pięciu"><g stroke="#1c1c1c" stroke-width="2.5" stroke-linejoin="round"><path d="M30 60 l8 -20 l8 20 l20 2 l-15 14 l4 20 l-17 -10 l-17 10 l4 -20 l-15 -14 z" fill="#f4c542"/><path d="M72 60 l8 -20 l8 20 l20 2 l-15 14 l4 20 l-17 -10 l-17 10 l4 -20 l-15 -14 z" fill="#fff"/><path d="M114 60 l8 -20 l8 20 l20 2 l-15 14 l4 20 l-17 -10 l-17 10 l4 -20 l-15 -14 z" fill="#fff"/><path d="M156 60 l8 -20 l8 20 l20 2 l-15 14 l4 20 l-17 -10 l-17 10 l4 -20 l-15 -14 z" fill="#fff"/></g></svg>
-          <p class="muted">Opinie zostawiają niezadowoleni. Zadowolonych nikt nie prosi.</p>
+          <p class="muted">Opinie piszą wkurzeni. Zadowolonych nikt nie prosi.</p>
         </div>
       </div>
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
+    <!-- 2 · ZYSK 1: pieniądze ze stałych gości -->
     <section class="sec" data-n="2">
+      <span class="num">Zysk 1 · pieniądze</span>
+      <h2>Stały gość to <span class="u">czysty utarg</span></h2>
+      <p class="muted" style="margin-bottom:1.2em; max-width:44ch">Nowy gość kosztuje (reklama, prowizja portalu). Stały — nie kosztuje nic. Trzeba mu tylko dać powód, żeby wrócił do Was, a nie do konkurencji.</p>
+      <div class="cmp">
+        <div>
+          <h3>Dziś</h3>
+          <ul class="hand">
+            <li class="x">nie wiecie, kto wraca, a kto zniknął</li>
+            <li class="x">do gości docieracie tylko przez portal z prowizją</li>
+            <li class="x">gość wybiera lokal od nowa przy każdej wizycie</li>
+          </ul>
+        </div>
+        <div class="after">
+          <h3 class="blue">Za 30 dni</h3>
+          <ul class="hand">
+            <li class="ok">lista stałych gości z liczbą wizyt — czarno na białym</li>
+            <li class="ok">goście z kartą wracają o ~25% częściej</li>
+            <li class="ok">niżej policzymy, ile to złotych miesięcznie</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin:1.2em 0 0"><span class="sticky blue" style="transform:rotate(-1deg)">kilka lokali? jedna karta na wszystkie</span></p>
+    </section>
+    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
+
+    <!-- 3 · ZYSK 2: opinie Google -> nowi goście -->
+    <section class="sec" data-n="3">
+      <span class="num">Zysk 2 · opinie</span>
+      <h2>Opinie w Google, które <span class="u">sprowadzają nowych</span></h2>
+      <div class="body g2">
+        <svg class="draw wob" viewBox="0 0 420 260" role="img" aria-label="Pętla: wizyta i pieczątka, prośba o opinię, wyżej w Google, nowy gość">
+          <ellipse cx="210" cy="130" rx="170" ry="95" fill="none" stroke="#1d5fd1" stroke-width="3.5"/>
+          <g font-size="15" class="h" text-anchor="middle">
+            <rect x="145" y="12" width="130" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="210" y="37">wizyta + pieczątka</text>
+            <rect x="300" y="110" width="110" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="355" y="135" fill="#1f8f3e">„zostaw opinię”</text>
+            <rect x="150" y="208" width="120" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="210" y="233">wyżej w Google</text>
+            <rect x="8" y="110" width="110" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="63" y="135" fill="#1d5fd1">nowy gość</text>
+          </g>
+          <g stroke="#1d5fd1" stroke-width="3" fill="none" marker-end="url(#arr)"><path d="M282 40 q60 20 60 62"/><path d="M355 155 q0 50 -70 62"/><path d="M140 224 q-80 -20 -80 -66"/><path d="M63 105 q0 -55 78 -60"/></g>
+        </svg>
+        <div class="col">
+          <p class="lead">Gość dostaje <span class="green">pieczątkę gratis za opinię</span> — i prosimy go o nią zaraz po wizycie, jednym klikiem. Zadowolonego, nie przypadkowego.</p>
+          <div class="big green">≈ 100 opinii / mies.</div>
+          <p class="muted">lokal ze 100 gośćmi dziennie; duże do 200. Więcej świeżych opinii = wyżej w Mapach, gdy ktoś szuka „pizza Lublin”.</p>
+          <figure class="shot tall" data-img="zrzuty/opinia.png" data-alt="Prawdziwy ekran: prośba o opinię po pieczątce">
+            <svg class="draw wob" viewBox="0 0 220 160" role="img" aria-label="Ekran z prośbą o opinię"><rect x="60" y="6" width="100" height="148" rx="14" fill="#fff" stroke="#1c1c1c" stroke-width="3"/><text x="110" y="44" font-size="11" text-anchor="middle" class="h">Podobało się?</text><g stroke="#1c1c1c" stroke-width="1.6" stroke-linejoin="round" fill="#f4c542"><path d="M74 62 l4 -10 l4 10 l10 1 l-7 7 l2 10 l-9 -5 l-9 5 l2 -10 l-7 -7 z"/><path d="M96 62 l4 -10 l4 10 l10 1 l-7 7 l2 10 l-9 -5 l-9 5 l2 -10 l-7 -7 z"/><path d="M118 62 l4 -10 l4 10 l10 1 l-7 7 l2 10 l-9 -5 l-9 5 l2 -10 l-7 -7 z"/></g><rect x="74" y="98" width="72" height="22" rx="7" fill="#1f8f3e"/><text x="110" y="113" font-size="10" fill="#fff" text-anchor="middle" class="h">Zostaw opinię</text><text x="110" y="140" font-size="8.5" text-anchor="middle" fill="#5d5d62">+1 pieczątka gratis</text></svg>
+            <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">tu wskoczy zrzut: docs/zrzuty/opinia.png</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
+
+    <!-- 4 · ZYSK 3: własny kanał do gości -->
+    <section class="sec" data-n="4">
+      <span class="num">Zysk 3 · kontakt</span>
+      <h2>Własny kanał do gości — <span class="u">bez prowizji</span></h2>
+      <div class="body g2">
+        <div class="col">
+          <p class="lead">Karta sama przypomina o Was — powiadomieniem na zablokowanym ekranie gościa.</p>
+          <ul class="hand">
+            <li class="ok">słabszy wtorek? jedno powiadomienie i się zapełnia</li>
+            <li class="ok">zero prowizji od zamówienia — to Wasz kontakt, nie portalu</li>
+            <li class="ok">trafia do ludzi, którzy już Was znają i lubią</li>
+          </ul>
+          <p class="muted">Dziś taki bezpośredni kanał do Waszych gości mają tylko portale — i każą sobie za niego płacić od każdego zamówienia.</p>
+        </div>
+        <figure class="shot tall" data-img="zrzuty/push.png" data-alt="Prawdziwe powiadomienie na zablokowanym ekranie">
+          <svg class="draw wob" viewBox="0 0 240 300" role="img" aria-label="Telefon z powiadomieniem na zablokowanym ekranie">
+            <rect x="60" y="10" width="120" height="250" rx="20" fill="#fff" stroke="#1c1c1c" stroke-width="3.5"/>
+            <rect x="71" y="28" width="98" height="214" rx="9" fill="#eef1f7"/>
+            <text x="120" y="70" font-size="24" text-anchor="middle" class="h">12:30</text>
+            <text x="120" y="88" font-size="9" text-anchor="middle" fill="#5d5d62">wtorek, 6 października</text>
+            <rect x="78" y="104" width="84" height="38" rx="9" fill="#fff" stroke="#1c1c1c" stroke-width="2"/>
+            <circle cx="89" cy="117" r="5" fill="#1d5fd1"/>
+            <text x="97" y="120" font-size="7.5" class="h">Wasz lokal</text>
+            <text x="83" y="133" font-size="7.5">Wpadnij dziś — masz nagrodę blisko!</text>
+            <path d="M212 96 L168 112" stroke="#1d5fd1" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+            <text x="176" y="84" font-size="12" class="h" fill="#1d5fd1">Wasza wiadomość</text>
+            <text x="120" y="286" font-size="12" text-anchor="middle" fill="#5d5d62">gość nic nie musi otwierać — samo się pokazuje</text>
+          </svg>
+          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">tu wskoczy zrzut: docs/zrzuty/push.png</span></figcaption>
+        </figure>
+      </div>
+    </section>
+    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
+
+    <!-- 5 · JAK TO DZIAŁA: dopiero teraz mechanika, po trzech zyskach -->
+    <section class="sec" data-n="5">
       <span class="num">Jak to działa</span>
-      <h2>Jedna karta w telefonie gościa. <span class="u">Wszystko dzieje się samo.</span></h2>
+      <h2>Jedna karta. <span class="u">Wszystko dzieje się samo.</span></h2>
       <svg class="draw wob" viewBox="0 0 1000 350" role="img" aria-label="Schemat: QR lub NFC, karta w Wallet, pieczątka, nagroda, przypomnienie, opinia Google, panel właściciela">
         <!-- 5 kroków: boksy 176 px szerokie z 30 px przerwy — każdy podpis ma zapas miejsca -->
         <g stroke="#1c1c1c" stroke-width="3" fill="#fff" stroke-linejoin="round">
@@ -192,60 +299,35 @@
         <text x="500" y="298" font-size="13.5" text-anchor="middle">jeden klik do Google · pytamy tylko zadowolonych</text>
         <rect x="778" y="246" width="212" height="60" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5" stroke-dasharray="6 5"/><text x="884" y="271" font-size="15" text-anchor="middle" class="h">Wasz panel</text><text x="884" y="293" font-size="13" text-anchor="middle">kto wraca · ile opinii</text>
       </svg>
-    </section>
-    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
-
-    <section class="sec" data-n="3">
-      <span class="num">Co się zmienia</span>
-      <h2>Dziś → <span class="u">za 30 dni</span></h2>
-      <div class="cmp">
-        <div>
-          <h3>Dziś</h3>
-          <ul class="hand">
-            <li class="x">nie wiecie, kto wraca</li>
-            <li class="x">do stałych gości docieracie tylko przez portal z prowizją</li>
-            <li class="x">opinie przypadkiem, częściej złe</li>
-          </ul>
-        </div>
-        <div class="after">
-          <h3 class="blue">Za 30 dni</h3>
-          <ul class="hand">
-            <li class="ok">lista stałych gości z liczbą wizyt</li>
-            <li class="ok">jedno powiadomienie — słabszy wtorek się zapełnia</li>
-            <li class="ok">opinie codziennie, od zadowolonych</li>
-          </ul>
-        </div>
-      </div>
-      <p style="margin:1.2em 0 0"><span class="sticky blue" style="transform:rotate(-1deg)">kilka lokali? jedna karta na wszystkie</span></p>
-    </section>
-    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
-
-    <section class="sec" data-n="4">
-      <span class="num">Skąd nowi goście</span>
-      <h2>Więcej opinii → wyżej w Mapach → <span class="u">nowi goście</span></h2>
-      <div class="body g2">
-        <svg class="draw wob" viewBox="0 0 420 260" role="img" aria-label="Pętla: wizyta i pieczątka, prośba o opinię, wyżej w Google, nowy gość">
-          <ellipse cx="210" cy="130" rx="170" ry="95" fill="none" stroke="#1d5fd1" stroke-width="3.5"/>
-          <g font-size="15" class="h" text-anchor="middle">
-            <rect x="145" y="12" width="130" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="210" y="37">wizyta + pieczątka</text>
-            <rect x="300" y="110" width="110" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="355" y="135" fill="#1f8f3e">„zostaw opinię”</text>
-            <rect x="150" y="208" width="120" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="210" y="233">wyżej w Google</text>
-            <rect x="8" y="110" width="110" height="40" rx="10" fill="#fff" stroke="#1c1c1c" stroke-width="2.5"/><text x="63" y="135" fill="#1d5fd1">nowy gość</text>
-          </g>
-          <g stroke="#1d5fd1" stroke-width="3" fill="none" marker-end="url(#arr)"><path d="M282 40 q60 20 60 62"/><path d="M355 155 q0 50 -70 62"/><path d="M140 224 q-80 -20 -80 -66"/><path d="M63 105 q0 -55 78 -60"/></g>
-        </svg>
+      <div class="shots">
+        <figure class="shot" data-img="zrzuty/panel.png" data-alt="Prawdziwy panel właściciela: kto wraca, pieczątki, opinie">
+          <svg class="draw wob" viewBox="0 0 520 240" role="img" aria-label="Szkic panelu właściciela">
+            <rect x="8" y="8" width="504" height="224" rx="12" fill="#fff" stroke="#1c1c1c" stroke-width="3"/>
+            <g fill="#c9c9c3"><circle cx="28" cy="26" r="5"/><circle cx="46" cy="26" r="5"/><circle cx="64" cy="26" r="5"/></g>
+            <text x="30" y="66" font-size="15" class="h">Wasz panel — kto wraca</text>
+            <g font-size="12">
+              <rect x="30" y="82" width="300" height="26" rx="6" fill="#f4f6fb"/><text x="40" y="99">Anna K. · 7 wizyt · ostatnia: wczoraj</text>
+              <rect x="30" y="114" width="300" height="26" rx="6" fill="#f4f6fb"/><text x="40" y="131">Marek W. · 5 wizyt · nagroda odebrana</text>
+              <rect x="30" y="146" width="300" height="26" rx="6" fill="#f4f6fb"/><text x="40" y="163">Ola P. · 4 wizyty · opinia ★★★★★</text>
+            </g>
+            <rect x="352" y="82" width="138" height="42" rx="8" fill="#fff" stroke="#1d5fd1" stroke-width="2.5"/><text x="421" y="100" font-size="11" text-anchor="middle" fill="#5d5d62">stali goście</text><text x="421" y="117" font-size="15" text-anchor="middle" class="h" fill="#1d5fd1">184</text>
+            <rect x="352" y="132" width="138" height="42" rx="8" fill="#fff" stroke="#1f8f3e" stroke-width="2.5"/><text x="421" y="150" font-size="11" text-anchor="middle" fill="#5d5d62">opinie w tym mies.</text><text x="421" y="167" font-size="15" text-anchor="middle" class="h" fill="#1f8f3e">93</text>
+            <text x="260" y="214" font-size="12" text-anchor="middle" fill="#5d5d62">(szkic — tu wejdzie prawdziwy zrzut panelu)</text>
+          </svg>
+          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">tu wskoczy zrzut: docs/zrzuty/panel.png</span></figcaption>
+        </figure>
         <div class="col">
-          <p class="lead">Gość dostaje <span class="green">pieczątkę gratis za opinię</span> w Google. Za polecenie znajomemu — też.</p>
-          <div class="big green">≈ 100 opinii / mies.</div>
-          <p class="muted">lokal ze 100 gośćmi dziennie; duże do 200</p>
+          <p class="lead">Obsługa nic nie klika. Wy tylko zaglądacie do panelu.</p>
+          <p class="muted">Kto wraca, ile pieczątek, ile opinii — na żywo, z każdego urządzenia.</p>
         </div>
       </div>
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
-    <section class="sec" data-n="5">
+    <!-- 6 · KALKULATOR -->
+    <section class="sec" data-n="6">
       <span class="num">Ile to daje</span>
-      <h2>Na Waszych liczbach</h2>
+      <h2>Policzmy <span class="u">na Waszych liczbach</span></h2>
       <div class="chips" id="chips" role="group" aria-label="Branża"></div>
       <div class="calc">
         <div>
@@ -282,7 +364,8 @@
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
-    <section class="sec" data-n="6">
+    <!-- 7 · START + DOWÓD -->
+    <section class="sec" data-n="7">
       <span class="num">Jak to wygląda</span>
       <h2>Miesiąc testowy <span class="u">za darmo</span></h2>
       <div class="col" style="gap:1.6em">
@@ -308,7 +391,8 @@
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
-    <section class="sec" data-n="7">
+    <!-- 8 · WEZWANIE -->
+    <section class="sec" data-n="8">
       <span class="num">Co dalej</span>
       <h2>Chcecie zobaczyć, ilu gości <span class="blue">u Was</span> wraca?</h2>
       <div class="body g2">
@@ -328,14 +412,15 @@
 
 <script>
   const NOTES = [
-    { t: "0:00–0:15", html: "<p class='say'>„W 30 dni możemy zrobić dla Was trzy rzeczy: goście z kartą wracają o ćwierć częściej, przybywa około stu opinii w Google miesięcznie, a Wy pierwszy raz widzicie, kto wraca. Pierwszy miesiąc kosztuje zero. Pokażę w dwie minuty, jak to działa.”</p><p>Zacznij od obietnicy, nie od siebie. „Adam, Scanova, Lublin” — jedno zdanie, i przewijaj.</p>" },
-    { t: "0:15–0:32", html: "<p class='say'>„Bo dziś: ile osób było u Was raz, pochwaliło jedzenie i nigdy nie wróciło? Za każdego płacicie drugi raz. Papierowa karta ginie. Aplikacji nikt nie instaluje dla jednego lokalu. A opinie zostawiają niezadowoleni — bo zadowolonych nikt nie prosi.”</p><p>Wskaż trzy rysunki, nie rozwijaj.</p>" },
-    { t: "0:32–1:10", html: "<p class='say'>„U nas wszystko dzieje się samo. Gość skanuje kod albo przykłada telefon — karta wskakuje do Apple czy Google Wallet, bez aplikacji, dwie sekundy. Każda wizyta: pieczątka, obsługa nic nie klika. Po kilku — nagroda, jaką ustawicie. Między wizytami karta sama przypomina: ‚wpadnij dziś’. Po pieczątce jedno pytanie: podobało się? Zadowolony jednym klikiem trafia do opinii Google. Wy w panelu widzicie, kto wraca.”</p><p><b>Najważniejsza część.</b> Palcem od 1 do 5, potem w dół. Tu wetnij prawdziwy telefon z kartą.</p>" },
-    { t: "1:10–1:25", html: "<p class='say'>„Po miesiącu: lista stałych gości z liczbą wizyt. Własny kanał — jedno powiadomienie i słabszy wtorek się zapełnia, bez prowizji. Opinie codziennie, od zadowolonych.”</p><p>Lokal z 2+ punktami — przeczytaj karteczkę.</p>" },
-    { t: "1:25–1:45", html: "<p class='say'>„Skąd nowi goście: przy dołączaniu do karty gość dostaje pieczątkę gratis za opinię w Google. Za polecenie znajomemu — też. Ktoś wpisuje w Mapy ‚pizza Lublin’ — wyżej jest ten, kto ma więcej świeżych opinii. Lokal ze stu gośćmi dziennie zbiera u nas około stu opinii miesięcznie.”</p><p>Obrysuj pętlę palcem.</p>" },
-    { t: "1:45–2:15", html: "<p class='say'>„Policzmy. Kawiarnia, 80 gości dziennie, rachunek 28 zł — to średnie z raportów o polskich kawiarniach. Żeby plan i nagrody były za darmo, wystarczą dwie dodatkowe wizyty dziennie. Jeśli goście z kartą wracają o ćwierć częściej — badania mówią nawet o jednej trzeciej — zostaje około trzech tysięcy miesięcznie. Pizzeria, sushi: klik i widać. I nie liczę tu nowych gości z opinii.”</p><p>Kliknij branżę rozmówcy. Zacznij od ‚żeby było za darmo’ — to zdanie sprzedaje.</p>" },
-    { t: "2:15–2:32", html: "<p class='say'>„W 1–3 dni ustawiamy wszystko i przywozimy stojak. Pierwszy tydzień: pierwsze karty i opinie. Trzydziestego dnia patrzycie w panel i sami decydujecie. Bez umowy na czas określony. Korzystają już MusiSushi, Kago Sushi, Yōkai Matcha.”</p>" },
-    { t: "2:32–2:45", html: "<p class='say'>„Chcecie zobaczyć, ilu gości u Was wraca? Odpiszcie ‚ok’ — ustawimy miesiąc testowy w tym tygodniu. Albo wpadnę na 5 minut.”</p><p>Ostatnie słowo: ‚ok’.</p>" },
+    { t: "0:00–0:18", html: "<p class='say'>„Cześć, Adam ze Scanovy, z Lublina. Mam dla Was trzy rzeczy. Raz: zarobimy dla Was więcej — Wasi goście zaczną wracać częściej. Dwa: zbierzemy Wam setki opinii w Google, a to one decydują, kogo wybiera nowy klient. Trzy: dostaniecie własny, bezpośredni kontakt do swoich gości — bez płacenia prowizji portalom. Trzy minuty, pokażę jak.”</p><p>Obietnica, nie opis systemu. Słowo „Scanova” pada raz i przewijasz.</p>" },
+    { t: "0:18–0:38", html: "<p class='say'>„Najpierw szybko — dlaczego te pieniądze dziś przepadają. Ile osób było u Was raz, pochwaliło jedzenie i tyle je widzieliście? Papierowa karteczka ginie w portfelu. Aplikacji nikt nie ściąga dla jednego lokalu. A opinie w Google piszą głównie wkurzeni — bo zadowolonych nikt nie zapyta w dobrym momencie.”</p><p>Wskaż trzy rysunki po kolei, nie rozwijaj.</p>" },
+    { t: "0:38–1:00", html: "<p class='say'>„Zysk numer jeden: pieniądze. Nowy gość kosztuje — reklama, prowizje. Stały gość nie kosztuje nic, trzeba mu tylko dać powód do powrotu. Gość z naszą kartą wraca średnio o jedną czwartą częściej. I po trzydziestu dniach macie listę swoich stałych gości z liczbą wizyt — czarno na białym. Za chwilę policzymy, ile to złotych.”</p><p>Zapowiedz kalkulator — buduje napięcie do planszy 7.</p>" },
+    { t: "1:00–1:25", html: "<p class='say'>„Zysk numer dwa: opinie. Gość dostaje pieczątkę gratis za opinię w Google — i prosimy go zaraz po wizycie, jednym klikiem, kiedy jest zadowolony. Dlatego opinie przybywają codziennie. I to jest koło zamachowe: więcej świeżych opinii, wyżej w Mapach — ktoś wpisuje ‚pizza Lublin’ i trafia do Was, nie do konkurencji. Lokal ze stu gośćmi dziennie zbiera tak około stu opinii miesięcznie.”</p><p>Obrysuj pętlę palcem/kursorem. Pokaż zrzut ekranu z prośbą o opinię.</p>" },
+    { t: "1:25–1:45", html: "<p class='say'>„Zysk numer trzy: własny kanał. Karta siedzi w telefonie gościa i potrafi przypomnieć: ‚wpadnij dziś, masz nagrodę blisko’. Macie słabszy wtorek? Jedno powiadomienie — za darmo, do ludzi, którzy Was znają i lubią. Dziś taki kontakt do WASZYCH gości mają portale — i każą sobie płacić prowizję od każdego zamówienia.”</p><p>Wskaż powiadomienie na telefonie.</p>" },
+    { t: "1:45–2:15", html: "<p class='say'>„A działa to tak — i to jest najprostsza część. Gość przy kasie skanuje kod albo przykłada telefon: karta sama wskakuje do Apple albo Google Wallet. Żadnej aplikacji, dwie sekundy. Każda wizyta to pieczątka — obsługa nic nie klika. Po kilku wizytach nagroda, jaką sami ustawicie. A Wy w panelu widzicie na żywo, kto wraca, ile pieczątek, ile opinii. To, co pokazuję, to prawdziwe ekrany z systemu — tak to wygląda u naszych klientów.”</p><p><b>Palcem po krokach 1→5, potem panel.</b> Tu najlepiej działają prawdziwe zrzuty.</p>" },
+    { t: "2:15–2:40", html: "<p class='say'>„No to liczby. Kawiarnia, osiemdziesięciu gości dziennie, rachunek dwadzieścia osiem złotych — średnie z raportów o polskich kawiarniach. Żeby system i nagrody były całkowicie za darmo, wystarczą DWIE dodatkowe wizyty dziennie. Dwie. A przy realnym założeniu, że goście z kartą wracają o ćwierć częściej, zostaje w lokalu około trzech tysięcy miesięcznie. I tu nawet nie liczę nowych gości z opinii. Pizzeria, sushi, kebab — klik i widać Wasze liczby.”</p><p>Kliknij branżę rozmówcy PRZED nagraniem. Zdanie o dwóch wizytach sprzedaje — zrób po nim pauzę.</p>" },
+    { t: "2:40–2:55", html: "<p class='say'>„Start jest po naszej stronie: w jeden do trzech dni ustawiamy wszystko i przywozimy stojak, Wy nic nie instalujecie. Pierwszy miesiąc testowy, za darmo — trzydziestego dnia patrzycie w panel i sami decydujecie, bez umowy na czas. Korzystają już MusiSushi, Kago Sushi czy Yōkai Matcha.”</p>" },
+    { t: "2:55–3:05", html: "<p class='say'>„Chcecie zobaczyć, ilu gości u Was wraca? Odpiszcie po prostu ‚ok’ — ustawimy miesiąc testowy jeszcze w tym tygodniu. Albo wpadnę na pięć minut i pokażę na Waszym telefonie.”</p><p>Ostatnie słowo filmiku: ‚ok’.</p>" },
   ];
   const notes = document.getElementById("notes"), ntext = document.getElementById("ntext"), ntime = document.getElementById("ntime"), notesBtn = document.getElementById("notesBtn");
   function showNote(i) { ntime.textContent = NOTES[i].t; ntext.innerHTML = NOTES[i].html; }
@@ -347,6 +432,14 @@
   const io = new IntersectionObserver((entries) => { const best = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]; if (best) showNote(+best.target.dataset.n); }, { rootMargin: "-35% 0px -35% 0px", threshold: [0, .25, .5, .75, 1] });
   document.querySelectorAll(".sec").forEach((s) => io.observe(s));
   showNote(0);
+
+  // Zrzuty z systemu: jeśli plik z data-img istnieje, podmień rysunek na prawdziwy ekran.
+  document.querySelectorAll(".shot[data-img]").forEach((el) => {
+    const img = new Image();
+    img.alt = el.dataset.alt || "";
+    img.addEventListener("load", () => { el.prepend(img); el.classList.add("loaded"); });
+    img.src = el.dataset.img;
+  });
 
   // Kalkulator — te same założenia, co scanova.tech/kalkulator.
   // Liczby z polskich raportów branżowych 2025/2026 (te same, co na scanova.tech/kalkulator).

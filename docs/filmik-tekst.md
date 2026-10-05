@@ -1,100 +1,119 @@
-# Filmik z tablicą — pełny tekst do powiedzenia (~2:45)
+# Filmik z tablicą — pełny tekst do powiedzenia (~3:05)
 
-Nagrywasz ekran z `docs/tablica-scanovy.html` (tryb filmowy) + swoje kółeczko
-z kamerki (Loom / QuickTime + kamera). Mówisz i przewijasz — jedna plansza =
-jeden akapit. Nie czytaj słowo w słowo, to ma brzmieć jak rozmowa.
+Narracja idzie od ZYSKÓW (pieniądze → opinie → własny kanał), dopiero potem
+„jak to działa". Nagrywasz ekran z `docs/tablica-scanovy.html` (klawisz F =
+tryb filmowy) + swoje kółeczko z kamerki (Loom). Jedna plansza = jeden akapit.
+Nie czytaj słowo w słowo — to ma brzmieć jak rozmowa przy stoliku.
+
+Zanim nagrasz: wrzuć prawdziwe zrzuty z systemu do `docs/zrzuty/`
+(instrukcja w `docs/zrzuty/README.md`) — tablica sama podmieni rysunki
+na prawdziwe ekrany.
 
 ---
 
-## Plansza 1 · 0:00–0:15 — Obietnica (start, bez przedstawiania się na długo)
+## Plansza 1 · 0:00–0:18 — Trzy zyski (obietnica)
 
-> W 30 dni możemy zrobić dla Was trzy rzeczy: goście z kartą wracają o ćwierć
-> częściej, przybywa około stu opinii w Google miesięcznie, a Wy pierwszy raz
-> widzicie, kto do Was wraca. Pierwszy miesiąc kosztuje zero. Pokażę w dwie
-> minuty, jak to działa.
+> Cześć, Adam ze Scanovy, z Lublina. Mam dla Was trzy rzeczy. Raz: zarobimy
+> dla Was więcej — Wasi goście zaczną wracać częściej. Dwa: zbierzemy Wam
+> setki opinii w Google, a to one decydują, kogo wybiera nowy klient. Trzy:
+> dostaniecie własny, bezpośredni kontakt do swoich gości — bez płacenia
+> prowizji portalom. Trzy minuty, pokażę jak.
 
-*Wskazówka: zacznij od obietnicy, nie od siebie. „Adam, Scanova, z Lublina" —
-jedno zdanie wplecione, i przewijasz dalej.*
+*Obietnica, nie opis systemu. Słowo „Scanova" pada raz — i przewijasz.*
 
-## Plansza 2 · 0:15–0:32 — Problem
+## Plansza 2 · 0:18–0:38 — Dlaczego te pieniądze dziś przepadają
 
-> Bo dziś: ile osób było u Was raz, pochwaliło jedzenie i nigdy nie wróciło?
-> Za każdego takiego gościa płacicie drugi raz. Papierowa karta ginie
-> w portfelu. Aplikacji nikt nie instaluje dla jednego lokalu. A opinie
-> zostawiają niezadowoleni — bo zadowolonych nikt nie prosi.
+> Najpierw szybko — dlaczego te pieniądze dziś przepadają. Ile osób było
+> u Was raz, pochwaliło jedzenie i tyle je widzieliście? Papierowa karteczka
+> ginie w portfelu. Aplikacji nikt nie ściąga dla jednego lokalu. A opinie
+> w Google piszą głównie wkurzeni — bo zadowolonych nikt nie zapyta w dobrym
+> momencie.
 
-*Wskazówka: wskaż kursorem trzy rysunki, nie rozwijaj tematu.*
+*Wskaż trzy rysunki po kolei, nie rozwijaj.*
 
-## Plansza 3 · 0:32–1:10 — Jak to działa (NAJWAŻNIEJSZE 40 sekund)
+## Plansza 3 · 0:38–1:00 — ZYSK 1: pieniądze
 
-> U nas wszystko dzieje się samo. Gość skanuje kod albo przykłada telefon —
-> karta wskakuje do Apple czy Google Wallet, bez żadnej aplikacji, dwie
-> sekundy. Każda wizyta: pieczątka, obsługa nic nie klika. Po kilku wizytach —
-> nagroda, jaką sami ustawicie. Między wizytami karta sama przypomina:
-> „wpadnij dziś". A po pieczątce jedno pytanie: podobało się? Zadowolony gość
-> jednym klikiem trafia prosto do opinii Google. Wy w panelu widzicie,
-> kto wraca.
+> Zysk numer jeden: pieniądze. Nowy gość kosztuje — reklama, prowizje. Stały
+> gość nie kosztuje nic, trzeba mu tylko dać powód do powrotu. Gość z naszą
+> kartą wraca średnio o jedną czwartą częściej. I po trzydziestu dniach macie
+> listę swoich stałych gości z liczbą wizyt — czarno na białym. Za chwilę
+> policzymy, ile to złotych.
 
-*Wskazówka: prowadź kursorem po krokach 1→5, potem w dół do opinii. Jeśli
-możesz, wetnij tu 5 sekund nagrania prawdziwego telefonu z kartą.*
+*Zapowiedź kalkulatora buduje napięcie — widz czeka na liczby.*
 
-## Plansza 4 · 1:10–1:25 — Dziś vs za 30 dni
+## Plansza 4 · 1:00–1:25 — ZYSK 2: opinie Google
 
-> Po miesiącu macie: listę stałych gości z liczbą wizyt. Własny kanał
-> kontaktu — jedno powiadomienie i słabszy wtorek się zapełnia, bez prowizji
-> dla portali. I opinie codziennie, od zadowolonych.
+> Zysk numer dwa: opinie. Gość dostaje pieczątkę gratis za opinię w Google —
+> i prosimy go zaraz po wizycie, jednym klikiem, kiedy jest zadowolony.
+> Dlatego opinie przybywają codziennie. I to jest koło zamachowe: więcej
+> świeżych opinii, wyżej w Mapach — ktoś wpisuje „pizza Lublin" i trafia
+> do Was, nie do konkurencji. Lokal ze stu gośćmi dziennie zbiera tak około
+> stu opinii miesięcznie.
 
-*Wskazówka: jeśli lokal ma 2+ punkty, przeczytaj żółtą karteczkę:
-„kilka lokali? jedna karta na wszystkie".*
+*Obrysuj pętlę kursorem. Obok jest zrzut ekranu prośby o opinię — wskaż go.*
 
-## Plansza 5 · 1:25–1:45 — Skąd nowi goście
+## Plansza 5 · 1:25–1:45 — ZYSK 3: własny kanał do gości
 
-> A skąd nowi goście? Przy dołączaniu do karty gość dostaje pieczątkę gratis
-> za opinię w Google. Za polecenie znajomemu — też. Ktoś wpisuje w Mapy
-> „pizza Lublin" — wyżej jest ten, kto ma więcej świeżych opinii. Lokal ze stu
-> gośćmi dziennie zbiera u nas około stu opinii miesięcznie.
+> Zysk numer trzy: własny kanał. Karta siedzi w telefonie gościa i potrafi
+> przypomnieć: „wpadnij dziś, masz nagrodę blisko". Macie słabszy wtorek?
+> Jedno powiadomienie — za darmo, do ludzi, którzy Was znają i lubią. Dziś
+> taki kontakt do WASZYCH gości mają portale — i każą sobie płacić prowizję
+> od każdego zamówienia.
 
-*Wskazówka: obrysuj pętlę kursorem.*
+*Wskaż powiadomienie na zablokowanym ekranie.*
 
-## Plansza 6 · 1:45–2:15 — Kalkulator (na liczbach rozmówcy)
+## Plansza 6 · 1:45–2:15 — Jak to działa (z prawdziwymi ekranami)
 
-> Policzmy. Kawiarnia, 80 gości dziennie, średni rachunek 28 złotych — to
-> średnie z raportów o polskich kawiarniach. Żeby plan i nagrody były za
-> darmo, wystarczą dwie dodatkowe wizyty dziennie. Jeśli goście z kartą
-> wracają o ćwierć częściej — a badania mówią nawet o jednej trzeciej —
-> zostaje około trzech tysięcy miesięcznie. Pizzeria, sushi — klik i widać.
-> I nie liczę tu w ogóle nowych gości z opinii.
+> A działa to tak — i to jest najprostsza część. Gość przy kasie skanuje kod
+> albo przykłada telefon: karta sama wskakuje do Apple albo Google Wallet.
+> Żadnej aplikacji, dwie sekundy. Każda wizyta to pieczątka — obsługa nic nie
+> klika. Po kilku wizytach nagroda, jaką sami ustawicie. A Wy w panelu
+> widzicie na żywo, kto wraca, ile pieczątek, ile opinii. To, co pokazuję,
+> to prawdziwe ekrany z systemu — tak to wygląda u naszych klientów.
 
-*Wskazówka: kliknij branżę rozmówcy przed nagraniem tego fragmentu (albo
-nagraj wersję per nisza). Zdanie „żeby było za darmo wystarczą dwie wizyty" —
-to ono sprzedaje.*
+*Prowadź kursorem po krokach 1→5, potem zjedź do panelu. Tu prawdziwe zrzuty
+robią największą robotę.*
 
-## Plansza 7 · 2:15–2:32 — Jak wygląda start + dowód
+## Plansza 7 · 2:15–2:40 — Kalkulator
 
-> W jeden do trzech dni ustawiamy wszystko i przywozimy stojak. Pierwszy
-> tydzień: pierwsze karty, pieczątki, opinie. Trzydziestego dnia patrzycie
-> w panel i sami decydujecie. Bez umowy na czas określony. Korzystają już
-> między innymi MusiSushi, Kago Sushi i Yōkai Matcha.
+> No to liczby. Kawiarnia, osiemdziesięciu gości dziennie, rachunek
+> dwadzieścia osiem złotych — średnie z raportów o polskich kawiarniach.
+> Żeby system i nagrody były całkowicie za darmo, wystarczą DWIE dodatkowe
+> wizyty dziennie. Dwie. A przy realnym założeniu, że goście z kartą wracają
+> o ćwierć częściej, zostaje w lokalu około trzech tysięcy miesięcznie.
+> I tu nawet nie liczę nowych gości z opinii. Pizzeria, sushi, kebab —
+> klik i widać Wasze liczby.
 
-## Plansza 8 · 2:32–2:45 — Wezwanie
+*Kliknij branżę rozmówcy PRZED nagraniem (albo nagraj wersje per nisza).
+Po „dwie dodatkowe wizyty dziennie" zrób pauzę — to zdanie sprzedaje.*
 
-> Chcecie zobaczyć, ilu gości u Was wraca? Odpiszcie „ok" — ustawimy miesiąc
-> testowy jeszcze w tym tygodniu. Albo wpadnę na 5 minut i pokażę na Waszym
-> telefonie.
+## Plansza 8 · 2:40–2:55 — Start + dowód
 
-*Ostatnie słowo filmiku: „ok" — to samo, co ma odpisać.*
+> Start jest po naszej stronie: w jeden do trzech dni ustawiamy wszystko
+> i przywozimy stojak, Wy nic nie instalujecie. Pierwszy miesiąc testowy,
+> za darmo — trzydziestego dnia patrzycie w panel i sami decydujecie, bez
+> umowy na czas. Korzystają już MusiSushi, Kago Sushi czy Yōkai Matcha.
+
+## Plansza 9 · 2:55–3:05 — Wezwanie
+
+> Chcecie zobaczyć, ilu gości u Was wraca? Odpiszcie po prostu „ok" —
+> ustawimy miesiąc testowy jeszcze w tym tygodniu. Albo wpadnę na pięć minut
+> i pokażę na Waszym telefonie.
+
+*Ostatnie słowo filmiku: „ok" — to samo, co lokal ma odpisać.*
 
 ---
 
 ## Jak nagrać (checklista)
 
-1. Otwórz `docs/tablica-scanovy.html` w przeglądarce, kliknij **Tryb filmowy**
-   (chowa przyciski), notatki „Co mówisz" miej na drugim ekranie/telefonie.
-2. Nagrywanie: **Loom** (darmowy do 5 min, od razu daje link z miniaturką
-   do DM-a) albo QuickTime (ekran) — wtedy kółeczko z kamerki dołóż w CapCut.
-3. Mów do kamerki, nie do ekranu. Jedno podejście na planszę — montujesz cięcia
-   na przejściach między planszami, więc pomyłka = powtarzasz tylko planszę.
-4. Napisy obowiązkowo (Loom robi automatyczne; sprawdź polskie znaki).
-5. Cel: 2:30–2:45. Jak wychodzi dłużej — tnij planszę 2 i 5, nigdy planszę 3.
-6. Gotowy link wpisz w Vercelu jako `NEXT_PUBLIC_FILM_URL` — od tego momentu
+1. Wrzuć 4 zrzuty z systemu do `docs/zrzuty/` (nazwy i wskazówki w README tam).
+2. Otwórz `docs/tablica-scanovy.html`, naciśnij **F** (tryb filmowy); tekst
+   do mówienia miej na drugim ekranie albo telefonie (ten plik).
+3. Nagrywanie: **Loom** (darmowy do 5 min, od razu kółeczko z twarzą i link
+   z miniaturką do DM-a) albo QuickTime + montaż kółeczka w CapCut.
+4. Mów do kamerki, nie do ekranu. Jedno podejście na planszę — cięcia robisz
+   na przejściach, więc pomyłka = powtarzasz tylko jedną planszę.
+5. Napisy obowiązkowo (Loom/CapCut automatyczne; sprawdź polskie znaki).
+6. Cel: 2:50–3:10. Jak za długo — tnij planszę 2 i 8, nigdy plansz 3–6.
+7. Gotowy link wpisz w Vercelu jako `NEXT_PUBLIC_FILM_URL` — od tej chwili
    bot na Instagramie wysyła prawdziwy filmik.
