@@ -1,0 +1,111 @@
+# Leady 2026-10-05 — 30 nowych lokali (3 agenci Opus + weryfikacja handle'i na stronach własnych / w indeksie Google)
+# Format: @instagram | Nazwa | Miasto | nisza | obserwujący | hook (pierwsze zdanie DM-a)
+# Import: npx tsx scripts/import-leady-baza.ts docs/research-2026-10/leady-2026-10-05.txt --wykonaj
+
+# --- Lublin (8) ---
+@piekarniakuzmiuk | Piekarnia Kuźmiuk | Lublin | cukiernia/lody |  | Najstarsza rodzinna piekarnia w Lublinie, od 1944 roku ten sam przepis i lubelski cebularz, po który ludzie wracają co rano.
+@miedzy_kromkami_pastrami | Między Kromkami Pastrami | Lublin | kebab/street food | 408 | Kilka lat dopracowywania przepisu na pastrami na Narutowicza robi wrażenie, bo po taką kanapkę wraca się regularnie.
+@parmezanbistro | Parmezan Bistro | Lublin | wloska | 743 | Bistro na Sekutowicza, gdzie stawiacie na prostotę i jakość, żyje z gości, którzy wpadają na lunch po kilka razy w miesiącu.
+@browar_zakladowy_wielokran | Browar Zakładowy Wielokran | Lublin | restauracja | 2384 | Dziesięć kranów na placu Teatralnym i przy każdej wizycie inne piwo z Waszego browaru to rzecz, po którą ludzie wracają.
+@chatalublin | Chata Karczma Regionalna | Lublin | restauracja |  | Klimat XIX-wiecznej karczmy na Nadbystrzyckiej i kuchnia staropolska z przepisów sprzed lat przyciągają stałych gości.
+@mozelublin | MOŻE | Lublin | restauracja | 8581 | Kuchnia i imprezy nad Zalewem Zemborzyckim na świeżym powietrzu to sezonowy magnes, który można domknąć stałymi gośćmi.
+@ososushi_lublin | Oso Sushi & Wok | Lublin | sushi/azja |  | Sushi i japońskie zupy na Zana 19, które robicie od lat, to typowe miejsce z gośćmi wracającymi co kilka tygodni.
+@malowanka_restauracja | Restauracja Malowanka | Lublin | restauracja |  | Kuchnia polska na Zana 19 z oceną 4,8 w Google żyje z gości, którzy wracają na obiad regularnie.
+
+# --- Lubelskie poza Lublinem (9) ---
+@la_fiamma_pizzeria_napoletana_ | La Fiamma Pizzeria Napoletana | Zamość | pizza | 379 | Certyfikat AVPN 1092 i piec przy Rynku Wielkim 2 to powód, dla którego po Waszą neapolitankę wraca się regularnie.
+@przystanekpiekarza | Przystanek Piekarza | Zamość | cukiernia/lody | 1141 | Ciabatta z Piekarni Ćwik bez polepszaczy i rzemieślnicze lody na Partyzantów 63 to zakupy, które robi się codziennie.
+@atmosfera_caffe | Atmosfera Caffe | Włodawa | burgery | 1021 | Burgery z Partyzantów 12a i ocena 4,6 z ponad tysiąca opinii pokazują, że u Was ludzie wracają co kilka tygodni po to samo.
+@bistro__jaga | Bistro JaGa | Włodawa | restauracja | 701 | Kotlet, pierogi i pizza na Piłsudskiego 85 przy 1200 opiniach w Google to lunch, na który wraca się w tygodniu.
+@kawiarnialalka | Kawiarnia Lalka | Hrubieszów | cukiernia/lody | 263 | Cukiernia z Narutowicza 27 i tradycyjne receptury Hrubieszowskich Przysmaków to zakup powtarzany co tydzień.
+@ike.sushi | IKE Sushi | Krasnystaw | sushi/azja | 476 | Pierwsze sushi w Krasnymstawie to lokal, do którego goście wracają cyklicznie, a takich gości warto rozpoznawać po imieniu.
+@da_vinci_pizzeria_pub | Da Vinci Pizzeria & Pub | Lubartów | pizza | 1726 | Prawie dwa tysiące obserwujących przy Lubelskiej 50A to gotowa społeczność, której wystarczy dać konkretny powód, żeby wracać częściej.
+@kwiat.paproci.chelm | Restauracja Kwiat Paproci | Chełm | restauracja | 1671 | Śniadania, lunch, cocktail bar i ogród na Placu Łuczkowskiego 17 to trzy powody dziennie, żeby ten sam gość wrócił.
+@familjada_janow | FamiLJAda Pizza & Burger | Janów Lubelski | burgery | 407 | Pizza i burgery w stylu nowoamerykańskim na Piłsudskiego 23 to zamówienie, które w Janowie wraca co dwa tygodnie.
+
+# --- Rzeszów / Kielce / Radom (13) ---
+@wypiekarnia.rzeszow | Wypiekarnia | Rzeszów | cukiernia/lody |  | Wasza pracownia przy Hetmańskiej 32 ma w Rzeszowie opinię najlepszej cukierni, a po tarty i sernik ludzie wracają co tydzień.
+@dziarskibarista | Dziarski Barista | Rzeszów | kawiarnia |  | Specialty z regałem winyli i sklepik dla domowych baristów na Matejki to powód, żeby zaglądać do Was częściej niż raz w tygodniu.
+@powoli_cafe | Powoli Cafe | Rzeszów | kawiarnia | 4682 | Specialty i śniadania na Mickiewicza 4 przy prawie pięciu tysiącach obserwujących to już stała grupa gości, którą da się przywiązać.
+@momento.roastery | Momento Coffee | Rzeszów | kawiarnia |  | Własna palarnia przy Reformackiej 3 znaczy, że ludzie wracają do Was po konkretne ziarno, a nie po przypadkową kawę.
+@kawiarnia.comilfo | Kawiarnia Comilfo | Kielce | kawiarnia |  | Nowe miejsce na Placu Wolności z własną palarnią i sezonową kartą kaw speciality szybko wyrabia sobie grono stałych gości.
+@malarozkosz | Mała Rozkosz Café | Kielce | kawiarnia |  | Kawiarnia naprzeciw katedry, w której włoska kawa i Wasze ciasta ciągną ludzi na krótką przerwę kilka razy w tygodniu.
+@nawypasie_kielce | Na Wypasie Smash Burger & Pizza | Kielce | burgery |  | Podwójne kotlety wołowe i burger miesiąca na Wojska Polskiego to dokładnie ten rytm, który sprowadza tych samych gości co tydzień.
+@alebabeczka_cukiernia | AleBabeczka Cukiernia | Kielce | cukiernia/lody |  | Cukiernia ze śniadaniami przy Świętego Leonarda 11 to miejsce, do którego wpada się po drodze, a potem już regularnie.
+@hokku_sushi_kielce | Hokku Sushi | Kielce | sushi/azja |  | Zestawy ze Śląskiej 7 to zamówienia, które powtarza się co drugi weekend, więc u Was liczy się każdy powracający gość.
+@lafavorita_pizzeria | La Favorita | Radom | pizza |  | Pizzeria na Okulickiego, do której radomianie dzwonią po to samo ciasto od lat, ma gotową bazę gości do nagradzania.
+@siestaristorante | Siesta Ristorante | Radom | wloska |  | Włoska kuchnia przy Żeromskiego 31, w samym deptaku Radomia, żyje z gości, którzy wpadają na makaron w kółko.
+@boskie_serniki_boskie_wypieki | Boskie Serniki Boskie Wypieki | Radom | cukiernia/lody |  | Serniki i wypieki z Focha 12 to taki rodzaj słodkiego, po który wraca się w tę samą sobotę co tydzień.
+@potluczonegaryradom | Potłuczone Gary | Radom | restauracja |  | Domowe obiady przy Głównej 9 to miejsce, do którego radomianie wracają w tygodniu, a nie tylko na okazję.
+
+### REZERWA — potwierdzone handle, nie weszły do 30 (mniej powtarzalnych wizyt); do importu przy następnej partii
+@insomniarestauracja | Insomnia | Lublin | restauracja |  | Miejsce na Curie-Skłodowskiej, w którym czas się zatrzymał, buduje grono gości wracających po ten konkretny nastrój.
+@trybunalska | Trybunalska City Pub | Lublin | restauracja | 2158 | Lokal w kamienicy przy Rynku 4, nazwany od Trybunału Koronnego, ma ruch, który warto zamienić w stałych gości.
+@pod.sw.kazimierzem | Restauracja Piwnica pod Św. Kazimierzem | Zamość | restauracja | 279 | Kolacja w zabytkowych piwnicach przy Rynku Wielkim to u Was okazja, po którą goście wracają kilka razy w roku.
+@skarbiec.wina | Restauracja Skarbiec Wina | Zamość | restauracja | 409 | Sala degustacyjna w piwnicach kamienicy Szczebrzeskiej daje Wam gości, którzy wracają na kolejne degustacje.
+@karuzela.smaku_restauracja | Karuzela Smaku | Świdnik | restauracja | 247 | Polskie, włoskie i azjatyckie smaki w jednej karcie na 3 Maja 1 sprawiają, że goście testują u Was kolejne dania.
+@avocadotomaszowlubelski | Restauracja Avocado | Tomaszów Lubelski | restauracja | 222 | Wesela i hotel na Wyzwolenia 1D ściągają gości, którzy wracają potem na zwykłe obiady, i warto ich rozpoznawać.
+@hoppenhouse_radom | Hoppen House | Radom | restauracja |  | Odnowiona XIX-wieczna kamienica przy Rynku 8 i nowoczesna kuchnia polska to powód, żeby Wasi goście wracali nie tylko na okazje.
+@restauracja_teatralna | Teatralna | Radom | restauracja |  | Restauracja przy Żeromskiego 55 w centrum Radomia żyje z gości, którzy wracają na obiad w tygodniu.
+@teriyakisushi_kielce | Teriyaki Sushi | Kielce | sushi/azja |  | Sushi z Raciborskiego 10 to zamówienie, które kielczanie powtarzają co kilka tygodni.
+@tokyosushikielce | Tokyo Sushi | Kielce | sushi/azja |  | Sushi z Sandomierskiej 172 to zamówienie, które kielczanie powtarzają co kilka tygodni.
+
+### ZRODLA (gdzie potwierdzono handle; "IG-index" = tytuł profilu w wynikach Google dla instagram.com)
+@piekarniakuzmiuk — https://piekarnia-kuzmiuk.pl/ + lublininfo.com — Furmańska, Lublin
+@miedzy_kromkami_pastrami — IG-index (Narutowicza 9, Lublin)
+@parmezanbistro — IG-index (Sekutowicza 35, Lublin)
+@browar_zakladowy_wielokran — IG-index (pl. Teatralny 1, CSK, Lublin)
+@chatalublin — https://chata.lublin.pl/ — Nadbystrzycka 16, Lublin
+@mozelublin — https://mozelublin.pl/ + lublininfo.com — Żeglarska 5a, Lublin
+@ososushi_lublin — https://ososushiwok.pl/ + week.pl — Tomasza Zana 19, Lublin
+@malowanka_restauracja — https://malowanka-lublin.pl/ — Tomasza Zana 19, Lublin
+@insomniarestauracja — https://insomnia-restauracja.pl/kontakt — Curie-Skłodowskiej 12, Lublin
+@trybunalska — IG-index + trybunalska.pl — Rynek 4, Lublin
+@la_fiamma_pizzeria_napoletana_ — IG-index + pizzanapoletana.org (AVPN 1092) — Rynek Wielki 2, Zamość
+@przystanekpiekarza — IG-index + local-food.pl + kronikatygodnia.pl — Partyzantów 63, Zamość
+@pod.sw.kazimierzem — IG-index (279 obs.) — Rynek Wielki, Zamość
+@skarbiec.wina — IG-index (409 obs.) + skarbiecwina.pl — Zamość
+@atmosfera_caffe — IG-index (profil z adresem Partyzantów 12a, Włodawa)
+@bistro__jaga — IG-index + restaurantguru — Piłsudskiego 85, Włodawa
+@karuzela.smaku_restauracja — IG-index + karuzelasmaku.pl — 3 Maja 1, Świdnik
+@kawiarnialalka — IG-index (profil z lokalizacją Hrubieszów) — Narutowicza 27
+@ike.sushi — IG-index ("IKE Sushi - Krasnystaw") + krasnystaw.pl — Piłsudskiego 66A
+@da_vinci_pizzeria_pub — IG-index + loklubartow.pl — Lubelska 50A, Lubartów
+@kwiat.paproci.chelm — IG-index (1671 obs.) — Plac Łuczkowskiego 17, Chełm
+@familjada_janow — IG-index + janowlubelski.pl — Piłsudskiego 23, Janów Lubelski
+@avocadotomaszowlubelski — IG-index (profil z adresem Wyzwolenia 1d) + avocado-tomaszow.pl
+@wypiekarnia.rzeszow — https://wypiekarnia.com — Hetmańska 32, Rzeszów
+@dziarskibarista — https://www.menumiasta.pl/restauracje/dziarski-barista — Matejki 8a, Rzeszów
+@powoli_cafe — https://powolicafe.pl/ — Mickiewicza 4, Rzeszów
+@momento.roastery — https://momentocoffee.pl/pages/kawiarnia — Reformacka 3, Rzeszów
+@kawiarnia.comilfo — https://kawiarniacomilfo-kielce.pl/ — Plac Wolności 1, Kielce
+@malarozkosz — https://kielcecity.pl/kawiarnia-kielce/ — Mała 18, Kielce
+@nawypasie_kielce — https://nawypasiekielce.eatbu.com/ — Wojska Polskiego 255a, Kielce
+@alebabeczka_cukiernia — https://kielcecity.pl/sniadania-kielce/ — Św. Leonarda 11, Kielce
+@hokku_sushi_kielce — https://kielcecity.pl/sushi-kielce/ — Śląska 7, Kielce
+@teriyakisushi_kielce, @tokyosushikielce — https://kielcecity.pl/sushi-kielce/
+@lafavorita_pizzeria, @siestaristorante, @boskie_serniki_boskie_wypieki, @potluczonegaryradom, @restauracja_teatralna — https://www.visitradom.pl/gdzie-zjesc/
+@hoppenhouse_radom — https://hoppenhouse.pl/kontakt/ — Rynek 8, Radom
+
+### NIEPEWNE (lokal realny, handle niepotwierdzony — do ręcznego sprawdzenia w Instagramie)
+Rebeka | Rzeszów | sniadania/brunch | Hetmańska 13A | prawdopodobnie @rebeka_rzeszow (strona renderowana skryptem)
+Bar Pizzeria Capri | Janów Lubelski | pizza | Zamoyskiego 67 | tylko Facebook @BarPizzeriaCapri, IG nie znaleziono
+Cukiernia Pychotka | Lublin | cukiernia/lody | Nałkowskich | @cukiernia.pychotka to inna firma (Dąbrowa/Łódź)
+Trattoria Romana | Kielce | wloska | Ściegiennego 258c | prawdopodobnie @trattoria_romana22
+Byczek i Patyczek Reaktywacja | Kielce | burgery | Zagórska 27 | prawdopodobnie @byczekipatyczekkielce
+Wesoła Kafka | Kielce | kawiarnia | Wesoła 50 | prawdopodobnie @_wesolakafka_
+Kim Pho | Kielce | sushi/azja | Sienkiewicza 81 | handle nie potwierdzony
+Goferka | Kielce | cukiernia/lody | Paderewskiego 14 | otwarte wrzesień 2026, handle nie potwierdzony
+MOKU Ramen | Radom | sushi/azja | Rwańska 19 | prawdopodobnie @mokuradom
+Kintaro Ramen & Sushi | Radom | sushi/azja | Sandomierska 14 | prawdopodobnie @kintaro_ramen_sushi
+Kolej"NY Burger | Radom | burgery | Królowej Jadwigi 12A | otwarte maj 2026, handle nie potwierdzony
+Smash 2.0 | Rzeszów | burgery | Dąbrowskiego 109 | otwarte kwiecień 2026, handle nie potwierdzony
+Kawiarnia Filiżanka | Chełm? | kawiarnia | prawdopodobnie @filizanka_kawiarnia, miasto niepotwierdzone
+Pizzeria Kozacka | Hrubieszów | pizza | plac Wolności 15 | tylko Facebook
+Shalom | Hrubieszów | restauracja | Kościelna 5 | tylko Facebook
+Kawiarnia Centrum | Włodawa | kawiarnia | Czworobok 42 | tylko Facebook
+Pizzeria Gusto | Chełm | pizza | Lwowska 24b | tylko Facebook
+Piekarenka Mateusz Garbaty | Chełm | cukiernia/lody | Lubelska 52 | tylko Facebook
+Uczciwa Gałka | Lubartów | cukiernia/lody | Lubelska 4 | tylko Facebook
+Insomnia Pizza&Pasta | Świdnik | pizza | Racławicka 20 | tylko Facebook
+Cukiernia Pawłowski | Nałęczów | cukiernia/lody | 1 Maja 7 | brak IG na stronie

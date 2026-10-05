@@ -34,8 +34,10 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 
 - Przebudowa 2026-09-21: 18 ekranów → 4. Teksty DM: `lib/crm/dm-copy.ts`. Kroki rozmowy: `lib/crm/steps.ts`.
   Kolejka DM i etapy lokalu: `lib/crm/blitz.ts`. Mutacje: `lib/crm/actions.ts`.
-- **Baza: 702 lokale** (Lublin ~270, Rzeszów ~90, Kielce ~74, Radom ~60, Zamość, Biała Podlaska, Puławy,
-  Chełm, Biłgoraj, mniejsze miasta), ~470 z własnym pierwszym zdaniem („HOOK:” w `dm_text`).
+- **Baza: 732 lokale** (Lublin ~280, Rzeszów ~95, Kielce ~79, Radom ~66, Zamość, Biała Podlaska, Puławy,
+  Chełm, Biłgoraj, mniejsze miasta), ~500 z własnym pierwszym zdaniem („HOOK:” w `dm_text`).
+  Partia z 2026-10-05: `docs/research-2026-10/leady-2026-10-05.txt` (30 zaimportowanych, kampania `baza-2026-10`,
+  + 10 potwierdzonych w sekcji REZERWA do następnej partii, + NIEPEWNE).
   Wysłane DM-y na 22.09: 2 (Rykowisko, Canotto). Reszta czeka.
 - Kontakty e-mail/telefon: `docs/research-2026-09/kontakty.csv` (126 lokali; 51 e-maili i 74 telefony
   potwierdzone na stronach źródłowych — kolumny `*_status`). Szablony maili: `docs/mail-zimny.md`.
@@ -76,7 +78,9 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 - Subagenty dzielą limit **200 wyszukiwań WebSearch na sesję** — research dzielić na mniejsze agenty, a gdy limit padnie,
   agenci pracują przez WebFetch (restaurantguru.com, lublininfo sitemap, Glovo). Instagram, Pyszne, Wolt blokują fetch.
 - **Instagram przekierowuje każde anonimowe wejście do logowania** (także nieistniejące profile) — istnienia
-  handle'i nie da się sprawdzić maszynowo. Bezpiecznik: „Wyślij DM” otwiera profil; nieistniejący → „Usuń”.
+  handle'i nie da się sprawdzić fetchem. **Działa za to WebSearch `site:instagram.com <handle> <miasto>`** — tytuł
+  wyniku „Nazwa (@handle) • Instagram” z liczbą obserwujących potwierdza profil (tak zweryfikowano partię 2026-10-05).
+  Drugie źródło: `curl` strony własnej lokalu i grep `instagram.com/`. Bezpiecznik w Sztabie: „Wyślij DM” otwiera profil; nieistniejący → „Usuń”.
 - Agenci Opus czasem piszą hooki **bez polskich znaków** — sprawdzać (`[ąćęłńóśźż]`) i poprawiać `popraw-hooki.ts`.
 - Kopiowanie do schowka w Sztabie musi być synchroniczne PRZED `window.open` (nowa karta zabiera fokus).
 - Cache Vercela dla strony: po pushu sprawdzić, czy nowa wersja jest na żywo; jeśli nie — `npx vercel --prod`.
