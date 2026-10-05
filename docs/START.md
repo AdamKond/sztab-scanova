@@ -37,7 +37,7 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 - **Baza: 732 lokale** (Lublin ~280, Rzeszów ~95, Kielce ~79, Radom ~66, Zamość, Biała Podlaska, Puławy,
   Chełm, Biłgoraj, mniejsze miasta), ~500 z własnym pierwszym zdaniem („HOOK:” w `dm_text`).
   Partia z 2026-10-05: `docs/research-2026-10/leady-2026-10-05.txt` (30 zaimportowanych, kampania `baza-2026-10`,
-  + 10 potwierdzonych w sekcji REZERWA do następnej partii, + NIEPEWNE).
+  + 20 potwierdzonych w sekcji REZERWA do następnej partii, 3 DO DECYZJI, + NIEPEWNE).
   Wysłane DM-y na 22.09: 2 (Rykowisko, Canotto). Reszta czeka.
 - Kontakty e-mail/telefon: `docs/research-2026-09/kontakty.csv` (126 lokali; 51 e-maili i 74 telefony
   potwierdzone na stronach źródłowych — kolumny `*_status`). Szablony maili: `docs/mail-zimny.md`.

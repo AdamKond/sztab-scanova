@@ -38,7 +38,19 @@
 @boskie_serniki_boskie_wypieki | Boskie Serniki Boskie Wypieki | Radom | cukiernia/lody |  | Serniki i wypieki z Focha 12 to taki rodzaj słodkiego, po który wraca się w tę samą sobotę co tydzień.
 @potluczonegaryradom | Potłuczone Gary | Radom | restauracja |  | Domowe obiady przy Głównej 9 to miejsce, do którego radomianie wracają w tygodniu, a nie tylko na okazję.
 
-### REZERWA — potwierdzone handle, nie weszły do 30 (mniej powtarzalnych wizyt); do importu przy następnej partii
+### REZERWA — potwierdzone handle, nie weszły do 30; do importu przy następnej partii (20 lokali)
+# Lublin, dogrywka agenta (10) — handle potwierdzone curl-em na stronach własnych / w OSM:
+@coffeeandsons | Coffee & Sons Rodzinna Palarnia | Lublin | kawiarnia |  | Rodzinna palarnia przy Bocznej Lubomelskiej 4 to miejsce, do którego po konkretne ziarno wraca się co tydzień.
+@cukiernia.pychotka | Cukiernia Pychotka Lublin | Lublin | cukiernia/lody |  | Osiedlowa cukiernia na Nałkowskich 223, gdzie po ciasto wpada się po drodze z pracy, i to co tydzień.
+@robimypizzelublin | Robimy Pizzę | Lublin | pizza |  | Pizza na Wojciechowskiej 3 to piątkowy nawyk, który warto, żeby ludzie mieli u Was, a nie u konkurencji.
+@primitivolublin | Primitivo | Lublin | pizza |  | Pizza i wino na Unickiej 3 to połączenie, po które wraca się w te same wieczory tygodnia.
+@pastaconpassione_lublin | Pasta Con Passione | Lublin | wloska |  | Świeży makaron na Krakowskim Przedmieściu to lunch, który stali goście powtarzają kilka razy w miesiącu.
+@baraboo.lublin | Bar A Boo | Lublin | wloska |  | Włoskie bistro na Narutowicza 9 żyje z gości z okolicy, którzy wpadają regularnie, a nie z przypadkowych przechodniów.
+@sushipak.pl | Sushipak | Lublin | sushi/azja |  | Sushi na Głębokiej 8a to zamówienie, które ci sami goście powtarzają co kilka tygodni.
+@kurczakiodeliasza | Kurczaki od Eliasza | Lublin | kebab/street food |  | Kurczak na Weteranów 38 to szybki lunch, po który wraca się w tygodniu, więc u Was liczy się każdy stały gość.
+@pyza_dobra_kuchnia | Pyza Dobra Kuchnia | Lublin | restauracja |  | Domowe obiady na Radości 2b to miejsce, do którego wraca się na lunch kilka razy w tygodniu.
+@relaks_lublin | Relaks | Lublin | restauracja |  | Lokal z kuchnią domową po zachodniej stronie Lublina żyje z gości, którzy wpadają na obiad regularnie.
+# Pozostałe (10) — mniej powtarzalnych wizyt:
 @insomniarestauracja | Insomnia | Lublin | restauracja |  | Miejsce na Curie-Skłodowskiej, w którym czas się zatrzymał, buduje grono gości wracających po ten konkretny nastrój.
 @trybunalska | Trybunalska City Pub | Lublin | restauracja | 2158 | Lokal w kamienicy przy Rynku 4, nazwany od Trybunału Koronnego, ma ruch, który warto zamienić w stałych gości.
 @pod.sw.kazimierzem | Restauracja Piwnica pod Św. Kazimierzem | Zamość | restauracja | 279 | Kolacja w zabytkowych piwnicach przy Rynku Wielkim to u Was okazja, po którą goście wracają kilka razy w roku.
@@ -49,6 +61,18 @@
 @restauracja_teatralna | Teatralna | Radom | restauracja |  | Restauracja przy Żeromskiego 55 w centrum Radomia żyje z gości, którzy wracają na obiad w tygodniu.
 @teriyakisushi_kielce | Teriyaki Sushi | Kielce | sushi/azja |  | Sushi z Raciborskiego 10 to zamówienie, które kielczanie powtarzają co kilka tygodni.
 @tokyosushikielce | Tokyo Sushi | Kielce | sushi/azja |  | Sushi z Sandomierskiej 172 to zamówienie, które kielczanie powtarzają co kilka tygodni.
+
+### ZRODLA REZERWY LUBLIN
+@coffeeandsons — https://coffeeandsons.pl — Boczna Lubomelskiej 4, Lublin
+@cukiernia.pychotka — https://pychotka.eu — Nałkowskich 223, Lublin (inna firma niż @cukierniapychotka_kielce; nazwa z miastem, bo import dedupuje po nazwie)
+@robimypizzelublin — https://robimypizze.pl/ — Wojciechowska 3, Lublin
+@primitivolublin — https://www.primitivolublin.pl/ — Unicka 3, Lublin
+@pastaconpassione_lublin — OpenStreetMap node 13336927353 (tag website) — Krakowskie Przedmieście, Lublin
+@baraboo.lublin — OpenStreetMap node 5830142747 (tag contact:instagram) — Narutowicza 9, Lublin
+@sushipak.pl — https://www.sushipak.pl — Głęboka 8a, Lublin
+@kurczakiodeliasza — https://www.kurczakiodeliasza.com/ — Weteranów 38, Lublin
+@pyza_dobra_kuchnia — https://www.pyzadobrakuchnia.pl/ — Radości 2b, Lublin
+@relaks_lublin — https://www.relakslublin.pl/ — Lublin (zachodnia część miasta)
 
 ### ZRODLA (gdzie potwierdzono handle; "IG-index" = tytuł profilu w wynikach Google dla instagram.com)
 @piekarniakuzmiuk — https://piekarnia-kuzmiuk.pl/ + lublininfo.com — Furmańska, Lublin
@@ -87,7 +111,16 @@
 @lafavorita_pizzeria, @siestaristorante, @boskie_serniki_boskie_wypieki, @potluczonegaryradom, @restauracja_teatralna — https://www.visitradom.pl/gdzie-zjesc/
 @hoppenhouse_radom — https://hoppenhouse.pl/kontakt/ — Rynek 8, Radom
 
+### DO DECYZJI ADAMA (handle potwierdzony, ale marka już jest w Bazie pod innym kontem)
+@lody_bosko | Bosko Lody Produkcji Własnej | Lublin | w Bazie wpisane jako "Bosko Zamość", a to lubelska marka z 7 punktami (lodybosko.pl) — poprawić miasto na Lublin?
+@lovegrela | GRELA Cukiernia i Piekarnia | Lublin, Sympatyczna 9/2 | w Bazie jest @cukiernia_grela_torty (Chełm) — ta sama marka? Grela ma w Lublinie kilka punktów
+@restauracja_otwarta_lublin | Restauracja Otwarta | Lublin, al. Kraśnicka 27 | w Bazie są @piekarnia_otwarta i @kuchniaotwarta_lublin — możliwe ta sama marka
+
 ### NIEPEWNE (lokal realny, handle niepotwierdzony — do ręcznego sprawdzenia w Instagramie)
+Pracownia Kania (Gliniana 2) | Lublin | cukiernia/lody | prawdopodobnie @kaniacukiernia, strona blokuje odczyt
+Bubble Vibe (Grodzka 7, Plac po Farze, otwarte VI 2025) | Lublin | boba/matcha | brak handle'a w źródłach
+Lodorożec (Wallenroda 13) | Lublin | cukiernia/lody | lody naturalne 4,82; IG niepotwierdzony (@lodorozec.cieszyn to inne miasto)
+Kawiarnia Legend (Złota 7), Tapataj (Kryształowa 8, Czuby), Croco (Krakowskie Przedmieście 11), Organic Coffee (Spokojna 2) | Lublin | kawiarnia/cukiernia | brak źródła z handle'em
 Rebeka | Rzeszów | sniadania/brunch | Hetmańska 13A | prawdopodobnie @rebeka_rzeszow (strona renderowana skryptem)
 Bar Pizzeria Capri | Janów Lubelski | pizza | Zamoyskiego 67 | tylko Facebook @BarPizzeriaCapri, IG nie znaleziono
 Cukiernia Pychotka | Lublin | cukiernia/lody | Nałkowskich | @cukiernia.pychotka to inna firma (Dąbrowa/Łódź)
