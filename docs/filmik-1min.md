@@ -4,6 +4,12 @@ Wersja krótka, pod wysyłkę zaraz po odpowiedzi na DM; po filmie idzie link do
 Mówisz do kamery (kółeczko) + ekran. Tempo szybkie, jak do znajomego, nie czytaj słowo w słowo.
 Całość ~65 sekund, ok. 170 słów.
 
+**Ekran = `docs/tablica-scanovy.html`**: 5 plansz do czerwonej kreski to dokładnie te 5 akapitów niżej
+(`F` = tryb filmowy, notatki „co mówisz” podążają za przewijaniem). Pod kreską jest kalkulator i cennik
+na spotkanie, tego nie nagrywasz. Liczby do planszy „Dowód” podajesz w adresie, np.
+`tablica-scanovy.html?film=1&x=350&y=200&z=100` (x = opinie, y = powroty, z = z powiadomienia);
+bez nich plansza pokazuje wersję bezpieczną.
+
 Liczby w nawiasach kwadratowych wpisz z panelu MusiSushi/Kago PRZED nagraniem. Nie mów liczb,
 których nie pokażesz na ekranie. Jeśli nie zdążysz ich wyciągnąć, użyj wersji bezpiecznej (na dole).
 

@@ -48,8 +48,9 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 - Kalkulator: https://scanova.tech/kalkulator (presety branżowe z raportów, `?film=1` do nagrania,
   `?b=pizzeria`, `?g=&r=&m=&plan=` z liczbami lokalu). Model: karta u 30% gości, wracają o 15/25/40% częściej,
   nagrody liczone dla wszystkich z kartą, ~3,3 opinii na 100 wizyt (sufit 200).
-- Tablica do filmiku: `docs/tablica-scanovy.html` (jedna przewijana plansza, `F` = tryb filmowy,
-  notatki „co mówisz” podążają za sekcją). Scenariusz: `docs/filmik-scenariusz.md`. Plan dnia: `docs/plan-2026-09-21.md`.
+- Tablica do filmiku: `docs/tablica-scanovy.html` — od 2026-10-08 pod **minutowy filmik** (5 plansz do czerwonej
+  kreski, niżej kalkulator na spotkanie; `F` = tryb filmowy, `?x=&y=&z=` = liczby z panelu do planszy „Dowód”).
+  Tekst: `docs/filmik-1min.md` (stary 3-minutowy: `docs/filmik-tekst.md`). Plan dnia: `docs/plan-2026-09-21.md`.
 - Integracja Instagram (Meta, bez ManyChat — decyzja Adama): kod gotowy (`app/api/meta/instagram`, `lib/meta/*`),
   webhook `POST /api/inbound/ig-reply` (token `INBOUND_WEBHOOK_SECRET`). Na Vercelu jest `META_VERIFY_TOKEN`;
   **brakuje**: `META_APP_SECRET`, `META_IG_ACCESS_TOKEN`, `META_IG_USER_ID`, `META_AUTO_REPLY=1`, `NEXT_PUBLIC_FILM_URL`.
