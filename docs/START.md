@@ -51,7 +51,10 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 - Tablica do filmiku: `docs/tablica-scanovy.html` — od 2026-10-08 pod **minutowy filmik** (5 plansz do czerwonej
   kreski, niżej kalkulator na spotkanie; `F` = tryb filmowy, `?x=&y=&z=` = liczby z panelu do planszy „Dowód”).
   Tekst: `docs/filmik-1min.md` (stary 3-minutowy: `docs/filmik-tekst.md`). Plan dnia: `docs/plan-2026-09-21.md`.
-- Integracja Instagram (Meta, bez ManyChat — decyzja Adama): kod gotowy (`app/api/meta/instagram`, `lib/meta/*`),
+- **ManyChat (decyzja 2026-10-12: podłączamy)**: plan i instrukcja klik-po-kliku w `docs/manychat-plan.md`;
+  webhook `POST /api/inbound/ig-reply` działa, token `INBOUND_WEBHOOK_SECRET` wygenerowany na nowo 2026-10-12
+  (na Vercelu jako sensitive, kopia tylko w `.env.local` na Macu); test `sh scripts/test-ig-reply.sh <handle>`.
+- Integracja Instagram przez API Mety (alternatywa bez abonamentu): kod gotowy (`app/api/meta/instagram`, `lib/meta/*`),
   webhook `POST /api/inbound/ig-reply` (token `INBOUND_WEBHOOK_SECRET`). Na Vercelu jest `META_VERIFY_TOKEN`;
   **brakuje**: `META_APP_SECRET`, `META_IG_ACCESS_TOKEN`, `META_IG_USER_ID`, `META_AUTO_REPLY=1`, `NEXT_PUBLIC_FILM_URL`.
   Wymaga aplikacji w developers.facebook.com (Instagram API with Instagram Login) i App Review. Odłożone.
