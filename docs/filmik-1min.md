@@ -18,43 +18,45 @@ których nie pokażesz na ekranie. Jeśli nie zdążysz ich wyciągnąć, użyj 
 ## 0:00–0:10 — HUK (ty do kamery, bez ekranu)
 
 > Czy wiesz, że Twoja restauracja może w trzydzieści dni zdobyć ponad sto opinii w Google,
-> zwiększyć obrót i zbudować bazę gości, którzy wracają sami? Da się. Pokażę w minutę.
+> zwiększyć obrót i zbudować bazę gości, którzy wracają sami? Tak, i pokażę Ci to w minutę.
 
 *Nie przedstawiaj się na początku. Imię i Scanova padają na końcu.*
 
 ## 0:10–0:25 — CO TO JEST (ekran: karta w Wallet)
 
 > Robimy cyfrowe karty lojalnościowe. Gość przychodzi, skanuje kod przy kasie i karta jest w jego
-> Wallecie. Bez aplikacji, bez rejestracji, dziesięć sekund. Potem zbiera pieczątki za każdą wizytę
-> i wraca po nagrodę.
+> Wallecie. Bez aplikacji, nic nie pobiera. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca
+> po nagrodę.
 
 *Pokaż `karta-wallet.png` albo swój telefon z kartą demo.*
 
-## 0:25–0:40 — WŁASNY KANAŁ (ekran: push na zablokowanym telefonie)
+## 0:25–0:40 — TWÓJ KANAŁ (ekran: push na zablokowanym telefonie)
 
-> I tu jest przewaga: masz bezpośredni kontakt ze swoimi gośćmi. Wysyłasz powiadomienie na telefon,
-> na przykład „dziś druga pizza za pół ceny”. Albo system sam przypomina o Was, gdy gość jest
-> dwa kilometry od lokalu. W Polsce ma to garstka restauracji, ale ta liczba rośnie, bo to po prostu działa.
+> Masz też bezpośredni kontakt ze swoimi gośćmi. Wysyłasz powiadomienie na telefon,
+> na przykład „dziś druga pizza za pół ceny”. Albo system sam przypomina o lokalu, gdy gość jest
+> dwa kilometry od niego. W Polsce ma to na razie mało restauracji, ale z miesiąca na miesiąc przybywa.
 
 *Pokaż `push.png`.*
 
-## 0:40–0:55 — DOWÓD (ekran: panel z liczbami)
+## 0:40–0:55 — LICZBY (ekran: panel z liczbami)
 
-> Konkret, z naszych lokali: MusiSushi i Kago Sushi. W trzydzieści dni: [X] nowych opinii w Google,
-> [Y] gości wróciło po kolejną pieczątkę, [Z] przyszło z jednego powiadomienia. Wszystko widzisz
-> w panelu, czarno na białym.
+> Liczby z naszych lokali, MusiSushi i Kago Sushi, z trzydziestu dni: [X] nowych opinii w Google,
+> [Y] gości wróciło po kolejną pieczątkę, [Z] przyszło po jednym powiadomieniu. Wszystko to widzisz
+> w panelu.
 
 *Pokaż `panel.png` z zamazanymi nazwiskami. Liczby na ekranie muszą być te same, co mówisz.*
 
+*Tekst przeszedł przez Humanizer (2026-10-12): bez „czarno na białym”, „po prostu działa”, „i tu jest przewaga”.*
+
 **Wersja bezpieczna (gdy nie masz liczb z panelu):**
-> Konkret: u naszych klientów, MusiSushi i Kago Sushi, przybywa nawet do dwustu opinii miesięcznie,
-> a goście z kartą wracają średnio o jedną czwartą częściej. Wszystko widzisz w panelu.
+> U naszych klientów, MusiSushi i Kago Sushi, przybywa do dwustu opinii miesięcznie,
+> a goście z kartą wracają o jedną czwartą częściej. Wszystko widzisz w panelu.
 
 ## 0:55–1:05 — CO DALEJ (ty do kamery)
 
 > Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online. Przejdziemy przez niego
-> razem i ustawimy go od razu pod Twoją restaurację, więc zobaczysz, jak wygląda i jak się sprawuje
-> u Ciebie. Pierwszy miesiąc jest testowy, za darmo. Link do spotkania masz pod filmikiem.
+> razem i ustawimy go pod Twoją restaurację, więc zobaczysz, jak u Ciebie wygląda i działa.
+> Pierwszy miesiąc jest testowy, za darmo. Link do spotkania masz pod filmikiem.
 > Adam, Scanova. Do zobaczenia.
 
 ---

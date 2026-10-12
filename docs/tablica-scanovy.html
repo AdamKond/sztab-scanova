@@ -130,7 +130,7 @@
             <div class="tile"><b class="blue">↑ obrót</b><span>goście wracają częściej</span></div>
             <div class="tile"><b>baza gości</b><span>którzy wracają sami</span></div>
           </div>
-          <p class="lead">Da się. Pokażę w minutę.</p>
+          <p class="lead">Tak. Pokażę w minutę.</p>
         </div>
         <svg class="draw wob" viewBox="0 0 320 220" role="img" aria-label="Wykres rosnący przez 30 dni">
           <path d="M20 190 L300 190 M20 190 L20 20" stroke="#1c1c1c" stroke-width="3" fill="none" stroke-linecap="round"/>
@@ -154,7 +154,7 @@
             <li>pieczątka za każdą wizytę</li>
             <li>po kilku — nagroda, i gość wraca</li>
           </ul>
-          <span class="sticky">bez aplikacji · bez rejestracji · 10 sekund</span>
+          <span class="sticky">bez aplikacji, nic nie pobiera</span>
         </div>
         <figure class="shot" data-img="zrzuty/karta-wallet.png" style="max-width:420px; justify-self:center" data-alt="Prawdziwa karta Scanovy w Apple Wallet">
           <svg class="draw wob" viewBox="0 0 420 320" role="img" aria-label="Telefon z kartą lojalnościową w portfelu: pieczątki, nagroda">
@@ -181,16 +181,16 @@
 
     <!-- 2 · WŁASNY KANAŁ: push + geo -->
     <section class="sec" data-n="2">
-      <span class="num">Przewaga</span>
+      <span class="num">Twój kanał</span>
       <h2>Bezpośredni kontakt <span class="u">ze swoimi gośćmi</span></h2>
       <div class="body g2">
         <div class="col">
           <ul class="hand">
             <li class="ok">powiadomienie na telefon: „dziś druga pizza za pół ceny”</li>
             <li class="ok">system sam przypomina, gdy gość jest 2 km od lokalu</li>
-            <li class="ok">zero prowizji — to Twój kanał, nie portalu</li>
+            <li class="ok">bez prowizji dla portali</li>
           </ul>
-          <p class="muted">W Polsce ma to garstka restauracji. Ta liczba rośnie, bo to po prostu działa.</p>
+          <p class="muted">W Polsce ma to na razie mało restauracji. Z miesiąca na miesiąc przybywa.</p>
         </div>
         <figure class="shot tall" data-img="zrzuty/push.png" data-alt="Prawdziwe powiadomienie na zablokowanym ekranie">
           <svg class="draw wob" viewBox="0 0 240 300" role="img" aria-label="Telefon z powiadomieniem na zablokowanym ekranie">
@@ -218,7 +218,7 @@
          Bez parametrów plansza pokazuje wersję bezpieczną (to, co mamy udokumentowane). -->
     <section class="sec" data-n="3">
       <span class="num">Dowód · MusiSushi i Kago Sushi</span>
-      <h2>Konkret <span class="u">z naszych lokali</span>, 30 dni</h2>
+      <h2>Liczby <span class="u">z naszych lokali</span>, 30 dni</h2>
       <div class="shots">
         <figure class="shot" data-img="zrzuty/panel.png" data-alt="Prawdziwy panel właściciela: kto wraca, pieczątki, opinie">
           <svg class="draw wob" viewBox="0 0 520 240" role="img" aria-label="Szkic panelu właściciela">
@@ -255,7 +255,7 @@
           <ul class="hand">
             <li class="ok">krótkie spotkanie online</li>
             <li class="ok">przechodzimy przez system i ustawiamy go pod Ciebie</li>
-            <li class="ok">widzisz, jak wygląda i jak się sprawuje u Ciebie</li>
+            <li class="ok">widzisz, jak u Ciebie wygląda i działa</li>
           </ul>
           <span class="sticky">pierwszy miesiąc testowy · za darmo</span>
           <p class="muted">Link do spotkania jest pod filmikiem.</p>
@@ -340,12 +340,12 @@
 
 <script>
   const NOTES = [
-    { t: "0:00–0:10 · HUK", html: "<p class='say'>„Czy wiesz, że Twoja restauracja może w trzydzieści dni zdobyć ponad sto opinii w Google, zwiększyć obrót i zbudować bazę gości, którzy wracają sami? Da się. Pokażę w minutę.”</p><p>Ty do kamery. Nie przedstawiaj się — imię pada na końcu.</p>" },
-    { t: "0:10–0:25 · CO TO JEST", html: "<p class='say'>„Robimy cyfrowe karty lojalnościowe. Gość przychodzi, skanuje kod przy kasie i karta jest w jego Wallecie. Bez aplikacji, bez rejestracji, dziesięć sekund. Potem zbiera pieczątki za każdą wizytę i wraca po nagrodę.”</p><p>Pokaż kartę w Wallecie (zrzut albo swój telefon).</p>" },
-    { t: "0:25–0:40 · WŁASNY KANAŁ", html: "<p class='say'>„I tu jest przewaga: masz bezpośredni kontakt ze swoimi gośćmi. Wysyłasz powiadomienie na telefon, na przykład ‚dziś druga pizza za pół ceny’. Albo system sam przypomina o Was, gdy gość jest dwa kilometry od lokalu. W Polsce ma to garstka restauracji, ale ta liczba rośnie, bo to po prostu działa.”</p><p>Wskaż powiadomienie na telefonie.</p>" },
-    { t: "0:40–0:55 · DOWÓD", html: "<p class='say'>„Konkret, z naszych lokali: MusiSushi i Kago Sushi. W trzydzieści dni: [X] nowych opinii w Google, [Y] gości wróciło po kolejną pieczątkę, [Z] przyszło z jednego powiadomienia. Wszystko widzisz w panelu, czarno na białym.”</p><p><b>Mów tylko liczby, które są na ekranie</b> (podaj je w adresie <code>?x=&y=&z=</code>). Bez nich wersja bezpieczna: „u naszych klientów przybywa nawet do dwustu opinii miesięcznie, a goście z kartą wracają o jedną czwartą częściej.”</p>" },
-    { t: "0:55–1:05 · CO DALEJ", html: "<p class='say'>„Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online. Przejdziemy przez niego razem i ustawimy go od razu pod Twoją restaurację, więc zobaczysz, jak wygląda i jak się sprawuje u Ciebie. Pierwszy miesiąc jest testowy, za darmo. Link do spotkania masz pod filmikiem. Adam, Scanova. Do zobaczenia.”</p><p>Ty do kamery. Tu kończysz nagranie.</p>" },
-    { t: "NIE W FILMIKU", html: "<p>Kalkulator na spotkanie online: kliknij branżę rozmówcy, wpisz jego gości dziennie i rachunek. Zdanie, które sprzedaje: „żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie”.</p>" },
+    { t: "0:00–0:10 · HUK", html: "<p class='say'>„Czy wiesz, że Twoja restauracja może w trzydzieści dni zdobyć ponad sto opinii w Google, zwiększyć obrót i zbudować bazę gości, którzy wracają sami? Tak, i pokażę Ci to w minutę.”</p><p>Ty do kamery. Nie przedstawiaj się, imię pada na końcu.</p>" },
+    { t: "0:10–0:25 · CO TO JEST", html: "<p class='say'>„Robimy cyfrowe karty lojalnościowe. Gość przychodzi, skanuje kod przy kasie i karta jest w jego Wallecie. Bez aplikacji, nic nie pobiera. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca po nagrodę.”</p><p>Pokaż kartę w Wallecie (zrzut albo swój telefon).</p>" },
+    { t: "0:25–0:40 · TWÓJ KANAŁ", html: "<p class='say'>„Masz też bezpośredni kontakt ze swoimi gośćmi. Wysyłasz powiadomienie na telefon, na przykład ‚dziś druga pizza za pół ceny’. Albo system sam przypomina o lokalu, gdy gość jest dwa kilometry od niego. W Polsce ma to na razie mało restauracji, ale z miesiąca na miesiąc przybywa.”</p><p>Wskaż powiadomienie na telefonie.</p>" },
+    { t: "0:40–0:55 · LICZBY", html: "<p class='say'>„Liczby z naszych lokali, MusiSushi i Kago Sushi, z trzydziestu dni: [X] nowych opinii w Google, [Y] gości wróciło po kolejną pieczątkę, [Z] przyszło po jednym powiadomieniu. Wszystko to widzisz w panelu.”</p><p><b>Mów tylko liczby, które są na ekranie</b> (podaj je w adresie <code>?x=&y=&z=</code>). Bez nich wersja bezpieczna: „U naszych klientów, MusiSushi i Kago Sushi, przybywa do dwustu opinii miesięcznie, a goście z kartą wracają o jedną czwartą częściej. Wszystko widzisz w panelu.”</p>" },
+    { t: "0:55–1:05 · CO DALEJ", html: "<p class='say'>„Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online. Przejdziemy przez niego razem i ustawimy go pod Twoją restaurację, więc zobaczysz, jak u Ciebie wygląda i działa. Pierwszy miesiąc jest testowy, za darmo. Link do spotkania masz pod filmikiem. Adam, Scanova. Do zobaczenia.”</p><p>Ty do kamery. Tu kończysz nagranie.</p>" },
+    { t: "NIE W FILMIKU", html: "<p>Kalkulator na spotkanie online: kliknij branżę rozmówcy, wpisz jego gości dziennie i rachunek. Zdanie do powiedzenia: „żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie”.</p>" },
     { t: "NIE W FILMIKU", html: "<p>Na spotkanie: start w 1–3 dni, bez umowy, cennik 250 / 339 / 590 zł. Trzydziestego dnia patrzy w panel i decyduje.</p>" },
   ];
   // Plansza „Dowód”: liczby z panelu podajesz w adresie ?x=opinie&y=powroty&z=z_pusha — bez nich zostaje wersja bezpieczna.

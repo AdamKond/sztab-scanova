@@ -29,17 +29,17 @@ export const LINKS = {
 const CAFE_NICHES = new Set(["kawiarnia", "cukiernia/lody", "boba/matcha", "vegan", "sniadania/brunch"]);
 
 const HOOKS: Record<string, string> = {
-  pizza: "Piątkowa pizza to nawyk — pytanie tylko, czy ludzie mają go u Was, czy u konkurencji.",
-  burgery: "Wasi goście wracają średnio co ile? Da się to realnie skrócić.",
-  "kebab/street food": "Stały klient na lunch to najtańszy klient — nie trzeba go zdobywać drugi raz.",
-  kawiarnia: "Papierowe karty na kawę giną w portfelach. Telefon nie ginie.",
-  "cukiernia/lody": "Sobotni klient po Wasze wypieki to rytuał — a rytuały można wzmacniać.",
-  "sniadania/brunch": "Weekendowa kolejka to jedno. Pytanie, gdzie ci sami ludzie jedzą we wtorek.",
-  "sushi/azja": "Ile osób było u Was raz, pochwaliło jedzenie i nigdy nie wróciło?",
-  "boba/matcha": "Wasi klienci żyją w telefonach. Karta lojalnościowa też powinna.",
-  vegan: "Goście lokali wege to najwierniejsza klientela — jeśli dać im powód, żeby wracać.",
-  wloska: "Nowych gości przyprowadza marketing. Stałych — konkretny powód, żeby wrócić.",
-  restauracja: "Nowych gości przyprowadza marketing. Stałych — konkretny powód, żeby wrócić.",
+  pizza: "Piątkowa pizza to nawyk. Pytanie, czy ludzie mają go u Was, czy u konkurencji.",
+  burgery: "Co ile wracają Wasi goście? Da się to skrócić.",
+  "kebab/street food": "Stały klient na lunch to najtańszy klient, bo nie trzeba go zdobywać drugi raz.",
+  kawiarnia: "Papierowa karta na kawę ginie w portfelu, telefon nie.",
+  "cukiernia/lody": "Sobotnie zakupy u Was to dla wielu osób rytuał, a taki rytuał da się wzmocnić.",
+  "sniadania/brunch": "W weekend macie kolejkę. Gdzie ci sami ludzie jedzą we wtorek?",
+  "sushi/azja": "Ile osób było u Was raz, pochwaliło jedzenie i nie wróciło?",
+  "boba/matcha": "Wasi klienci mają wszystko w telefonie. Karta lojalnościowa też powinna tam być.",
+  vegan: "Goście lokali wege są wierni, jeśli mają powód, żeby wracać.",
+  wloska: "Za nowego gościa płacicie reklamą. Stały gość potrzebuje tylko powodu, żeby wrócić.",
+  restauracja: "Za nowego gościa płacicie reklamą. Stały gość potrzebuje tylko powodu, żeby wrócić.",
 };
 
 export const NICHES = Object.keys(HOOKS);
@@ -53,23 +53,22 @@ export function firstDm(niche: string, customHook?: string | null): string {
   const proof = CAFE_NICHES.has(niche) ? PROOF_CAFE : PROOF_RESTAURANT;
   return (
     `Cześć! ${hook} ` +
-    `Robimy cyfrowe karty lojalnościowe: gość dodaje Waszą kartę do Apple/Google Wallet ` +
-    `(bez żadnej aplikacji), zbiera pieczątki za wizyty i wraca po nagrodę — a Wy widzicie, kto wraca. ` +
-    `Ten sam system prosi zadowolonych gości o opinię w Google: to jeden z najskuteczniejszych ` +
-    `sposobów na opinie, u naszych klientów nawet do 200 nowych w miesiącu. ` +
+    `Robimy cyfrowe karty lojalnościowe: gość dodaje Waszą kartę do Apple lub Google Wallet, bez aplikacji, ` +
+    `zbiera pieczątki za wizyty i wraca po nagrodę. Wy widzicie, kto wraca. ` +
+    `Ten sam system prosi zadowolonych gości o opinię w Google, u naszych klientów to nawet do 200 nowych opinii w miesiącu. ` +
     `Korzystają już m.in. ${proof}. ` +
-    `Dla każdej lokalizacji pierwszy miesiąc jest testowy i za darmo — sprawdzacie bez ryzyka, ` +
-    `czy Wam się to opłaca. Myśleliście kiedyś o czymś takim? Jeśli chcecie poznać szczegóły, ` +
-    `dajcie znać — podeślę krótki filmik. Ustawienie jest bardzo proste, nic nie instalujecie. ${SIGNATURE}`
+    `Pierwszy miesiąc jest testowy i za darmo dla każdej lokalizacji, po nim sami decydujecie. ` +
+    `Myśleliście o czymś takim? Jeśli chcecie szczegóły, dajcie znać, podeślę krótki filmik. ` +
+    `Nic nie instalujecie. ${SIGNATURE}`
   );
 }
 
 /** Follow-up po 3 dniach ciszy: krótko, prośba o jedno słowo, jasne wyjście. */
 export function followupDm(): string {
   return (
-    `Cześć, wracam na moment — wiem, że macie młyn. Jedno zdanie: cyfrowa karta lojalnościowa ` +
-    `w telefonie + więcej opinii w Google, pierwszy miesiąc testowy za darmo. Odpiszcie „ok”, ` +
-    `a wyślę 2-minutowy filmik, jak to działa. Jak temat nie gra, dajcie znać — nie będę spamować. ${SIGNATURE}`
+    `Cześć, jeszcze raz w sprawie karty lojalnościowej w telefonie gościa i opinii w Google. ` +
+    `Pierwszy miesiąc testowy za darmo. Odpiszcie „ok”, a wyślę minutowy filmik, jak to działa. ` +
+    `Jak temat nie gra, dajcie znać, nie będę spamować. ${SIGNATURE}`
   );
 }
 
@@ -94,8 +93,8 @@ export const REPLIES: ReplyTemplate[] = [
     label: "Odpisał → filmik",
     when: "Na każdą pierwszą odpowiedź (nawet samo „ok”).",
     text:
-      `Super, dzięki! Tu krótki filmik, jak to działa u naszych klientów: ${filmLink()}. ` +
-      `Jeśli ma sens, ustawiamy Wam miesiąc testowy — zdalnie albo wpadnę na 5 minut i pokażę ` +
+      `Dzięki za odpowiedź. Tu minutowy filmik, jak to działa u naszych klientów: ${filmLink()}. ` +
+      `Jeśli ma sens, ustawiamy Wam miesiąc testowy. Zdalnie albo wpadnę na 5 minut i pokażę ` +
       `na Waszym telefonie, jak wolicie. Co Wam bardziej pasuje?`,
   },
   {
@@ -103,11 +102,11 @@ export const REPLIES: ReplyTemplate[] = [
     label: "„Wyślij więcej info”",
     when: "Gdy proszą o szczegóły zamiast spotkania.",
     text:
-      `Jasne. Gość dodaje Waszą kartę do Apple/Google Wallet (bez żadnej aplikacji), przy wizycie ` +
+      `Jasne. Gość dodaje Waszą kartę do Apple lub Google Wallet, bez aplikacji. Przy wizycie ` +
       `dostaje pieczątkę przez NFC albo QR, po kilku odbiera nagrodę. Wy widzicie, kto wraca, ` +
       `i możecie wysłać powiadomienie na telefon. System prosi też zadowolonych gości o opinię ` +
-      `w Google — u naszych klientów nawet do 200 nowych w miesiącu. Pierwszy miesiąc testowy za darmo. ` +
-      `Wszystko jest na ${LINKS.www}. Najszybciej pokazać na żywo — 5 minut, kiedy pasuje?`,
+      `w Google, u naszych klientów nawet do 200 nowych w miesiącu. Pierwszy miesiąc testowy za darmo. ` +
+      `Reszta jest na ${LINKS.www}. Najszybciej pokazać na żywo, 5 minut. Kiedy pasuje?`,
   },
   {
     key: "cena",
@@ -115,25 +114,25 @@ export const REPLIES: ReplyTemplate[] = [
     when: "Pytanie o cenę przed spotkaniem.",
     text:
       `Pierwszy miesiąc jest testowy i za darmo. Potem od 250 zł miesięcznie za lokal, a pakiet ` +
-      `z opiniami Google i przypomnieniami — 339 zł. Bez umowy na czas określony, rezygnacja w każdej chwili, ` +
+      `z opiniami Google i przypomnieniami 339 zł. Bez umowy na czas określony, rezygnacja w każdej chwili, ` +
       `stojak i karty w cenie. Ustawiamy wszystko za Was w 1–3 dni, nic nie instalujecie. ` +
-      `Najlepiej pokazać na żywo, 5 minut — kiedy pasuje?`,
+      `Najlepiej pokazać na żywo, 5 minut. Kiedy pasuje?`,
   },
   {
     key: "kalkulator",
     label: "„Czy to się opłaca?”",
     when: "Gdy wahają się, czy to ma sens finansowo.",
     text:
-      `Policzmy na Waszych liczbach — tu jest prosty kalkulator: ${LINKS.kalkulator}. Wpisujecie gości ` +
-      `dziennie, średni rachunek i marżę; liczy tylko dodatkowe wizyty stałych gości, ostrożnie. ` +
-      `Zwykle wychodzi, że plan zwraca się po kilku dniach. A pierwszy miesiąc i tak jest za darmo.`,
+      `Policzmy na Waszych liczbach, tu jest prosty kalkulator: ${LINKS.kalkulator}. Wpisujecie gości ` +
+      `dziennie, średni rachunek i marżę. Liczy tylko dodatkowe wizyty stałych gości, ostrożnie. ` +
+      `Zwykle plan zwraca się po kilku dniach. A pierwszy miesiąc i tak jest za darmo.`,
   },
   {
     key: "umow",
     label: "Umawiam wizytę",
     when: "Gdy zgodzili się na spotkanie.",
     text:
-      `Super, to wpadnę [dzień] koło [godzina]. Zajmie dosłownie 5 minut, pokażę na Waszym ` +
+      `Super, to wpadnę [dzień] koło [godzina]. Zajmie 5 minut, pokażę na Waszym ` +
       `telefonie. Do zobaczenia!`,
   },
   {
@@ -141,15 +140,15 @@ export const REPLIES: ReplyTemplate[] = [
     label: "Po demo → miesiąc testowy",
     when: "Tego samego dnia po pokazie.",
     text:
-      `Dzięki za spotkanie! Podsumowując: pierwszy miesiąc testowy za darmo, kartę przygotowujemy w ` +
-      `[1–2 dni], Wy nic nie instalujecie, a po miesiącu sami zdecydujecie. Startujemy?`,
+      `Dzięki za spotkanie. Podsumowując: pierwszy miesiąc testowy za darmo, kartę przygotowujemy w ` +
+      `[1–2 dni], Wy nic nie instalujecie, a po miesiącu sami decydujecie. Startujemy?`,
   },
   {
     key: "nie_teraz",
     label: "„Nie teraz”",
     when: "Odmowa miękka — zostawiamy furtkę.",
     text:
-      `Jasne, rozumiem. Odezwę się za [miesiąc], a jakby coś się zmieniło wcześniej — jestem tu. ` +
+      `Jasne, rozumiem. Odezwę się za [miesiąc], a jakby coś się zmieniło wcześniej, jestem tu. ` +
       `Powodzenia!`,
   },
 ];
