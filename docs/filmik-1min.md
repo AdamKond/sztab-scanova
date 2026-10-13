@@ -1,76 +1,69 @@
-# Filmik na minutę — tekst do nagrania (2026-10-08)
+# Filmik — tekst do nagrania (wersja 2026-10-13, po uwagach Adama)
 
-Wersja krótka, pod wysyłkę zaraz po odpowiedzi na DM; po filmie idzie link do spotkania online.
-Mówisz do kamery (kółeczko) + ekran. Tempo szybkie, jak do znajomego, nie czytaj słowo w słowo.
-Całość ~65 sekund, ok. 170 słów.
+Ekran = `docs/tablica-scanovy.html`, 7 plansz w kolejności poniżej. `F` = tryb filmowy, `N` = notatki
+„co mówisz” (podążają za przewijaniem). Prawdziwe liczby do planszy 4 podajesz w adresie:
+`tablica-scanovy.html?film=1&x=350&y=200&z=100` (x = opinie, y = powroty, z = po powiadomieniu).
+Bez nich plansza pokazuje wersję bezpieczną. Całość ok. 1:35.
 
-**Ekran = `docs/tablica-scanovy.html`**: 5 plansz do czerwonej kreski to dokładnie te 5 akapitów niżej
-(`F` = tryb filmowy, notatki „co mówisz” podążają za przewijaniem). Pod kreską jest kalkulator i cennik
-na spotkanie, tego nie nagrywasz. Liczby do planszy „Dowód” podajesz w adresie, np.
-`tablica-scanovy.html?film=1&x=350&y=200&z=100` (x = opinie, y = powroty, z = z powiadomienia);
-bez nich plansza pokazuje wersję bezpieczną.
-
-Liczby w nawiasach kwadratowych wpisz z panelu MusiSushi/Kago PRZED nagraniem. Nie mów liczb,
-których nie pokażesz na ekranie. Jeśli nie zdążysz ich wyciągnąć, użyj wersji bezpiecznej (na dole).
+Mówisz „klient”, nie „gość”. Mówisz do jednej osoby („Ty”). Nie czytaj słowo w słowo.
 
 ---
 
-## 0:00–0:10 — HUK (ty do kamery, bez ekranu)
+## 1 · 0:00–0:10 — HUK (Ty do kamery)
+> Czy wiesz, że Twoja restauracja w trzydzieści dni może zdobyć ponad sto opinii w Google,
+> zwiększyć obrót i zbudować bazę klientów, którzy sami wracają? Tak, i pokażę Ci to w minutę.
 
-> Czy wiesz, że Twoja restauracja może w trzydzieści dni zdobyć ponad sto opinii w Google,
-> zwiększyć obrót i zbudować bazę gości, którzy wracają sami? Tak, i pokażę Ci to w minutę.
+## 2 · 0:10–0:25 — CO TO JEST (ekran: trzy zrzuty z telefonu: karta, pieczątka, nagroda)
+> Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient przychodzi, skanuje kod przy kasie
+> i karta jest w jego Wallecie. Bez aplikacji, nic nie pobiera. Potem za każdą wizytę dostaje
+> pieczątkę i po kilku wraca po nagrodę.
 
-*Nie przedstawiaj się na początku. Imię i Scanova padają na końcu.*
+## 3 · 0:25–0:40 — TWÓJ KANAŁ (ekran: powiadomienie na telefonie)
+> Masz też bezpośredni kontakt ze swoimi klientami. Wysyłasz im powiadomienia push na telefon,
+> na przykład „dziś druga pizza za pół ceny”. Albo system sam przypomina o lokalu, gdy klient
+> jest w promieniu dwóch kilometrów od niego. W Polsce na razie mało restauracji ma takie
+> rozwiązanie, ale z miesiąca na miesiąc przybywa ich więcej.
 
-## 0:10–0:25 — CO TO JEST (ekran: karta w Wallet)
-
-> Robimy cyfrowe karty lojalnościowe. Gość przychodzi, skanuje kod przy kasie i karta jest w jego
-> Wallecie. Bez aplikacji, nic nie pobiera. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca
-> po nagrodę.
-
-*Pokaż `karta-wallet.png` albo swój telefon z kartą demo.*
-
-## 0:25–0:40 — TWÓJ KANAŁ (ekran: push na zablokowanym telefonie)
-
-> Masz też bezpośredni kontakt ze swoimi gośćmi. Wysyłasz powiadomienie na telefon,
-> na przykład „dziś druga pizza za pół ceny”. Albo system sam przypomina o lokalu, gdy gość jest
-> dwa kilometry od niego. W Polsce ma to na razie mało restauracji, ale z miesiąca na miesiąc przybywa.
-
-*Pokaż `push.png`.*
-
-## 0:40–0:55 — LICZBY (ekran: panel z liczbami)
-
+## 4 · 0:40–0:55 — LICZBY (ekran: panel „Kto wraca”)
 > Liczby z naszych lokali, MusiSushi i Kago Sushi, z trzydziestu dni: [X] nowych opinii w Google,
-> [Y] gości wróciło po kolejną pieczątkę, [Z] przyszło po jednym powiadomieniu. Wszystko to widzisz
-> w panelu.
+> [Y] klientów wróciło po kolejną pieczątkę, [Z] przyszło po jednym powiadomieniu. Wszystko to
+> widzisz w panelu.
 
-*Pokaż `panel.png` z zamazanymi nazwiskami. Liczby na ekranie muszą być te same, co mówisz.*
+Tylko prawdziwe liczby z panelu. Bez nich wersja bezpieczna:
+> U naszych klientów przybywa do dwustu opinii miesięcznie, a klienci z kartą wracają o jedną
+> czwartą częściej. Wszystko widzisz w panelu.
 
-*Tekst przeszedł przez Humanizer (2026-10-12): bez „czarno na białym”, „po prostu działa”, „i tu jest przewaga”.*
+## 5 · 0:55–1:10 — ILE TO DAJE (ekran: kalkulator, pizzeria, 40 klientów, 45 zł)
+> Policzmy. Czterdziestu klientów dziennie, rachunek czterdzieści pięć złotych, co czwarty z kartą
+> wraca częściej. Żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie. A w skali roku
+> zostaje w lokalu około piętnastu tysięcy złotych. I to bez liczenia nowych klientów z opinii.
 
-**Wersja bezpieczna (gdy nie masz liczb z panelu):**
-> U naszych klientów, MusiSushi i Kago Sushi, przybywa do dwustu opinii miesięcznie,
-> a goście z kartą wracają o jedną czwartą częściej. Wszystko widzisz w panelu.
+Kalkulator pokazuje przy tych liczbach: +1 244 zł miesięcznie, +14 922 zł rocznie. Kliknij branżę
+rozmówcy przed nagraniem, jeśli nagrywasz pod konkretny lokal.
 
-## 0:55–1:05 — CO DALEJ (ty do kamery)
+## 6 · 1:10–1:20 — JAK TO WYGLĄDA (ekran: oś czasu)
+> Pierwszego dnia ustawiamy kartę w Twoich kolorach i przywozimy stojak. W pierwszym tygodniu są
+> pierwsze karty i opinie, w drugim pierwsze powroty po nagrodę. Po czternastu dniach patrzysz
+> w panel i decydujesz. Bez umowy, nic nie instalujesz.
 
-> Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online. Przejdziemy przez niego
-> razem i ustawimy go pod Twoją restaurację, więc zobaczysz, jak u Ciebie wygląda i działa.
-> Pierwszy miesiąc jest testowy, za darmo. Link do spotkania masz pod filmikiem.
-> Adam, Scanova. Do zobaczenia.
+## 7 · 1:20–1:35 — CO DALEJ (Ty do kamery)
+> Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia
+> minut. Pokażę Ci, jak działa, jak klienci dodają karty, i ustawimy go pod Twoją restaurację, pod
+> Twoje kolory. Pierwsze czternaście dni jest za darmo, więc nic nie ryzykujesz. Wystarczy, że
+> odpiszesz na tę wiadomość, a wyślę Ci link do spotkania na Google Meet. Adam, Scanova. Do zobaczenia.
 
 ---
 
-## Przed nagraniem (10 minut)
+## Przed nagraniem
 
-1. Panel MusiSushi lub Kago: zrzut listy gości z liczbą wizyt i opinii → `docs/zrzuty/panel.png` (zamaż nazwiska).
-   Spisz trzy liczby do planszy „Dowód”.
-2. Telefon: karta w Wallet → `karta-wallet.png`; powiadomienie na zablokowanym ekranie → `push.png`.
-3. Nagrywasz jednym ciągiem (Loom albo nagrywanie ekranu + kamerka). Pomyłka = zacznij od nowa, to minuta.
-4. Link do filmu wrzuć na Vercel jako `NEXT_PUBLIC_FILM_URL`, wtedy przycisk „Odpisał → filmik” w Sztabie sam go wklei.
+1. Zrzuty z telefonu do `docs/zrzuty/` (nazwy w `docs/zrzuty/README.md`): `karta-wallet.png`,
+   `pieczatka.png`, `nagroda.png`, `push.png`, `panel.png`. Tablica sama podmieni rysunki.
+2. Trzy prawdziwe liczby z panelu MusiSushi lub Kago z ostatnich 30 dni → do adresu `?x=&y=&z=`.
+3. `F`, nagrywasz jednym ciągiem (Loom albo nagrywanie ekranu + kamerka).
+4. Link do filmu → Vercel `NEXT_PUBLIC_FILM_URL`; ManyChat i przyciski w Sztabie wysyłają go same.
 
-## Czego NIE mówić
+## UWAGA: 14 dni czy 30 dni
 
-- Nie mów „program” ani „system” w pierwszych 10 sekundach, mów o efekcie (opinie, obrót, goście).
-- Nie mów ceny w filmie. Cena jest w odpowiedzi w DM i na stronie.
-- Nie obiecuj liczb, których nie masz na ekranie. „Ponad sto opinii” w huku jest OK, bo to pytanie, nie obietnica.
+W filmiku jest „pierwsze 14 dni za darmo” (tak podyktował Adam 2026-10-13). Strona scanova.tech, DM-y
+w Sztabie, maile i gotowe odpowiedzi mówią „pierwszy miesiąc / 30 dni za darmo”. Trzeba wybrać jedno
+i ujednolicić, inaczej lokal usłyszy w filmie co innego niż przeczytał w DM-ie.

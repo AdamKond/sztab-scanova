@@ -60,6 +60,8 @@
   .shot.loaded .cap .real { display: inline; font-weight: 700; color: var(--green); } .shot.loaded .cap .ph { display: none; }
   .shot.tall { max-width: 250px; justify-self: center; }
   .shots { display: grid; grid-template-columns: 2fr 1fr; gap: 4%; align-items: start; margin-top: 1.2em; }
+  .shots3 { display: grid; grid-template-columns: repeat(3, minmax(0, 250px)); gap: 4%; justify-content: center; align-items: start; }
+  @media (max-width: 899px) { .shots3 { grid-template-columns: 1fr; } }
   @media (max-width: 899px) { .shots { grid-template-columns: 1fr; } .shot.tall { justify-self: start; } }
 
   .chips { display: flex; flex-wrap: wrap; gap: .4em; margin-bottom: 1em; }
@@ -112,14 +114,14 @@
 <div class="wrap">
   <div class="bar">
     <span class="name">Tablica Scanovy</span>
-    <span>Filmik = 5 plansz do czerwonej kreski · <kbd>N</kbd> notatki · <kbd>F</kbd> tryb filmowy · liczby do „Dowodu”: <code>?x=&amp;y=&amp;z=</code></span>
+    <span>Filmik = 7 plansz · <kbd>N</kbd> notatki · <kbd>F</kbd> tryb filmowy · prawdziwe liczby do planszy 4: <code>?x=&amp;y=&amp;z=</code></span>
     <button class="btn" id="notesBtn" type="button" aria-pressed="true">Notatki</button>
     <button class="btn" id="filmBtn" type="button">Tryb filmowy</button>
   </div>
 
   <div class="board-frame"><div class="board" id="board">
 
-    <!-- 0 · HUK: pytanie-obietnica, Adam do kamery, plansza tylko wzmacnia -->
+    <!-- 0 · HUK -->
     <section class="sec" data-n="0">
       <span class="num">Scanova · 30 dni</span>
       <h2>Czy wiesz, że Twoja restauracja <span class="u">w 30 dni</span> może…</h2>
@@ -127,70 +129,59 @@
         <div class="col">
           <div class="tiles">
             <div class="tile"><b class="green">100+</b><span>opinii w Google</span></div>
-            <div class="tile"><b class="blue">↑ obrót</b><span>goście wracają częściej</span></div>
-            <div class="tile"><b>baza gości</b><span>którzy wracają sami</span></div>
+            <div class="tile"><b class="blue">↑ obrót</b><span>klienci wracają częściej</span></div>
+            <div class="tile"><b>baza klientów</b><span>którzy sami wracają</span></div>
           </div>
-          <p class="lead">Tak. Pokażę w minutę.</p>
+          <p class="lead">Tak. Pokażę Ci to w minutę.</p>
         </div>
         <svg class="draw wob" viewBox="0 0 320 220" role="img" aria-label="Wykres rosnący przez 30 dni">
           <path d="M20 190 L300 190 M20 190 L20 20" stroke="#1c1c1c" stroke-width="3" fill="none" stroke-linecap="round"/>
           <path d="M24 180 C 90 178, 150 150, 200 100 S 270 40, 296 30" stroke="#1f8f3e" stroke-width="5" fill="none" stroke-linecap="round" marker-end="url(#arrg)"/>
           <text x="30" y="212" font-size="13" fill="#5d5d62">dzień 1</text><text x="246" y="212" font-size="13" fill="#5d5d62">dzień 30</text>
-          <text x="150" y="60" font-size="16" class="h" fill="#1f8f3e">opinie · obrót · goście</text>
+          <text x="150" y="60" font-size="16" class="h" fill="#1f8f3e">opinie · obrót · klienci</text>
         </svg>
       </div>
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
-    <!-- 1 · CO TO JEST: skan, karta w Wallecie, pieczątki, nagroda -->
+    <!-- 1 · CO TO JEST: trzy ekrany z telefonu (zrzuty: karta-wallet.png, pieczatka.png, nagroda.png) -->
     <section class="sec" data-n="1">
       <span class="num">Co to jest</span>
-      <h2>Karta lojalnościowa <span class="u">w telefonie gościa</span></h2>
-      <div class="body g2">
-        <div class="col">
-          <ul class="hand">
-            <li>gość skanuje kod przy kasie</li>
-            <li>karta wskakuje do Apple / Google Wallet</li>
-            <li>pieczątka za każdą wizytę</li>
-            <li>po kilku — nagroda, i gość wraca</li>
-          </ul>
-          <span class="sticky">bez aplikacji, nic nie pobiera</span>
-        </div>
-        <figure class="shot" data-img="zrzuty/karta-wallet.png" style="max-width:420px; justify-self:center" data-alt="Prawdziwa karta Scanovy w Apple Wallet">
-          <svg class="draw wob" viewBox="0 0 420 320" role="img" aria-label="Telefon z kartą lojalnościową w portfelu: pieczątki, nagroda">
-            <rect x="150" y="18" width="120" height="250" rx="20" fill="#fff" stroke="#1c1c1c" stroke-width="3.5"/>
-            <rect x="161" y="36" width="98" height="214" rx="9" fill="#f4f6fb"/>
-            <rect x="169" y="66" width="82" height="54" rx="8" fill="#1d5fd1"/>
-            <text x="177" y="86" font-size="10" fill="#fff" class="h">Twój lokal</text>
-            <g fill="#fff"><circle cx="180" cy="106" r="4"/><circle cx="193" cy="106" r="4"/><circle cx="206" cy="106" r="4"/><circle cx="219" cy="106" r="4"/><circle cx="232" cy="106" r="4" opacity=".35"/><circle cx="245" cy="106" r="4" opacity=".35"/></g>
-            <rect x="169" y="130" width="82" height="20" rx="6" fill="#fff" stroke="#1c1c1c" stroke-width="1.5"/>
-            <text x="210" y="144" font-size="8.5" text-anchor="middle">4 z 6 do nagrody</text>
-            <text x="210" y="175" font-size="9" fill="#5d5d62" text-anchor="middle">Apple Wallet · Google Wallet</text>
-            <g transform="translate(40,60)"><rect x="0" y="0" width="34" height="34" fill="none" stroke="#1c1c1c" stroke-width="3"/><rect x="8" y="8" width="18" height="18" fill="#1c1c1c"/></g>
-            <path d="M84 77 L146 90" stroke="#1d5fd1" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
-            <text x="20" y="118" font-size="12" class="h" fill="#1d5fd1">skan kodu</text>
-            <g stroke="#1d5fd1" stroke-width="2.5" fill="none" marker-end="url(#arr)"><path d="M330 106 L256 106"/></g>
-            <g font-size="13" class="h" fill="#1d5fd1"><text x="336" y="100">pieczątki</text><text x="336" y="116" font-size="11" fill="#5d5d62" font-weight="400">→ nagroda</text></g>
-            <text x="210" y="300" font-size="13" text-anchor="middle" fill="#5d5d62">zawsze w telefonie, obok karty płatniczej</text>
-          </svg>
-          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">tu wskoczy zrzut: docs/zrzuty/karta-wallet.png</span></figcaption>
+      <h2>Karta lojalnościowa <span class="u">w telefonie klienta</span></h2>
+      <ul class="hand" style="margin-bottom:1.2em">
+        <li>klient skanuje kod przy kasie, karta wskakuje do Apple / Google Wallet</li>
+        <li>za każdą wizytę dostaje pieczątkę</li>
+        <li>po kilku wraca po nagrodę</li>
+      </ul>
+      <div class="shots3">
+        <figure class="shot tall" data-img="zrzuty/karta-wallet.png" data-alt="Karta Scanovy w Wallecie">
+          <svg class="draw wob" viewBox="0 0 240 300" role="img" aria-label="Telefon: karta w Wallecie"><rect x="60" y="10" width="120" height="250" rx="20" fill="#fff" stroke="#1c1c1c" stroke-width="3.5"/><rect x="71" y="28" width="98" height="214" rx="9" fill="#f4f6fb"/><rect x="79" y="70" width="82" height="54" rx="8" fill="#1d5fd1"/><text x="87" y="90" font-size="10" fill="#fff" class="h">Twój lokal</text><g fill="#fff"><circle cx="90" cy="110" r="4"/><circle cx="103" cy="110" r="4"/><circle cx="116" cy="110" r="4" opacity=".35"/><circle cx="129" cy="110" r="4" opacity=".35"/><circle cx="142" cy="110" r="4" opacity=".35"/><circle cx="155" cy="110" r="4" opacity=".35"/></g><text x="120" y="150" font-size="9" fill="#5d5d62" text-anchor="middle">w Wallecie, bez aplikacji</text><text x="120" y="286" font-size="13" text-anchor="middle" class="h" fill="#1d5fd1">1 · karta</text></svg>
+          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">zrzut: docs/zrzuty/karta-wallet.png</span></figcaption>
+        </figure>
+        <figure class="shot tall" data-img="zrzuty/pieczatka.png" data-alt="Pieczątka dodana po wizycie">
+          <svg class="draw wob" viewBox="0 0 240 300" role="img" aria-label="Telefon: nowa pieczątka"><rect x="60" y="10" width="120" height="250" rx="20" fill="#fff" stroke="#1c1c1c" stroke-width="3.5"/><rect x="71" y="28" width="98" height="214" rx="9" fill="#f4f6fb"/><circle cx="120" cy="110" r="26" fill="#fff" stroke="#1c1c1c" stroke-width="3"/><path d="M106 110 l9 9 l19 -20" fill="none" stroke="#1f8f3e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><text x="120" y="160" font-size="10" text-anchor="middle" class="h">+1 pieczątka</text><text x="120" y="176" font-size="9" fill="#5d5d62" text-anchor="middle">3 z 6 do nagrody</text><text x="120" y="286" font-size="13" text-anchor="middle" class="h" fill="#1d5fd1">2 · pieczątka</text></svg>
+          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">zrzut: docs/zrzuty/pieczatka.png</span></figcaption>
+        </figure>
+        <figure class="shot tall" data-img="zrzuty/nagroda.png" data-alt="Nagroda do odebrania">
+          <svg class="draw wob" viewBox="0 0 240 300" role="img" aria-label="Telefon: nagroda"><rect x="60" y="10" width="120" height="250" rx="20" fill="#fff" stroke="#1c1c1c" stroke-width="3.5"/><rect x="71" y="28" width="98" height="214" rx="9" fill="#f4f6fb"/><path d="M120 80 l10 -22 l10 22 l24 2 l-18 16 l5 24 l-21 -12 l-21 12 l5 -24 l-18 -16 z" transform="translate(-10,0)" fill="#f4c542" stroke="#1c1c1c" stroke-width="2.5" stroke-linejoin="round"/><text x="120" y="150" font-size="10" text-anchor="middle" class="h">Nagroda gotowa</text><text x="120" y="166" font-size="9" fill="#5d5d62" text-anchor="middle">pokaż przy kasie</text><text x="120" y="286" font-size="13" text-anchor="middle" class="h" fill="#1d5fd1">3 · nagroda</text></svg>
+          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">zrzut: docs/zrzuty/nagroda.png</span></figcaption>
         </figure>
       </div>
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
-    <!-- 2 · WŁASNY KANAŁ: push + geo -->
+    <!-- 2 · TWÓJ KANAŁ -->
     <section class="sec" data-n="2">
       <span class="num">Twój kanał</span>
-      <h2>Bezpośredni kontakt <span class="u">ze swoimi gośćmi</span></h2>
+      <h2>Bezpośredni kontakt <span class="u">ze swoimi klientami</span></h2>
       <div class="body g2">
         <div class="col">
           <ul class="hand">
-            <li class="ok">powiadomienie na telefon: „dziś druga pizza za pół ceny”</li>
-            <li class="ok">system sam przypomina, gdy gość jest 2 km od lokalu</li>
+            <li class="ok">powiadomienie push na telefon: „dziś druga pizza za pół ceny”</li>
+            <li class="ok">system sam przypomina o lokalu, gdy klient jest 2 km od niego</li>
             <li class="ok">bez prowizji dla portali</li>
           </ul>
-          <p class="muted">W Polsce ma to na razie mało restauracji. Z miesiąca na miesiąc przybywa.</p>
+          <p class="muted">W Polsce na razie mało restauracji ma takie rozwiązanie. Z miesiąca na miesiąc przybywa ich więcej.</p>
         </div>
         <figure class="shot tall" data-img="zrzuty/push.png" data-alt="Prawdziwe powiadomienie na zablokowanym ekranie">
           <svg class="draw wob" viewBox="0 0 240 300" role="img" aria-label="Telefon z powiadomieniem na zablokowanym ekranie">
@@ -206,85 +197,48 @@
             <text x="176" y="84" font-size="12" class="h" fill="#1d5fd1">Twoja wiadomość</text>
             <circle cx="120" cy="200" r="22" fill="none" stroke="#1f8f3e" stroke-width="2" stroke-dasharray="4 3"/><circle cx="120" cy="200" r="4" fill="#1f8f3e"/>
             <text x="120" y="236" font-size="8.5" text-anchor="middle" fill="#1f8f3e" class="h">2 km od lokalu → przypomnienie</text>
-            <text x="120" y="286" font-size="12" text-anchor="middle" fill="#5d5d62">gość nic nie otwiera — samo się pokazuje</text>
+            <text x="120" y="286" font-size="12" text-anchor="middle" fill="#5d5d62">klient nic nie otwiera, samo się pokazuje</text>
           </svg>
-          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">tu wskoczy zrzut: docs/zrzuty/push.png</span></figcaption>
+          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">zrzut: docs/zrzuty/push.png</span></figcaption>
         </figure>
       </div>
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
-    <!-- 3 · DOWÓD: liczby z panelu MusiSushi / Kago. Podaj je w adresie: ?x=opinie&y=powroty&z=z_pusha
-         Bez parametrów plansza pokazuje wersję bezpieczną (to, co mamy udokumentowane). -->
+    <!-- 3 · LICZBY: tylko prawdziwe. Podaj w adresie ?x=opinie&y=powroty&z=z_pusha; bez nich wersja bezpieczna. -->
     <section class="sec" data-n="3">
-      <span class="num">Dowód · MusiSushi i Kago Sushi</span>
+      <span class="num">Liczby · MusiSushi i Kago Sushi</span>
       <h2>Liczby <span class="u">z naszych lokali</span>, 30 dni</h2>
       <div class="shots">
         <figure class="shot" data-img="zrzuty/panel.png" data-alt="Prawdziwy panel właściciela: kto wraca, pieczątki, opinie">
-          <svg class="draw wob" viewBox="0 0 520 240" role="img" aria-label="Szkic panelu właściciela">
-            <rect x="8" y="8" width="504" height="224" rx="12" fill="#fff" stroke="#1c1c1c" stroke-width="3"/>
-            <g fill="#c9c9c3"><circle cx="28" cy="26" r="5"/><circle cx="46" cy="26" r="5"/><circle cx="64" cy="26" r="5"/></g>
-            <text x="30" y="66" font-size="15" class="h">Panel — kto wraca</text>
-            <g font-size="12">
-              <rect x="30" y="82" width="300" height="26" rx="6" fill="#f4f6fb"/><text x="40" y="99">Anna K. · 7 wizyt · ostatnia: wczoraj</text>
-              <rect x="30" y="114" width="300" height="26" rx="6" fill="#f4f6fb"/><text x="40" y="131">Marek W. · 5 wizyt · nagroda odebrana</text>
-              <rect x="30" y="146" width="300" height="26" rx="6" fill="#f4f6fb"/><text x="40" y="163">Ola P. · 4 wizyty · opinia ★★★★★</text>
-            </g>
-            <rect x="352" y="82" width="138" height="42" rx="8" fill="#fff" stroke="#1d5fd1" stroke-width="2.5"/><text x="421" y="100" font-size="11" text-anchor="middle" fill="#5d5d62">stali goście</text><text x="421" y="117" font-size="15" text-anchor="middle" class="h" fill="#1d5fd1">184</text>
-            <rect x="352" y="132" width="138" height="42" rx="8" fill="#fff" stroke="#1f8f3e" stroke-width="2.5"/><text x="421" y="150" font-size="11" text-anchor="middle" fill="#5d5d62">opinie w tym mies.</text><text x="421" y="167" font-size="15" text-anchor="middle" class="h" fill="#1f8f3e">93</text>
-            <text x="260" y="214" font-size="12" text-anchor="middle" fill="#5d5d62">(szkic — tu wejdzie prawdziwy zrzut panelu)</text>
+          <svg class="draw wob" viewBox="0 0 520 240" role="img" aria-label="Miejsce na zrzut panelu">
+            <rect x="8" y="8" width="504" height="224" rx="12" fill="#fff" stroke="#1c1c1c" stroke-width="3" stroke-dasharray="10 7"/>
+            <text x="260" y="110" font-size="18" text-anchor="middle" class="h">panel „Kto wraca”</text>
+            <text x="260" y="140" font-size="13" text-anchor="middle" fill="#5d5d62">tu wejdzie prawdziwy zrzut panelu (docs/zrzuty/panel.png)</text>
           </svg>
-          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">tu wskoczy zrzut: docs/zrzuty/panel.png</span></figcaption>
+          <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">zrzut: docs/zrzuty/panel.png</span></figcaption>
         </figure>
         <div class="col" id="proof">
           <div class="tile"><b class="green" id="p-x">do 200</b><span id="p-xl">nowych opinii w Google miesięcznie</span></div>
-          <div class="tile"><b class="blue" id="p-y">+25%</b><span id="p-yl">częściej wracają goście z kartą</span></div>
-          <div class="tile"><b id="p-z">1 klik</b><span id="p-zl">powiadomienie do wszystkich stałych gości</span></div>
-          <p class="muted" id="p-hint" style="font-size:.8em">Wersja bezpieczna. Liczby z panelu podaj w adresie: <code>?x=350&amp;y=200&amp;z=100</code></p>
+          <div class="tile"><b class="blue" id="p-y">+25%</b><span id="p-yl">częściej wracają klienci z kartą</span></div>
+          <div class="tile"><b id="p-z">1 klik</b><span id="p-zl">powiadomienie do wszystkich stałych klientów</span></div>
+          <p class="muted" id="p-hint" style="font-size:.8em">Wersja bezpieczna. Prawdziwe liczby z panelu podaj w adresie: <code>?x=350&amp;y=200&amp;z=100</code></p>
         </div>
       </div>
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
-    <!-- 4 · CO DALEJ: spotkanie online, ustawiamy pod Twoją restaurację -->
+    <!-- 4 · KALKULATOR (w filmiku) -->
     <section class="sec" data-n="4">
-      <span class="num">Co dalej</span>
-      <h2>Zobacz cały system <span class="blue">ustawiony pod Twoją restaurację</span></h2>
-      <div class="body g2">
-        <div class="col">
-          <ul class="hand">
-            <li class="ok">krótkie spotkanie online</li>
-            <li class="ok">przechodzimy przez system i ustawiamy go pod Ciebie</li>
-            <li class="ok">widzisz, jak u Ciebie wygląda i działa</li>
-          </ul>
-          <span class="sticky">pierwszy miesiąc testowy · za darmo</span>
-          <p class="muted">Link do spotkania jest pod filmikiem.</p>
-        </div>
-        <div class="col">
-          <svg class="draw wob" viewBox="0 0 360 100" role="img" aria-label="Klienci: MusiSushi, Kago Sushi, Yōkai Matcha">
-            <g stroke="#1c1c1c" stroke-width="2.5" fill="#fff"><rect x="6" y="10" width="110" height="44" rx="10"/><rect x="126" y="10" width="110" height="44" rx="10"/><rect x="246" y="10" width="110" height="44" rx="10"/></g>
-            <g font-size="15" class="h" text-anchor="middle"><text x="61" y="38">MusiSushi</text><text x="181" y="38">Kago Sushi</text><text x="301" y="38">Yōkai Matcha</text></g>
-            <text x="180" y="85" font-size="13" text-anchor="middle" fill="#5d5d62">korzystają już</text>
-          </svg>
-          <span class="sticky blue" style="align-self:center">scanova.tech · Adam</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== KONIEC FILMIKU. Niżej: materiał na spotkanie (nie nagrywać) ===== -->
-    <div class="cut" aria-hidden="true">koniec filmiku · niżej materiał na spotkanie</div>
-
-    <!-- 5 · KALKULATOR (na spotkanie) -->
-    <section class="sec" data-n="5">
-      <span class="num">Na spotkanie · ile to daje</span>
+      <span class="num">Ile to daje</span>
       <h2>Policzmy <span class="u">na Twoich liczbach</span></h2>
       <div class="chips" id="chips" role="group" aria-label="Branża"></div>
       <div class="calc">
         <div>
-          <div class="field"><label for="f-guests">Gości dziennie</label><input id="f-guests" type="range" min="10" max="300" step="5" value="80"><output id="o-guests">80</output></div>
-          <div class="field"><label for="f-bill">Średni rachunek</label><input id="f-bill" type="range" min="8" max="200" step="1" value="28"><output id="o-bill">28 zł</output></div>
+          <div class="field"><label for="f-guests">Klientów dziennie</label><input id="f-guests" type="range" min="10" max="300" step="5" value="40"><output id="o-guests">40</output></div>
+          <div class="field"><label for="f-bill">Średni rachunek</label><input id="f-bill" type="range" min="8" max="200" step="1" value="45"><output id="o-bill">45 zł</output></div>
           <div class="field">
-            <label>Goście z kartą wracają częściej o</label>
+            <label>Klienci z kartą wracają częściej o</label>
             <div class="seg" role="group" aria-label="Założenie">
               <button type="button" data-up="15" aria-pressed="false">15% ostrożnie</button>
               <button type="button" data-up="25" aria-pressed="true">25% realnie</button>
@@ -304,32 +258,58 @@
             <div class="big blue" id="o-net">+0 zł</div>
           </div>
           <div class="tiles">
-            <div class="tile"><b id="o-visits">0</b><span>wizyt więcej stałych gości</span></div>
+            <div class="tile"><b id="o-visits">0</b><span>wizyt więcej stałych klientów</span></div>
             <div class="tile"><b class="green" id="o-reviews">≈ 0</b><span>nowych opinii w Google</span></div>
             <div class="tile"><b id="o-year">+0 zł</b><span>w skali roku</span></div>
           </div>
-          <span class="sticky">pierwszy miesiąc za darmo</span>
+          <span class="sticky">pierwsze 14 dni za darmo</span>
         </div>
       </div>
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
-    <!-- 6 · START (na spotkanie) -->
-    <section class="sec" data-n="6">
-      <span class="num">Na spotkanie · jak to wygląda</span>
-      <h2>Miesiąc testowy <span class="u">za darmo</span></h2>
+    <!-- 5 · JAK TO WYGLĄDA -->
+    <section class="sec" data-n="5">
+      <span class="num">Jak to wygląda</span>
+      <h2>Pierwsze 14 dni <span class="u">za darmo</span></h2>
       <div class="col" style="gap:1.6em">
         <div class="timeline">
-          <div class="tl"><b>dzień 1–3</b>ustawiamy kartę i stojak</div>
+          <div class="tl"><b>dzień 1</b>ustawiamy kartę w Twoich kolorach i stojak</div>
           <div class="tl"><b>tydzień 1</b>pierwsze karty, pieczątki, opinie</div>
-          <div class="tl"><b>tydzień 2–3</b>pierwsze powroty po nagrodę</div>
-          <div class="tl"><b>dzień 30</b>patrzysz w panel i decydujesz</div>
+          <div class="tl"><b>tydzień 2</b>pierwsze powroty po nagrodę</div>
+          <div class="tl"><b>dzień 14</b>patrzysz w panel i decydujesz</div>
         </div>
         <ul class="hand">
-          <li class="ok">bez umowy na czas określony · Standard 250 zł, Pro 339 zł (opinie Google), Max 590 zł / mies.</li>
+          <li class="ok">bez umowy na czas określony</li>
           <li class="ok">nic nie instalujesz, obsługa nic nie klika</li>
           <li class="ok">stojak i karty w cenie</li>
         </ul>
+      </div>
+    </section>
+    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
+
+    <!-- 6 · CO DALEJ -->
+    <section class="sec" data-n="6">
+      <span class="num">Co dalej</span>
+      <h2>Zobacz cały system <span class="blue">ustawiony pod Twoją restaurację</span></h2>
+      <div class="body g2">
+        <div class="col">
+          <ul class="hand">
+            <li class="ok">krótkie spotkanie online, 15–20 minut</li>
+            <li class="ok">pokażemy, jak działa i jak klienci dodają karty</li>
+            <li class="ok">ustawimy go pod Ciebie: Twoje kolory, Twoja nagroda</li>
+          </ul>
+          <span class="sticky">pierwsze 14 dni za darmo · nic nie ryzykujesz</span>
+          <p class="lead">Odpisz na tę wiadomość, a wyślemy Ci link do spotkania na Google Meet.</p>
+        </div>
+        <div class="col">
+          <svg class="draw wob" viewBox="0 0 360 100" role="img" aria-label="Klienci: MusiSushi, Kago Sushi, Yōkai Matcha">
+            <g stroke="#1c1c1c" stroke-width="2.5" fill="#fff"><rect x="6" y="10" width="110" height="44" rx="10"/><rect x="126" y="10" width="110" height="44" rx="10"/><rect x="246" y="10" width="110" height="44" rx="10"/></g>
+            <g font-size="15" class="h" text-anchor="middle"><text x="61" y="38">MusiSushi</text><text x="181" y="38">Kago Sushi</text><text x="301" y="38">Yōkai Matcha</text></g>
+            <text x="180" y="85" font-size="13" text-anchor="middle" fill="#5d5d62">korzystają już</text>
+          </svg>
+          <span class="sticky blue" style="align-self:center">scanova.tech · Adam</span>
+        </div>
       </div>
     </section>
 
@@ -340,20 +320,20 @@
 
 <script>
   const NOTES = [
-    { t: "0:00–0:10 · HUK", html: "<p class='say'>„Czy wiesz, że Twoja restauracja może w trzydzieści dni zdobyć ponad sto opinii w Google, zwiększyć obrót i zbudować bazę gości, którzy wracają sami? Tak, i pokażę Ci to w minutę.”</p><p>Ty do kamery. Nie przedstawiaj się, imię pada na końcu.</p>" },
-    { t: "0:10–0:25 · CO TO JEST", html: "<p class='say'>„Robimy cyfrowe karty lojalnościowe. Gość przychodzi, skanuje kod przy kasie i karta jest w jego Wallecie. Bez aplikacji, nic nie pobiera. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca po nagrodę.”</p><p>Pokaż kartę w Wallecie (zrzut albo swój telefon).</p>" },
-    { t: "0:25–0:40 · TWÓJ KANAŁ", html: "<p class='say'>„Masz też bezpośredni kontakt ze swoimi gośćmi. Wysyłasz powiadomienie na telefon, na przykład ‚dziś druga pizza za pół ceny’. Albo system sam przypomina o lokalu, gdy gość jest dwa kilometry od niego. W Polsce ma to na razie mało restauracji, ale z miesiąca na miesiąc przybywa.”</p><p>Wskaż powiadomienie na telefonie.</p>" },
-    { t: "0:40–0:55 · LICZBY", html: "<p class='say'>„Liczby z naszych lokali, MusiSushi i Kago Sushi, z trzydziestu dni: [X] nowych opinii w Google, [Y] gości wróciło po kolejną pieczątkę, [Z] przyszło po jednym powiadomieniu. Wszystko to widzisz w panelu.”</p><p><b>Mów tylko liczby, które są na ekranie</b> (podaj je w adresie <code>?x=&y=&z=</code>). Bez nich wersja bezpieczna: „U naszych klientów, MusiSushi i Kago Sushi, przybywa do dwustu opinii miesięcznie, a goście z kartą wracają o jedną czwartą częściej. Wszystko widzisz w panelu.”</p>" },
-    { t: "0:55–1:05 · CO DALEJ", html: "<p class='say'>„Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online. Przejdziemy przez niego razem i ustawimy go pod Twoją restaurację, więc zobaczysz, jak u Ciebie wygląda i działa. Pierwszy miesiąc jest testowy, za darmo. Link do spotkania masz pod filmikiem. Adam, Scanova. Do zobaczenia.”</p><p>Ty do kamery. Tu kończysz nagranie.</p>" },
-    { t: "NIE W FILMIKU", html: "<p>Kalkulator na spotkanie online: kliknij branżę rozmówcy, wpisz jego gości dziennie i rachunek. Zdanie do powiedzenia: „żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie”.</p>" },
-    { t: "NIE W FILMIKU", html: "<p>Na spotkanie: start w 1–3 dni, bez umowy, cennik 250 / 339 / 590 zł. Trzydziestego dnia patrzy w panel i decyduje.</p>" },
+    { t: "0:00–0:10 · HUK", html: "<p class='say'>„Czy wiesz, że Twoja restauracja w trzydzieści dni może zdobyć ponad sto opinii w Google, zwiększyć obrót i zbudować bazę klientów, którzy sami wracają? Tak, i pokażę Ci to w minutę.”</p><p>Ty do kamery. Nie przedstawiaj się, imię pada na końcu.</p>" },
+    { t: "0:10–0:25 · CO TO JEST", html: "<p class='say'>„Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient przychodzi, skanuje kod przy kasie i karta jest w jego Wallecie. Bez aplikacji, nic nie pobiera. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca po nagrodę.”</p><p>Wskaż trzy ekrany po kolei: karta, pieczątka, nagroda.</p>" },
+    { t: "0:25–0:40 · TWÓJ KANAŁ", html: "<p class='say'>„Masz też bezpośredni kontakt ze swoimi klientami. Wysyłasz im powiadomienia push na telefon, na przykład ‚dziś druga pizza za pół ceny’. Albo system sam przypomina o lokalu, gdy klient jest w promieniu dwóch kilometrów od niego. W Polsce na razie mało restauracji ma takie rozwiązanie, ale z miesiąca na miesiąc przybywa ich więcej.”</p><p>Wskaż powiadomienie na telefonie.</p>" },
+    { t: "0:40–0:55 · LICZBY", html: "<p class='say'>„Liczby z naszych lokali, MusiSushi i Kago Sushi, z trzydziestu dni: [X] nowych opinii w Google, [Y] klientów wróciło po kolejną pieczątkę, [Z] przyszło po jednym powiadomieniu. Wszystko to widzisz w panelu.”</p><p><b>Mów tylko prawdziwe liczby z panelu</b> (podaj je w adresie <code>?x=&y=&z=</code>). Bez nich wersja bezpieczna: „U naszych klientów przybywa do dwustu opinii miesięcznie, a klienci z kartą wracają o jedną czwartą częściej.”</p>" },
+    { t: "0:55–1:10 · ILE TO DAJE", html: "<p class='say'>„Policzmy. Czterdziestu klientów dziennie, rachunek czterdzieści pięć złotych, co czwarty z kartą wraca częściej. Żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie. A w skali roku zostaje w lokalu około piętnastu tysięcy złotych. I to bez liczenia nowych klientów z opinii.”</p><p>Kliknij branżę rozmówcy PRZED nagraniem. Po „dwie wizyty dziennie” zrób pauzę.</p>" },
+    { t: "1:10–1:20 · JAK TO WYGLĄDA", html: "<p class='say'>„Pierwszego dnia ustawiamy kartę w Twoich kolorach i przywozimy stojak. W pierwszym tygodniu są pierwsze karty i opinie, w drugim pierwsze powroty po nagrodę. Po czternastu dniach patrzysz w panel i decydujesz. Bez umowy, nic nie instalujesz.”</p><p>Palcem po osi czasu.</p>" },
+    { t: "1:20–1:35 · CO DALEJ", html: "<p class='say'>„Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Pokażę Ci, jak działa, jak klienci dodają karty, i ustawimy go pod Twoją restaurację, pod Twoje kolory. Pierwsze czternaście dni jest za darmo, więc nic nie ryzykujesz. Wystarczy, że odpiszesz na tę wiadomość, a wyślę Ci link do spotkania na Google Meet. Adam, Scanova. Do zobaczenia.”</p><p>Ty do kamery. Tu kończysz nagranie.</p>" },
   ];
   // Plansza „Dowód”: liczby z panelu podajesz w adresie ?x=opinie&y=powroty&z=z_pusha — bez nich zostaje wersja bezpieczna.
   (function () {
     const q = new URLSearchParams(location.search), x = q.get("x"), y = q.get("y"), z = q.get("z");
     if (!(x || y || z)) return;
     const set = (id, v, label) => { if (v) { document.getElementById(id).textContent = v; document.getElementById(id + "l").textContent = label; } };
-    set("p-x", x, "nowych opinii w Google w 30 dni"); set("p-y", y, "gości wróciło po kolejną pieczątkę"); set("p-z", z, "gości z jednego powiadomienia");
+    set("p-x", x, "nowych opinii w Google w 30 dni"); set("p-y", y, "klientów wróciło po kolejną pieczątkę"); set("p-z", z, "klientów po jednym powiadomieniu");
     document.getElementById("p-hint").textContent = "Liczby z panelu MusiSushi / Kago Sushi, 30 dni.";
   })();
   const notes = document.getElementById("notes"), ntext = document.getElementById("ntext"), ntime = document.getElementById("ntime"), notesBtn = document.getElementById("notesBtn");
@@ -386,7 +366,7 @@
     { key: "kebab", label: "Kebab", g: 140, r: 28, m: 65, s: 10, c: 7, name: "11. kebab gratis" },
   ];
   const PLAN = 339, ADOPTION = 0.30, REVIEWS = 0.033;
-  let cur = PRESETS[0], uplift = 0.25;
+  let cur = PRESETS.find((p) => p.key === "pizzeria"), uplift = 0.25;
   const pln = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0 });
   const $ = (id) => document.getElementById(id);
   const chips = $("chips");
@@ -395,7 +375,7 @@
   function calc() {
     const guests = +$("f-guests").value, bill = +$("f-bill").value, margin = cur.m / 100;
     $("o-guests").textContent = guests; $("o-bill").textContent = bill + " zł";
-    $("assump").textContent = `Karta u ~30% gości. Marża ${cur.m}%. Nagroda: ${cur.name}, koszt ${cur.c} zł. Plan Pro ${PLAN} zł.`;
+    $("assump").textContent = `Karta u ~30% klientów. Marża ${cur.m}%. Nagroda: ${cur.name}, koszt ${cur.c} zł. Plan Pro ${PLAN} zł.`;
     const monthVisits = guests * 30, cardVisits = monthVisits * ADOPTION, extra = Math.round(cardVisits * uplift);
     const profit = extra * bill * margin;
     const rewards = Math.round(((cardVisits + extra) / cur.s) * cur.c);
@@ -408,5 +388,7 @@
     $("o-visits").textContent = pln.format(extra); $("o-reviews").textContent = "≈ " + pln.format(reviews); $("o-year").textContent = money(net * 12);
   }
   ["f-guests", "f-bill"].forEach((id) => $(id).addEventListener("input", calc));
+  // Chip zmienia liczby na preset; na starcie zostają liczby z filmiku (40 / 45 zł).
+  $("f-guests").value = 40; $("f-bill").value = 45;
   calc();
 </script>
