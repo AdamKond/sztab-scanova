@@ -1,9 +1,8 @@
 # Filmik — tekst do nagrania (wersja 2026-10-13, po uwagach Adama)
 
 Ekran = `docs/tablica-scanovy.html`, 7 plansz w kolejności poniżej. `F` = tryb filmowy, `N` = notatki
-„co mówisz” (podążają za przewijaniem). Prawdziwe liczby do planszy 4 podajesz w adresie:
-`tablica-scanovy.html?film=1&x=350&y=200&z=100` (x = opinie, y = powroty, z = po powiadomieniu).
-Bez nich plansza pokazuje wersję bezpieczną. Całość ok. 1:35.
+„co mówisz” (podążają za przewijaniem). Plansza 4 ma na stałe prawdziwe liczby z panelu MusiSushi (2026-10-13); nowsze podasz w adresie
+`?x=opinie&y=klienci&z=wydatki`. Całość ok. 1:35.
 
 Mówisz „klient”, nie „gość”. Mówisz do jednej osoby („Ty”). Nie czytaj słowo w słowo.
 
@@ -24,22 +23,24 @@ Mówisz „klient”, nie „gość”. Mówisz do jednej osoby („Ty”). Nie 
 > jest w promieniu dwóch kilometrów od niego. W Polsce na razie mało restauracji ma takie
 > rozwiązanie, ale z miesiąca na miesiąc przybywa ich więcej.
 
-## 4 · 0:40–0:55 — LICZBY (ekran: panel „Kto wraca”)
-> Liczby z naszych lokali, MusiSushi i Kago Sushi, z trzydziestu dni: [X] nowych opinii w Google,
-> [Y] klientów wróciło po kolejną pieczątkę, [Z] przyszło po jednym powiadomieniu. Wszystko to
-> widzisz w panelu.
+## 4 · 0:40–0:55 — LICZBY (ekran: panel MusiSushi, 3 lokale, stan 2026-10-13)
+> Prawdziwe liczby z panelu MusiSushi, trzy lokale. Odkąd klienci oceniają przez kartę, przybyło
+> trzysta pięćdziesiąt siedem opinii w Google. Sześciuset siedemdziesięciu sześciu aktywnych
+> klientów z kartą, w ostatnim miesiącu czterysta pięćdziesiąt cztery nowe karty. I ci klienci
+> wydali w miesiącu sześćdziesiąt osiem tysięcy złotych. Wszystko to widzisz w panelu.
 
-Tylko prawdziwe liczby z panelu. Bez nich wersja bezpieczna:
-> U naszych klientów przybywa do dwustu opinii miesięcznie, a klienci z kartą wracają o jedną
-> czwartą częściej. Wszystko widzisz w panelu.
+Liczby z panelu (wklejone przez Adama 2026-10-13): +357 nowych opinii od startu karty (3 lokale),
+676 aktywnych klientów, 454 nowe karty w miesiącu, wydatki klientów z kartą 68 100 zł (szac.),
+ocena 4,4, 3 497 opinii łącznie, 479 kliknięć „Oceń”. Kafle na tablicy pokazują je na stałe.
 
-## 5 · 0:55–1:10 — ILE TO DAJE (ekran: kalkulator, pizzeria, 40 klientów, 45 zł)
-> Policzmy. Czterdziestu klientów dziennie, rachunek czterdzieści pięć złotych, co czwarty z kartą
-> wraca częściej. Żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie. A w skali roku
-> zostaje w lokalu około piętnastu tysięcy złotych. I to bez liczenia nowych klientów z opinii.
+## 5 · 0:55–1:10 — ILE TO DAJE (ekran: kalkulator, chip „MusiSushi · prawdziwy”)
+> Policzmy to na MusiSushi: około osiemdziesięciu pięciu klientów z kartą dziennie, rachunek
+> dziewięćdziesiąt złotych. Klienci z kartą wydają tam w miesiącu prawie siedemdziesiąt tysięcy.
+> Żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie. A z samych dodatkowych wizyt
+> zostaje w lokalu kilka tysięcy miesięcznie, bez liczenia nowych klientów z opinii.
 
-Kalkulator pokazuje przy tych liczbach: +1 244 zł miesięcznie, +14 922 zł rocznie. Kliknij branżę
-rozmówcy przed nagraniem, jeśli nagrywasz pod konkretny lokal.
+Kalkulator ma linię „Klienci z kartą wydają miesięcznie” (z liczb na suwakach) i pod nią prawdziwy
+wynik z panelu: 68 100 zł. Dla innego lokalu kliknij jego branżę przed nagraniem.
 
 ## 6 · 1:10–1:20 — JAK TO WYGLĄDA (ekran: oś czasu)
 > Pierwszego dnia ustawiamy kartę w Twoich kolorach i przywozimy stojak. W pierwszym tygodniu są
@@ -58,7 +59,7 @@ rozmówcy przed nagraniem, jeśli nagrywasz pod konkretny lokal.
 
 1. Zrzuty z telefonu do `docs/zrzuty/` (nazwy w `docs/zrzuty/README.md`): `karta-wallet.png`,
    `pieczatka.png`, `nagroda.png`, `push.png`, `panel.png`. Tablica sama podmieni rysunki.
-2. Trzy prawdziwe liczby z panelu MusiSushi lub Kago z ostatnich 30 dni → do adresu `?x=&y=&z=`.
+2. Zrzut panelu MusiSushi (ten, z którego są liczby) → `docs/zrzuty/panel.png`.
 3. `F`, nagrywasz jednym ciągiem (Loom albo nagrywanie ekranu + kamerka).
 4. Link do filmu → Vercel `NEXT_PUBLIC_FILM_URL`; ManyChat i przyciski w Sztabie wysyłają go same.
 

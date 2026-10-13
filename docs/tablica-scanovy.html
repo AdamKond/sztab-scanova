@@ -207,8 +207,8 @@
 
     <!-- 3 · LICZBY: tylko prawdziwe. Podaj w adresie ?x=opinie&y=powroty&z=z_pusha; bez nich wersja bezpieczna. -->
     <section class="sec" data-n="3">
-      <span class="num">Liczby · MusiSushi i Kago Sushi</span>
-      <h2>Liczby <span class="u">z naszych lokali</span>, 30 dni</h2>
+      <span class="num">Liczby · MusiSushi, 3 lokale · panel z 2026-10-13</span>
+      <h2>Prawdziwe liczby <span class="u">z panelu MusiSushi</span></h2>
       <div class="shots">
         <figure class="shot" data-img="zrzuty/panel.png" data-alt="Prawdziwy panel właściciela: kto wraca, pieczątki, opinie">
           <svg class="draw wob" viewBox="0 0 520 240" role="img" aria-label="Miejsce na zrzut panelu">
@@ -219,10 +219,10 @@
           <figcaption class="cap"><span class="real">prawdziwy ekran z systemu</span><span class="ph">zrzut: docs/zrzuty/panel.png</span></figcaption>
         </figure>
         <div class="col" id="proof">
-          <div class="tile"><b class="green" id="p-x">do 200</b><span id="p-xl">nowych opinii w Google miesięcznie</span></div>
-          <div class="tile"><b class="blue" id="p-y">+25%</b><span id="p-yl">częściej wracają klienci z kartą</span></div>
-          <div class="tile"><b id="p-z">1 klik</b><span id="p-zl">powiadomienie do wszystkich stałych klientów</span></div>
-          <p class="muted" id="p-hint" style="font-size:.8em">Wersja bezpieczna. Prawdziwe liczby z panelu podaj w adresie: <code>?x=350&amp;y=200&amp;z=100</code></p>
+          <div class="tile"><b class="green" id="p-x">+357</b><span id="p-xl">nowych opinii w Google, odkąd klienci oceniają przez kartę</span></div>
+          <div class="tile"><b class="blue" id="p-y">676</b><span id="p-yl">aktywnych klientów z kartą · 454 nowe karty w miesiącu</span></div>
+          <div class="tile"><b id="p-z">68 100 zł</b><span id="p-zl">wydali klienci z kartą w miesiącu</span></div>
+          <p class="muted" id="p-hint" style="font-size:.8em">Ocena w Google 4,4 · 3 497 opinii łącznie · 479 klientów kliknęło „Oceń” na karcie</p>
         </div>
       </div>
     </section>
@@ -235,8 +235,8 @@
       <div class="chips" id="chips" role="group" aria-label="Branża"></div>
       <div class="calc">
         <div>
-          <div class="field"><label for="f-guests">Klientów dziennie</label><input id="f-guests" type="range" min="10" max="300" step="5" value="40"><output id="o-guests">40</output></div>
-          <div class="field"><label for="f-bill">Średni rachunek</label><input id="f-bill" type="range" min="8" max="200" step="1" value="45"><output id="o-bill">45 zł</output></div>
+          <div class="field"><label for="f-guests">Klientów dziennie</label><input id="f-guests" type="range" min="10" max="300" step="5" value="85"><output id="o-guests">85</output></div>
+          <div class="field"><label for="f-bill">Średni rachunek</label><input id="f-bill" type="range" min="8" max="200" step="1" value="90"><output id="o-bill">90 zł</output></div>
           <div class="field">
             <label>Klienci z kartą wracają częściej o</label>
             <div class="seg" role="group" aria-label="Założenie">
@@ -254,7 +254,12 @@
             <p class="muted">tyle dodatkowych wizyt pokrywa plan i nagrody</p>
           </div>
           <div>
-            <span class="num">Zostaje w lokalu miesięcznie</span>
+            <span class="num">Klienci z kartą wydają miesięcznie</span>
+            <div class="big green" id="o-spend">0 zł</div>
+            <p class="muted" id="o-real"></p>
+          </div>
+          <div>
+            <span class="num">Zostaje w lokalu miesięcznie (dodatkowe wizyty minus plan i nagrody)</span>
             <div class="big blue" id="o-net">+0 zł</div>
           </div>
           <div class="tiles">
@@ -323,8 +328,8 @@
     { t: "0:00–0:10 · HUK", html: "<p class='say'>„Czy wiesz, że Twoja restauracja w trzydzieści dni może zdobyć ponad sto opinii w Google, zwiększyć obrót i zbudować bazę klientów, którzy sami wracają? Tak, i pokażę Ci to w minutę.”</p><p>Ty do kamery. Nie przedstawiaj się, imię pada na końcu.</p>" },
     { t: "0:10–0:25 · CO TO JEST", html: "<p class='say'>„Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient przychodzi, skanuje kod przy kasie i karta jest w jego Wallecie. Bez aplikacji, nic nie pobiera. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca po nagrodę.”</p><p>Wskaż trzy ekrany po kolei: karta, pieczątka, nagroda.</p>" },
     { t: "0:25–0:40 · TWÓJ KANAŁ", html: "<p class='say'>„Masz też bezpośredni kontakt ze swoimi klientami. Wysyłasz im powiadomienia push na telefon, na przykład ‚dziś druga pizza za pół ceny’. Albo system sam przypomina o lokalu, gdy klient jest w promieniu dwóch kilometrów od niego. W Polsce na razie mało restauracji ma takie rozwiązanie, ale z miesiąca na miesiąc przybywa ich więcej.”</p><p>Wskaż powiadomienie na telefonie.</p>" },
-    { t: "0:40–0:55 · LICZBY", html: "<p class='say'>„Liczby z naszych lokali, MusiSushi i Kago Sushi, z trzydziestu dni: [X] nowych opinii w Google, [Y] klientów wróciło po kolejną pieczątkę, [Z] przyszło po jednym powiadomieniu. Wszystko to widzisz w panelu.”</p><p><b>Mów tylko prawdziwe liczby z panelu</b> (podaj je w adresie <code>?x=&y=&z=</code>). Bez nich wersja bezpieczna: „U naszych klientów przybywa do dwustu opinii miesięcznie, a klienci z kartą wracają o jedną czwartą częściej.”</p>" },
-    { t: "0:55–1:10 · ILE TO DAJE", html: "<p class='say'>„Policzmy. Czterdziestu klientów dziennie, rachunek czterdzieści pięć złotych, co czwarty z kartą wraca częściej. Żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie. A w skali roku zostaje w lokalu około piętnastu tysięcy złotych. I to bez liczenia nowych klientów z opinii.”</p><p>Kliknij branżę rozmówcy PRZED nagraniem. Po „dwie wizyty dziennie” zrób pauzę.</p>" },
+    { t: "0:40–0:55 · LICZBY", html: "<p class='say'>„Prawdziwe liczby z panelu MusiSushi, trzy lokale. Odkąd klienci oceniają przez kartę, przybyło trzysta pięćdziesiąt siedem opinii w Google. Sześciuset siedemdziesięciu sześciu aktywnych klientów z kartą, w ostatnim miesiącu czterysta pięćdziesiąt cztery nowe karty. I ci klienci wydali w miesiącu sześćdziesiąt osiem tysięcy złotych. Wszystko to widzisz w panelu.”</p><p>Liczby z panelu z 2026-10-13. Tu wejdzie zrzut panelu (docs/zrzuty/panel.png).</p>" },
+    { t: "0:55–1:10 · ILE TO DAJE", html: "<p class='say'>„Policzmy to na MusiSushi: około osiemdziesięciu pięciu klientów z kartą dziennie, rachunek dziewięćdziesiąt złotych. Klienci z kartą wydają tam w miesiącu prawie siedemdziesiąt tysięcy. Żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie. A z samych dodatkowych wizyt zostaje w lokalu kilka tysięcy miesięcznie, bez liczenia nowych klientów z opinii.”</p><p>Chip „MusiSushi · prawdziwy” jest domyślny. Dla innego lokalu kliknij jego branżę przed nagraniem.</p>" },
     { t: "1:10–1:20 · JAK TO WYGLĄDA", html: "<p class='say'>„Pierwszego dnia ustawiamy kartę w Twoich kolorach i przywozimy stojak. W pierwszym tygodniu są pierwsze karty i opinie, w drugim pierwsze powroty po nagrodę. Po czternastu dniach patrzysz w panel i decydujesz. Bez umowy, nic nie instalujesz.”</p><p>Palcem po osi czasu.</p>" },
     { t: "1:20–1:35 · CO DALEJ", html: "<p class='say'>„Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Pokażę Ci, jak działa, jak klienci dodają karty, i ustawimy go pod Twoją restaurację, pod Twoje kolory. Pierwsze czternaście dni jest za darmo, więc nic nie ryzykujesz. Wystarczy, że odpiszesz na tę wiadomość, a wyślę Ci link do spotkania na Google Meet. Adam, Scanova. Do zobaczenia.”</p><p>Ty do kamery. Tu kończysz nagranie.</p>" },
   ];
@@ -361,12 +366,13 @@
     { key: "kawiarnia", label: "Kawiarnia", g: 80, r: 28, m: 75, s: 10, c: 5, name: "11. kawa gratis" },
     { key: "pizzeria", label: "Pizzeria", g: 90, r: 55, m: 65, s: 6, c: 14, name: "co 7. pizza gratis" },
     { key: "burgery", label: "Burgerownia", g: 100, r: 45, m: 65, s: 8, c: 12, name: "9. burger gratis" },
+    { key: "musisushi", label: "MusiSushi · prawdziwy", g: 85, r: 90, m: 58, s: 8, c: 28, name: "zestaw gratis po 8 wizytach", real: "68 100 zł" },
     { key: "sushi", label: "Sushi", g: 60, r: 90, m: 58, s: 8, c: 28, name: "zestaw gratis po 8 wizytach" },
     { key: "cukiernia", label: "Cukiernia", g: 110, r: 25, m: 70, s: 8, c: 5, name: "9. ciastko gratis" },
     { key: "kebab", label: "Kebab", g: 140, r: 28, m: 65, s: 10, c: 7, name: "11. kebab gratis" },
   ];
   const PLAN = 339, ADOPTION = 0.30, REVIEWS = 0.033;
-  let cur = PRESETS.find((p) => p.key === "pizzeria"), uplift = 0.25;
+  let cur = PRESETS.find((p) => p.key === "musisushi"), uplift = 0.25;
   const pln = new Intl.NumberFormat("pl-PL", { maximumFractionDigits: 0 });
   const $ = (id) => document.getElementById(id);
   const chips = $("chips");
@@ -386,9 +392,11 @@
     $("o-be").textContent = beDay + (beDay === 1 ? " wizyta dziennie" : beDay < 5 ? " wizyty dziennie" : " wizyt dziennie");
     $("o-net").textContent = money(net); $("o-net").className = "big " + (net < 0 ? "red" : "blue");
     $("o-visits").textContent = pln.format(extra); $("o-reviews").textContent = "≈ " + pln.format(reviews); $("o-year").textContent = money(net * 12);
+    $("o-spend").textContent = pln.format(Math.round(cardVisits * bill)) + " zł";
+    $("o-real").textContent = cur.real ? `prawdziwy miesiąc z panelu MusiSushi: ${cur.real}` : "szacunek z liczb wyżej";
   }
   ["f-guests", "f-bill"].forEach((id) => $(id).addEventListener("input", calc));
-  // Chip zmienia liczby na preset; na starcie zostają liczby z filmiku (40 / 45 zł).
-  $("f-guests").value = 40; $("f-bill").value = 45;
+  // Start: prawdziwy przypadek MusiSushi (3 lokale, ~85 klientów z kartą dziennie, rachunek 90 zł).
+  $("f-guests").value = cur.g; $("f-bill").value = cur.r;
   calc();
 </script>
