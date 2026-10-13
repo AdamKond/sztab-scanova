@@ -114,7 +114,7 @@
 <div class="wrap">
   <div class="bar">
     <span class="name">Tablica Scanovy</span>
-    <span>Filmik = 6 plansz · <kbd>N</kbd> notatki · <kbd>F</kbd> tryb filmowy · nowsze liczby do planszy 1: <code>?x=&amp;y=&amp;z=</code></span>
+    <span>Filmik = 5 plansz · <kbd>N</kbd> notatki · <kbd>F</kbd> tryb filmowy · nowsze liczby do planszy 1: <code>?x=&amp;y=&amp;z=</code></span>
     <button class="btn" id="notesBtn" type="button" aria-pressed="true">Notatki</button>
     <button class="btn" id="filmBtn" type="button">Tryb filmowy</button>
   </div>
@@ -123,8 +123,8 @@
 
     <!-- 0 · HUK: wynik jednego z klientów (sieć 3 lokali, panel z 2026-10-13) -->
     <section class="sec" data-n="0">
-      <span class="num">Jeden z naszych klientów · sieć 3 restauracji · od sierpnia</span>
-      <h2>+357 opinii w Google i <span class="u">676 stałych klientów</span></h2>
+      <span class="num">Jeden z naszych klientów · sieć 3 restauracji · w ciągu miesiąca</span>
+      <h2>Ponad 300 opinii w Google i <span class="u">prawie 700 stałych klientów</span></h2>
       <div class="shots">
         <figure class="shot" data-img="zrzuty/panel.png" data-alt="Panel klienta: klienci, karty, pieczątki, wydatki, opinie">
           <svg class="draw wob" viewBox="0 0 520 240" role="img" aria-label="Miejsce na zrzut panelu">
@@ -137,8 +137,8 @@
         <div class="col" id="proof">
           <div class="tile"><b class="green" id="p-x">+357</b><span id="p-xl">nowych opinii w Google, odkąd klienci oceniają przez kartę</span></div>
           <div class="tile"><b class="blue" id="p-y">676</b><span id="p-yl">aktywnych klientów z kartą · 454 nowe karty w miesiącu</span></div>
-          <div class="tile"><b id="p-z">68 100 zł</b><span id="p-zl">wydali klienci z kartą w miesiącu</span></div>
-          <p class="muted" id="p-hint" style="font-size:.8em">Ocena w Google 4,4 · 3 497 opinii łącznie · 479 klientów kliknęło „Oceń” na karcie</p>
+          <div class="tile"><b id="p-z">≈ 13 600 zł</b><span id="p-zl">dodatkowego obrotu w miesiącu z powrotów klientów z kartą (szacunek)</span></div>
+          <p class="muted" id="p-hint" style="font-size:.8em">Klienci z kartą wydali w miesiącu 68 100 zł; przy powrotach częstszych o 25% ok. 1/5 z tego to dodatkowe wizyty. Ocena 4,4 · 3 497 opinii łącznie.</p>
         </div>
       </div>
       <p class="lead" style="margin-top:1em">Pokażę Ci w minutę, jak to działa.</p>
@@ -150,8 +150,8 @@
       <span class="num">Co to jest</span>
       <h2>Karta lojalnościowa <span class="u">w telefonie klienta</span></h2>
       <ul class="hand" style="margin-bottom:1.2em">
-        <li>klient skanuje kod przy kasie, karta wskakuje do Apple / Google Wallet</li>
-        <li>za każdą wizytę dostaje pieczątkę</li>
+        <li>klient skanuje kod QR przy kasie, karta od razu ląduje w jego portfelu</li>
+        <li>bez aplikacji, bez pobierania · za każdą wizytę pieczątka</li>
         <li>po kilku wraca po nagrodę</li>
       </ul>
       <div class="shots3">
@@ -174,15 +174,14 @@
     <!-- 2 · TWÓJ KANAŁ -->
     <section class="sec" data-n="2">
       <span class="num">Twój kanał</span>
-      <h2>Bezpośredni kontakt <span class="u">ze swoimi klientami</span></h2>
+      <h2>Powiadomienia push <span class="u">do Twoich klientów</span></h2>
       <div class="body g2">
         <div class="col">
           <ul class="hand">
-            <li class="ok">powiadomienie push na telefon: „dziś druga pizza za pół ceny”</li>
-            <li class="ok">system sam przypomina o lokalu, gdy klient jest 2 km od niego</li>
+            <li class="ok">wysyłasz sam: „20% na wszystko w ten weekend”</li>
+            <li class="ok">albo automat: klient jest kilometr od lokalu, dostaje powiadomienie o dzisiejszej promocji</li>
             <li class="ok">bez prowizji dla portali</li>
           </ul>
-          <p class="muted">W Polsce na razie mało restauracji ma takie rozwiązanie. Z miesiąca na miesiąc przybywa ich więcej.</p>
         </div>
         <figure class="shot" data-img="zrzuty/push.png" style="max-width:560px; justify-self:center" data-alt="Prawdziwe powiadomienie na zablokowanym ekranie">
           <svg class="draw wob" viewBox="0 0 240 300" role="img" aria-label="Telefon z powiadomieniem na zablokowanym ekranie">
@@ -206,15 +205,37 @@
     </section>
     <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
 
-    <!-- 3 · KALKULATOR (w filmiku) -->
+    <!-- 3 · CO DALEJ: spotkanie, ustawienie pod lokal, 14 dni -->
     <section class="sec" data-n="3">
+      <span class="num">Co dalej</span>
+      <h2>Zobacz cały system <span class="blue">ustawiony pod Twoją restaurację</span></h2>
+      <div class="body g2">
+        <div class="col">
+          <ul class="hand">
+            <li class="ok">krótkie spotkanie online, 15–20 minut</li>
+            <li class="ok">pokażemy, jak system działa i jak klienci dodają karty</li>
+            <li class="ok">ustawimy Twoją kolorystykę i Twoje grafiki</li>
+            <li class="ok">pierwsze 14 dni za darmo, bez umowy, nic nie instalujesz</li>
+          </ul>
+          <span class="sticky">nie ryzykujesz niczym</span>
+        </div>
+        <div class="col">
+          <p class="lead">Odpisz na tę wiadomość, że chcesz się umówić. Zaplanujemy spotkanie i wyślemy Ci link do Google Meet.</p>
+          <svg class="draw wob" viewBox="0 0 320 200" role="img" aria-label="Dymek z odpowiedzią"><path d="M40 30 h220 a20 20 0 0 1 20 20 v80 a20 20 0 0 1 -20 20 h-120 l-40 40 v-40 h-60 a20 20 0 0 1 -20 -20 v-80 a20 20 0 0 1 20 -20 z" fill="#fff" stroke="#1c1c1c" stroke-width="3.5" stroke-linejoin="round"/><text x="160" y="100" font-size="26" class="h" text-anchor="middle" fill="#1d5fd1">chcę się umówić</text></svg>
+        </div>
+      </div>
+    </section>
+    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
+
+    <!-- 4 · KALKULATOR: na końcu, liczby tego klienta -->
+    <section class="sec" data-n="4">
       <span class="num">Ile to daje</span>
-      <h2>Policzmy <span class="u">na Twoich liczbach</span></h2>
+      <h2>Policzmy, <span class="u">ile Ci się to opłaca</span></h2>
       <div class="chips" id="chips" role="group" aria-label="Branża"></div>
       <div class="calc">
         <div>
-          <div class="field"><label for="f-guests">Klientów dziennie</label><input id="f-guests" type="range" min="10" max="300" step="5" value="85"><output id="o-guests">85</output></div>
-          <div class="field"><label for="f-bill">Średni rachunek</label><input id="f-bill" type="range" min="8" max="200" step="1" value="90"><output id="o-bill">90 zł</output></div>
+          <div class="field"><label for="f-guests" id="l-guests">Klientów z kartą dziennie</label><input id="f-guests" type="range" min="10" max="300" step="5" value="20"><output id="o-guests">20</output></div>
+          <div class="field"><label for="f-bill">Średni rachunek</label><input id="f-bill" type="range" min="8" max="200" step="1" value="120"><output id="o-bill">120 zł</output></div>
           <div class="field">
             <label>Klienci z kartą wracają częściej o</label>
             <div class="seg" role="group" aria-label="Założenie">
@@ -227,7 +248,7 @@
         </div>
         <div class="result">
           <div>
-            <span class="num">Żeby plan był za darmo</span>
+            <span class="num">Żeby plan sam się spłacił</span>
             <div class="big" id="o-be">2 wizyty dziennie</div>
             <p class="muted">tyle dodatkowych wizyt pokrywa plan i nagrody</p>
           </div>
@@ -245,56 +266,11 @@
             <div class="tile"><b class="green" id="o-reviews">≈ 0</b><span>nowych opinii w Google</span></div>
             <div class="tile"><b id="o-year">+0 zł</b><span>w skali roku</span></div>
           </div>
-          <span class="sticky">pierwsze 14 dni za darmo</span>
+          <span class="sticky blue">scanova.tech · Adam</span>
         </div>
       </div>
     </section>
-    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
-
-    <!-- 4 · JAK TO WYGLĄDA -->
-    <section class="sec" data-n="4">
-      <span class="num">Jak to wygląda</span>
-      <h2>Pierwsze 14 dni <span class="u">za darmo</span></h2>
-      <div class="col" style="gap:1.6em">
-        <div class="timeline">
-          <div class="tl"><b>dzień 1</b>ustawiamy kartę w Twoich kolorach i stojak</div>
-          <div class="tl"><b>tydzień 1</b>pierwsze karty, pieczątki, opinie</div>
-          <div class="tl"><b>tydzień 2</b>pierwsze powroty po nagrodę</div>
-          <div class="tl"><b>dzień 14</b>patrzysz w panel i decydujesz</div>
-        </div>
-        <ul class="hand">
-          <li class="ok">bez umowy na czas określony</li>
-          <li class="ok">nic nie instalujesz, obsługa nic nie klika</li>
-          <li class="ok">stojak i karty w cenie</li>
-        </ul>
-      </div>
-    </section>
-    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
-
-    <!-- 5 · CO DALEJ -->
-    <section class="sec" data-n="5">
-      <span class="num">Co dalej</span>
-      <h2>Zobacz cały system <span class="blue">ustawiony pod Twoją restaurację</span></h2>
-      <div class="body g2">
-        <div class="col">
-          <ul class="hand">
-            <li class="ok">krótkie spotkanie online, 15–20 minut</li>
-            <li class="ok">pokażemy, jak działa i jak klienci dodają karty</li>
-            <li class="ok">ustawimy go pod Ciebie: Twoje kolory, Twoja nagroda</li>
-          </ul>
-          <span class="sticky">pierwsze 14 dni za darmo · nic nie ryzykujesz</span>
-          <p class="lead">Odpisz na tę wiadomość, a wyślemy Ci link do spotkania na Google Meet.</p>
-        </div>
-        <div class="col">
-          <svg class="draw wob" viewBox="0 0 360 100" role="img" aria-label="Klienci: MusiSushi, Kago Sushi, Yōkai Matcha">
-            <g stroke="#1c1c1c" stroke-width="2.5" fill="#fff"><rect x="6" y="10" width="110" height="44" rx="10"/><rect x="126" y="10" width="110" height="44" rx="10"/><rect x="246" y="10" width="110" height="44" rx="10"/></g>
-            <g font-size="15" class="h" text-anchor="middle"><text x="61" y="38">MusiSushi</text><text x="181" y="38">Kago Sushi</text><text x="301" y="38">Yōkai Matcha</text></g>
-            <text x="180" y="85" font-size="13" text-anchor="middle" fill="#5d5d62">korzystają już</text>
-          </svg>
-          <span class="sticky blue" style="align-self:center">scanova.tech · Adam</span>
-        </div>
-      </div>
-    </section>
+    
 
   </div></div>
 
@@ -303,12 +279,11 @@
 
 <script>
   const NOTES = [
-    { t: "0:00–0:15 · HUK", html: "<p class='say'>„Jeden z naszych klientów, sieć trzech restauracji, zdobył od sierpnia trzysta pięćdziesiąt siedem nowych opinii w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają. W ostatnim miesiącu wydali u niego sześćdziesiąt osiem tysięcy złotych. Pokażę Ci w minutę, jak to działa.”</p><p>Ty do kamery, potem wskaż kafle. Liczby z panelu z 2026-10-13. Nie mów nazwy lokalu.</p>" },
-    { t: "0:15–0:30 · CO TO JEST", html: "<p class='say'>„Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient przychodzi, skanuje kod przy kasie i karta jest w jego Wallecie. Bez aplikacji, nic nie pobiera. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca po nagrodę.”</p><p>Wskaż trzy ekrany po kolei: karta, pieczątka, nagroda.</p>" },
-    { t: "0:30–0:45 · TWÓJ KANAŁ", html: "<p class='say'>„Masz też bezpośredni kontakt ze swoimi klientami. Wysyłasz im powiadomienia push na telefon, na przykład ‚minus dwadzieścia procent na wszystko w ten weekend’. Albo system sam przypomina o lokalu, gdy klient jest w promieniu dwóch kilometrów od niego. W Polsce na razie mało restauracji ma takie rozwiązanie, ale z miesiąca na miesiąc przybywa ich więcej.”</p><p>Wskaż powiadomienie.</p>" },
-    { t: "0:45–1:00 · ILE TO DAJE", html: "<p class='say'>„Policzmy to na tym kliencie: około osiemdziesięciu pięciu klientów z kartą dziennie, rachunek dziewięćdziesiąt złotych. Klienci z kartą wydają tam w miesiącu prawie siedemdziesiąt tysięcy. Żeby plan był za darmo, wystarczą trzy dodatkowe wizyty dziennie. A z samych dodatkowych wizyt zostaje w lokalu kilka tysięcy miesięcznie, bez liczenia nowych klientów z opinii.”</p><p>Chip „MusiSushi · prawdziwy” jest domyślny (nazwa chipa jest tylko dla Ciebie, w filmie mówisz „ten klient”). Po „trzy wizyty dziennie” zrób pauzę.</p>" },
-    { t: "1:00–1:10 · JAK TO WYGLĄDA", html: "<p class='say'>„Pierwszego dnia ustawiamy kartę w Twoich kolorach i przywozimy stojak. W pierwszym tygodniu są pierwsze karty i opinie, w drugim pierwsze powroty po nagrodę. Po czternastu dniach patrzysz w panel i decydujesz. Bez umowy, nic nie instalujesz.”</p><p>Palcem po osi czasu.</p>" },
-    { t: "1:10–1:25 · CO DALEJ", html: "<p class='say'>„Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Pokażę Ci, jak działa, jak klienci dodają karty, i ustawimy go pod Twoją restaurację, pod Twoje kolory. Pierwsze czternaście dni jest za darmo, więc nic nie ryzykujesz. Wystarczy, że odpiszesz na tę wiadomość, a wyślę Ci link do spotkania na Google Meet. Adam, Scanova. Do zobaczenia.”</p><p>Ty do kamery. Tu kończysz nagranie.</p>" },
+    { t: "0:00–0:15 · HUK", html: "<p class='say'>„Jeden z naszych klientów, sieć restauracji, w ciągu miesiąca zdobył ponad trzysta nowych opinii w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają. Pokażę Ci w minutę, jak to działa.”</p><p>Ty do kamery, potem wskaż kafle i panel. Nie mów nazwy lokalu.</p>" },
+    { t: "0:15–0:30 · CO TO JEST", html: "<p class='say'>„Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient przychodzi, skanuje kod QR przy kasie i karta od razu ląduje w jego portfelu. Bez aplikacji, bez zbędnego pobierania. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca po nagrodę.”</p><p>Wskaż trzy ekrany: karta, pieczątka, nagroda.</p>" },
+    { t: "0:30–0:45 · POWIADOMIENIA", html: "<p class='say'>„Możesz też wysyłać swoim klientom powiadomienia push na telefon, na przykład ‚dwadzieścia procent na wszystko w ten weekend’. Albo system sam przypomina o lokalu: klient jest w promieniu kilometra i automatycznie dostaje powiadomienie, że dziś masz dla niego promocję.”</p><p>Wskaż powiadomienie.</p>" },
+    { t: "0:45–1:05 · CO DALEJ", html: "<p class='say'>„Jeśli chcesz zobaczyć cały system ustawiony pod Twoją restaurację, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Pokażemy Ci, jak system działa i jak klienci dodają karty. Ustawimy Twoją kolorystykę i Twoje grafiki. Pierwsze czternaście dni jest za darmo, więc nie ryzykujesz niczym. Wystarczy, że odpiszesz na tę wiadomość, że chcesz się umówić, a zaplanujemy spotkanie i wyślemy Ci link do Google Meet.”</p><p>Ty do kamery.</p>" },
+    { t: "1:05–1:20 · ILE TO DAJE", html: "<p class='say'>„I jeszcze liczby, na tym samym kliencie: około dwudziestu klientów z kartą dziennie, rachunek sto dwadzieścia złotych. Żeby plan sam się spłacił, wystarczą trzy dodatkowe wizyty dziennie, a z samych powrotów zostaje w lokalu kilka tysięcy miesięcznie. Policzymy to na Twoich liczbach na spotkaniu. Adam, Scanova. Do zobaczenia.”</p><p>Chip „Ten klient · prawdziwy” jest domyślny. Adam chciał tę planszę PO zaproszeniu na spotkanie; jeśli ma być przed, zamień kolejność.</p>" },
   ];
   // Plansza „Dowód”: liczby z panelu podajesz w adresie ?x=opinie&y=powroty&z=z_pusha — bez nich zostaje wersja bezpieczna.
   (function () {
@@ -343,7 +318,7 @@
     { key: "kawiarnia", label: "Kawiarnia", g: 80, r: 28, m: 75, s: 10, c: 5, name: "11. kawa gratis" },
     { key: "pizzeria", label: "Pizzeria", g: 90, r: 55, m: 65, s: 6, c: 14, name: "co 7. pizza gratis" },
     { key: "burgery", label: "Burgerownia", g: 100, r: 45, m: 65, s: 8, c: 12, name: "9. burger gratis" },
-    { key: "musisushi", label: "Ten klient · prawdziwy", g: 85, r: 90, m: 58, s: 10, c: 45, name: "zestaw 50% taniej po 10 wizytach (z karty)", real: "68 100 zł" },
+    { key: "musisushi", label: "Ten klient · prawdziwy", g: 20, r: 120, m: 58, s: 10, c: 60, a: 1, name: "zestaw 50% taniej po 10 wizytach (z karty)", real: "68 100 zł" },
     { key: "sushi", label: "Sushi", g: 60, r: 90, m: 58, s: 8, c: 28, name: "zestaw gratis po 8 wizytach" },
     { key: "cukiernia", label: "Cukiernia", g: 110, r: 25, m: 70, s: 8, c: 5, name: "9. ciastko gratis" },
     { key: "kebab", label: "Kebab", g: 140, r: 28, m: 65, s: 10, c: 7, name: "11. kebab gratis" },
@@ -356,15 +331,16 @@
   PRESETS.forEach((p) => { const b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = p.label; b.setAttribute("aria-pressed", p === cur ? "true" : "false"); b.addEventListener("click", () => { cur = p; $("f-guests").value = p.g; $("f-bill").value = p.r; [...chips.children].forEach((c) => c.setAttribute("aria-pressed", c === b ? "true" : "false")); calc(); }); chips.appendChild(b); });
   document.querySelectorAll("[data-up]").forEach((b) => b.addEventListener("click", () => { uplift = +b.dataset.up / 100; document.querySelectorAll("[data-up]").forEach((x) => x.setAttribute("aria-pressed", x === b ? "true" : "false")); calc(); }));
   function calc() {
-    const guests = +$("f-guests").value, bill = +$("f-bill").value, margin = cur.m / 100;
+    const guests = +$("f-guests").value, bill = +$("f-bill").value, margin = cur.m / 100, adoption = cur.a ?? ADOPTION;
+    $("l-guests").textContent = adoption === 1 ? "Klientów z kartą dziennie" : "Klientów dziennie";
     $("o-guests").textContent = guests; $("o-bill").textContent = bill + " zł";
-    $("assump").textContent = `Karta u ~30% klientów. Marża ${cur.m}%. Nagroda: ${cur.name}, koszt ${cur.c} zł. Plan Pro ${PLAN} zł.`;
-    const monthVisits = guests * 30, cardVisits = monthVisits * ADOPTION, extra = Math.round(cardVisits * uplift);
+    $("assump").textContent = (adoption === 1 ? "Liczymy tylko klientów z kartą. " : "Karta u ~30% klientów. ") + `Marża ${cur.m}%. Nagroda: ${cur.name}, koszt ${cur.c} zł. Plan Pro ${PLAN} zł.`;
+    const monthVisits = guests * 30, cardVisits = monthVisits * adoption, extra = Math.round(cardVisits * uplift);
     const profit = extra * bill * margin;
     const rewards = Math.round(((cardVisits + extra) / cur.s) * cur.c);
     const net = profit - rewards - PLAN;
     const beDay = Math.max(1, Math.ceil((PLAN + rewards) / (bill * margin) / 30));
-    const reviews = Math.min(200, Math.round(monthVisits * REVIEWS / 5) * 5);
+    const reviews = Math.min(200, Math.round((adoption === 1 ? monthVisits / ADOPTION : monthVisits) * REVIEWS / 5) * 5);
     const money = (n) => (n < 0 ? "−" : "+") + pln.format(Math.abs(Math.round(n))) + " zł";
     $("o-be").textContent = beDay + (beDay === 1 ? " wizyta dziennie" : beDay < 5 ? " wizyty dziennie" : " wizyt dziennie");
     $("o-net").textContent = money(net); $("o-net").className = "big " + (net < 0 ? "red" : "blue");

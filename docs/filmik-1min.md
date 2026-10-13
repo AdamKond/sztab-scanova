@@ -1,6 +1,6 @@
 # Filmik — tekst do nagrania (wersja 2026-10-13 wieczór: start od wyniku klienta)
 
-Ekran = `docs/tablica-scanovy.html`, 6 plansz w kolejności poniżej (od wyniku klienta, decyzja Adama 2026-10-13). `F` = tryb filmowy, `N` = notatki
+Ekran = `docs/tablica-scanovy.html`, 5 plansz w kolejności poniżej (od wyniku klienta, zaproszenie przed liczbami; uwagi Adama 2026-10-13 wieczór). `F` = tryb filmowy, `N` = notatki
 „co mówisz” (podążają za przewijaniem). Plansza 4 ma na stałe prawdziwe liczby z panelu MusiSushi (2026-10-13); nowsze podasz w adresie
 `?x=opinie&y=klienci&z=wydatki`. Całość ok. 1:35.
 
@@ -9,41 +9,40 @@ Mówisz „klient”, nie „gość”. Mówisz do jednej osoby („Ty”). Nie 
 ---
 
 ## 1 · 0:00–0:15 — HUK: wynik klienta (Ty do kamery, potem kafle i zrzut panelu)
-> Jeden z naszych klientów, sieć trzech restauracji, zdobył od sierpnia trzysta pięćdziesiąt siedem
-> nowych opinii w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają.
-> W ostatnim miesiącu wydali u niego sześćdziesiąt osiem tysięcy złotych. Pokażę Ci w minutę, jak to działa.
+> Jeden z naszych klientów, sieć restauracji, w ciągu miesiąca zdobył ponad trzysta nowych opinii
+> w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają. Pokażę Ci
+> w minutę, jak to działa.
 
-Liczby z panelu (2026-10-13, cała sieć 3 lokali): +357 opinii od startu karty (odczyt od 15 sierpnia),
-676 aktywnych klientów, 454 nowe karty w miesiącu, 68 100 zł wydatków w miesiącu. Nazwy lokalu nie mówisz,
-na zrzucie panelu jest zamazana.
+Na planszy: +357 opinii, 676 klientów, ≈ 13 600 zł dodatkowego obrotu miesięcznie (szacunek: klienci
+z kartą wydali 68 100 zł, przy powrotach częstszych o 25% ok. 1/5 z tego to dodatkowe wizyty).
+O pieniądzach w huku nie mówisz. Nazwy lokalu nie mówisz; zrzut panelu ma zamazane logo i nazwę.
 
-## 2 · 0:15–0:30 — CO TO JEST (ekran: trzy zrzuty: karta, pieczątka, nagroda)
-> Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient przychodzi, skanuje kod przy kasie
-> i karta jest w jego Wallecie. Bez aplikacji, nic nie pobiera. Potem za każdą wizytę dostaje
-> pieczątkę i po kilku wraca po nagrodę.
+## 2 · 0:15–0:30 — CO TO JEST (ekran: karta, pieczątka, nagroda)
+> Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient przychodzi, skanuje kod QR przy kasie
+> i karta od razu ląduje w jego portfelu. Bez aplikacji, bez zbędnego pobierania. Potem za każdą
+> wizytę dostaje pieczątkę i po kilku wraca po nagrodę.
 
-## 3 · 0:30–0:45 — TWÓJ KANAŁ (ekran: powiadomienie na telefonie)
-> Masz też bezpośredni kontakt ze swoimi klientami. Wysyłasz im powiadomienia push na telefon,
-> na przykład „minus dwadzieścia procent na wszystko w ten weekend”. Albo system sam przypomina
-> o lokalu, gdy klient jest w promieniu dwóch kilometrów od niego. W Polsce na razie mało
-> restauracji ma takie rozwiązanie, ale z miesiąca na miesiąc przybywa ich więcej.
+## 3 · 0:30–0:45 — POWIADOMIENIA (ekran: powiadomienie na telefonie)
+> Możesz też wysyłać swoim klientom powiadomienia push na telefon, na przykład „dwadzieścia procent
+> na wszystko w ten weekend”. Albo system sam przypomina o lokalu: klient jest w promieniu kilometra
+> i automatycznie dostaje powiadomienie, że dziś masz dla niego promocję.
 
-## 4 · 0:45–1:00 — ILE TO DAJE (ekran: kalkulator, chip „Ten klient · prawdziwy”)
-> Policzmy to na tym kliencie: około osiemdziesięciu pięciu klientów z kartą dziennie, rachunek
-> dziewięćdziesiąt złotych. Klienci z kartą wydają tam w miesiącu prawie siedemdziesiąt tysięcy.
-> Żeby plan był za darmo, wystarczą trzy dodatkowe wizyty dziennie. A z samych dodatkowych wizyt
-> zostaje w lokalu kilka tysięcy miesięcznie, bez liczenia nowych klientów z opinii.
+## 4 · 0:45–1:05 — CO DALEJ (Ty do kamery)
+> Jeśli chcesz zobaczyć cały system ustawiony pod Twoją restaurację, umówmy się na krótkie spotkanie
+> online, piętnaście, dwadzieścia minut. Pokażemy Ci, jak system działa i jak klienci dodają karty.
+> Ustawimy Twoją kolorystykę i Twoje grafiki. Pierwsze czternaście dni jest za darmo, więc nie
+> ryzykujesz niczym. Wystarczy, że odpiszesz na tę wiadomość, że chcesz się umówić, a zaplanujemy
+> spotkanie i wyślemy Ci link do Google Meet.
 
-## 5 · 1:00–1:10 — JAK TO WYGLĄDA (ekran: oś czasu)
-> Pierwszego dnia ustawiamy kartę w Twoich kolorach i przywozimy stojak. W pierwszym tygodniu są
-> pierwsze karty i opinie, w drugim pierwsze powroty po nagrodę. Po czternastu dniach patrzysz
-> w panel i decydujesz. Bez umowy, nic nie instalujesz.
+## 5 · 1:05–1:20 — ILE TO DAJE (ekran: kalkulator, chip „Ten klient · prawdziwy”)
+> I jeszcze liczby, na tym samym kliencie: około dwudziestu klientów z kartą dziennie, rachunek
+> sto dwadzieścia złotych. Żeby plan sam się spłacił, wystarczą trzy dodatkowe wizyty dziennie,
+> a z samych powrotów zostaje w lokalu kilka tysięcy miesięcznie. Policzymy to na Twoich liczbach
+> na spotkaniu. Adam, Scanova. Do zobaczenia.
 
-## 6 · 1:10–1:25 — CO DALEJ (Ty do kamery)
-> Jeśli chcesz zobaczyć cały system, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia
-> minut. Pokażę Ci, jak działa, jak klienci dodają karty, i ustawimy go pod Twoją restaurację, pod
-> Twoje kolory. Pierwsze czternaście dni jest za darmo, więc nic nie ryzykujesz. Wystarczy, że
-> odpiszesz na tę wiadomość, a wyślę Ci link do spotkania na Google Meet. Adam, Scanova. Do zobaczenia.
+Kalkulator dla tego klienta liczy tylko klientów z kartą: 20 dziennie × 120 zł = 72 000 zł miesięcznie
+(prawdziwe z panelu: 68 100 zł). Adam chciał zaproszenie na spotkanie PRZED liczbami; jeśli film ma
+kończyć się zaproszeniem, zamienić plansze 4 i 5.
 
 ---
 
