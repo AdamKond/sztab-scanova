@@ -36,7 +36,7 @@ ocena 4,4, 3 497 opinii łącznie, 479 kliknięć „Oceń”. Kafle na tablicy 
 ## 5 · 0:55–1:10 — ILE TO DAJE (ekran: kalkulator, chip „MusiSushi · prawdziwy”)
 > Policzmy to na MusiSushi: około osiemdziesięciu pięciu klientów z kartą dziennie, rachunek
 > dziewięćdziesiąt złotych. Klienci z kartą wydają tam w miesiącu prawie siedemdziesiąt tysięcy.
-> Żeby plan był za darmo, wystarczą dwie dodatkowe wizyty dziennie. A z samych dodatkowych wizyt
+> Żeby plan był za darmo, wystarczą trzy dodatkowe wizyty dziennie. A z samych dodatkowych wizyt
 > zostaje w lokalu kilka tysięcy miesięcznie, bez liczenia nowych klientów z opinii.
 
 Kalkulator ma linię „Klienci z kartą wydają miesięcznie” (z liczb na suwakach) i pod nią prawdziwy
