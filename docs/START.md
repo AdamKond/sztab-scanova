@@ -44,7 +44,9 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 - ~120 lokali „NIEPEWNE” (nazwy bez potwierdzonego Instagrama): sekcje `### NIEPEWNE` w
   `docs/research-2026-09/*.txt` i `runda-2/`. Do domknięcia w sesji ze świeżym limitem WebSearch.
 - Cennik (ze strony): Standard 250 zł, **Pro 339 zł** (opinie Google — to plan, który obiecują DM-y), Max 590 zł;
-  /mies. za lokal, 30 dni za darmo, bez umowy, wdrożenie do 3 dni, stojak i karty w cenie.
+  /mies. za lokal, bez umowy, wdrożenie do 3 dni, stojak i karty w cenie. **Od 2026-10-13: pierwsze 14 dni za darmo**
+  (decyzja Adama; DM-y, maile, tablica i Sztab już tak mówią; strona scanova.tech nadal ma „30 dni”, repo `scanova-tech`
+  nie jest sklonowane na Macu, do poprawienia osobno).
 - Kalkulator: https://scanova.tech/kalkulator (presety branżowe z raportów, `?film=1` do nagrania,
   `?b=pizzeria`, `?g=&r=&m=&plan=` z liczbami lokalu). Model: karta u 30% gości, wracają o 15/25/40% częściej,
   nagrody liczone dla wszystkich z kartą, ~3,3 opinii na 100 wizyt (sufit 200).

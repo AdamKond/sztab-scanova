@@ -4,7 +4,7 @@
 //
 // Szkielet pierwszego DM-a (ustalony z Adamem, 2026-09-21):
 // hook o NICH → co robimy (cyfrowe karty lojalnościowe w telefonie) → opinie
-// Google (nawet do 200 w miesiącu) → dowód (nasi klienci) → pierwszy miesiąc
+// Google (nawet do 200 w miesiącu) → dowód (nasi klienci) → pierwsze 14 dni
 // testowy za darmo dla każdej lokalizacji → pytanie, czy chcą poznać szczegóły
 // (nie o spotkanie — link do filmiku/strony idzie dopiero po odpowiedzi).
 // Bez linku w pierwszej wiadomości (linki od obcych kont lądują w spamie).
@@ -45,7 +45,7 @@ const HOOKS: Record<string, string> = {
 export const NICHES = Object.keys(HOOKS);
 
 /**
- * Pierwszy DM: hook, co robimy, opinie Google, dowód, darmowy miesiąc testowy, pytanie.
+ * Pierwszy DM: hook, co robimy, opinie Google, dowód, 14 dni testowych za darmo, pytanie.
  * `customHook` — zdanie o TYM lokalu (z researchu); bez niego hook per nisza.
  */
 export function firstDm(niche: string, customHook?: string | null): string {
@@ -57,7 +57,7 @@ export function firstDm(niche: string, customHook?: string | null): string {
     `zbiera pieczątki za wizyty i wraca po nagrodę. Wy widzicie, kto wraca. ` +
     `Ten sam system prosi zadowolonych gości o opinię w Google, u naszych klientów to nawet do 200 nowych opinii w miesiącu. ` +
     `Korzystają już m.in. ${proof}. ` +
-    `Pierwszy miesiąc jest testowy i za darmo dla każdej lokalizacji, po nim sami decydujecie. ` +
+    `Pierwsze 14 dni są testowe i za darmo dla każdej lokalizacji, po nich sami decydujecie. ` +
     `Myśleliście o czymś takim? Jeśli chcecie szczegóły, dajcie znać, podeślę krótki filmik. ` +
     `Nic nie instalujecie. ${SIGNATURE}`
   );
@@ -67,7 +67,7 @@ export function firstDm(niche: string, customHook?: string | null): string {
 export function followupDm(): string {
   return (
     `Cześć, jeszcze raz w sprawie karty lojalnościowej w telefonie gościa i opinii w Google. ` +
-    `Pierwszy miesiąc testowy za darmo. Odpiszcie „ok”, a wyślę minutowy filmik, jak to działa. ` +
+    `Pierwsze 14 dni testowe za darmo. Odpiszcie „ok”, a wyślę minutowy filmik, jak to działa. ` +
     `Jak temat nie gra, dajcie znać, nie będę spamować. ${SIGNATURE}`
   );
 }
@@ -94,7 +94,7 @@ export const REPLIES: ReplyTemplate[] = [
     when: "Na każdą pierwszą odpowiedź (nawet samo „ok”).",
     text:
       `Dzięki za odpowiedź. Tu minutowy filmik, jak to działa u naszych klientów: ${filmLink()}. ` +
-      `Jeśli ma sens, ustawiamy Wam miesiąc testowy. Zdalnie albo wpadnę na 5 minut i pokażę ` +
+      `Jeśli ma sens, ustawiamy Wam 14 dni testowych. Zdalnie albo wpadnę na 5 minut i pokażę ` +
       `na Waszym telefonie, jak wolicie. Co Wam bardziej pasuje?`,
   },
   {
@@ -105,7 +105,7 @@ export const REPLIES: ReplyTemplate[] = [
       `Jasne. Gość dodaje Waszą kartę do Apple lub Google Wallet, bez aplikacji. Przy wizycie ` +
       `dostaje pieczątkę przez NFC albo QR, po kilku odbiera nagrodę. Wy widzicie, kto wraca, ` +
       `i możecie wysłać powiadomienie na telefon. System prosi też zadowolonych gości o opinię ` +
-      `w Google, u naszych klientów nawet do 200 nowych w miesiącu. Pierwszy miesiąc testowy za darmo. ` +
+      `w Google, u naszych klientów nawet do 200 nowych w miesiącu. Pierwsze 14 dni testowe za darmo. ` +
       `Reszta jest na ${LINKS.www}. Najszybciej pokazać na żywo, 5 minut. Kiedy pasuje?`,
   },
   {
@@ -113,7 +113,7 @@ export const REPLIES: ReplyTemplate[] = [
     label: "„Ile to kosztuje?”",
     when: "Pytanie o cenę przed spotkaniem.",
     text:
-      `Pierwszy miesiąc jest testowy i za darmo. Potem od 250 zł miesięcznie za lokal, a pakiet ` +
+      `Pierwsze 14 dni są testowe i za darmo. Potem od 250 zł miesięcznie za lokal, a pakiet ` +
       `z opiniami Google i przypomnieniami 339 zł. Bez umowy na czas określony, rezygnacja w każdej chwili, ` +
       `stojak i karty w cenie. Ustawiamy wszystko za Was w 1–3 dni, nic nie instalujecie. ` +
       `Najlepiej pokazać na żywo, 5 minut. Kiedy pasuje?`,
@@ -125,7 +125,7 @@ export const REPLIES: ReplyTemplate[] = [
     text:
       `Policzmy na Waszych liczbach, tu jest prosty kalkulator: ${LINKS.kalkulator}. Wpisujecie gości ` +
       `dziennie, średni rachunek i marżę. Liczy tylko dodatkowe wizyty stałych gości, ostrożnie. ` +
-      `Zwykle plan zwraca się po kilku dniach. A pierwszy miesiąc i tak jest za darmo.`,
+      `Zwykle plan zwraca się po kilku dniach. A pierwsze 14 dni i tak są za darmo.`,
   },
   {
     key: "umow",
@@ -137,11 +137,11 @@ export const REPLIES: ReplyTemplate[] = [
   },
   {
     key: "po_demo",
-    label: "Po demo → miesiąc testowy",
+    label: "Po demo → 14 dni testowych",
     when: "Tego samego dnia po pokazie.",
     text:
-      `Dzięki za spotkanie. Podsumowując: pierwszy miesiąc testowy za darmo, kartę przygotowujemy w ` +
-      `[1–2 dni], Wy nic nie instalujecie, a po miesiącu sami decydujecie. Startujemy?`,
+      `Dzięki za spotkanie. Podsumowując: pierwsze 14 dni testowe za darmo, kartę przygotowujemy w ` +
+      `[1–2 dni], Wy nic nie instalujecie, a po 14 dniach sami decydujecie. Startujemy?`,
   },
   {
     key: "nie_teraz",

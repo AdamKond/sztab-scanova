@@ -139,8 +139,8 @@ export default function StepBar({ lead }: { lead: CrmLead }) {
                 <Input id="pilot_started_at" name="pilot_started_at" type="date" defaultValue={today} />
               </div>
               <div>
-                <Label htmlFor="pilot_ends_at">Koniec (miesiąc za darmo)</Label>
-                <Input id="pilot_ends_at" name="pilot_ends_at" type="date" defaultValue={addDays(today, 30)} />
+                <Label htmlFor="pilot_ends_at">Koniec (14 dni za darmo)</Label>
+                <Input id="pilot_ends_at" name="pilot_ends_at" type="date" defaultValue={addDays(today, 14)} />
               </div>
             </div>
           ) : null}

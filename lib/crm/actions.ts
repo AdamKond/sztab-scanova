@@ -174,7 +174,7 @@ export async function advanceStep(leadId: string, formData: FormData): Promise<A
     // Domyślnie miesiąc od dziś — formularz może nadpisać.
     updates.pilot_started_at = warsawLocalToIso(formData.get("pilot_started_at")) ?? warsawLocalToIso(today);
     updates.pilot_ends_at =
-      warsawLocalToIso(formData.get("pilot_ends_at")) ?? warsawLocalToIso(addDays(today, 30));
+      warsawLocalToIso(formData.get("pilot_ends_at")) ?? warsawLocalToIso(addDays(today, 14));
   }
   if (step === "klient") {
     updates.paid_at = warsawLocalToIso(formData.get("paid_at")) ?? warsawLocalToIso(today);

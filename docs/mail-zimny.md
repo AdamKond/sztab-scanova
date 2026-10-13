@@ -19,7 +19,7 @@ bez aplikacji, zbiera pieczątki za wizyty i wraca po nagrodę. Wy widzicie, kto
 Ten sam system prosi zadowolonych gości o opinię w Google, u naszych lokali to około
 100 nowych opinii miesięcznie. Korzystają już m.in. MusiSushi i Kago Sushi.
 
-Pierwszy miesiąc jest testowy i za darmo dla każdej lokalizacji, bez umowy na czas
+Pierwsze 14 dni są testowe i za darmo dla każdej lokalizacji, bez umowy na czas
 określony. Policzyłem to na liczbach podobnego lokalu: scanova.tech/kalkulator?b=[branża]
 
 Chcecie szczegóły? Odpiszę z minutowym filmikiem albo wpadnę na 5 minut i pokażę
@@ -42,7 +42,7 @@ Goście z kartą wracają o ok. 25% częściej, a system zbiera opinie w Google,
 100 miesięcznie. Żeby program sam się finansował, wystarczą u Was 2 dodatkowe wizyty
 dziennie. Policzyłem to tutaj: scanova.tech/kalkulator?b=[branża]
 
-Pierwszy miesiąc za darmo, ustawiamy wszystko w 1–3 dni, nic nie instalujecie.
+Pierwsze 14 dni za darmo, ustawiamy wszystko w 1–3 dni, nic nie instalujecie.
 
 Chcecie zobaczyć, ilu gości u Was wraca? Odpiszcie „ok”, wyślę minutowy filmik.
 
@@ -56,8 +56,8 @@ SCANOVA · Lublin · [telefon]
 
 Dzień dobry,
 
-jeszcze raz w sprawie karty lojalnościowej w telefonie i opinii w Google, pierwszy
-miesiąc za darmo. Jeśli temat nie gra, dajcie znać, nie będę pisać więcej.
+jeszcze raz w sprawie karty lojalnościowej w telefonie i opinii w Google, pierwsze
+14 dni za darmo. Jeśli temat nie gra, dajcie znać, nie będę pisać więcej.
 Jeśli gra, odpiszcie „ok”, wyślę minutowy filmik.
 
 Pozdrawiam,
@@ -67,7 +67,7 @@ Adam
 
 Te same gotowe odpowiedzi co w Sztabie (rozmowa → „Gotowe odpowiedzi”): filmik,
 „ile kosztuje” (od 250 zł, z opiniami 339 zł), „czy to się opłaca” (kalkulator),
-umawiam wizytę, po demo → miesiąc testowy.
+umawiam wizytę, po demo → 14 dni testowych.
 
 ## Parametry linku do kalkulatora
 

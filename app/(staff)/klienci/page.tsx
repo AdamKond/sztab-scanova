@@ -1,4 +1,4 @@
-// Klienci — piloty (miesiąc za darmo), płatni i ci, którzy odeszli. Pilot NIGDY
+// Klienci — piloty (14 dni za darmo), płatni i ci, którzy odeszli. Pilot NIGDY
 // nie jest pokazywany jako płatny klient; MRR liczy tylko płacących.
 
 import Link from "next/link";
@@ -57,7 +57,7 @@ export default async function KlienciPage() {
         <Card>
           <CardTitle count={pilots.length}>Piloty</CardTitle>
           {pilots.length === 0 ? (
-            <EmptyState title="Brak aktywnych pilotów" hint="Po demo kliknij w rozmowie „Dalej: Pilot” — pilot startuje z datą końca za 30 dni." />
+            <EmptyState title="Brak aktywnych pilotów" hint="Po demo kliknij w rozmowie „Dalej: Pilot” — pilot startuje z datą końca za 14 dni." />
           ) : (
             <ul className="-mx-3">
               {pilots.map((l) => {

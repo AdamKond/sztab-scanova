@@ -71,7 +71,7 @@ odpowiadał na każdą wiadomość w rozmowie.
 ```
 Dzięki za odpowiedź! Tu minutowy filmik, jak to działa u naszych klientów: [LINK DO FILMIKU]
 Jeśli ma sens, umówmy się na krótkie spotkanie online, ustawimy system pod Wasz lokal: [LINK DO SPOTKANIA]
-Pierwszy miesiąc testowy za darmo. Adam
+Pierwsze 14 dni testowe za darmo. Adam
 ```
 Tekst jest ten sam, co przycisk „Odpisał → filmik” w Sztabie (`lib/crm/dm-copy.ts`), plus link do spotkania.
 
