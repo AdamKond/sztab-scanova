@@ -130,14 +130,7 @@ writeFileSync(path.join(ROOT, "..", "rolka-scanova-b", "index.html"), page({
   captionsCss: `left:0; width:1080px; top:860px; height:180px;`,
 }));
 
-// C · pip: cały ekran grafiki, Adam w kwadracie 380×380 w prawym dolnym rogu
-writeFileSync(path.join(ROOT, "..", "rolka-scanova-c", "index.html"), page({
-  title: "Rolka Scanovy · C pip", id: "rolka-c", bodyBg: "#fcfcfa",
-  video: V(`left:660px; top:1480px; width:380px; height:380px; border-radius:40px; border:6px solid #1c1c1c; box-shadow:0 20px 50px rgba(0,0,0,.25); z-index:3;`, T.video.pip || T.video.src),
-  scenes: sceneHosts({ left: 0, top: 0, width: 1080, height: 1920, compact: false }),
-  captionsCss: `left:0; width:1080px; top:1060px; height:320px;`,
-  extra: `#caps .cap-line { color: #1c1c1c; text-shadow: none; font-size: 58px; padding: 0 60px; }`,
-}));
+// C · pip: od 2026-10-14 generuje osobny scripts/build-c.mjs (ujęcia w compositions/c/).
 
 for (const sc of T.scenes) { const v = stepVars(sc); if (Object.keys(v).length) console.log(sc.id, JSON.stringify(v)); }
-console.log(`zbudowano rolka-scanova/index.html, rolka-scanova-b/index.html, rolka-scanova-c/index.html · ${DUR}s · sceny: ${T.scenes.map(s => s.id + " " + s.start + "–" + s.end).join(", ")} · linii napisów: ${CAP_LINES.length}`);
+console.log(`zbudowano rolka-scanova/index.html, rolka-scanova-b/index.html (C: node scripts/build-c.mjs) · ${DUR}s · sceny: ${T.scenes.map(s => s.id + " " + s.start + "–" + s.end).join(", ")} · linii napisów: ${CAP_LINES.length}`);
