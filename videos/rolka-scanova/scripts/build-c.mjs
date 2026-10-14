@@ -155,7 +155,7 @@ const SHOTS = [
     body: `<div class="card"><div class="meet"><i></i><div><b>Spotkanie online</b><span>Google Meet · ok. 15 minut</span></div></div></div>`,
     anim: `` },
   { id: "c19-kreator", anchor: "ustalimy", enter: "flip",
-    body: `<div class="h">Twoja <em>kolorystyka</em>, grafika, nagroda</div>${clip({ id: "c19-v", src: FILM, from: 4.8, w: 1000, h: 563, vw: 1000, vh: 563 })}`,
+    body: `<div class="h">Twoje <em>kolory</em>, grafika i nagroda</div>${clip({ id: "c19-v", src: FILM, from: 4.8, w: 1000, h: 563, vw: 1000, vh: 563 })}`,
     anim: `` },
   { id: "c20-jutro", anchor: "juz jutro", enter: "up",
     body: `<div class="kicker">Już jutro</div><div class="h">Twoja karta <em>w portfelu</em> gości</div>${clip({ id: "c20-v", src: FILM, from: 11.0, w: 600, h: 760, vw: 1351, vh: 760, left: -38 })}`,
