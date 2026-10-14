@@ -8,7 +8,7 @@ Pisać wyłącznie na firmowe adresy opublikowane przez lokal (RODO / PKE).
 
 ## Wariant A — obietnica (domyślny)
 
-**Temat:** [Nazwa lokalu]: ok. 100 opinii w Google miesięcznie i goście, którzy wracają
+**Temat:** [Nazwa lokalu]: setki opinii w Google i goście, którzy wracają
 
 Dzień dobry,
 
@@ -16,8 +16,8 @@ piszę, bo [hook z Bazy, np. „macie 4,8 w Google przy 1200 opiniach, mało kto
 
 Robimy cyfrowe karty lojalnościowe: gość dodaje Waszą kartę do Apple lub Google Wallet,
 bez aplikacji, zbiera pieczątki za wizyty i wraca po nagrodę. Wy widzicie, kto wraca.
-Ten sam system prosi zadowolonych gości o opinię w Google, u naszych lokali to około
-100 nowych opinii miesięcznie. Korzystają już m.in. MusiSushi i Kago Sushi.
+Ten sam system prosi zadowolonych gości o opinię w Google, u jednej z naszych sieci
+to ponad 300 nowych opinii w miesiącu. Korzystają już m.in. MusiSushi i Kago Sushi.
 
 Pierwsze 14 dni są testowe i za darmo dla każdej lokalizacji, bez umowy na czas
 określony. Policzyłem to na liczbach podobnego lokalu: scanova.tech/kalkulator?b=[branża]
@@ -38,8 +38,8 @@ Dzień dobry,
 [hook z Bazy].
 
 Karta lojalnościowa w telefonie gościa, w Apple lub Google Wallet, bez aplikacji.
-Goście z kartą wracają o ok. 25% częściej, a system zbiera opinie w Google, około
-100 miesięcznie. Żeby program sam się finansował, wystarczą u Was 2 dodatkowe wizyty
+Goście z kartą wracają o ok. 25% częściej, a system zbiera opinie w Google, u jednej
+z naszych sieci ponad 300 w miesiącu. Żeby program sam się finansował, wystarczą u Was 2 dodatkowe wizyty
 dziennie. Policzyłem to tutaj: scanova.tech/kalkulator?b=[branża]
 
 Pierwsze 14 dni za darmo, ustawiamy wszystko w 1–3 dni, nic nie instalujecie.

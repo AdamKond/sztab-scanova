@@ -161,7 +161,7 @@ describe("teksty DM", () => {
     expect(text).not.toMatch(/https?:|\.tech|\.pl\b/);
     expect(text).toMatch(/Adam$/);
     expect(text).toContain("za darmo");
-    expect(text).toContain("200");
+    expect(text).toContain("300");
     expect(text).toContain("Google");
     expect(text).not.toMatch(/Świdnik|Lublin/);
     expect(text).toContain("?");

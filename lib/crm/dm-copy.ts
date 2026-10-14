@@ -4,7 +4,7 @@
 //
 // Szkielet pierwszego DM-a (ustalony z Adamem, 2026-09-21):
 // hook o NICH → co robimy (cyfrowe karty lojalnościowe w telefonie) → opinie
-// Google (nawet do 200 w miesiącu) → dowód (nasi klienci) → pierwsze 14 dni
+// Google (ponad 300 w miesiącu u jednej sieci) → dowód (nasi klienci) → pierwsze 14 dni
 // testowy za darmo dla każdej lokalizacji → pytanie, czy chcą poznać szczegóły
 // (nie o spotkanie — link do filmiku/strony idzie dopiero po odpowiedzi).
 // Bez linku w pierwszej wiadomości (linki od obcych kont lądują w spamie).
@@ -55,7 +55,7 @@ export function firstDm(niche: string, customHook?: string | null): string {
     `Cześć! ${hook} ` +
     `Robimy cyfrowe karty lojalnościowe: gość dodaje Waszą kartę do Apple lub Google Wallet, bez aplikacji, ` +
     `zbiera pieczątki za wizyty i wraca po nagrodę. Wy widzicie, kto wraca. ` +
-    `Ten sam system prosi zadowolonych gości o opinię w Google, u naszych klientów to nawet do 200 nowych opinii w miesiącu. ` +
+    `Ten sam system prosi zadowolonych gości o opinię w Google, u jednej z naszych sieci to ponad 300 nowych opinii w miesiącu. ` +
     `Korzystają już m.in. ${proof}. ` +
     `Pierwsze 14 dni są testowe i za darmo dla każdej lokalizacji, po nich sami decydujecie. ` +
     `Myśleliście o czymś takim? Jeśli chcecie szczegóły, dajcie znać, podeślę krótki filmik. ` +
@@ -94,8 +94,8 @@ export const REPLIES: ReplyTemplate[] = [
     when: "Na każdą pierwszą odpowiedź (nawet samo „ok”).",
     text:
       `Dzięki za odpowiedź. Tu minutowy filmik, jak to działa u naszych klientów: ${filmLink()}. ` +
-      `Jeśli ma sens, ustawiamy Wam 14 dni testowych. Zdalnie albo wpadnę na 5 minut i pokażę ` +
-      `na Waszym telefonie, jak wolicie. Co Wam bardziej pasuje?`,
+      `Jeśli chcecie się umówić, odpiszcie, a wyślę link do krótkiego spotkania online. ` +
+      `Mogę też wpaść na 5 minut i pokazać na Waszym telefonie. Co Wam bardziej pasuje?`,
   },
   {
     key: "info",
@@ -105,8 +105,8 @@ export const REPLIES: ReplyTemplate[] = [
       `Jasne. Gość dodaje Waszą kartę do Apple lub Google Wallet, bez aplikacji. Przy wizycie ` +
       `dostaje pieczątkę przez NFC albo QR, po kilku odbiera nagrodę. Wy widzicie, kto wraca, ` +
       `i możecie wysłać powiadomienie na telefon. System prosi też zadowolonych gości o opinię ` +
-      `w Google, u naszych klientów nawet do 200 nowych w miesiącu. Pierwsze 14 dni testowe za darmo. ` +
-      `Reszta jest na ${LINKS.www}. Najszybciej pokazać na żywo, 5 minut. Kiedy pasuje?`,
+      `w Google, u jednej z naszych sieci ponad 300 nowych w miesiącu. Pierwsze 14 dni testowe za darmo. ` +
+      `Reszta jest na ${LINKS.www}. Najszybciej pokazać na spotkaniu online, 15 minut, albo wpadnę na 5 minut. Co wolicie?`,
   },
   {
     key: "cena",

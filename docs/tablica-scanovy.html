@@ -114,7 +114,7 @@
 <div class="wrap">
   <div class="bar">
     <span class="name">Tablica Scanovy</span>
-    <span>Filmik = 5 plansz · <kbd>N</kbd> notatki · <kbd>F</kbd> tryb filmowy · nowsze liczby do planszy 1: <code>?x=&amp;y=&amp;z=</code></span>
+    <span>Filmik = 4 plansze · <kbd>N</kbd> notatki · <kbd>F</kbd> tryb filmowy · nowsze liczby do planszy 1: <code>?x=&amp;y=&amp;z=</code></span>
     <button class="btn" id="notesBtn" type="button" aria-pressed="true">Notatki</button>
     <button class="btn" id="filmBtn" type="button">Tryb filmowy</button>
   </div>
@@ -151,8 +151,8 @@
       <h2>Karta lojalnościowa <span class="u">w telefonie klienta</span></h2>
       <ul class="hand" style="margin-bottom:1.2em">
         <li>klient skanuje kod QR przy kasie, karta od razu ląduje w jego portfelu</li>
-        <li>bez aplikacji, bez pobierania · za każdą wizytę pieczątka</li>
-        <li>po kilku wraca po nagrodę</li>
+        <li>bez aplikacji, nic nie pobiera · za każdą wizytę pieczątka, po kilku nagroda</li>
+        <li>po wizycie prośba o opinię w Google, za opinię dodatkowa pieczątka</li>
       </ul>
       <div class="shots3">
         <figure class="shot tall" data-img="zrzuty/karta-wallet.png" data-alt="Karta Scanovy w Wallecie">
@@ -213,60 +213,14 @@
         <div class="col">
           <ul class="hand">
             <li class="ok">krótkie spotkanie online, 15–20 minut</li>
-            <li class="ok">pokażemy, jak system działa i jak klienci dodają karty</li>
-            <li class="ok">ustawimy Twoją kolorystykę i Twoje grafiki</li>
+            <li class="ok">ustawimy Twoją kolorystykę, Twoje grafiki i Twoją nagrodę</li>
             <li class="ok">pierwsze 14 dni za darmo, bez umowy, nic nie instalujesz</li>
           </ul>
           <span class="sticky">nie ryzykujesz niczym</span>
         </div>
         <div class="col">
-          <p class="lead">Odpisz na tę wiadomość, że chcesz się umówić. Zaplanujemy spotkanie i wyślemy Ci link do Google Meet.</p>
+          <p class="lead">Odpisz na tę wiadomość, że chcesz się umówić, a wyślemy Ci link do spotkania na Google Meet.</p>
           <svg class="draw wob" viewBox="0 0 320 200" role="img" aria-label="Dymek z odpowiedzią"><path d="M40 30 h220 a20 20 0 0 1 20 20 v80 a20 20 0 0 1 -20 20 h-120 l-40 40 v-40 h-60 a20 20 0 0 1 -20 -20 v-80 a20 20 0 0 1 20 -20 z" fill="#fff" stroke="#1c1c1c" stroke-width="3.5" stroke-linejoin="round"/><text x="160" y="100" font-size="26" class="h" text-anchor="middle" fill="#1d5fd1">chcę się umówić</text></svg>
-        </div>
-      </div>
-    </section>
-    <div class="link" aria-hidden="true"><svg><use href="#down"/></svg></div>
-
-    <!-- 4 · KALKULATOR: na końcu, liczby tego klienta -->
-    <section class="sec" data-n="4">
-      <span class="num">Ile to daje</span>
-      <h2>Policzmy, <span class="u">ile Ci się to opłaca</span></h2>
-      <div class="chips" id="chips" role="group" aria-label="Branża"></div>
-      <div class="calc">
-        <div>
-          <div class="field"><label for="f-guests" id="l-guests">Klientów z kartą dziennie</label><input id="f-guests" type="range" min="10" max="300" step="5" value="20"><output id="o-guests">20</output></div>
-          <div class="field"><label for="f-bill">Średni rachunek</label><input id="f-bill" type="range" min="8" max="200" step="1" value="120"><output id="o-bill">120 zł</output></div>
-          <div class="field">
-            <label>Klienci z kartą wracają częściej o</label>
-            <div class="seg" role="group" aria-label="Założenie">
-              <button type="button" data-up="15" aria-pressed="false">15% ostrożnie</button>
-              <button type="button" data-up="25" aria-pressed="true">25% realnie</button>
-              <button type="button" data-up="40" aria-pressed="false">40% dobrze</button>
-            </div>
-          </div>
-          <p class="muted" style="font-size:.85em" id="assump"></p>
-        </div>
-        <div class="result">
-          <div>
-            <span class="num">Żeby plan sam się spłacił</span>
-            <div class="big" id="o-be">2 wizyty dziennie</div>
-            <p class="muted">tyle dodatkowych wizyt pokrywa plan i nagrody</p>
-          </div>
-          <div>
-            <span class="num">Klienci z kartą wydają miesięcznie</span>
-            <div class="big green" id="o-spend">0 zł</div>
-            <p class="muted" id="o-real"></p>
-          </div>
-          <div>
-            <span class="num">Zostaje w lokalu miesięcznie (dodatkowe wizyty minus plan i nagrody)</span>
-            <div class="big blue" id="o-net">+0 zł</div>
-          </div>
-          <div class="tiles">
-            <div class="tile"><b id="o-visits">0</b><span>wizyt więcej stałych klientów</span></div>
-            <div class="tile"><b class="green" id="o-reviews">≈ 0</b><span>nowych opinii w Google</span></div>
-            <div class="tile"><b id="o-year">+0 zł</b><span>w skali roku</span></div>
-          </div>
-          <span class="sticky blue">scanova.tech · Adam</span>
         </div>
       </div>
     </section>
@@ -280,10 +234,9 @@
 <script>
   const NOTES = [
     { t: "0:00–0:15 · HUK", html: "<p class='say'>„Jeden z naszych klientów, sieć restauracji, w ciągu miesiąca zdobył ponad trzysta nowych opinii w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają. Pokażę Ci w minutę, jak to działa.”</p><p>Ty do kamery, potem wskaż kafle i panel. Nie mów nazwy lokalu.</p>" },
-    { t: "0:15–0:30 · CO TO JEST", html: "<p class='say'>„Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient przychodzi, skanuje kod QR przy kasie i karta od razu ląduje w jego portfelu. Bez aplikacji, bez zbędnego pobierania. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca po nagrodę.”</p><p>Wskaż trzy ekrany: karta, pieczątka, nagroda.</p>" },
-    { t: "0:30–0:45 · POWIADOMIENIA", html: "<p class='say'>„Możesz też wysyłać swoim klientom powiadomienia push na telefon, na przykład ‚dwadzieścia procent na wszystko w ten weekend’. Albo system sam przypomina o lokalu: klient jest w promieniu kilometra i automatycznie dostaje powiadomienie, że dziś masz dla niego promocję.”</p><p>Wskaż powiadomienie.</p>" },
-    { t: "0:45–1:05 · CO DALEJ", html: "<p class='say'>„Jeśli chcesz zobaczyć cały system ustawiony pod Twoją restaurację, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Pokażemy Ci, jak system działa i jak klienci dodają karty. Ustawimy Twoją kolorystykę i Twoje grafiki. Pierwsze czternaście dni jest za darmo, więc nie ryzykujesz niczym. Wystarczy, że odpiszesz na tę wiadomość, że chcesz się umówić, a zaplanujemy spotkanie i wyślemy Ci link do Google Meet.”</p><p>Ty do kamery.</p>" },
-    { t: "1:05–1:20 · ILE TO DAJE", html: "<p class='say'>„I jeszcze liczby, na tym samym kliencie: około dwudziestu klientów z kartą dziennie, rachunek sto dwadzieścia złotych. Żeby plan sam się spłacił, wystarczą trzy dodatkowe wizyty dziennie, a z samych powrotów zostaje w lokalu kilka tysięcy miesięcznie. Policzymy to na Twoich liczbach na spotkaniu. Adam, Scanova. Do zobaczenia.”</p><p>Chip „Ten klient · prawdziwy” jest domyślny. Adam chciał tę planszę PO zaproszeniu na spotkanie; jeśli ma być przed, zamień kolejność.</p>" },
+    { t: "0:15–0:35 · CO TO JEST", html: "<p class='say'>„Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient skanuje kod QR przy kasie i karta od razu ląduje w jego portfelu. Bez aplikacji, nic nie pobiera. Za każdą wizytę dostaje pieczątkę, po kilku wraca po nagrodę. A po wizycie system prosi go o opinię w Google, za opinię jest dodatkowa pieczątka. Stąd te setki opinii.”</p><p>Wskaż trzy ekrany: karta, pieczątka, nagroda.</p>" },
+    { t: "0:35–0:50 · POWIADOMIENIA", html: "<p class='say'>„Możesz też wysyłać swoim klientom powiadomienia push na telefon, na przykład „dwadzieścia procent na wszystko w ten weekend”. Albo system sam przypomina o lokalu: klient jest w promieniu kilometra i automatycznie dostaje powiadomienie, że dziś masz dla niego promocję.”</p><p>Wskaż powiadomienie.</p>" },
+    { t: "0:50–1:10 · CO DALEJ", html: "<p class='say'>„Jeśli chcesz zobaczyć system ustawiony pod Twoją restaurację, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Ustawimy Twoją kolorystykę, Twoje grafiki i Twoją nagrodę. Pierwsze czternaście dni jest za darmo, więc nie ryzykujesz niczym. Wystarczy, że odpiszesz na tę wiadomość, że chcesz się umówić, a wyślemy Ci link do spotkania na Google Meet. Adam, Scanova. Do zobaczenia.”</p><p>Ty do kamery. Tu kończysz nagranie.</p>" },
   ];
   // Plansza „Dowód”: liczby z panelu podajesz w adresie ?x=opinie&y=powroty&z=z_pusha — bez nich zostaje wersja bezpieczna.
   (function () {
@@ -312,7 +265,8 @@
     img.src = el.dataset.img;
   });
 
-  // Kalkulator — te same założenia, co scanova.tech/kalkulator.
+  // Kalkulator zdjęty z tablicy 2026-10-14 (film bez liczb). Kod zostaje, działa tylko gdy jest sekcja.
+  if (!document.getElementById("chips")) { /* brak kalkulatora na tablicy */ } else {
   // Liczby z polskich raportów branżowych 2025/2026 (te same, co na scanova.tech/kalkulator).
   const PRESETS = [
     { key: "kawiarnia", label: "Kawiarnia", g: 80, r: 28, m: 75, s: 10, c: 5, name: "11. kawa gratis" },
@@ -352,4 +306,5 @@
   // Start: prawdziwy przypadek MusiSushi (3 lokale, ~85 klientów z kartą dziennie, rachunek 90 zł).
   $("f-guests").value = cur.g; $("f-bill").value = cur.r;
   calc();
+  }
 </script>
