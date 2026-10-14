@@ -18,11 +18,11 @@
 <div class="bar"><span id="dots"></span><span><kbd>→</kbd> / <kbd>spacja</kbd> dalej · <kbd>←</kbd> wstecz · <kbd>+</kbd> <kbd>−</kbd> rozmiar · <kbd>F</kbd> pełny ekran</span></div>
 <script>
   const SLAJDY = [
-    ["1 · do kamery", "Jeden z naszych klientów, sieć restauracji, w ciągu miesiąca zdobył ponad trzysta nowych opinii w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają. Pokażę Ci w minutę, jak to działa."],
-    ["2 · trzy karty", "Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient skanuje kod QR przy kasie i karta od razu ląduje w jego portfelu. Bez aplikacji, nic nie pobiera. Za każdą wizytę dostaje pieczątkę, po kilku wraca po nagrodę. A po wizycie system prosi go o opinię w Google, za opinię jest dodatkowa pieczątka. Stąd te setki opinii."],
-    ["3 · powiadomienie", "Możesz też wysyłać swoim klientom powiadomienia push na telefon, na przykład „dwadzieścia procent na wszystko w ten weekend”. Albo system sam przypomina o lokalu: klient jest w promieniu kilometra i automatycznie dostaje powiadomienie, że dziś masz dla niego promocję."],
-    ["4 · do kamery", "Jeśli chcesz zobaczyć system ustawiony pod Twoją restaurację, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Ustawimy Twoją kolorystykę, Twoje grafiki i Twoją nagrodę."],
-    ["4 · do kamery (cd.)", "Pierwsze czternaście dni jest za darmo, więc nie ryzykujesz niczym. Wystarczy, że odpiszesz na tę wiadomość, że chcesz się umówić, a wyślemy Ci link do spotkania na Google Meet. Adam, Scanova. Do zobaczenia."],
+    ["1 · do kamery", "Jeden z naszych klientów w ciągu miesiąca zdobył ponad trzysta nowych opinii w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają. Pokażę Ci w minutę, jak to dokładnie działa."],
+    ["2 · trzy karty", "Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient skanuje kod QR przy kasie i karta od razu ląduje w jego Apple Wallet lub Google Wallet. Bez aplikacji, bez zbędnego pobierania. Za każdą wizytę dostaje pieczątkę, po kilku wraca po nagrodę. A po wizycie system sam prosi go o wystawienie opinii w Google. Stąd te setki opinii."],
+    ["3 · powiadomienie", "Możesz też wysłać swoim klientom powiadomienia push na telefon, na przykład „dwadzieścia procent na wszystko w ten weekend”. Albo system sam przypomina o lokalu: klient jest w promieniu kilometra od lokalu i automatycznie dostaje powiadomienie, że dziś czeka na niego specjalna promocja."],
+    ["4 · do kamery", "Jeśli chcesz zobaczyć system ustawiony pod swoją restaurację, umówimy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Ustalimy Twoją kolorystykę, grafikę i nagrodę. Już jutro goście w Twoim lokalu będą mogli dodać Twoją kartę do swojego portfela."],
+    ["4 · do kamery (cd.)", "Pierwsze czternaście dni jest za darmo, więc nie ryzykujesz absolutnie niczym. Wystarczy, że odpiszesz nam na tę wiadomość, że chciałbyś poznać więcej szczegółów albo już umówić się na spotkanie, a wyślemy Ci link do Google Meet. I tyle!"],
   ];
   let i = Math.max(0, Math.min(SLAJDY.length - 1, +(location.hash.slice(1) || 0))), fs = 5.6;
   const $ = (id) => document.getElementById(id);

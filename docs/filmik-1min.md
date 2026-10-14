@@ -9,19 +9,19 @@ Mówisz „klient”, nie „gość”. Mówisz do jednej osoby („Ty”). Nie 
 ---
 
 ## 1 · 0:00–0:15 — HUK (Ty do kamery, potem kafle i zrzut panelu)
-> Jeden z naszych klientów, sieć restauracji, w ciągu miesiąca zdobył ponad trzysta nowych opinii w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają. Pokażę Ci w minutę, jak to działa.
+> Jeden z naszych klientów w ciągu miesiąca zdobył ponad trzysta nowych opinii w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają. Pokażę Ci w minutę, jak to dokładnie działa.
 
 ## 2 · 0:15–0:35 — CO TO JEST (ekran: karta, pieczątka, nagroda)
-> Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient skanuje kod QR przy kasie i karta od razu ląduje w jego portfelu. Bez aplikacji, nic nie pobiera. Za każdą wizytę dostaje pieczątkę, po kilku wraca po nagrodę. A po wizycie system prosi go o opinię w Google, za opinię jest dodatkowa pieczątka. Stąd te setki opinii.
+> Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient skanuje kod QR przy kasie i karta od razu ląduje w jego Apple Wallet lub Google Wallet. Bez aplikacji, bez zbędnego pobierania. Za każdą wizytę dostaje pieczątkę, po kilku wraca po nagrodę. A po wizycie system sam prosi go o wystawienie opinii w Google. Stąd te setki opinii.
 
 ## 3 · 0:35–0:50 — POWIADOMIENIA (ekran: powiadomienie na telefonie)
-> Możesz też wysyłać swoim klientom powiadomienia push na telefon, na przykład „dwadzieścia procent na wszystko w ten weekend”. Albo system sam przypomina o lokalu: klient jest w promieniu kilometra i automatycznie dostaje powiadomienie, że dziś masz dla niego promocję.
+> Możesz też wysłać swoim klientom powiadomienia push na telefon, na przykład „dwadzieścia procent na wszystko w ten weekend”. Albo system sam przypomina o lokalu: klient jest w promieniu kilometra od lokalu i automatycznie dostaje powiadomienie, że dziś czeka na niego specjalna promocja.
 
-## 4 · 0:50–1:10 — CO DALEJ (Ty do kamery)
-> Jeśli chcesz zobaczyć system ustawiony pod Twoją restaurację, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Ustawimy Twoją kolorystykę, Twoje grafiki i Twoją nagrodę.
-> Pierwsze czternaście dni jest za darmo, więc nie ryzykujesz niczym. Wystarczy, że odpiszesz na tę wiadomość, że chcesz się umówić, a wyślemy Ci link do spotkania na Google Meet. Adam, Scanova. Do zobaczenia.
+## 4 · 0:50–1:15 — CO DALEJ (Ty do kamery)
+> Jeśli chcesz zobaczyć system ustawiony pod swoją restaurację, umówimy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Ustalimy Twoją kolorystykę, grafikę i nagrodę. Już jutro goście w Twoim lokalu będą mogli dodać Twoją kartę do swojego portfela.
+> Pierwsze czternaście dni jest za darmo, więc nie ryzykujesz absolutnie niczym. Wystarczy, że odpiszesz nam na tę wiadomość, że chciałbyś poznać więcej szczegółów albo już umówić się na spotkanie, a wyślemy Ci link do Google Meet. I tyle!
 
-Prompter z tym tekstem: `docs/prompter.html`. Kalkulator zdjęty z filmu (2026-10-14), zostaje na scanova.tech/kalkulator
+Tekst w brzmieniu Adama (2026-10-14). Prompter z tym tekstem: `docs/prompter.html`. Kalkulator zdjęty z filmu (2026-10-14), zostaje na scanova.tech/kalkulator
 i w gotowej odpowiedzi „Czy to się opłaca?”.
 
 ---
