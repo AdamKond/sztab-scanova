@@ -11,7 +11,8 @@ SRC="$1"; CX="${2:-50}"; CXS="${3:-$CX}"
 cd "$(dirname "$0")/.."
 # kadr: skaluje tak, żeby wysokość = docelowa, potem wycina szerokość wokół środka CX
 crop() { # $1 szer, $2 wys, $3 wyjście, $4 CX
-  ffmpeg -y -v error -i "$SRC" -vf "scale=-2:$2,crop=$1:$2:(iw-$1)*$4/100:0" -r 30 -c:v libx264 -preset fast -crf 19 -pix_fmt yuv420p -c:a aac -b:a 160k -movflags +faststart "$3"
+  # HLG/BT.2020 (iPhone HDR) -> SDR BT.709: bez tego HyperFrames renderuje w trybie HDR i gubi tła scen
+  ffmpeg -y -v error -i "$SRC" -vf "scale=-2:$2,crop=$1:$2:(iw-$1)*$4/100:0,zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709,tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p" -color_primaries bt709 -color_trc bt709 -colorspace bt709 -r 30 -c:v libx264 -preset fast -crf 19 -pix_fmt yuv420p -c:a aac -b:a 160k -movflags +faststart "$3"
   echo "ok $3"
 }
 crop 1080 960  assets/adam-split.mp4 "$CXS"
