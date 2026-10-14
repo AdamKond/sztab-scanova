@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pl" data-composition-variables='[
+  {"id":"bg","type":"color","label":"Tło","default":"#fcfcfa"},
+  {"id":"compact","type":"boolean","label":"Wersja kompaktowa (nakładka na nagranie)","default":false},
+  {"id":"t2","type":"number","label":"Czas: automat 1 km (s)","default":7}
+]'>
+  <head><meta charset="UTF-8" /><title>Scena 3 · powiadomienia push i promień</title></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; overflow: hidden; container-type: size; background: var(--bg); color: #1c1c1c; font-family: Montserrat, sans-serif; }
+        #s3-label { position: absolute; left: 6cqw; top: 5cqw; font-family: "Space Mono", monospace; font-weight: 700; font-size: 2.6cqw; letter-spacing: .12em; text-transform: uppercase; color: #5d5d62; }
+        .s3-t { position: absolute; left: 6cqw; top: 11cqw; font-weight: 900; font-size: 6.2cqw; line-height: 1.05; letter-spacing: -.03em; max-width: 60cqw; opacity: 0; }
+        .s3-t em { font-style: normal; color: #1d5fd1; }
+        #s3-lock { position: absolute; left: 50%; top: 27cqw; width: 56cqw; height: 56cqw; margin-left: -28cqw; border-radius: 6cqw; background: radial-gradient(circle at 30% 20%, #4b6cb7, #182848); box-shadow: 0 3cqw 6cqw rgba(0,0,0,.25); overflow: hidden; opacity: 0; }
+        #s3-time { position: absolute; left: 0; right: 0; top: 7cqw; text-align: center; color: #fff; font-weight: 700; font-size: 12cqw; letter-spacing: -.03em; }
+        #s3-date { position: absolute; left: 0; right: 0; top: 20cqw; text-align: center; color: rgba(255,255,255,.8); font-family: "Space Mono", monospace; font-size: 2.6cqw; }
+        #s3-push { position: absolute; left: 4cqw; right: 4cqw; top: 30cqw; border-radius: 3cqw; overflow: hidden; box-shadow: 0 1.5cqw 4cqw rgba(0,0,0,.35); opacity: 0; }
+        #s3-push img { width: 100%; display: block; }
+        #s3-you { position: absolute; left: 50%; top: 70cqw; width: 70cqw; margin-left: -35cqw; text-align: center; font-family: "Space Mono", monospace; font-weight: 700; font-size: 2.8cqw; background: #fff4a8; padding: 1.4cqw 2cqw; transform: rotate(-1.5deg); box-shadow: .4cqw .6cqw 1.2cqw rgba(0,0,0,.15); opacity: 0; }
+        #s3-map { position: absolute; left: 50%; top: 25cqw; width: 58cqw; height: 58cqw; margin-left: -29cqw; border-radius: 50%; background: #eef1f7; opacity: 0; }
+        #s3-map .grid { position: absolute; inset: 0; border-radius: 50%; background-image: linear-gradient(#dfe4ee 1px, transparent 1px), linear-gradient(90deg, #dfe4ee 1px, transparent 1px); background-size: 8cqw 8cqw; }
+        #s3-ring { position: absolute; left: 50%; top: 50%; width: 40cqw; height: 40cqw; margin: -20cqw 0 0 -20cqw; border-radius: 50%; border: .6cqw dashed #1f8f3e; background: rgba(31,143,62,.08); }
+        #s3-km { position: absolute; left: 50%; top: 50%; margin: -22cqw 0 0 -6cqw; font-family: "Space Mono", monospace; font-weight: 700; font-size: 2.8cqw; color: #1f8f3e; background: #fff; padding: .4cqw 1.2cqw; border-radius: 999px; }
+        #s3-pin { position: absolute; left: 50%; top: 50%; width: 6cqw; height: 6cqw; margin: -3cqw 0 0 -3cqw; border-radius: 50% 50% 50% 0; background: #d2262e; transform: rotate(-45deg); }
+        #s3-client { position: absolute; left: 50%; top: 50%; width: 5cqw; height: 5cqw; margin: -2.5cqw 0 0 -2.5cqw; border-radius: 50%; background: #1d5fd1; border: .5cqw solid #fff; box-shadow: 0 .6cqw 1.6cqw rgba(0,0,0,.25); }
+        #s3-auto { position: absolute; left: 50%; bottom: 7cqw; width: 70cqw; margin-left: -35cqw; background: #fff; border: .5cqw solid #1c1c1c; border-radius: 2.4cqw; padding: 2cqw 2.6cqw; box-sizing: border-box; display: flex; gap: 2cqw; align-items: center; box-shadow: 0 1.2cqw 3cqw rgba(0,0,0,.18); opacity: 0; }
+        #s3-auto i { width: 6cqw; height: 6cqw; border-radius: 1.6cqw; background: #1d5fd1; flex: none; }
+        #s3-auto b { font-size: 3cqw; display: block; } #s3-auto span { font-size: 2.6cqw; color: #5d5d62; }
+        #root.compact { background: transparent; }
+        #root.compact .s3-t, #root.compact #s3-label { color: #fff; text-shadow: 0 .3cqw 1.2cqw rgba(0,0,0,.6); }
+        #root.compact .s3-t em { color: #9cc0ff; }
+      </style>
+
+      <div id="root" data-composition-id="s3-push" data-width="1080" data-height="960">
+        <div id="s3-label">Twój kanał</div>
+        <div class="s3-t" id="s3-t1">Push <em>na telefon</em> klienta</div>
+        <div class="s3-t" id="s3-t2">Albo automat: <em>1 km</em> od lokalu</div>
+
+        <div id="s3-lock">
+          <div id="s3-time">12:30</div><div id="s3-date">sobota, 18 października</div>
+          <div id="s3-push"><img src="assets/push.png" alt="Powiadomienie push" /></div>
+        </div>
+        <div id="s3-you">wysyłasz sam: „20% na wszystko w ten weekend”</div>
+
+        <div id="s3-map"><div class="grid"></div><div id="s3-ring"></div><div id="s3-km">1 km</div><div id="s3-pin"></div><div id="s3-client"></div></div>
+        <div id="s3-auto"><i></i><div><b>Twój lokal</b><span>Dziś czeka na Ciebie specjalna promocja 🎉</span></div></div>
+      </div>
+
+      <script>
+        (function () {
+          const root = document.getElementById("root");
+          const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+          if (vars.compact === true || vars.compact === "true") root.classList.add("compact");
+          const tl = gsap.timeline({ paused: true });
+          const up = { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" };
+          const num = (v, d) => (Number.isFinite(+v) && +v > 0 ? +v : d);
+          const t2 = num(vars.t2, 7);
+          // Push ręczny (0–7 s)
+          tl.fromTo("#s3-t1", { opacity: 0, y: 24 }, up, 0.2);
+          tl.fromTo("#s3-lock", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, 0.6);
+          tl.fromTo("#s3-push", { opacity: 0, y: -120 }, { opacity: 1, y: 0, duration: 0.7, ease: "back.out(1.6)" }, 1.6);
+          tl.fromTo("#s3-you", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 2.6);
+          // Automat: promień 1 km (7–15 s)
+          tl.to(["#s3-t1", "#s3-lock", "#s3-you"], { opacity: 0, duration: 0.35 }, t2);
+          tl.fromTo("#s3-t2", { opacity: 0, y: 24 }, up, t2 + 0.2);
+          tl.fromTo("#s3-map", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out" }, t2 + 0.5);
+          tl.fromTo("#s3-ring", { scale: 0.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.9, ease: "power2.out" }, t2 + 1.0);
+          tl.fromTo("#s3-client", { x: 300, y: -180 }, { x: 120, y: -60, duration: 2.2, ease: "power1.inOut" }, t2 + 1.6);
+          tl.fromTo("#s3-pin", { scale: 1 }, { scale: 1.25, duration: 0.25, yoyo: true, repeat: 3, ease: "power1.inOut" }, t2 + 3.6);
+          tl.fromTo("#s3-auto", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.6)" }, t2 + 4.0);
+          window.__timelines["s3-push"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

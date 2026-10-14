@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pl" data-composition-variables='[
+  {"id":"bg","type":"color","label":"Tło","default":"#fcfcfa"},
+  {"id":"compact","type":"boolean","label":"Wersja kompaktowa (nakładka na nagranie)","default":false}
+]'>
+  <head><meta charset="UTF-8" /><title>Scena 1 · wynik klienta</title></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; overflow: hidden; container-type: size; background: var(--bg); color: #1c1c1c; font-family: Montserrat, sans-serif; }
+        #s1-wrap { position: absolute; inset: 0; padding: 6cqw 6cqw; box-sizing: border-box; display: flex; flex-direction: column; gap: 2.2cqh; }
+        #s1-label { font-family: "Space Mono", monospace; font-weight: 700; font-size: 2.6cqw; letter-spacing: .12em; text-transform: uppercase; color: #5d5d62; opacity: 0; }
+        .s1-stat { display: flex; align-items: center; gap: 3cqw; opacity: 0; }
+        .s1-num { font-weight: 900; font-size: 15cqw; line-height: .95; letter-spacing: -.04em; font-variant-numeric: tabular-nums; min-width: 42cqw; }
+        .s1-num.g { color: #1f8f3e; } .s1-num.b { color: #1d5fd1; }
+        .s1-cap { font-weight: 700; font-size: 3.6cqw; line-height: 1.2; max-width: 40cqw; }
+        .s1-cap small { display: block; font-family: "Space Mono", monospace; font-weight: 400; font-size: 2.4cqw; color: #5d5d62; margin-top: .4em; }
+        #s1-stars { display: flex; gap: .4cqw; align-items: center; margin-top: 1cqh; }
+        #s1-stars span { font-size: 4.6cqw; color: #b08e30; opacity: 0; display: inline-block; }
+        #s1-stars b { font-family: "Space Mono", monospace; font-size: 2.6cqw; color: #5d5d62; margin-left: 1cqw; opacity: 0; display: inline-block; }
+        #s1-avatars { display: flex; margin-top: 1cqh; }
+        #s1-avatars i { width: 7cqw; height: 7cqw; border-radius: 50%; border: .5cqw solid var(--bg); margin-left: -2.2cqw; display: block; opacity: 0; font-style: normal; font-weight: 700; font-size: 2.6cqw; color: #fff; display: grid; place-items: center; }
+        #s1-avatars i:first-child { margin-left: 0; }
+        #s1-chart { position: absolute; right: 6cqw; bottom: 17cqw; width: 36cqw; height: 22cqw; }
+        #s1-chart path.l { fill: none; stroke: #1f8f3e; stroke-width: 1.2cqw; stroke-linecap: round; }
+        #s1-chart path.a { fill: rgba(31,143,62,.12); }
+        #s1-chart text { font-family: "Space Mono", monospace; font-size: 2.2cqw; fill: #5d5d62; }
+        #s1-chip { position: absolute; left: 6cqw; bottom: 5cqw; max-width: 80cqw; box-sizing: border-box; background: #1c1c1c; color: #fff; font-weight: 700; font-size: 3.2cqw; padding: 1.4cqw 2.6cqw; border-radius: 999px; opacity: 0; }
+        #root.compact { background: transparent; }
+        #root.compact #s1-wrap { padding: 4cqw; gap: 1.2cqh; }
+        #root.compact .s1-stat { background: rgba(252,252,250,.92); border-radius: 3cqw; padding: 2.4cqw 3cqw; box-shadow: 0 1.5cqw 4cqw rgba(0,0,0,.18); }
+        #root.compact #s1-chart, #root.compact #s1-chip { display: none; }
+        #root.compact #s1-label { color: #fff; text-shadow: 0 .3cqw 1cqw rgba(0,0,0,.5); }
+      </style>
+
+      <div id="root" data-composition-id="s1-huk" data-width="1080" data-height="960">
+        <div id="s1-wrap">
+          <div id="s1-label">Jeden z naszych klientów · 30 dni</div>
+          <div class="s1-stat" id="s1-stat-op">
+            <div class="s1-num g" id="s1-n1">+0</div>
+            <div class="s1-cap">nowych opinii w Google
+              <div id="s1-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><b>4,4 w Google</b></div>
+            </div>
+          </div>
+          <div class="s1-stat" id="s1-stat-kl">
+            <div class="s1-num b" id="s1-n2">0</div>
+            <div class="s1-cap">stałych klientów, którzy sami wracają
+              <div id="s1-avatars"><i style="background:#1d5fd1">A</i><i style="background:#1f8f3e">M</i><i style="background:#d2262e">K</i><i style="background:#5d5d62">J</i><i style="background:#f4c542;color:#1c1c1c">+</i></div>
+            </div>
+          </div>
+        </div>
+        <svg id="s1-chart" viewBox="0 0 420 256" aria-hidden="true">
+          <path class="a" id="s1-area" d="M20 220 C 110 214, 190 170, 260 120 S 370 40, 400 30 L400 220 Z" opacity="0"/>
+          <path class="l" id="s1-line" d="M20 220 C 110 214, 190 170, 260 120 S 370 40, 400 30"/>
+          <text x="20" y="248">dzień 1</text><text x="300" y="248">dzień 30</text>
+        </svg>
+        <div id="s1-chip">Pokażę Ci w minutę, jak to działa →</div>
+      </div>
+
+      <script>
+        (function () {
+          const root = document.getElementById("root");
+          const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+          if (vars.compact === true || vars.compact === "true") root.classList.add("compact");
+          const tl = gsap.timeline({ paused: true });
+          const n1 = { v: 0 }, n2 = { v: 0 };
+          const el1 = document.getElementById("s1-n1"), el2 = document.getElementById("s1-n2");
+          const line = document.getElementById("s1-line");
+          const len = 620; line.style.strokeDasharray = len; line.style.strokeDashoffset = len;
+
+          tl.fromTo("#s1-label", { opacity: 0, y: -16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+          tl.fromTo("#s1-stat-op", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 0.6);
+          tl.to(n1, { v: 357, duration: 1.8, ease: "power2.out", onUpdate: () => { el1.textContent = "+" + Math.round(n1.v); } }, 0.7);
+          tl.fromTo("#s1-stars span", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)", stagger: 0.09 }, 1.6);
+          tl.fromTo("#s1-stars b", { opacity: 0, x: -8 }, { opacity: 1, x: 0, duration: 0.4 }, 2.2);
+          tl.fromTo("#s1-stat-kl", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 3.6);
+          tl.to(n2, { v: 676, duration: 1.8, ease: "power2.out", onUpdate: () => { el2.textContent = Math.round(n2.v); } }, 3.7);
+          tl.fromTo("#s1-avatars i", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.1 }, 4.4);
+          tl.to(line, { strokeDashoffset: 0, duration: 1.6, ease: "power2.inOut" }, 6.2);
+          tl.to("#s1-area", { opacity: 1, duration: 0.8 }, 7.2);
+          tl.fromTo("#s1-chip", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 9.0);
+          window.__timelines["s1-huk"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

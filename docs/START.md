@@ -53,6 +53,8 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 - Tablica do filmiku: `docs/tablica-scanovy.html` — od 2026-10-08 pod **minutowy filmik** (5 plansz do czerwonej
   kreski, niżej kalkulator na spotkanie; `F` = tryb filmowy, `?x=&y=&z=` = liczby z panelu do planszy „Dowód”).
   Tekst: `docs/filmik-1min.md` (stary 3-minutowy: `docs/filmik-tekst.md`). Plan dnia: `docs/plan-2026-09-21.md`.
+- **Montaż rolki (HyperFrames, 2026-10-14):** `videos/README.md` — 3 wersje 9:16 z nagrania Adama, pipeline
+  nagranie → kadry → transkrypcja → build → render. Nagrania i rendery poza gitem.
 - **ManyChat (decyzja 2026-10-12: podłączamy)**: plan i instrukcja klik-po-kliku w `docs/manychat-plan.md`;
   webhook `POST /api/inbound/ig-reply` działa, token `INBOUND_WEBHOOK_SECRET` wygenerowany na nowo 2026-10-12
   (na Vercelu jako sensitive, kopia tylko w `.env.local` na Macu); test `sh scripts/test-ig-reply.sh <handle>`.

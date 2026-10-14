@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pl" data-composition-variables='[
+  {"id":"bg","type":"color","label":"Tło","default":"#fcfcfa"},
+  {"id":"compact","type":"boolean","label":"Wersja kompaktowa (nakładka na nagranie)","default":false},
+  {"id":"tCard","type":"number","label":"Czas: ustalimy kolorystykę (s)","default":4.2},
+  {"id":"tJutro","type":"number","label":"Czas: już jutro (s)","default":8.2},
+  {"id":"tFree","type":"number","label":"Czas: 14 dni (s)","default":11},
+  {"id":"tBubble","type":"number","label":"Czas: odpiszesz (s)","default":15}
+]'>
+  <head><meta charset="UTF-8" /><title>Scena 4 · spotkanie, 14 dni, odpisz</title></head>
+  <body>
+    <template>
+      <style>
+        #root { position: absolute; inset: 0; overflow: hidden; container-type: size; background: var(--bg); color: #1c1c1c; font-family: Montserrat, sans-serif; }
+        #s4-label { position: absolute; left: 6cqw; top: 5cqw; font-family: "Space Mono", monospace; font-weight: 700; font-size: 2.6cqw; letter-spacing: .12em; text-transform: uppercase; color: #5d5d62; }
+        #s4-h { position: absolute; left: 6cqw; top: 11cqw; font-weight: 900; font-size: 6.6cqw; line-height: 1.05; letter-spacing: -.03em; max-width: 80cqw; opacity: 0; }
+        #s4-h em { font-style: normal; color: #1d5fd1; }
+        #s4-meet { position: absolute; left: 6cqw; top: 29cqw; display: flex; align-items: center; gap: 2cqw; background: #fff; border: .5cqw solid #1c1c1c; border-radius: 2.4cqw; padding: 1.8cqw 2.6cqw; opacity: 0; }
+        #s4-meet i { width: 6cqw; height: 6cqw; border-radius: 1.4cqw; background: conic-gradient(#00832d 0 25%, #0066da 0 50%, #e94235 0 75%, #ffba00 0); flex: none; }
+        #s4-meet b { font-size: 3.2cqw; display: block; } #s4-meet span { font-family: "Space Mono", monospace; font-size: 2.4cqw; color: #5d5d62; }
+        #s4-list { position: absolute; left: 6cqw; top: 42cqw; display: flex; flex-direction: column; gap: 1.6cqw; }
+        #s4-list div { display: flex; align-items: center; gap: 1.6cqw; font-weight: 700; font-size: 3.6cqw; opacity: 0; }
+        #s4-list div i { width: 4.4cqw; height: 4.4cqw; border-radius: 50%; background: #1f8f3e; color: #fff; display: grid; place-items: center; font-style: normal; font-size: 2.6cqw; flex: none; }
+        #s4-card { position: absolute; right: 7cqw; top: 27cqw; width: 27cqw; aspect-ratio: 900 / 1272; border-radius: 4cqw; overflow: hidden; box-shadow: 0 3cqw 6cqw rgba(0,0,0,.22); opacity: 0; background: #1d5fd1; }
+        #s4-card .top { height: 16%; background: rgba(0,0,0,.18); display: flex; align-items: center; padding: 0 6%; color: #fff; font-weight: 700; font-size: 2.6cqw; gap: 6%; }
+        #s4-card .top i { width: 18%; aspect-ratio: 1; background: #fff; border-radius: 14%; }
+        #s4-card .img { height: 36%; background: linear-gradient(135deg, rgba(255,255,255,.35), rgba(255,255,255,.05)); position: relative; }
+        #s4-card .img span { position: absolute; left: 10%; top: 28%; width: 14%; aspect-ratio: 1; border-radius: 50%; background: #fff; opacity: .9; }
+        #s4-card .img span:nth-child(2) { left: 30%; } #s4-card .img span:nth-child(3) { left: 50%; } #s4-card .img span:nth-child(4) { left: 70%; opacity: .35; }
+        #s4-card .nag { padding: 8% 6%; color: #fff; } #s4-card .nag small { display: block; font-family: "Space Mono", monospace; font-size: 2cqw; opacity: .8; } #s4-card .nag b { font-size: 3.4cqw; }
+        #s4-jutro { position: absolute; right: 7cqw; top: 66.5cqw; max-width: 26cqw; text-align: right; font-family: "Space Mono", monospace; font-weight: 700; font-size: 2.6cqw; color: #1d5fd1; opacity: 0; }
+        #s4-free { position: absolute; left: 6cqw; bottom: 13cqw; max-width: 52cqw; box-sizing: border-box; background: #fff4a8; font-weight: 900; font-size: 5.2cqw; letter-spacing: -.02em; padding: 1.8cqw 3cqw; box-shadow: .6cqw .8cqw 1.6cqw rgba(0,0,0,.15); opacity: 0; transform-origin: left center; }
+        #s4-bubble { position: absolute; left: 6cqw; bottom: 3cqw; background: #1d5fd1; color: #fff; font-weight: 700; font-size: 3.6cqw; padding: 2.2cqw 3.2cqw; border-radius: 3cqw 3cqw 3cqw .6cqw; opacity: 0; max-width: 60cqw; }
+        #s4-bubble span { opacity: 0; display: inline; }
+        #s4-logo { position: absolute; right: 7cqw; bottom: 7cqw; font-weight: 900; font-size: 4cqw; letter-spacing: -.03em; opacity: 0; }
+        #s4-logo small { display: block; font-family: "Space Mono", monospace; font-weight: 400; font-size: 2.2cqw; color: #5d5d62; letter-spacing: 0; }
+        #root.compact { background: transparent; }
+        #root.compact #s4-h, #root.compact #s4-label, #root.compact #s4-list div, #root.compact #s4-logo { color: #fff; text-shadow: 0 .3cqw 1.2cqw rgba(0,0,0,.6); }
+        #root.compact #s4-h em { color: #9cc0ff; }
+        #root.compact #s4-logo small { color: rgba(255,255,255,.8); }
+        #root.compact #s4-jutro { color: #fff; text-shadow: 0 .3cqw 1.2cqw rgba(0,0,0,.6); }
+      </style>
+
+      <div id="root" data-composition-id="s4-cta" data-width="1080" data-height="960">
+        <div id="s4-label">Co dalej</div>
+        <div id="s4-h">System ustawiony <em>pod Twoją restaurację</em></div>
+        <div id="s4-meet"><i></i><div><b>Spotkanie online</b><span>15–20 minut · Google Meet</span></div></div>
+        <div id="s4-list"><div><i>✓</i>Twoja kolorystyka</div><div><i>✓</i>Twoja grafika</div><div><i>✓</i>Twoja nagroda</div></div>
+        <div id="s4-jutro">już jutro w portfelu klienta</div>
+        <div id="s4-card"><div class="top"><i></i>Twój lokal</div><div class="img"><span></span><span></span><span></span><span></span></div><div class="nag"><small>NAGRODA</small><b>Twoja nagroda</b></div></div>
+        <div id="s4-free">Pierwsze 14 dni za darmo</div>
+        <div id="s4-bubble"><span>chcę</span> <span>szczegóły</span> <span>→</span> <span>link</span> <span>do</span> <span>Google</span> <span>Meet</span></div>
+        <div id="s4-logo">Scanova<small>scanova.tech</small></div>
+      </div>
+
+      <script>
+        (function () {
+          const root = document.getElementById("root");
+          const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
+          if (vars.compact === true || vars.compact === "true") root.classList.add("compact");
+          const tl = gsap.timeline({ paused: true });
+          const up = { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" };
+          const num = (v, d) => (Number.isFinite(+v) && +v > 0 ? +v : d);
+          const tCard = num(vars.tCard, 4.2), tJutro = num(vars.tJutro, 8.2), tFree = num(vars.tFree, 11), tBubble = num(vars.tBubble, 15);
+          tl.fromTo("#s4-h", { opacity: 0, y: 24 }, up, 0.2);
+          tl.fromTo("#s4-meet", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 2.0);
+          tl.fromTo("#s4-list div", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.5 }, tCard);
+          tl.fromTo("#s4-card", { opacity: 0, y: 120, rotation: 3 }, { opacity: 1, y: 0, rotation: 0, duration: 0.8, ease: "power3.out" }, tCard + 0.4);
+          // „Twoja kolorystyka”: karta zmienia kolor pod głos
+          tl.to("#s4-card", { backgroundColor: "#1f8f3e", duration: 0.6 }, tCard + 0.8);
+          tl.to("#s4-card", { backgroundColor: "#d2262e", duration: 0.6 }, tCard + 1.6);
+          tl.to("#s4-card", { backgroundColor: "#1c1c1c", duration: 0.6 }, tCard + 2.4);
+          tl.fromTo("#s4-jutro", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.5 }, tJutro);
+          tl.fromTo("#s4-free", { opacity: 0, scale: 0.6, rotation: -6 }, { opacity: 1, scale: 1, rotation: -2, duration: 0.6, ease: "back.out(2)" }, tFree);
+          tl.fromTo("#s4-bubble", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, tBubble);
+          tl.fromTo("#s4-bubble span", { opacity: 0 }, { opacity: 1, duration: 0.15, stagger: 0.22 }, tBubble + 0.4);
+          tl.fromTo("#s4-logo", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 }, tBubble + 4.0);
+          window.__timelines["s4-cta"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

@@ -8,3 +8,12 @@ out/
 next-env.d.ts
 .DS_Store
 .env*
+
+# nagrania (duże pliki, nie do repo)
+docs/research-2026-10/*.mov
+videos/*/assets/*.mp4
+videos/*/assets/*.mov
+videos/*/renders/
+videos/*/snapshots/
+videos/*/.hyperframes/
+videos/*/node_modules/
