@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pl">
+<meta charset="utf-8">
+<title>Prompter · filmik Scanovy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { color-scheme: light; }
+  html, body { height: 100%; margin: 0; background: #fcfcfa; color: #1c1c1c; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif; }
+  .wrap { height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 4vh 7vw; box-sizing: border-box; }
+  .num { font-size: 2.2vh; letter-spacing: .14em; text-transform: uppercase; color: #6b6b70; font-weight: 700; margin-bottom: 2vh; }
+  .txt { font-size: var(--fs, 5.6vh); line-height: 1.32; font-weight: 600; letter-spacing: -.01em; text-wrap: pretty; }
+  .bar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; gap: 1.5em; justify-content: center; padding: 1.4vh; font-size: 1.9vh; color: #6b6b70; background: rgba(252,252,250,.9); }
+  kbd { border: 1px solid #c8c8c2; border-bottom-width: 2px; border-radius: 4px; padding: 0 .4em; background: #fff; }
+  .dot { display: inline-block; width: .9em; height: .9em; border-radius: 50%; background: #d9d9d4; margin-right: .35em; }
+  .dot.on { background: #1d5fd1; }
+</style>
+<div class="wrap"><div class="num" id="num"></div><div class="txt" id="txt"></div></div>
+<div class="bar"><span id="dots"></span><span><kbd>→</kbd> / <kbd>spacja</kbd> dalej · <kbd>←</kbd> wstecz · <kbd>+</kbd> <kbd>−</kbd> rozmiar · <kbd>F</kbd> pełny ekran</span></div>
+<script>
+  const SLAJDY = [
+    ["1 · do kamery", "Jeden z naszych klientów, sieć restauracji, w ciągu miesiąca zdobył ponad trzysta nowych opinii w Google i zbudował bazę prawie siedmiuset stałych klientów, którzy sami wracają. Pokażę Ci w minutę, jak to działa."],
+    ["2 · trzy karty", "Tworzymy cyfrowe karty lojalnościowe dla lokali. Klient przychodzi, skanuje kod QR przy kasie i karta od razu ląduje w jego portfelu. Bez aplikacji, bez zbędnego pobierania. Potem za każdą wizytę dostaje pieczątkę i po kilku wraca po nagrodę."],
+    ["3 · powiadomienie", "Możesz też wysyłać swoim klientom powiadomienia push na telefon, na przykład „dwadzieścia procent na wszystko w ten weekend”. Albo system sam przypomina o lokalu: klient jest w promieniu kilometra i automatycznie dostaje powiadomienie, że dziś masz dla niego promocję."],
+    ["4 · do kamery", "Jeśli chcesz zobaczyć cały system ustawiony pod Twoją restaurację, umówmy się na krótkie spotkanie online, piętnaście, dwadzieścia minut. Pokażemy Ci, jak system działa i jak klienci dodają karty. Ustawimy Twoją kolorystykę i Twoje grafiki."],
+    ["4 · do kamery (cd.)", "Pierwsze czternaście dni jest za darmo, więc nie ryzykujesz niczym. Wystarczy, że odpiszesz na tę wiadomość, że chcesz się umówić, a zaplanujemy spotkanie i wyślemy Ci link do Google Meet. Adam, Scanova. Do zobaczenia."],
+  ];
+  let i = Math.max(0, Math.min(SLAJDY.length - 1, +(location.hash.slice(1) || 0))), fs = 5.6;
+  const $ = (id) => document.getElementById(id);
+  function show() {
+    $("num").textContent = SLAJDY[i][0]; $("txt").textContent = SLAJDY[i][1];
+    $("dots").innerHTML = SLAJDY.map((_, k) => `<span class="dot${k === i ? " on" : ""}"></span>`).join("");
+    location.hash = i;
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") { i = Math.min(SLAJDY.length - 1, i + 1); show(); e.preventDefault(); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { i = Math.max(0, i - 1); show(); e.preventDefault(); }
+    else if (e.key === "+" || e.key === "=") { fs += .4; document.documentElement.style.setProperty("--fs", fs + "vh"); }
+    else if (e.key === "-") { fs = Math.max(2, fs - .4); document.documentElement.style.setProperty("--fs", fs + "vh"); }
+    else if (e.key.toLowerCase() === "f") { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  });
+  document.addEventListener("click", () => { i = (i + 1) % SLAJDY.length; show(); });
+  show();
+</script>
+</html>
