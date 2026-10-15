@@ -93,9 +93,10 @@ export const REPLIES: ReplyTemplate[] = [
     label: "Odpisał → filmik",
     when: "Na każdą pierwszą odpowiedź (nawet samo „ok”).",
     text:
-      `Dzięki za odpowiedź. Tu minutowy filmik, jak to działa u naszych klientów: ${filmLink()}. ` +
-      `Jeśli chcecie się umówić, odpiszcie, a wyślę link do krótkiego spotkania online. ` +
-      `Mogę też wpaść na 5 minut i pokazać na Waszym telefonie. Co Wam bardziej pasuje?`,
+      `Dzięki za odpowiedź. Wszystkie szczegóły są tu: ${filmLink()}. ` +
+      `Minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik. ` +
+      `Na dole jest przycisk „Umów spotkanie”: 15 minut online, ustawimy system pod Wasz lokal. ` +
+      `Pierwsze 14 dni za darmo. ${SIGNATURE}`,
   },
   {
     key: "info",

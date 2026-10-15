@@ -16,9 +16,9 @@ Co już jest po naszej stronie (gotowe od września, sprawdzone 2026-10-12):
 **Filmik jest (2026-10-15):** rolka C (`videos/renders/rolka-scanova-c-final.mp4`). ManyChat nie wysyła plików wideo, więc
 link z DM-a prowadzi na podstronę **https://scanova.tech/film** (WDROŻONA 2026-10-15; repo `scanova-tech`, `main`, plik `film.html`,
 wideo `assets/media/rolka-dm.mp4`). Na stronie: filmik w ramce telefonu, 3 liczby, prawdziwe ekrany, 3 korzyści, 4 kroki,
-sekcja „Umów się” (przycisk ma placeholder `MEET_URL`, wpisać link do Harmonogramu spotkań Google / Calendly), FAQ.
+sekcja „Umów się” (modal-lejek, zgłoszenie mailem przez formsubmit), FAQ.
 Wdrożone; `NEXT_PUBLIC_FILM_URL=https://scanova.tech/film` ustawione na Vercelu Sztabu (przyciski „Odpisał → filmik” mają link).
-Czego NIE ma: linku do spotkania (MEET_URL). Jak go zrobić (Adam, 5 minut, na koncie Google Scanovy):
+Opcjonalnie (żeby klient sam wybierał godzinę): link do Harmonogramu spotkań Google. Jak go zrobić (Adam, 5 minut, na koncie Google Scanovy):
 1. calendar.google.com → lewy górny „+ Utwórz” → „Harmonogram spotkań” (Appointment schedule).
 2. Nazwa: „Scanova · spotkanie 15 min”, długość 15 min, dostępność np. pn–pt 10–18, bufor 15 min, „Google Meet” włączone.
 3. Zapisz → „Udostępnij” → skopiuj link do strony rezerwacji (calendar.app.google/…). Ten link wkleić w film.html zamiast MEET_URL.
@@ -76,13 +76,16 @@ odpowiadał na każdą wiadomość w rozmowie.
 - Kliknij „Test request”. Odpowiedź `{"ok":true,...}` = Sztab przyjął; `{"ok":false,"unknown":true}` =
   konta nie ma w Bazie (dla testu z konta Oliwiera to poprawny wynik).
 
-**Krok B, Send Message (Instagram):**
+**Krok B, Send Message (Instagram):** (wersja z 2026-10-15, strona /film ma już własne umawianie spotkań,
+więc w DM-ie jest jeden link)
 ```
-Dzięki za odpowiedź! Tu minutowy filmik, jak to działa u naszych klientów: [LINK DO FILMIKU]
-Jeśli ma sens, umówmy się na krótkie spotkanie online, ustawimy system pod Wasz lokal: [LINK DO SPOTKANIA]
-Pierwsze 14 dni testowe za darmo. Adam
+Dzięki za odpowiedź. Wszystkie szczegóły są tu: https://scanova.tech/film
+Minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik.
+Na dole jest przycisk „Umów spotkanie”: 15 minut online, ustawimy system pod Wasz lokal.
+Pierwsze 14 dni za darmo. Adam
 ```
-Tekst jest ten sam, co przycisk „Odpisał → filmik” w Sztabie (`lib/crm/dm-copy.ts`), plus link do spotkania.
+Tekst jest ten sam, co przycisk „Odpisał → filmik” w Sztabie (`lib/crm/dm-copy.ts`). Zgłoszenie ze strony
+przychodzi mailem na scanova.support@gmail.com; Adam odsyła zaproszenie Google Meet z kalendarza.
 
 **Krok C (opcjonalnie):** Condition → jeśli wiadomość zawiera „cena”, „ile kosztuje” → wyślij tekst
 z przycisku „Ile to kosztuje?” ze Sztabu. Reszta zostaje dla Adama (Sztab → Rozmowy).
