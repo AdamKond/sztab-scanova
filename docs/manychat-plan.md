@@ -18,7 +18,11 @@ link z DM-a prowadzi na podstronę **scanova.tech/film** (prototyp: repo `scanov
 wideo `assets/media/rolka-dm.mp4`). Na stronie: filmik w ramce telefonu, 3 liczby, prawdziwe ekrany, 3 korzyści, 4 kroki,
 sekcja „Umów się” (przycisk ma placeholder `MEET_URL`, wpisać link do Harmonogramu spotkań Google / Calendly), FAQ.
 Po akceptacji: scalić `dm-landing` do `main` i wdrożyć (`npx vercel --prod` w klonie strony), potem `NEXT_PUBLIC_FILM_URL=https://scanova.tech/film`.
-Czego NIE ma: linku do spotkania (MEET_URL).
+Czego NIE ma: linku do spotkania (MEET_URL). Jak go zrobić (Adam, 5 minut, na koncie Google Scanovy):
+1. calendar.google.com → lewy górny „+ Utwórz” → „Harmonogram spotkań” (Appointment schedule).
+2. Nazwa: „Scanova · spotkanie 15 min”, długość 15 min, dostępność np. pn–pt 10–18, bufor 15 min, „Google Meet” włączone.
+3. Zapisz → „Udostępnij” → skopiuj link do strony rezerwacji (calendar.app.google/…). Ten link wkleić w film.html zamiast MEET_URL.
+   Klient wybiera termin, obaj dostają zaproszenie z linkiem do Meet, bez Calendly i bez płacenia.
 
 ---
 
