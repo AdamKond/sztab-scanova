@@ -59,7 +59,9 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
   webhook `POST /api/inbound/ig-reply` działa, token `INBOUND_WEBHOOK_SECRET` wygenerowany na nowo 2026-10-12
   (na Vercelu jako sensitive, kopia tylko w `.env.local` na Macu); test `sh scripts/test-ig-reply.sh <handle>`.
 - **Podstrona z filmikiem dla leadów: https://scanova.tech/film** (repo `scanova-tech`, `film.html`; klon przez SSH; deploy `npx vercel --prod`
-  w klonie strony). Przycisk „Wybierz termin” tymczasowo = mail; docelowo link do Harmonogramu spotkań Google (kroki w manychat-plan.md).
+  w klonie strony). Od 2026-10-15 „Umów spotkanie” = modal z lejkiem (rodzaj lokalu, lokale, klientów dziennie, termin, pora,
+  kontakt) → lead na scanova.support@gmail.com przez formsubmit (jak lejek na stronie). Zaproszenie Google Meet Adam wysyła ręcznie
+  z kalendarza; docelowo link do Harmonogramu spotkań Google (kroki w manychat-plan.md). Strona jest mobile-first, bez emotek.
 - Integracja Instagram przez API Mety (alternatywa bez abonamentu): kod gotowy (`app/api/meta/instagram`, `lib/meta/*`),
   webhook `POST /api/inbound/ig-reply` (token `INBOUND_WEBHOOK_SECRET`). Na Vercelu jest `META_VERIFY_TOKEN`;
   **brakuje**: `META_APP_SECRET`, `META_IG_ACCESS_TOKEN`, `META_IG_USER_ID`, `META_AUTO_REPLY=1`, `NEXT_PUBLIC_FILM_URL`.
