@@ -188,7 +188,7 @@ describe("teksty DM", () => {
 
   it("follow-up prosi o jedno słowo i zostawia wyjście", () => {
     const text = followupDmText();
-    expect(text).toContain("ok");
+    expect(text).toContain("OFERTA");
     expect(text).toContain("nie będę spamować");
   });
 });
