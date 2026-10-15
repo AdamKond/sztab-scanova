@@ -92,6 +92,94 @@ przychodzi mailem na scanova.support@gmail.com; Adam odsyła zaproszenie Google 
 **Krok C (opcjonalnie):** Condition → jeśli wiadomość zawiera „cena”, „ile kosztuje” → wyślij tekst
 z przycisku „Ile to kosztuje?” ze Sztabu. Reszta zostaje dla Adama (Sztab → Rozmowy).
 
+## Krok 5b: pełny flow pod maksymalną konwersję (2026-10-15)
+
+Zasada: lead, który odpisał OFERTA, jest „ciepły” przez 24 godziny (Instagram pozwala botowi pisać tylko
+w ciągu 24 h od ostatniej wiadomości klienta). W tym oknie trzeba zrobić trzy rzeczy: dać dowód (film),
+zaangażować jednym kliknięciem i zamknąć spotkanie w czacie, nie odsyłając na stronę, jeśli nie trzeba.
+
+**Wyzwalacz:** Keyword, dopasowanie „contains”, lista słów (wszystkie uruchamiają ten sam flow):
+`oferta, szczegóły, szczegoly, filmik, film, ile kosztuje, cena, chętnie, chetnie, ok, tak, poproszę, poprosze`.
+Dodatkowo **Default Reply** (raz na 24 h) dla każdej innej wiadomości:
+```
+Dzięki za wiadomość. Adam odpisze osobiście w ciągu godziny. Jeśli chcecie szczegóły od razu, odpiszcie OFERTA.
+```
+
+**Wiadomość 1 (od razu):** External Request do Sztabu (krok A) + tekst z dwoma przyciskami (w ManyChacie: Message → Add button → Open website):
+```
+Dzięki za odpowiedź. Wszystkie szczegóły są tu: https://scanova.tech/film
+Minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik.
+Pierwsze 14 dni za darmo. Adam
+```
+- przycisk „Zobacz film (76 s)” → `https://scanova.tech/film?utm_source=ig&utm_medium=dm&utm_campaign=oferta`
+- przycisk „Umów spotkanie” → `https://scanova.tech/film?book&utm_source=ig&utm_medium=dm` (parametr `book` od razu otwiera okno umawiania)
+
+**Wiadomość 2 (Smart Delay 2 minuty):** pytanie z Quick Replies, żeby lead kliknął, a nie pisał:
+```
+Co Was najbardziej interesuje?
+```
+Quick Replies i odpowiedzi (każda kończy się tym samym pytaniem o spotkanie):
+- „Opinie w Google” →
+  ```
+  System sam prosi zadowolonych gości o opinię w Google, w dobrym momencie, po wizycie. U jednej z naszych restauracji to 357 opinii w jeden miesiąc, ocena z 4,4 na 4,7.
+  Pokazać to na żywo na Waszym lokalu? Odpowiedź zajmuje 15 minut online.
+  ```
+- „Stali klienci” →
+  ```
+  Gość dodaje Waszą kartę do Apple lub Google Wallet, bez aplikacji. Zbiera pieczątki, dostaje nagrodę, a Wy widzicie, kto wraca, i możecie wysłać mu powiadomienie na telefon. U jednej z naszych restauracji 676 aktywnych klientów z kartą po miesiącu.
+  Pokazać to na żywo na Waszym lokalu? 15 minut online.
+  ```
+- „Cena” →
+  ```
+  Pierwsze 14 dni za darmo. Potem 250 zł miesięcznie za kartę i pieczątki, 339 zł z opiniami Google i automatycznymi powiadomieniami. Stojak, karty i wdrożenie w cenie, bez płatności online.
+  Cennik i kalkulator są na https://scanova.tech/film. Pokazać to na żywo na Waszym lokalu? 15 minut online.
+  ```
+Pod każdą z tych odpowiedzi Quick Replies: „Umawiam się” / „Mam pytanie” / „Nie teraz”.
+
+**„Umawiam się” (zamknięcie w czacie, bez wychodzenia z Instagrama):**
+1. User Input (typ: tekst): `Jak nazywa się lokal?` → zapis do Custom Field `lokal`.
+2. User Input (typ: telefon): `Numer telefonu do potwierdzenia? Adam zadzwoni i ustali godzinę.` → pole `phone`.
+3. Quick Replies: `Kiedy pasuje?` → „Dziś” / „Jutro” / „W tym tygodniu” → pole `termin`.
+4. External Request do Sztabu, body:
+   ```json
+   {"instagram": "{{ig_username}}", "text": "[ManyChat] Chce spotkanie. Lokal: {{lokal}}, telefon: {{phone}}, termin: {{termin}}"}
+   ```
+   (trafia jako aktywność w Rozmowach, ten sam webhook co krok A).
+5. Action → „Notify Admins” (powiadomienie w aplikacji ManyChat) + Action → Send Email na scanova.support@gmail.com
+   z tymi samymi polami.
+6. Tekst: `Dzięki. Adam odezwie się dzisiaj i wyśle zaproszenie z linkiem do Google Meet. Do zobaczenia.`
+7. Tag `spotkanie`.
+
+**„Mam pytanie”** → tekst `Śmiało, pisz. Adam odpisuje osobiście.` + Notify Admins + przekazanie do Live Chat (Action → Assign conversation / Mark open). Tag `pytanie`.
+
+**„Nie teraz”** → tekst `Jasne. Link do filmu zostaje w tej rozmowie, gdybyście chcieli wrócić do tematu. Adam` + tag `nie-teraz`. Bot już nie pisze; po 3 tygodniach Adam wraca ręcznie ze Sztabu.
+
+**Wiadomość 3 (jeśli po 1 nie było żadnego kliknięcia):** Smart Delay 20 godzin (jeszcze w oknie 24 h), warunek
+„nie ma tagu spotkanie / pytanie / nie-teraz”:
+```
+Widzieliście film? Jeśli pasuje, dziś i jutro mam wolne terminy na 15-minutowe spotkanie online. Ustawimy system pod Wasz lokal, pierwsze 14 dni za darmo.
+```
+Quick Replies: „Umawiam się” / „Mam pytanie” / „Nie teraz” (te same ścieżki).
+
+**Po 24 h bot milczy** (zasada Instagrama). Każda nowa wiadomość klienta otwiera okno na nowo i uruchamia
+Default Reply albo keyword. Dalsze follow-upy wysyła Adam ręcznie ze Sztabu (follow-up po 3 dniach ciszy).
+
+**Ustawienia konta, które podnoszą konwersję:**
+- Instagram → Ustawienia → Wiadomości → „Zezwalaj na dostęp do wiadomości” włączone, konto typu Firma.
+- ManyChat → Instagram → Conversation Starters (ice breakers dla osób, które wchodzą na profil): „Ile to kosztuje?”,
+  „Jak działa karta w telefonie?”, „Umów spotkanie” → każdy wpięty w ten sam flow (odpowiednio ścieżka Cena /
+  Stali klienci / Umawiam się).
+- Story Reply trigger (gdy ktoś odpowie na story z filmem) → ten sam flow co OFERTA.
+- Bez emotek, podpis „Adam”, maksymalnie jeden link w wiadomości, przyciski zamiast gołych linków.
+- Live Chat w aplikacji ManyChat na telefonie z powiadomieniami: odpowiedź na „Mam pytanie” w ciągu kilku
+  minut, dopóki lead ma otwarty Instagram.
+
+**Pomiar:** ManyChat → Flow → statystyki (sent / delivered / clicked na każdym kroku) i tagi `spotkanie`,
+`pytanie`, `nie-teraz`. Link z UTM pokaże w Vercel Analytics wejścia na /film z DM-ów. W Sztabie każdy
+krok leada widać w Rozmowach (webhook). Co tydzień porównać: odpowiedzi OFERTA → kliknięcia Quick Reply →
+spotkania. Jeśli mało osób klika w wiadomości 2, skrócić wiadomość 1 albo zamienić kolejność (najpierw pytanie,
+potem link).
+
 ## Krok 6: test
 
 1. Oliwier (prywatne konto IG) pisze do konta Scanovy: „ok, chętnie zobaczę”.
