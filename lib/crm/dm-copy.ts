@@ -58,7 +58,7 @@ export function firstDm(niche: string, customHook?: string | null): string {
     `Ten sam system prosi zadowolonych gości o opinię w Google, u jednej z naszych sieci to ponad 300 nowych opinii w miesiącu. ` +
     `Korzystają już m.in. ${proof}. ` +
     `Pierwsze 14 dni są testowe i za darmo dla każdej lokalizacji, po nich sami decydujecie. ` +
-    `Myśleliście o czymś takim? Jeśli chcecie szczegóły, dajcie znać, podeślę krótki filmik. ` +
+    `Myśleliście o czymś takim? Jeśli chcecie szczegóły, odpiszcie OFERTA, podeślę krótki filmik. ` +
     `Nic nie instalujecie. ${SIGNATURE}`
   );
 }
@@ -67,7 +67,7 @@ export function firstDm(niche: string, customHook?: string | null): string {
 export function followupDm(): string {
   return (
     `Cześć, jeszcze raz w sprawie karty lojalnościowej w telefonie gościa i opinii w Google. ` +
-    `Pierwsze 14 dni testowe za darmo. Odpiszcie „ok”, a wyślę minutowy filmik, jak to działa. ` +
+    `Pierwsze 14 dni testowe za darmo. Odpiszcie OFERTA, a wyślę minutowy filmik, jak to działa. ` +
     `Jak temat nie gra, dajcie znać, nie będę spamować. ${SIGNATURE}`
   );
 }
@@ -91,7 +91,7 @@ export const REPLIES: ReplyTemplate[] = [
   {
     key: "film",
     label: "Odpisał → filmik",
-    when: "Na każdą pierwszą odpowiedź (nawet samo „ok”).",
+    when: "Na każdą pierwszą odpowiedź (OFERTA wysyła ManyChat sam; ręcznie, gdy ktoś odpisze inaczej).",
     text:
       `Dzięki za odpowiedź. Wszystkie szczegóły są tu: ${filmLink()}. ` +
       `Minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik. ` +

@@ -59,9 +59,11 @@ Kroki 1–2 są niezależne od ManyChata i blokują resztę. Kroki 3–4 można 
 
 Automation → New Automation → nazwa „Odpowiedź na zimny DM”.
 
-**Wyzwalacz (Trigger):** „Instagram → User sends a message” z opcją *Default reply* (każda wiadomość,
-która nie trafia w inne wyzwalacze). Ustaw „raz na 24 h” dla jednego kontaktu, żeby automat nie
-odpowiadał na każdą wiadomość w rozmowie.
+**Wyzwalacz (Trigger):** „Instagram → User sends a message” → **Keyword** = `OFERTA` (dopasowanie „zawiera”,
+bez rozróżniania wielkości liter; ManyChat bez słowa kluczowego nie wysyła automatycznych odpowiedzi na zimne DM-y).
+Pierwszy DM i follow-up ze Sztabu kończą się prośbą „odpiszcie OFERTA”, więc lead sam uruchamia flow.
+Kto odpisze inaczej („ok”, „chcę szczegóły”), ląduje w Live Chat; Adam wysyła wtedy ten sam tekst
+przyciskiem „Odpisał → filmik” ze Sztabu.
 
 **Krok A, Action → External Request (nasz Sztab):**
 - Request type: `POST`
