@@ -13,7 +13,12 @@ Co już jest po naszej stronie (gotowe od września, sprawdzone 2026-10-12):
   kolejne wiadomości dopisują się do tej samej rozmowy; handle spoza Bazy → `{"ok":false,"unknown":true}`;
 - test z terminala: `sh scripts/test-ig-reply.sh <handle>`.
 
-Czego NIE ma: filmiku (`NEXT_PUBLIC_FILM_URL`) i linku do spotkania. Bez nich automat nie ma co wysyłać.
+**Filmik jest (2026-10-15):** rolka C (`videos/renders/rolka-scanova-c-final.mp4`). ManyChat nie wysyła plików wideo, więc
+link z DM-a prowadzi na podstronę **scanova.tech/film** (prototyp: repo `scanova-tech`, gałąź `dm-landing`, plik `film.html`,
+wideo `assets/media/rolka-dm.mp4`). Na stronie: filmik w ramce telefonu, 3 liczby, prawdziwe ekrany, 3 korzyści, 4 kroki,
+sekcja „Umów się” (przycisk ma placeholder `MEET_URL`, wpisać link do Harmonogramu spotkań Google / Calendly), FAQ.
+Po akceptacji: scalić `dm-landing` do `main` i wdrożyć (`npx vercel --prod` w klonie strony), potem `NEXT_PUBLIC_FILM_URL=https://scanova.tech/film`.
+Czego NIE ma: linku do spotkania (MEET_URL).
 
 ---
 
