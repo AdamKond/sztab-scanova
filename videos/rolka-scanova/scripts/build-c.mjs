@@ -9,9 +9,10 @@ import path from "node:path";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const T = JSON.parse(readFileSync(path.join(ROOT, "timing.json"), "utf8"));
-const W = 1080, H = 1920, DUR = T.video.duration;
+const OFFSET = 1.0; // wycięta pierwsza sekunda nagrania (otwarta buzia)
+const W = 1080, H = 1920, DUR = r2(T.video.duration - OFFSET);
 const STAGE_H = 1300; // ujęcia: 0–1300 · napisy: 1330–1460 · Adam: 1480–1860 (prawy dolny róg)
-const r2 = (n) => Math.round(n * 100) / 100;
+function r2(n) { return Math.round(n * 100) / 100; }
 
 const norm = (x) => x.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ł/g, "l").replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
 function at(phrase) {
@@ -20,7 +21,7 @@ function at(phrase) {
   const i = joined.indexOf(norm(phrase));
   if (i < 0) throw new Error(`Nie ma w transkrypcji: „${phrase}”`);
   const wi = i > 0 ? joined.slice(0, i).trim().split(" ").length : 0;
-  return T.captions[wi].s;
+  return r2(T.captions[wi].s - OFFSET);
 }
 
 // ---------- wspólny styl ujęć ----------
@@ -61,6 +62,40 @@ const CSS = `
   .bubble { background: #1d5fd1; color: #fff; font-weight: 700; font-size: 64px; padding: 34px 48px; border-radius: 40px 40px 40px 10px; max-width: 880px; text-align: left; }
   .bubble span { display: inline-block; }
   .logo { font-weight: 900; font-size: 150px; letter-spacing: -.05em; }
+  .hbox { position: relative; height: 230px; width: 920px; }
+  .hbox .h { position: absolute; left: 0; right: 0; top: 0; opacity: 0; }
+  .scard { width: 760px; height: 480px; border-radius: 44px; background: #1d5fd1; color: #fff; box-shadow: 0 30px 70px rgba(0,0,0,.22); position: relative; overflow: hidden; text-align: left; }
+  .scard .top { display: flex; justify-content: space-between; align-items: center; padding: 34px 40px 0; font-weight: 700; font-size: 34px; }
+  .scard .top small { font-family: "Space Mono", monospace; font-size: 26px; opacity: .85; }
+  .scard .slots { display: flex; gap: 26px; padding: 44px 40px 0; }
+  .scard .slots i { width: 90px; height: 90px; border-radius: 50%; border: 5px solid rgba(255,255,255,.55); display: grid; place-items: center; font-style: normal; font-size: 40px; position: relative; }
+  .scard .slots i b { position: absolute; inset: -5px; border-radius: 50%; background: #fff; display: grid; place-items: center; color: #1d5fd1; font-size: 44px; opacity: 0; }
+  .scard .nag { position: absolute; left: 40px; right: 40px; bottom: 36px; display: flex; justify-content: space-between; align-items: center; }
+  .scard .nag small { font-family: "Space Mono", monospace; font-size: 24px; opacity: .85; display: block; }
+  .scard .nag b { font-size: 40px; }
+  .scard .ribbon { position: absolute; left: 0; right: 0; top: 50%; margin-top: -60px; background: #fff4a8; color: #1c1c1c; font-weight: 900; font-size: 56px; text-align: center; padding: 26px 0; transform: rotate(-4deg); box-shadow: 0 16px 40px rgba(0,0,0,.25); opacity: 0; }
+  .review { width: 760px; border-radius: 44px; background: #fff; border: 6px solid #1c1c1c; box-shadow: 12px 16px 0 rgba(0,0,0,.08); padding: 44px 40px; box-sizing: border-box; position: absolute; left: 0; top: 0; opacity: 0; }
+  .review b { display: block; font-size: 54px; margin-bottom: 18px; }
+  .review .btn { display: inline-block; margin-top: 22px; background: #1f8f3e; color: #fff; font-weight: 700; font-size: 38px; padding: 20px 36px; border-radius: 20px; }
+  .conf { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; }
+  .conf i { position: absolute; left: 0; top: 0; width: 18px; height: 18px; border-radius: 4px; opacity: 0; display: block; }
+  .qrbox { width: 480px; height: 480px; background: #fff; border: 10px solid #1c1c1c; border-radius: 36px; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .qrbox svg { width: 74%; height: 74%; }
+  .qrbox .scan { position: absolute; left: 0; right: 0; top: 0; height: 14px; background: #1d5fd1; box-shadow: 0 0 40px 10px rgba(29,95,209,.45); }
+  .lock { width: 700px; height: 700px; border-radius: 64px; background: radial-gradient(circle at 30% 20%, #4b6cb7, #182848); box-shadow: 0 30px 70px rgba(0,0,0,.25); position: relative; overflow: hidden; }
+  .lock .time { position: absolute; left: 0; right: 0; top: 80px; text-align: center; color: #fff; font-weight: 700; font-size: 150px; letter-spacing: -.03em; }
+  .lock .date { position: absolute; left: 0; right: 0; top: 250px; text-align: center; color: rgba(255,255,255,.8); font-family: "Space Mono", monospace; font-size: 28px; }
+  .lock .push { position: absolute; left: 44px; right: 44px; top: 360px; border-radius: 30px; overflow: hidden; box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+  .lock .push img { width: 100%; display: block; }
+  .map { width: 700px; height: 700px; border-radius: 50%; background: #eef1f7; position: relative; background-image: linear-gradient(#dfe4ee 2px, transparent 2px), linear-gradient(90deg, #dfe4ee 2px, transparent 2px); background-size: 88px 88px; overflow: hidden; }
+  .map .ring { position: absolute; left: 50%; top: 50%; width: 500px; height: 500px; margin: -250px 0 0 -250px; border-radius: 50%; border: 7px dashed #1f8f3e; background: rgba(31,143,62,.09); }
+  .map .km { position: absolute; left: 50%; top: 50%; margin: -292px 0 0 -62px; font-family: "Space Mono", monospace; font-weight: 700; font-size: 32px; color: #1f8f3e; background: #fff; padding: 6px 18px; border-radius: 999px; }
+  .map .pin { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50% 50% 50% 0; background: #d2262e; transform: rotate(-45deg); }
+  .map .client { position: absolute; left: 50%; top: 50%; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; background: #1d5fd1; border: 6px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,.25); }
+  .anotif { position: absolute; left: 50%; bottom: 16px; width: 700px; margin-left: -350px; z-index: 2; }
+  .phone { width: 560px; aspect-ratio: 900 / 1272; border-radius: 48px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.22); background: #fff; position: relative; }
+  .phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .badge { position: absolute; right: -20px; top: -20px; background: #d2262e; color: #fff; font-family: "Space Mono", monospace; font-weight: 700; font-size: 34px; padding: 16px 26px; border-radius: 999px; transform: rotate(8deg); box-shadow: 0 12px 30px rgba(0,0,0,.25); }
   .logo small { display: block; font-family: "Space Mono", monospace; font-weight: 400; font-size: 34px; color: #5d5d62; letter-spacing: 0; margin-top: 8px; }
 `;
 
@@ -89,6 +124,9 @@ const WORDS = `document.querySelectorAll(S + " .h").forEach((h) => {
       });`;
 
 // ---------- ujęcia ----------
+const QR_SVG = `<svg viewBox="0 0 100 100" aria-hidden="true"><g fill="#1c1c1c"><rect x="6" y="6" width="30" height="30"/><rect x="64" y="6" width="30" height="30"/><rect x="6" y="64" width="30" height="30"/><rect x="44" y="6" width="8" height="8"/><rect x="44" y="22" width="8" height="8"/><rect x="44" y="44" width="12" height="12"/><rect x="64" y="44" width="8" height="8"/><rect x="80" y="44" width="14" height="8"/><rect x="44" y="64" width="8" height="12"/><rect x="60" y="60" width="8" height="8"/><rect x="76" y="64" width="18" height="8"/><rect x="60" y="80" width="12" height="14"/><rect x="80" y="80" width="14" height="14"/></g><g fill="#fff"><rect x="13" y="13" width="16" height="16"/><rect x="71" y="13" width="16" height="16"/><rect x="13" y="71" width="16" height="16"/></g><g fill="#1c1c1c"><rect x="17" y="17" width="8" height="8"/><rect x="75" y="17" width="8" height="8"/><rect x="17" y="75" width="8" height="8"/></g></svg>`;
+const CONF = Array.from({ length: 14 }, (_, k) => `<i style="background:${["#1d5fd1", "#1f8f3e", "#f4c542", "#d2262e"][k % 4]}"></i>`).join("");
+
 const SHOTS = [
   { id: "c01-huk", anchor: "jeden z naszych", enter: "slam",
     body: `<div class="kicker">Jeden z naszych klientów · 1 miesiąc</div><div class="big g" id="c01-n">+357</div><div class="sub">nowych opinii w Google</div><div class="stars" id="c01-s"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>`,
@@ -96,7 +134,7 @@ const SHOTS = [
       tl.to(n, { v: 357, duration: 1.1, ease: "power3.out", onUpdate: () => { el.textContent = "+" + Math.round(n.v); } }, 0.1);
       tl.fromTo("#c01-s span", { opacity: 0, scale: 0.2, y: -40 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(3)", stagger: 0.09 }, 0.9);
       tl.to("#c01-s span", { color: "#b08e30", duration: 0.15, stagger: 0.09 }, 1.0);
-      tl.fromTo(el, { scale: 1 }, { scale: 1.08, duration: 0.18, yoyo: true, repeat: 1, ease: "power1.inOut" }, 4.0);` },
+      tl.fromTo(el, { scale: 1 }, { scale: 1.08, duration: 0.18, yoyo: true, repeat: 1, ease: "power1.inOut" }, 3.6);` },
   { id: "c02-klienci", anchor: "zbudowal baze", enter: "up",
     body: `<div class="big b" id="c02-n">0</div><div class="sub">stałych klientów</div><div class="avatars" id="c02-a"><i style="background:#1d5fd1">A</i><i style="background:#1f8f3e">M</i><i style="background:#d2262e">K</i><i style="background:#5d5d62">J</i><i style="background:#f4c542;color:#1c1c1c">+</i></div>`,
     anim: `const n = { v: 0 }, el = q("#c02-n");
@@ -106,11 +144,13 @@ const SHOTS = [
     body: `<div class="h">Klienci <em>wracają sami</em></div><div class="bars" id="c03-b"><i style="height:30%"></i><i style="height:38%"></i><i style="height:34%"></i><i style="height:48%"></i><i style="height:56%"></i><i style="height:52%"></i><i style="height:66%"></i><i style="height:72%"></i><i style="height:70%"></i><i style="height:84%"></i><i style="height:92%"></i><i style="height:100%"></i></div><div class="mono">powroty tydzień po tygodniu</div>`,
     anim: `tl.fromTo("#c03-b i", { scaleY: 0 }, { scaleY: 1, duration: 0.5, ease: "power3.out", stagger: 0.07 }, 0.3);` },
   { id: "c04-scanova", anchor: "jestesmy scanova", enter: "zoom",
-    body: `${clip({ id: "c04-v", src: FILM, from: 38.2, w: 1000, h: 700, vw: 1245, vh: 700, left: -122 })}`,
-    anim: `` },
+    body: `<div class="logo" id="c04-l"><span class="w">S</span><span class="w">c</span><span class="w">a</span><span class="w">n</span><span class="w">o</span><span class="w">v</span><span class="w">a</span><small>cyfrowe karty lojalnościowe dla lokali</small></div>`,
+    anim: `tl.fromTo("#c04-l .w", { opacity: 0, y: 60, rotation: -8 }, { opacity: 1, y: 0, rotation: 0, duration: 0.5, ease: "back.out(2)", stagger: 0.07 }, 0.1);
+      tl.fromTo("#c04-l small", { opacity: 0 }, { opacity: 1, duration: 0.5 }, 0.9);` },
   { id: "c05-qr", anchor: "klient skanuje", enter: "up",
-    body: `<div class="h">Klient <em>skanuje</em> przy kasie</div>${clip({ id: "c05-v", src: JAK, from: 0.0, w: 1000, h: 586, vw: 1000, vh: 586, dark: true })}`,
-    anim: `` },
+    body: `<div class="h">Klient <em>skanuje</em> kod przy kasie</div><div class="qrbox" id="c05-q">${QR_SVG}<div class="scan" id="c05-scan"></div></div>`,
+    anim: `tl.fromTo("#c05-scan", { y: 0 }, { y: 460, duration: 0.9, ease: "power1.inOut", yoyo: true, repeat: 1 }, 0.5);
+      tl.fromTo("#c05-q", { borderColor: "#1c1c1c" }, { borderColor: "#1f8f3e", duration: 0.3 }, 2.3);` },
   { id: "c06-wallet", anchor: "i karta od razu", enter: "flip",
     body: `${clip({ id: "c06-v", src: FILM, from: 10.3, w: 620, h: 980, vw: 1742, vh: 980, left: -125 })}<div class="chips" id="c06-c"><span class="chip">Apple Wallet</span><span class="chip">Google Wallet</span></div>`,
     anim: `tl.fromTo("#c06-c .chip", { opacity: 0, y: 24, rotation: -4 }, { opacity: 1, y: 0, rotation: 0, duration: 0.45, ease: "back.out(2)", stagger: 0.3 }, 2.2);` },
@@ -118,58 +158,91 @@ const SHOTS = [
     body: `<div class="h">Bez…</div><div class="chips" style="flex-direction:column;gap:26px" id="c07-c"><span class="chip off">aplikacji<i></i></span><span class="chip off">rejestracji<i></i></span><span class="chip off">pobierania<i></i></span></div>`,
     anim: `tl.fromTo("#c07-c .chip", { opacity: 0, x: -60, rotation: -6 }, { opacity: 1, x: 0, rotation: 0, duration: 0.45, ease: "back.out(1.8)", stagger: 0.7 }, 0.3);
       tl.fromTo("#c07-c .chip i", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power3.out", stagger: 0.7 }, 0.75);` },
-  { id: "c08-pieczatki", anchor: "za kazda wizyte", enter: "right",
-    body: `<div class="h">Każda wizyta = <em>pieczątka</em></div>${clip({ id: "c08-v", src: KARTA, from: 0.0, w: 800, h: 896, vw: 800, vh: 896, dark: true })}`,
-    anim: `` },
-  { id: "c09-nagroda", anchor: "po kilku wraca", enter: "up",
-    body: `<div class="h">Po kilku: <em>nagroda</em></div>${clip({ id: "c09-v", src: KARTA, from: 2.3, w: 800, h: 896, vw: 800, vh: 896, dark: true })}`,
-    anim: `tl.fromTo("#c09-v", { scale: 1 }, { scale: 1.04, duration: 0.5, yoyo: true, repeat: 1, ease: "power1.inOut" }, 0.9);` },
-  { id: "c10-opinia", anchor: "a po wizycie", enter: "flip",
-    body: `<div class="h">System sam <em>prosi o opinię</em></div>${clip({ id: "c10-v", src: FILM, from: 30.0, w: 560, h: 880, vw: 1564, vh: 880, left: -111 })}`,
-    anim: `` },
-  { id: "c11-setki", anchor: "stad te setki", enter: "slam",
-    body: `<div class="big g" id="c11-n">+300</div><div class="sub">setki opinii w miesiącu</div><div class="stars gold" id="c11-s"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>`,
-    anim: `const n = { v: 300 }, el = q("#c11-n");
-      tl.to(n, { v: 357, duration: 1.1, ease: "power1.out", onUpdate: () => { el.textContent = "+" + Math.round(n.v); } }, 0.2);
-      tl.fromTo("#c11-s span", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(3)", stagger: 0.08 }, 0.3);` },
-  { id: "c12-push", anchor: "mozesz tez", enter: "up",
-    body: `<div class="h">Powiadomienia <em>push</em></div>${clip({ id: "c12-v", src: FILM, from: 21.0, w: 1000, h: 563, vw: 1000, vh: 563 })}`,
-    anim: `` },
-  { id: "c13-promo", anchor: "na przyklad 20", enter: "slam",
-    body: `<div class="sticky" id="c13-s">20% na wszystko w ten weekend</div><div class="mono">wysyłasz jednym kliknięciem</div>`,
-    anim: `tl.fromTo("#c13-s", { rotation: -5 }, { rotation: -1.5, duration: 0.5, ease: "back.out(2)" }, 0);` },
-  { id: "c14-automat", anchor: "albo system", enter: "zoom",
-    body: `<div class="h">Albo <em>automat</em></div>${clip({ id: "c14-v", src: FILM, from: 22.6, w: 1000, h: 563, vw: 1000, vh: 563 })}<div class="mono">klient jest obok · blisko nagrody · 14 dni bez wizyty</div>`,
-    anim: `` },
-  { id: "c15-km", anchor: "zalozmy ze klient", enter: "right",
-    body: `<div class="h">Klient jest <em>kilometr</em> od lokalu</div>${clip({ id: "c15-v", src: FILM, from: 25.0, w: 1000, h: 563, vw: 1000, vh: 563 })}`,
-    anim: `` },
-  { id: "c16-oferta", anchor: "i automatycznie", enter: "up",
-    body: `<div class="h">…i dostaje <em>powiadomienie</em></div><div class="notif" id="c16-n"><i></i><div><b>Twój lokal</b><span>Dziś czeka na Ciebie specjalna oferta 🎉</span></div></div><div class="mono">sam, bez Twojego udziału</div>`,
-    anim: `tl.fromTo("#c16-n", { opacity: 0, y: -90, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.8)" }, 0.6);
-      tl.fromTo("#c16-n", { x: 0 }, { x: 6, duration: 0.06, yoyo: true, repeat: 5, ease: "none" }, 1.2);` },
-  { id: "c17-system", anchor: "jesli chcesz", enter: "zoom",
+  // JEDNA animacja: pieczątki → nagroda → prośba o opinię → setki opinii
+  { id: "c08-karta", anchor: "za kazda wizyte", enter: "up", marksSpec: { tN: "po kilku wraca", tO: "a po wizycie", tS: "stad te setki" },
+    body: `<div class="hbox"><div class="h" id="c08-h1">Każda wizyta = <em>pieczątka</em></div><div class="h" id="c08-h2">Po kilku: <em>nagroda</em></div><div class="h" id="c08-h3">Po wizycie: <em>prośba o opinię</em></div><div class="h" id="c08-h4">Stąd <em>setki opinii</em></div></div>
+      <div style="position:relative;width:760px;height:480px">
+        <div class="scard" id="c08-card"><div class="top"><span>Twój lokal</span><small id="c08-cnt">0/6</small></div><div class="slots" id="c08-slots"><i><b>✓</b></i><i><b>✓</b></i><i><b>✓</b></i><i><b>✓</b></i><i><b>✓</b></i><i><b>✓</b></i></div><div class="nag"><div><small>NAGRODA</small><b>Kawa gratis</b></div></div><div class="ribbon" id="c08-rib">🎁 Nagroda gotowa</div></div>
+        <div class="conf" id="c08-conf">${CONF}</div>
+        <div class="review" id="c08-rev"><b>Podobało się?</b><div class="stars" id="c08-st"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><span class="btn">Zostaw opinię w Google</span></div>
+      </div>
+      <div class="big g" id="c08-n" style="font-size:220px;opacity:0;position:absolute;left:0;right:0;top:520px">+357</div>`,
+    anim: `const cnt = q("#c08-cnt");
+      // 1. pieczątki jedna po drugiej do tN
+      const slots = document.querySelectorAll("#c08-slots i b");
+      const step = Math.max(0.25, (tN - 0.6) / 6);
+      slots.forEach((b, k) => {
+        tl.fromTo(b, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)", onStart: () => { cnt.textContent = (k + 1) + "/6"; }, onReverseComplete: () => { cnt.textContent = k + "/6"; } }, 0.5 + k * step);
+      });
+      // 2. nagroda: wstęga + konfetti
+      tl.fromTo("#c08-rib", { opacity: 0, scale: 0.5, rotation: -14 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.5, ease: "back.out(2.5)" }, tN + 0.1);
+      document.querySelectorAll("#c08-conf i").forEach((c, k) => {
+        const a = (k / 14) * Math.PI * 2;
+        tl.fromTo(c, { opacity: 1, x: 0, y: 0, rotation: 0 }, { x: Math.cos(a) * 360, y: Math.sin(a) * 260 + 120, rotation: 540, opacity: 0, duration: 1.1, ease: "power2.out" }, tN + 0.15);
+      });
+      // 3. karta obraca się w prośbę o opinię
+      tl.to("#c08-card", { rotationY: 90, transformPerspective: 1600, duration: 0.35, ease: "power2.in" }, tO);
+      tl.fromTo("#c08-rev", { opacity: 1, rotationY: -90, transformPerspective: 1600 }, { rotationY: 0, duration: 0.4, ease: "power2.out" }, tO + 0.35);
+      tl.to("#c08-st span", { color: "#f4c542", duration: 0.2, stagger: 0.14 }, tO + 0.9);
+      tl.fromTo("#c08-rev .btn", { scale: 1 }, { scale: 1.07, duration: 0.25, yoyo: true, repeat: 1 }, tO + 1.9);
+      // 4. setki opinii: panel odlatuje, licznik
+      tl.to("#c08-rev", { y: -520, opacity: 0, duration: 0.45, ease: "power2.in" }, tS);
+      const n = { v: 1 }, el = q("#c08-n");
+      tl.fromTo(el, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, tS + 0.25);
+      tl.to(n, { v: 357, duration: 1.1, ease: "power2.out", onUpdate: () => { el.textContent = "+" + Math.round(n.v); } }, tS + 0.3);
+      // nagłówki
+      const hs = ["#c08-h1", "#c08-h2", "#c08-h3", "#c08-h4"], ts = [0, tN, tO, tS];
+      hs.forEach((h, k) => {
+        tl.fromTo(h, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, ts[k] + (k ? 0.05 : 0.1));
+        if (k < 3) tl.to(h, { opacity: 0, y: -20, duration: 0.25 }, ts[k + 1]);
+      });` },
+  { id: "c09-push", anchor: "mozesz tez", enter: "right",
+    body: `<div class="h">Powiadomienia <em>push</em> do klientów</div><div class="lock"><div class="time">12:30</div><div class="date">sobota, 18 października</div><div class="push" id="c09-p"><img src="assets/push.png" alt="Powiadomienie"></div></div>`,
+    anim: `tl.fromTo("#c09-p", { opacity: 0, y: -160 }, { opacity: 1, y: 0, duration: 0.7, ease: "back.out(1.6)" }, 0.8);
+      tl.fromTo("#c09-p", { x: 0 }, { x: 5, duration: 0.05, yoyo: true, repeat: 5, ease: "none" }, 1.5);` },
+  { id: "c10-promo", anchor: "na przyklad 20", enter: "slam",
+    body: `<div class="sticky" id="c10-s">20% na wszystko w ten weekend</div><div class="mono">wysyłasz jednym kliknięciem</div>`,
+    anim: `tl.fromTo("#c10-s", { rotation: -5 }, { rotation: -1.5, duration: 0.5, ease: "back.out(2)" }, 0);` },
+  // JEDNA animacja: automat → klient kilometr od lokalu → dostaje powiadomienie
+  { id: "c11-automat", anchor: "albo system", enter: "zoom", marksSpec: { tK: "zalozmy ze klient", tA: "i automatycznie" },
+    body: `<div class="hbox"><div class="h" id="c11-h1">Albo <em>automat</em></div><div class="h" id="c11-h2">Klient jest <em>kilometr</em> od lokalu</div><div class="h" id="c11-h3">…i sam dostaje <em>powiadomienie</em></div></div>
+      <div class="map"><div class="ring" id="c11-r"></div><div class="km" id="c11-km">1 km</div><div class="pin" id="c11-pin"></div><div class="client" id="c11-c"></div></div><div class="notif anotif" id="c11-n"><i></i><div><b>Twój lokal</b><span>Dziś czeka na Ciebie specjalna oferta 🎉</span></div></div>`,
+    anim: `tl.fromTo("#c11-r", { scale: 0.1, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.9, ease: "power2.out" }, 0.4);
+      tl.fromTo("#c11-km", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.1);
+      tl.fromTo("#c11-r", { scale: 1 }, { scale: 1.06, duration: 0.6, yoyo: true, repeat: 3, ease: "sine.inOut" }, 1.4);
+      tl.fromTo("#c11-c", { x: 420, y: -300, opacity: 0 }, { opacity: 1, duration: 0.2 }, tK);
+      tl.to("#c11-c", { x: 130, y: -90, duration: 2.0, ease: "power1.inOut" }, tK + 0.1);
+      tl.fromTo("#c11-pin", { scale: 1 }, { scale: 1.3, duration: 0.25, yoyo: true, repeat: 3, ease: "power1.inOut" }, tK + 2.0);
+      tl.fromTo("#c11-n", { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.8)" }, tA + 0.2);
+      tl.fromTo("#c11-n", { x: 0 }, { x: 6, duration: 0.06, yoyo: true, repeat: 5, ease: "none" }, tA + 0.9);
+      const hs = ["#c11-h1", "#c11-h2", "#c11-h3"], ts = [0, tK, tA];
+      hs.forEach((h, k) => {
+        tl.fromTo(h, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, ts[k] + (k ? 0.05 : 0.1));
+        if (k < 2) tl.to(h, { opacity: 0, y: -20, duration: 0.25 }, ts[k + 1]);
+      });` },
+  { id: "c12-system", anchor: "jesli chcesz", enter: "zoom",
     body: `<div class="kicker">Co dalej</div><div class="h">System ustawiony <em>pod Twoją restaurację</em></div>`,
     anim: `` },
-  { id: "c18-meet", anchor: "umowimy sie", enter: "right",
+  { id: "c13-meet", anchor: "umowimy sie", enter: "right",
     body: `<div class="card"><div class="meet"><i></i><div><b>Spotkanie online</b><span>Google Meet · ok. 15 minut</span></div></div></div>`,
     anim: `` },
-  { id: "c19-kreator", anchor: "ustalimy", enter: "flip",
-    body: `<div class="h">Twoje <em>kolory</em>, grafika i nagroda</div>${clip({ id: "c19-v", src: FILM, from: 4.8, w: 1000, h: 563, vw: 1000, vh: 563 })}`,
+  { id: "c14-kreator", anchor: "ustalimy", enter: "flip",
+    body: `<div class="h">Twoje <em>kolory</em>, grafika i nagroda</div>${clip({ id: "c14-v", src: FILM, from: 4.8, w: 1000, h: 563, vw: 1000, vh: 563 })}`,
     anim: `` },
-  { id: "c20-jutro", anchor: "juz jutro", enter: "up",
-    body: `<div class="kicker">Już jutro</div><div class="h">Twoja karta <em>w portfelu</em> gości</div>${clip({ id: "c20-v", src: FILM, from: 11.0, w: 600, h: 760, vw: 1351, vh: 760, left: -38 })}`,
-    anim: `` },
-  { id: "c21-14dni", anchor: "pierwsze 14", enter: "slam",
-    body: `<div class="sticky" id="c21-s" style="font-size:96px;max-width:none;white-space:nowrap">Pierwsze 14 dni<br>za darmo</div>`,
-    anim: `tl.fromTo("#c21-s", { rotation: -6 }, { rotation: -2, duration: 0.5, ease: "back.out(2)" }, 0);` },
-  { id: "c22-ryzyko", anchor: "wiec nie ryzykujesz", enter: "right",
-    body: `<div class="h">Nie ryzykujesz <em>niczym</em></div><div class="chips" style="flex-direction:column;gap:22px" id="c22-c"><span class="chip">bez umowy</span><span class="chip">bez instalacji</span><span class="chip">bez kosztów na start</span></div>`,
-    anim: `tl.fromTo("#c22-c .chip", { opacity: 0, y: 24, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.35 }, 0.3);` },
-  { id: "c23-odpisz", anchor: "wystarczy ze", enter: "up",
-    body: `<div class="h">Odpisz na <em>tę wiadomość</em></div><div class="bubble" id="c23-b"><span>chcę</span> <span>poznać</span> <span>szczegóły</span></div>`,
-    anim: `tl.fromTo("#c23-b span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.35 }, 0.6);` },
-  { id: "c24-link", anchor: "a my wyslemy", enter: "zoom",
+  { id: "c15-jutro", anchor: "juz jutro", enter: "up",
+    body: `<div class="h">Twoja karta <em>w portfelu</em> gości</div><div class="phone" id="c15-p"><img src="assets/karta-wallet.png" alt="Karta"><div class="badge" id="c15-b">już jutro</div></div>`,
+    anim: `tl.fromTo("#c15-p", { y: 260, opacity: 0, rotation: 4 }, { y: 0, opacity: 1, rotation: 0, duration: 0.8, ease: "power3.out" }, 0.3);
+      tl.fromTo("#c15-b", { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(3)" }, 1.2);` },
+  { id: "c16-14dni", anchor: "pierwsze 14", enter: "slam",
+    body: `<div class="sticky" id="c16-s" style="font-size:96px;max-width:none;white-space:nowrap">Pierwsze 14 dni<br>za darmo</div>`,
+    anim: `tl.fromTo("#c16-s", { rotation: -6 }, { rotation: -2, duration: 0.5, ease: "back.out(2)" }, 0);` },
+  { id: "c17-ryzyko", anchor: "wiec nie ryzykujesz", enter: "right",
+    body: `<div class="h">Nie ryzykujesz <em>niczym</em></div><div class="chips" style="flex-direction:column;gap:22px" id="c17-c"><span class="chip">bez umowy</span><span class="chip">bez instalacji</span><span class="chip">bez kosztów na start</span></div>`,
+    anim: `tl.fromTo("#c17-c .chip", { opacity: 0, y: 24, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(2)", stagger: 0.35 }, 0.3);` },
+  { id: "c18-odpisz", anchor: "wystarczy ze", enter: "up",
+    body: `<div class="h">Odpisz na <em>tę wiadomość</em></div><div class="bubble" id="c18-b"><span>chcę</span> <span>poznać</span> <span>szczegóły</span></div>`,
+    anim: `tl.fromTo("#c18-b span", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.2, stagger: 0.35 }, 0.6);` },
+  { id: "c19-link", anchor: "a my wyslemy", enter: "zoom",
     body: `<div class="card"><div class="meet"><i></i><div><b>Link do Google Meet</b><span>wysyłamy od razu</span></div></div></div><div class="logo" style="font-size:110px;margin-top:20px">Scanova<small>scanova.tech</small></div>`,
     anim: `` },
 ];
@@ -184,8 +257,11 @@ rmSync(CDIR, { recursive: true, force: true });
 mkdirSync(CDIR, { recursive: true });
 for (const s of shots) {
   const d = r2(s.end - s.start);
+  s.marks = {};
+  for (const [k, phrase] of Object.entries(s.marksSpec || {})) s.marks[k] = Math.max(0.3, r2(at(phrase) - s.start));
+  const varsDecl = [{ id: "dur", type: "number", label: "Długość ujęcia (s)", default: d }].concat(Object.entries(s.marks).map(([k, v]) => ({ id: k, type: "number", label: k, default: v })));
   const html = `<!doctype html>
-<html lang="pl" data-composition-variables='[{"id":"dur","type":"number","label":"Długość ujęcia (s)","default":${d}}]'>
+<html lang="pl" data-composition-variables='${JSON.stringify(varsDecl)}'>
   <head><meta charset="UTF-8" /><title>${s.id}</title></head>
   <body>
     <template>
@@ -200,6 +276,8 @@ for (const s of shots) {
           const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
           const dur = Number.isFinite(+vars.dur) && +vars.dur > 0 ? +vars.dur : ${d};
           const q = (sel) => document.querySelector(sel);
+          const num = (v, dflt) => (Number.isFinite(+v) && +v > 0 ? +v : dflt);
+          ${Object.entries(s.marks).map(([k, v]) => `const ${k} = num(vars.${k}, ${v});`).join("\n          ")}
           const S = "#${s.id}-stage";
           const tl = gsap.timeline({ paused: true });
           ${ENTER[s.enter]}
@@ -226,7 +304,7 @@ function lines(words) {
   if (cur.length) out.push(cur);
   return out;
 }
-const CAP = lines(T.captions || []);
+const CAP = lines((T.captions || []).map((w) => ({ ...w, s: r2(w.s - OFFSET), e: r2(w.e - OFFSET) })).filter((w) => w.e > 0.2).map((w) => ({ ...w, s: Math.max(0, w.s) })));
 const capMarkup = CAP.map((ln, i) => `<div class="cap-line" id="cap-l${i}">${ln.map((w, j) => `<span class="cap-w" id="cap-w${i}-${j}">${w.w.replace(/</g, "&lt;")}</span>`).join(" ")}</div>`).join("\n        ");
 const capTl = [];
 CAP.forEach((ln, i) => {
@@ -237,7 +315,7 @@ CAP.forEach((ln, i) => {
   ln.forEach((w, j) => capTl.push(`tl.fromTo("#cap-w${i}-${j}", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, ${r2(w.s)});`));
 });
 
-const hosts = shots.map((s) => `<div id="el-${s.id}" data-composition-id="${s.id}" data-composition-src="compositions/c/${s.id}.html" data-start="${r2(s.start)}" data-duration="${r2(s.end - s.start)}" data-track-index="2" data-width="${W}" data-height="${STAGE_H}" data-variable-values='{"dur":${r2(s.end - s.start)}}' style="position:absolute; left:0; top:0; width:${W}px; height:${STAGE_H}px;"></div>`).join("\n      ");
+const hosts = shots.map((s) => `<div id="el-${s.id}" data-composition-id="${s.id}" data-composition-src="compositions/c/${s.id}.html" data-start="${r2(s.start)}" data-duration="${r2(s.end - s.start)}" data-track-index="2" data-width="${W}" data-height="${STAGE_H}" data-variable-values='${JSON.stringify(Object.assign({ dur: r2(s.end - s.start) }, s.marks))}' style="position:absolute; left:0; top:0; width:${W}px; height:${STAGE_H}px;"></div>`).join("\n      ");
 
 const index = `<!doctype html>
 <html lang="pl">
@@ -250,10 +328,6 @@ const index = `<!doctype html>
       body { margin: 0; background: #fcfcfa; font-family: Montserrat, sans-serif; }
       #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #fcfcfa; }
       #bg { position: absolute; inset: 0; background: #fcfcfa; }
-      #bg i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; display: block; }
-      #bg .b1 { width: 900px; height: 900px; left: -300px; top: -200px; background: #dbe7ff; }
-      #bg .b2 { width: 800px; height: 800px; right: -300px; top: 700px; background: #e3f5e8; }
-      #bg .b3 { width: 700px; height: 700px; left: 100px; bottom: -300px; background: #fff3c4; }
       .clip { position: absolute; }
       #adam { position: absolute; left: 660px; top: 1480px; width: 380px; height: 380px; object-fit: cover; border-radius: 48px; border: 8px solid #1c1c1c; box-shadow: 0 24px 60px rgba(0,0,0,.25); z-index: 3; }
       #caps { position: absolute; left: 0; width: 1080px; top: 1330px; height: 140px; pointer-events: none; }
@@ -263,8 +337,8 @@ const index = `<!doctype html>
   </head>
   <body>
     <div id="root" data-composition-id="rolka-c" data-start="0" data-width="${W}" data-height="${H}" data-duration="${r2(DUR)}">
-      <div id="bg"><i class="b1" id="bg1"></i><i class="b2" id="bg2"></i><i class="b3" id="bg3"></i></div>
-      <video id="adam" class="clip" src="${T.video.pip}" playsinline data-has-audio="true" data-start="0" data-duration="${r2(DUR)}" data-track-index="1" data-volume="1"></video>
+      <div id="bg"></div>
+      <video id="adam" class="clip" src="${T.video.pip}" playsinline data-has-audio="true" data-start="0" data-media-start="${OFFSET}" data-duration="${r2(DUR)}" data-track-index="1" data-volume="1"></video>
       ${hosts}
       <div id="caps" class="clip" data-start="0" data-duration="${r2(DUR)}" data-track-index="5">
         ${capMarkup}
@@ -273,9 +347,6 @@ const index = `<!doctype html>
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        tl.fromTo("#bg1", { x: 0, y: 0 }, { x: 160, y: 120, duration: ${r2(DUR)}, ease: "sine.inOut" }, 0);
-        tl.fromTo("#bg2", { x: 0, y: 0 }, { x: -140, y: -160, duration: ${r2(DUR)}, ease: "sine.inOut" }, 0);
-        tl.fromTo("#bg3", { x: 0, y: 0 }, { x: 120, y: -80, duration: ${r2(DUR)}, ease: "sine.inOut" }, 0);
         ${capTl.join("\n        ")}
         window.__timelines["rolka-c"] = tl;
       })();
@@ -284,4 +355,4 @@ const index = `<!doctype html>
 </html>
 `;
 writeFileSync(path.join(ROOT, "..", "rolka-scanova-c", "index.html"), index);
-console.log(`C v2: ${shots.length} ujęć · ` + shots.map((s) => `${s.id.slice(0, 3)}@${s.start}`).join(" "));
+console.log(`C v3: ${shots.length} ujęć · ` + shots.map((s) => `${s.id.slice(0, 3)}@${s.start}`).join(" "));

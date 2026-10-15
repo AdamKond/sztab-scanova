@@ -40,6 +40,40 @@
   .bubble { background: #1d5fd1; color: #fff; font-weight: 700; font-size: 64px; padding: 34px 48px; border-radius: 40px 40px 40px 10px; max-width: 880px; text-align: left; }
   .bubble span { display: inline-block; }
   .logo { font-weight: 900; font-size: 150px; letter-spacing: -.05em; }
+  .hbox { position: relative; height: 230px; width: 920px; }
+  .hbox .h { position: absolute; left: 0; right: 0; top: 0; opacity: 0; }
+  .scard { width: 760px; height: 480px; border-radius: 44px; background: #1d5fd1; color: #fff; box-shadow: 0 30px 70px rgba(0,0,0,.22); position: relative; overflow: hidden; text-align: left; }
+  .scard .top { display: flex; justify-content: space-between; align-items: center; padding: 34px 40px 0; font-weight: 700; font-size: 34px; }
+  .scard .top small { font-family: "Space Mono", monospace; font-size: 26px; opacity: .85; }
+  .scard .slots { display: flex; gap: 26px; padding: 44px 40px 0; }
+  .scard .slots i { width: 90px; height: 90px; border-radius: 50%; border: 5px solid rgba(255,255,255,.55); display: grid; place-items: center; font-style: normal; font-size: 40px; position: relative; }
+  .scard .slots i b { position: absolute; inset: -5px; border-radius: 50%; background: #fff; display: grid; place-items: center; color: #1d5fd1; font-size: 44px; opacity: 0; }
+  .scard .nag { position: absolute; left: 40px; right: 40px; bottom: 36px; display: flex; justify-content: space-between; align-items: center; }
+  .scard .nag small { font-family: "Space Mono", monospace; font-size: 24px; opacity: .85; display: block; }
+  .scard .nag b { font-size: 40px; }
+  .scard .ribbon { position: absolute; left: 0; right: 0; top: 50%; margin-top: -60px; background: #fff4a8; color: #1c1c1c; font-weight: 900; font-size: 56px; text-align: center; padding: 26px 0; transform: rotate(-4deg); box-shadow: 0 16px 40px rgba(0,0,0,.25); opacity: 0; }
+  .review { width: 760px; border-radius: 44px; background: #fff; border: 6px solid #1c1c1c; box-shadow: 12px 16px 0 rgba(0,0,0,.08); padding: 44px 40px; box-sizing: border-box; position: absolute; left: 0; top: 0; opacity: 0; }
+  .review b { display: block; font-size: 54px; margin-bottom: 18px; }
+  .review .btn { display: inline-block; margin-top: 22px; background: #1f8f3e; color: #fff; font-weight: 700; font-size: 38px; padding: 20px 36px; border-radius: 20px; }
+  .conf { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; }
+  .conf i { position: absolute; left: 0; top: 0; width: 18px; height: 18px; border-radius: 4px; opacity: 0; display: block; }
+  .qrbox { width: 480px; height: 480px; background: #fff; border: 10px solid #1c1c1c; border-radius: 36px; display: grid; place-items: center; position: relative; overflow: hidden; }
+  .qrbox svg { width: 74%; height: 74%; }
+  .qrbox .scan { position: absolute; left: 0; right: 0; top: 0; height: 14px; background: #1d5fd1; box-shadow: 0 0 40px 10px rgba(29,95,209,.45); }
+  .lock { width: 700px; height: 700px; border-radius: 64px; background: radial-gradient(circle at 30% 20%, #4b6cb7, #182848); box-shadow: 0 30px 70px rgba(0,0,0,.25); position: relative; overflow: hidden; }
+  .lock .time { position: absolute; left: 0; right: 0; top: 80px; text-align: center; color: #fff; font-weight: 700; font-size: 150px; letter-spacing: -.03em; }
+  .lock .date { position: absolute; left: 0; right: 0; top: 250px; text-align: center; color: rgba(255,255,255,.8); font-family: "Space Mono", monospace; font-size: 28px; }
+  .lock .push { position: absolute; left: 44px; right: 44px; top: 360px; border-radius: 30px; overflow: hidden; box-shadow: 0 16px 40px rgba(0,0,0,.35); }
+  .lock .push img { width: 100%; display: block; }
+  .map { width: 700px; height: 700px; border-radius: 50%; background: #eef1f7; position: relative; background-image: linear-gradient(#dfe4ee 2px, transparent 2px), linear-gradient(90deg, #dfe4ee 2px, transparent 2px); background-size: 88px 88px; overflow: hidden; }
+  .map .ring { position: absolute; left: 50%; top: 50%; width: 500px; height: 500px; margin: -250px 0 0 -250px; border-radius: 50%; border: 7px dashed #1f8f3e; background: rgba(31,143,62,.09); }
+  .map .km { position: absolute; left: 50%; top: 50%; margin: -292px 0 0 -62px; font-family: "Space Mono", monospace; font-weight: 700; font-size: 32px; color: #1f8f3e; background: #fff; padding: 6px 18px; border-radius: 999px; }
+  .map .pin { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50% 50% 50% 0; background: #d2262e; transform: rotate(-45deg); }
+  .map .client { position: absolute; left: 50%; top: 50%; width: 56px; height: 56px; margin: -28px 0 0 -28px; border-radius: 50%; background: #1d5fd1; border: 6px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,.25); }
+  .anotif { position: absolute; left: 50%; bottom: 16px; width: 700px; margin-left: -350px; z-index: 2; }
+  .phone { width: 560px; aspect-ratio: 900 / 1272; border-radius: 48px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,.22); background: #fff; position: relative; }
+  .phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .badge { position: absolute; right: -20px; top: -20px; background: #d2262e; color: #fff; font-family: "Space Mono", monospace; font-weight: 700; font-size: 34px; padding: 16px 26px; border-radius: 999px; transform: rotate(8deg); box-shadow: 0 12px 30px rgba(0,0,0,.25); }
   .logo small { display: block; font-family: "Space Mono", monospace; font-weight: 400; font-size: 34px; color: #5d5d62; letter-spacing: 0; margin-top: 8px; }
 </style>
       <div id="root" data-composition-id="c06-wallet" data-width="1080" data-height="1300">
@@ -52,6 +86,8 @@
           const vars = (window.__hyperframes && window.__hyperframes.getVariables && window.__hyperframes.getVariables()) || {};
           const dur = Number.isFinite(+vars.dur) && +vars.dur > 0 ? +vars.dur : 3.62;
           const q = (sel) => document.querySelector(sel);
+          const num = (v, dflt) => (Number.isFinite(+v) && +v > 0 ? +v : dflt);
+          
           const S = "#c06-wallet-stage";
           const tl = gsap.timeline({ paused: true });
           tl.fromTo(S, { opacity: 0, rotationX: -40, transformPerspective: 1400, y: 40 }, { opacity: 1, rotationX: 0, y: 0, duration: 0.6, ease: "power3.out" }, 0);

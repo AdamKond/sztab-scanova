@@ -9,10 +9,6 @@
       body { margin: 0; background: #fcfcfa; font-family: Montserrat, sans-serif; }
       #root { position: relative; width: 100%; height: 100%; overflow: hidden; background: #fcfcfa; }
       #bg { position: absolute; inset: 0; background: #fcfcfa; }
-      #bg i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .55; display: block; }
-      #bg .b1 { width: 900px; height: 900px; left: -300px; top: -200px; background: #dbe7ff; }
-      #bg .b2 { width: 800px; height: 800px; right: -300px; top: 700px; background: #e3f5e8; }
-      #bg .b3 { width: 700px; height: 700px; left: 100px; bottom: -300px; background: #fff3c4; }
       .clip { position: absolute; }
       #adam { position: absolute; left: 660px; top: 1480px; width: 380px; height: 380px; object-fit: cover; border-radius: 48px; border: 8px solid #1c1c1c; box-shadow: 0 24px 60px rgba(0,0,0,.25); z-index: 3; }
       #caps { position: absolute; left: 0; width: 1080px; top: 1330px; height: 140px; pointer-events: none; }
@@ -21,42 +17,37 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="rolka-c" data-start="0" data-width="1080" data-height="1920" data-duration="76.87">
-      <div id="bg"><i class="b1" id="bg1"></i><i class="b2" id="bg2"></i><i class="b3" id="bg3"></i></div>
-      <video id="adam" class="clip" src="assets/adam-pip.mp4" playsinline data-has-audio="true" data-start="0" data-duration="76.87" data-track-index="1" data-volume="1"></video>
-      <div id="el-c01-huk" data-composition-id="c01-huk" data-composition-src="compositions/c/c01-huk.html" data-start="0" data-duration="5.94" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":5.94}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c02-klienci" data-composition-id="c02-klienci" data-composition-src="compositions/c/c02-klienci.html" data-start="5.94" data-duration="2.48" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.48}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c03-wracaja" data-composition-id="c03-wracaja" data-composition-src="compositions/c/c03-wracaja.html" data-start="8.42" data-duration="1.76" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":1.76}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c04-scanova" data-composition-id="c04-scanova" data-composition-src="compositions/c/c04-scanova.html" data-start="10.18" data-duration="3.74" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.74}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c05-qr" data-composition-id="c05-qr" data-composition-src="compositions/c/c05-qr.html" data-start="13.92" data-duration="2.54" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.54}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c06-wallet" data-composition-id="c06-wallet" data-composition-src="compositions/c/c06-wallet.html" data-start="16.46" data-duration="3.62" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.62}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c07-bez" data-composition-id="c07-bez" data-composition-src="compositions/c/c07-bez.html" data-start="20.08" data-duration="3.38" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.38}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c08-pieczatki" data-composition-id="c08-pieczatki" data-composition-src="compositions/c/c08-pieczatki.html" data-start="23.46" data-duration="2.24" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.24}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c09-nagroda" data-composition-id="c09-nagroda" data-composition-src="compositions/c/c09-nagroda.html" data-start="25.7" data-duration="2.04" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.04}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c10-opinia" data-composition-id="c10-opinia" data-composition-src="compositions/c/c10-opinia.html" data-start="27.74" data-duration="4.42" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":4.42}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c11-setki" data-composition-id="c11-setki" data-composition-src="compositions/c/c11-setki.html" data-start="32.16" data-duration="1.78" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":1.78}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c12-push" data-composition-id="c12-push" data-composition-src="compositions/c/c12-push.html" data-start="33.94" data-duration="3.46" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.46}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c13-promo" data-composition-id="c13-promo" data-composition-src="compositions/c/c13-promo.html" data-start="37.4" data-duration="2.7" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.7}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c14-automat" data-composition-id="c14-automat" data-composition-src="compositions/c/c14-automat.html" data-start="40.1" data-duration="2.42" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.42}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c15-km" data-composition-id="c15-km" data-composition-src="compositions/c/c15-km.html" data-start="42.52" data-duration="3.56" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.56}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c16-oferta" data-composition-id="c16-oferta" data-composition-src="compositions/c/c16-oferta.html" data-start="46.08" data-duration="5.36" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":5.36}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c17-system" data-composition-id="c17-system" data-composition-src="compositions/c/c17-system.html" data-start="51.44" data-duration="2.94" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.94}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c18-meet" data-composition-id="c18-meet" data-composition-src="compositions/c/c18-meet.html" data-start="54.38" data-duration="3.18" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.18}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c19-kreator" data-composition-id="c19-kreator" data-composition-src="compositions/c/c19-kreator.html" data-start="57.56" data-duration="2.94" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.94}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c20-jutro" data-composition-id="c20-jutro" data-composition-src="compositions/c/c20-jutro.html" data-start="60.5" data-duration="5.52" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":5.52}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c21-14dni" data-composition-id="c21-14dni" data-composition-src="compositions/c/c21-14dni.html" data-start="66.02" data-duration="1.72" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":1.72}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c22-ryzyko" data-composition-id="c22-ryzyko" data-composition-src="compositions/c/c22-ryzyko.html" data-start="67.74" data-duration="1.9" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":1.9}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c23-odpisz" data-composition-id="c23-odpisz" data-composition-src="compositions/c/c23-odpisz.html" data-start="69.64" data-duration="4.56" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":4.56}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="el-c24-link" data-composition-id="c24-link" data-composition-src="compositions/c/c24-link.html" data-start="74.2" data-duration="2.67" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.67}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
-      <div id="caps" class="clip" data-start="0" data-duration="76.87" data-track-index="5">
-        <div class="cap-line" id="cap-l0"><span class="cap-w" id="cap-w0-0">Jeden</span> <span class="cap-w" id="cap-w0-1">z</span> <span class="cap-w" id="cap-w0-2">naszych</span></div>
-        <div class="cap-line" id="cap-l1"><span class="cap-w" id="cap-w1-0">klientów</span> <span class="cap-w" id="cap-w1-1">w</span> <span class="cap-w" id="cap-w1-2">ciągu</span></div>
-        <div class="cap-line" id="cap-l2"><span class="cap-w" id="cap-w2-0">pierwszego</span> <span class="cap-w" id="cap-w2-1">darmowego</span> <span class="cap-w" id="cap-w2-2">miesiąca</span></div>
-        <div class="cap-line" id="cap-l3"><span class="cap-w" id="cap-w3-0">zdobył</span> <span class="cap-w" id="cap-w3-1">ponad</span> <span class="cap-w" id="cap-w3-2">300</span></div>
-        <div class="cap-line" id="cap-l4"><span class="cap-w" id="cap-w4-0">opinii</span> <span class="cap-w" id="cap-w4-1">Google</span> <span class="cap-w" id="cap-w4-2">i</span></div>
-        <div class="cap-line" id="cap-l5"><span class="cap-w" id="cap-w5-0">zbudował</span> <span class="cap-w" id="cap-w5-1">bazę</span> <span class="cap-w" id="cap-w5-2">700</span></div>
-        <div class="cap-line" id="cap-l6"><span class="cap-w" id="cap-w6-0">stałych</span> <span class="cap-w" id="cap-w6-1">klientów,</span> <span class="cap-w" id="cap-w6-2">którzy</span></div>
-        <div class="cap-line" id="cap-l7"><span class="cap-w" id="cap-w7-0">wracają</span> <span class="cap-w" id="cap-w7-1">po</span> <span class="cap-w" id="cap-w7-2">nagrody.</span></div>
+    <div id="root" data-composition-id="rolka-c" data-start="0" data-width="1080" data-height="1920" data-duration="75.87">
+      <div id="bg"></div>
+      <video id="adam" class="clip" src="assets/adam-pip.mp4" playsinline data-has-audio="true" data-start="0" data-media-start="1" data-duration="75.87" data-track-index="1" data-volume="1"></video>
+      <div id="el-c01-huk" data-composition-id="c01-huk" data-composition-src="compositions/c/c01-huk.html" data-start="0" data-duration="4.94" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":4.94}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c02-klienci" data-composition-id="c02-klienci" data-composition-src="compositions/c/c02-klienci.html" data-start="4.94" data-duration="2.48" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.48}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c03-wracaja" data-composition-id="c03-wracaja" data-composition-src="compositions/c/c03-wracaja.html" data-start="7.42" data-duration="1.76" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":1.76}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c04-scanova" data-composition-id="c04-scanova" data-composition-src="compositions/c/c04-scanova.html" data-start="9.18" data-duration="3.74" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.74}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c05-qr" data-composition-id="c05-qr" data-composition-src="compositions/c/c05-qr.html" data-start="12.92" data-duration="2.54" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.54}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c06-wallet" data-composition-id="c06-wallet" data-composition-src="compositions/c/c06-wallet.html" data-start="15.46" data-duration="3.62" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.62}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c07-bez" data-composition-id="c07-bez" data-composition-src="compositions/c/c07-bez.html" data-start="19.08" data-duration="3.38" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.38}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c08-karta" data-composition-id="c08-karta" data-composition-src="compositions/c/c08-karta.html" data-start="22.46" data-duration="10.48" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":10.48,"tN":2.36,"tO":4.4,"tS":8.82}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c09-push" data-composition-id="c09-push" data-composition-src="compositions/c/c09-push.html" data-start="32.94" data-duration="3.46" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.46}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c10-promo" data-composition-id="c10-promo" data-composition-src="compositions/c/c10-promo.html" data-start="36.4" data-duration="2.7" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.7}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c11-automat" data-composition-id="c11-automat" data-composition-src="compositions/c/c11-automat.html" data-start="39.1" data-duration="11.34" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":11.34,"tK":2.54,"tA":6.1}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c12-system" data-composition-id="c12-system" data-composition-src="compositions/c/c12-system.html" data-start="50.44" data-duration="2.94" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.94}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c13-meet" data-composition-id="c13-meet" data-composition-src="compositions/c/c13-meet.html" data-start="53.38" data-duration="3.18" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":3.18}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c14-kreator" data-composition-id="c14-kreator" data-composition-src="compositions/c/c14-kreator.html" data-start="56.56" data-duration="2.94" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.94}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c15-jutro" data-composition-id="c15-jutro" data-composition-src="compositions/c/c15-jutro.html" data-start="59.5" data-duration="5.52" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":5.52}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c16-14dni" data-composition-id="c16-14dni" data-composition-src="compositions/c/c16-14dni.html" data-start="65.02" data-duration="1.72" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":1.72}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c17-ryzyko" data-composition-id="c17-ryzyko" data-composition-src="compositions/c/c17-ryzyko.html" data-start="66.74" data-duration="1.9" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":1.9}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c18-odpisz" data-composition-id="c18-odpisz" data-composition-src="compositions/c/c18-odpisz.html" data-start="68.64" data-duration="4.56" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":4.56}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="el-c19-link" data-composition-id="c19-link" data-composition-src="compositions/c/c19-link.html" data-start="73.2" data-duration="2.67" data-track-index="2" data-width="1080" data-height="1300" data-variable-values='{"dur":2.67}' style="position:absolute; left:0; top:0; width:1080px; height:1300px;"></div>
+      <div id="caps" class="clip" data-start="0" data-duration="75.87" data-track-index="5">
+        <div class="cap-line" id="cap-l0"><span class="cap-w" id="cap-w0-0">naszych</span> <span class="cap-w" id="cap-w0-1">klientów</span> <span class="cap-w" id="cap-w0-2">w</span></div>
+        <div class="cap-line" id="cap-l1"><span class="cap-w" id="cap-w1-0">ciągu</span> <span class="cap-w" id="cap-w1-1">pierwszego</span> <span class="cap-w" id="cap-w1-2">darmowego</span></div>
+        <div class="cap-line" id="cap-l2"><span class="cap-w" id="cap-w2-0">miesiąca</span> <span class="cap-w" id="cap-w2-1">zdobył</span> <span class="cap-w" id="cap-w2-2">ponad</span></div>
+        <div class="cap-line" id="cap-l3"><span class="cap-w" id="cap-w3-0">300</span> <span class="cap-w" id="cap-w3-1">opinii</span> <span class="cap-w" id="cap-w3-2">Google</span></div>
+        <div class="cap-line" id="cap-l4"><span class="cap-w" id="cap-w4-0">i</span> <span class="cap-w" id="cap-w4-1">zbudował</span> <span class="cap-w" id="cap-w4-2">bazę</span></div>
+        <div class="cap-line" id="cap-l5"><span class="cap-w" id="cap-w5-0">700</span> <span class="cap-w" id="cap-w5-1">stałych</span> <span class="cap-w" id="cap-w5-2">klientów,</span></div>
+        <div class="cap-line" id="cap-l6"><span class="cap-w" id="cap-w6-0">którzy</span> <span class="cap-w" id="cap-w6-1">wracają</span> <span class="cap-w" id="cap-w6-2">po</span></div>
+        <div class="cap-line" id="cap-l7"><span class="cap-w" id="cap-w7-0">nagrody.</span></div>
         <div class="cap-line" id="cap-l8"><span class="cap-w" id="cap-w8-0">Jesteśmy</span> <span class="cap-w" id="cap-w8-1">Scanova.</span></div>
         <div class="cap-line" id="cap-l9"><span class="cap-w" id="cap-w9-0">Tworzymy</span> <span class="cap-w" id="cap-w9-1">cyfrowe</span> <span class="cap-w" id="cap-w9-2">karty</span></div>
         <div class="cap-line" id="cap-l10"><span class="cap-w" id="cap-w10-0">lojalnościowe</span> <span class="cap-w" id="cap-w10-1">dla</span> <span class="cap-w" id="cap-w10-2">lokali.</span></div>
@@ -127,357 +118,352 @@
     <script>
       (function () {
         const tl = gsap.timeline({ paused: true });
-        tl.fromTo("#bg1", { x: 0, y: 0 }, { x: 160, y: 120, duration: 76.87, ease: "sine.inOut" }, 0);
-        tl.fromTo("#bg2", { x: 0, y: 0 }, { x: -140, y: -160, duration: 76.87, ease: "sine.inOut" }, 0);
-        tl.fromTo("#bg3", { x: 0, y: 0 }, { x: 120, y: -80, duration: 76.87, ease: "sine.inOut" }, 0);
-        tl.fromTo("#cap-l0", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 0.3);
-        tl.to("#cap-l0", { opacity: 0, duration: 0.08 }, 1.22);
-        tl.fromTo("#cap-w0-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 0.3);
-        tl.fromTo("#cap-w0-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 0.98);
-        tl.fromTo("#cap-w0-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 1.08);
-        tl.fromTo("#cap-l1", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 1.34);
+        tl.fromTo("#cap-l0", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 0.08);
+        tl.to("#cap-l0", { opacity: 0, duration: 0.08 }, 0.9);
+        tl.fromTo("#cap-w0-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 0.08);
+        tl.fromTo("#cap-w0-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 0.34);
+        tl.fromTo("#cap-w0-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 0.9);
+        tl.fromTo("#cap-l1", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 1.02);
         tl.to("#cap-l1", { opacity: 0, duration: 0.08 }, 2.2);
-        tl.fromTo("#cap-w1-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 1.34);
-        tl.fromTo("#cap-w1-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 1.9);
-        tl.fromTo("#cap-w1-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 2.02);
+        tl.fromTo("#cap-w1-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 1.02);
+        tl.fromTo("#cap-w1-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 1.32);
+        tl.fromTo("#cap-w1-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 1.76);
         tl.fromTo("#cap-l2", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 2.32);
-        tl.to("#cap-l2", { opacity: 0, duration: 0.08 }, 3.82);
+        tl.to("#cap-l2", { opacity: 0, duration: 0.08 }, 3.54);
         tl.fromTo("#cap-w2-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 2.32);
-        tl.fromTo("#cap-w2-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 2.76);
-        tl.fromTo("#cap-w2-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 3.32);
-        tl.fromTo("#cap-l3", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 3.94);
-        tl.to("#cap-l3", { opacity: 0, duration: 0.08 }, 4.82);
-        tl.fromTo("#cap-w3-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 3.94);
-        tl.fromTo("#cap-w3-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 4.28);
-        tl.fromTo("#cap-w3-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 4.66);
-        tl.fromTo("#cap-l4", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 4.94);
-        tl.to("#cap-l4", { opacity: 0, duration: 0.08 }, 5.94);
-        tl.fromTo("#cap-w4-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 4.94);
-        tl.fromTo("#cap-w4-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 5.3);
-        tl.fromTo("#cap-w4-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 5.64);
-        tl.fromTo("#cap-l5", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 6.06);
-        tl.to("#cap-l5", { opacity: 0, duration: 0.08 }, 7.18);
-        tl.fromTo("#cap-w5-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 6.06);
-        tl.fromTo("#cap-w5-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 6.46);
-        tl.fromTo("#cap-w5-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 6.86);
-        tl.fromTo("#cap-l6", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 7.3);
-        tl.to("#cap-l6", { opacity: 0, duration: 0.08 }, 8.56);
-        tl.fromTo("#cap-w6-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 7.3);
-        tl.fromTo("#cap-w6-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 7.92);
-        tl.fromTo("#cap-w6-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 8.54);
-        tl.fromTo("#cap-l7", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 8.68);
-        tl.to("#cap-l7", { opacity: 0, duration: 0.08 }, 10.18);
-        tl.fromTo("#cap-w7-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 8.68);
-        tl.fromTo("#cap-w7-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 9.08);
-        tl.fromTo("#cap-w7-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 9.3);
-        tl.fromTo("#cap-l8", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 10.3);
-        tl.to("#cap-l8", { opacity: 0, duration: 0.08 }, 11.16);
-        tl.fromTo("#cap-w8-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 10.3);
-        tl.fromTo("#cap-w8-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 10.6);
-        tl.fromTo("#cap-l9", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 11.28);
-        tl.to("#cap-l9", { opacity: 0, duration: 0.08 }, 12.42);
-        tl.fromTo("#cap-w9-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 11.28);
-        tl.fromTo("#cap-w9-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 11.7);
-        tl.fromTo("#cap-w9-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 12.22);
-        tl.fromTo("#cap-l10", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 12.54);
-        tl.to("#cap-l10", { opacity: 0, duration: 0.08 }, 13.92);
-        tl.fromTo("#cap-w10-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 12.54);
-        tl.fromTo("#cap-w10-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 13.16);
-        tl.fromTo("#cap-w10-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 13.32);
-        tl.fromTo("#cap-l11", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 14.04);
-        tl.to("#cap-l11", { opacity: 0, duration: 0.08 }, 14.82);
-        tl.fromTo("#cap-w11-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 14.04);
-        tl.fromTo("#cap-w11-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 14.34);
-        tl.fromTo("#cap-w11-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 14.74);
-        tl.fromTo("#cap-l12", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 14.94);
-        tl.to("#cap-l12", { opacity: 0, duration: 0.08 }, 15.76);
-        tl.fromTo("#cap-w12-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 14.94);
-        tl.fromTo("#cap-w12-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 15.16);
-        tl.fromTo("#cap-w12-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 15.7);
-        tl.fromTo("#cap-l13", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 15.88);
-        tl.to("#cap-l13", { opacity: 0, duration: 0.08 }, 16.68);
-        tl.fromTo("#cap-w13-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 15.88);
-        tl.fromTo("#cap-w13-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 16.12);
-        tl.fromTo("#cap-w13-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 16.58);
-        tl.fromTo("#cap-l14", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 16.8);
-        tl.to("#cap-l14", { opacity: 0, duration: 0.08 }, 17.48);
-        tl.fromTo("#cap-w14-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 16.8);
-        tl.fromTo("#cap-w14-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 17.1);
-        tl.fromTo("#cap-w14-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 17.4);
-        tl.fromTo("#cap-l15", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 17.6);
-        tl.to("#cap-l15", { opacity: 0, duration: 0.08 }, 18.14);
-        tl.fromTo("#cap-w15-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 17.6);
-        tl.fromTo("#cap-w15-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 18);
-        tl.fromTo("#cap-w15-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 18.04);
-        tl.fromTo("#cap-l16", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 18.26);
-        tl.to("#cap-l16", { opacity: 0, duration: 0.08 }, 19);
-        tl.fromTo("#cap-w16-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 18.26);
-        tl.fromTo("#cap-w16-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 18.6);
-        tl.fromTo("#cap-w16-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 18.96);
-        tl.fromTo("#cap-l17", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 19.12);
-        tl.to("#cap-l17", { opacity: 0, duration: 0.08 }, 20.08);
-        tl.fromTo("#cap-w17-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 19.12);
-        tl.fromTo("#cap-w17-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 19.5);
-        tl.fromTo("#cap-l18", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 20.2);
-        tl.to("#cap-l18", { opacity: 0, duration: 0.08 }, 21.32);
-        tl.fromTo("#cap-w18-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 20.2);
-        tl.fromTo("#cap-w18-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 20.44);
-        tl.fromTo("#cap-w18-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 21.32);
-        tl.fromTo("#cap-l19", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 21.44);
-        tl.to("#cap-l19", { opacity: 0, duration: 0.08 }, 22.46);
-        tl.fromTo("#cap-w19-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 21.44);
-        tl.fromTo("#cap-w19-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 21.88);
-        tl.fromTo("#cap-w19-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 22.4);
-        tl.fromTo("#cap-l20", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 22.58);
-        tl.to("#cap-l20", { opacity: 0, duration: 0.08 }, 23.36);
-        tl.fromTo("#cap-w20-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 22.58);
-        tl.fromTo("#cap-l21", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 23.58);
-        tl.to("#cap-l21", { opacity: 0, duration: 0.08 }, 24.36);
-        tl.fromTo("#cap-w21-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 23.58);
-        tl.fromTo("#cap-w21-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 23.78);
-        tl.fromTo("#cap-w21-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 24.08);
-        tl.fromTo("#cap-l22", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 24.48);
-        tl.to("#cap-l22", { opacity: 0, duration: 0.08 }, 25.7);
-        tl.fromTo("#cap-w22-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 24.48);
-        tl.fromTo("#cap-w22-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 24.86);
-        tl.fromTo("#cap-l23", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 25.82);
-        tl.to("#cap-l23", { opacity: 0, duration: 0.08 }, 26.7);
-        tl.fromTo("#cap-w23-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 25.82);
-        tl.fromTo("#cap-w23-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 26.02);
-        tl.fromTo("#cap-w23-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 26.46);
-        tl.fromTo("#cap-l24", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 26.82);
-        tl.to("#cap-l24", { opacity: 0, duration: 0.08 }, 27.74);
-        tl.fromTo("#cap-w24-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 26.82);
-        tl.fromTo("#cap-w24-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 27.02);
-        tl.fromTo("#cap-w24-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 27.18);
-        tl.fromTo("#cap-l25", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 27.86);
-        tl.to("#cap-l25", { opacity: 0, duration: 0.08 }, 28.76);
-        tl.fromTo("#cap-w25-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 27.86);
-        tl.fromTo("#cap-w25-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 28.12);
-        tl.fromTo("#cap-w25-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 28.34);
-        tl.fromTo("#cap-l26", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 28.88);
-        tl.to("#cap-l26", { opacity: 0, duration: 0.08 }, 29.92);
-        tl.fromTo("#cap-w26-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 28.88);
-        tl.fromTo("#cap-w26-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 29.28);
-        tl.fromTo("#cap-w26-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 29.66);
-        tl.fromTo("#cap-l27", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 30.04);
-        tl.to("#cap-l27", { opacity: 0, duration: 0.08 }, 30.96);
-        tl.fromTo("#cap-w27-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 30.04);
-        tl.fromTo("#cap-w27-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 30.24);
-        tl.fromTo("#cap-w27-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 30.38);
-        tl.fromTo("#cap-l28", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 31.08);
-        tl.to("#cap-l28", { opacity: 0, duration: 0.08 }, 32.16);
-        tl.fromTo("#cap-w28-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 31.08);
-        tl.fromTo("#cap-w28-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 31.5);
-        tl.fromTo("#cap-l29", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 32.28);
-        tl.to("#cap-l29", { opacity: 0, duration: 0.08 }, 32.84);
-        tl.fromTo("#cap-w29-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 32.28);
-        tl.fromTo("#cap-w29-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 32.46);
-        tl.fromTo("#cap-w29-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 32.68);
-        tl.fromTo("#cap-l30", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 32.96);
-        tl.to("#cap-l30", { opacity: 0, duration: 0.08 }, 33.94);
-        tl.fromTo("#cap-w30-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 32.96);
-        tl.fromTo("#cap-l31", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 34.06);
-        tl.to("#cap-l31", { opacity: 0, duration: 0.08 }, 34.72);
-        tl.fromTo("#cap-w31-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 34.06);
-        tl.fromTo("#cap-w31-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 34.32);
-        tl.fromTo("#cap-w31-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 34.54);
-        tl.fromTo("#cap-l32", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 34.84);
-        tl.to("#cap-l32", { opacity: 0, duration: 0.08 }, 35.92);
-        tl.fromTo("#cap-w32-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 34.84);
-        tl.fromTo("#cap-w32-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 35.04);
-        tl.fromTo("#cap-w32-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 35.48);
-        tl.fromTo("#cap-l33", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 36.04);
-        tl.to("#cap-l33", { opacity: 0, duration: 0.08 }, 36.7);
-        tl.fromTo("#cap-w33-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 36.04);
-        tl.fromTo("#cap-w33-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 36.42);
-        tl.fromTo("#cap-w33-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 36.62);
-        tl.fromTo("#cap-l34", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 36.82);
-        tl.to("#cap-l34", { opacity: 0, duration: 0.08 }, 37.36);
-        tl.fromTo("#cap-w34-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 36.82);
-        tl.fromTo("#cap-l35", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 37.52);
-        tl.to("#cap-l35", { opacity: 0, duration: 0.08 }, 38.64);
-        tl.fromTo("#cap-w35-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 37.52);
-        tl.fromTo("#cap-w35-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 37.68);
-        tl.fromTo("#cap-w35-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 37.86);
-        tl.fromTo("#cap-l36", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 38.76);
-        tl.to("#cap-l36", { opacity: 0, duration: 0.08 }, 39.22);
-        tl.fromTo("#cap-w36-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 38.76);
-        tl.fromTo("#cap-w36-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 38.96);
-        tl.fromTo("#cap-w36-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 39.18);
-        tl.fromTo("#cap-l37", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 39.34);
-        tl.to("#cap-l37", { opacity: 0, duration: 0.08 }, 39.96);
-        tl.fromTo("#cap-w37-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 39.34);
-        tl.fromTo("#cap-w37-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 39.44);
-        tl.fromTo("#cap-l38", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 40.22);
-        tl.to("#cap-l38", { opacity: 0, duration: 0.08 }, 41.12);
-        tl.fromTo("#cap-w38-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 40.22);
-        tl.fromTo("#cap-w38-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 40.62);
-        tl.fromTo("#cap-w38-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 40.94);
-        tl.fromTo("#cap-l39", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 41.24);
-        tl.to("#cap-l39", { opacity: 0, duration: 0.08 }, 42.42);
-        tl.fromTo("#cap-w39-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 41.24);
-        tl.fromTo("#cap-w39-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 41.68);
-        tl.fromTo("#cap-w39-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 41.9);
-        tl.fromTo("#cap-l40", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 42.64);
-        tl.to("#cap-l40", { opacity: 0, duration: 0.08 }, 43.26);
-        tl.fromTo("#cap-w40-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 42.64);
-        tl.fromTo("#cap-w40-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 42.98);
-        tl.fromTo("#cap-w40-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 43.1);
-        tl.fromTo("#cap-l41", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 43.38);
-        tl.to("#cap-l41", { opacity: 0, duration: 0.08 }, 44.24);
-        tl.fromTo("#cap-w41-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 43.38);
-        tl.fromTo("#cap-w41-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 43.78);
-        tl.fromTo("#cap-w41-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 43.98);
-        tl.fromTo("#cap-l42", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 44.36);
-        tl.to("#cap-l42", { opacity: 0, duration: 0.08 }, 46.08);
-        tl.fromTo("#cap-w42-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 44.36);
-        tl.fromTo("#cap-w42-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 45.34);
-        tl.fromTo("#cap-w42-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 45.76);
-        tl.fromTo("#cap-l43", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 46.2);
-        tl.to("#cap-l43", { opacity: 0, duration: 0.08 }, 47.74);
-        tl.fromTo("#cap-w43-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 46.2);
-        tl.fromTo("#cap-w43-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 46.48);
-        tl.fromTo("#cap-w43-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 47.26);
-        tl.fromTo("#cap-l44", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 47.86);
-        tl.to("#cap-l44", { opacity: 0, duration: 0.08 }, 49.28);
-        tl.fromTo("#cap-w44-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 47.86);
-        tl.fromTo("#cap-w44-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 48.94);
-        tl.fromTo("#cap-w44-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 49.14);
-        tl.fromTo("#cap-l45", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 49.4);
-        tl.to("#cap-l45", { opacity: 0, duration: 0.08 }, 49.86);
-        tl.fromTo("#cap-w45-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 49.4);
-        tl.fromTo("#cap-w45-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 49.64);
-        tl.fromTo("#cap-w45-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 49.76);
-        tl.fromTo("#cap-l46", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 49.98);
-        tl.to("#cap-l46", { opacity: 0, duration: 0.08 }, 51.2);
-        tl.fromTo("#cap-w46-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 49.98);
-        tl.fromTo("#cap-w46-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 50.56);
-        tl.fromTo("#cap-l47", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 51.56);
-        tl.to("#cap-l47", { opacity: 0, duration: 0.08 }, 52.28);
-        tl.fromTo("#cap-w47-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 51.56);
-        tl.fromTo("#cap-w47-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 51.8);
-        tl.fromTo("#cap-w47-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 52.02);
-        tl.fromTo("#cap-l48", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 52.4);
-        tl.to("#cap-l48", { opacity: 0, duration: 0.08 }, 53.18);
-        tl.fromTo("#cap-w48-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 52.4);
-        tl.fromTo("#cap-w48-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 52.66);
-        tl.fromTo("#cap-w48-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 53.06);
-        tl.fromTo("#cap-l49", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 53.3);
-        tl.to("#cap-l49", { opacity: 0, duration: 0.08 }, 54.7);
-        tl.fromTo("#cap-w49-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 53.3);
-        tl.fromTo("#cap-w49-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 53.54);
-        tl.fromTo("#cap-w49-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 54.5);
-        tl.fromTo("#cap-l50", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 54.82);
-        tl.to("#cap-l50", { opacity: 0, duration: 0.08 }, 55.32);
-        tl.fromTo("#cap-w50-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 54.82);
-        tl.fromTo("#cap-w50-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 54.98);
-        tl.fromTo("#cap-w50-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 55.12);
-        tl.fromTo("#cap-l51", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 55.44);
-        tl.to("#cap-l51", { opacity: 0, duration: 0.08 }, 56.16);
-        tl.fromTo("#cap-w51-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 55.44);
-        tl.fromTo("#cap-w51-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 55.9);
-        tl.fromTo("#cap-l52", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 56.28);
-        tl.to("#cap-l52", { opacity: 0, duration: 0.08 }, 57.56);
-        tl.fromTo("#cap-w52-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 56.28);
-        tl.fromTo("#cap-w52-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 56.7);
-        tl.fromTo("#cap-w52-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 57.06);
-        tl.fromTo("#cap-l53", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 57.68);
-        tl.to("#cap-l53", { opacity: 0, duration: 0.08 }, 59.24);
-        tl.fromTo("#cap-w53-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 57.68);
-        tl.fromTo("#cap-w53-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 58.14);
-        tl.fromTo("#cap-w53-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 58.42);
-        tl.fromTo("#cap-l54", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 59.36);
-        tl.to("#cap-l54", { opacity: 0, duration: 0.08 }, 60.5);
-        tl.fromTo("#cap-w54-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 59.36);
-        tl.fromTo("#cap-w54-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 59.64);
-        tl.fromTo("#cap-w54-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 59.88);
-        tl.fromTo("#cap-l55", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 60.62);
-        tl.to("#cap-l55", { opacity: 0, duration: 0.08 }, 61.42);
-        tl.fromTo("#cap-w55-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 60.62);
-        tl.fromTo("#cap-w55-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 60.9);
-        tl.fromTo("#cap-w55-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 61.28);
-        tl.fromTo("#cap-l56", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 61.54);
-        tl.to("#cap-l56", { opacity: 0, duration: 0.08 }, 62.2);
-        tl.fromTo("#cap-w56-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 61.54);
-        tl.fromTo("#cap-w56-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 61.68);
-        tl.fromTo("#cap-w56-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 61.88);
-        tl.fromTo("#cap-l57", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 62.32);
-        tl.to("#cap-l57", { opacity: 0, duration: 0.08 }, 63.12);
-        tl.fromTo("#cap-w57-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 62.32);
-        tl.fromTo("#cap-w57-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 62.56);
-        tl.fromTo("#cap-w57-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 62.86);
-        tl.fromTo("#cap-l58", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 63.24);
-        tl.to("#cap-l58", { opacity: 0, duration: 0.08 }, 64.16);
-        tl.fromTo("#cap-w58-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 63.24);
-        tl.fromTo("#cap-w58-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 63.5);
-        tl.fromTo("#cap-w58-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 64.08);
-        tl.fromTo("#cap-l59", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 64.28);
-        tl.to("#cap-l59", { opacity: 0, duration: 0.08 }, 65.34);
-        tl.fromTo("#cap-w59-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 64.28);
-        tl.fromTo("#cap-w59-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 64.58);
-        tl.fromTo("#cap-l60", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 66.14);
-        tl.to("#cap-l60", { opacity: 0, duration: 0.08 }, 66.96);
-        tl.fromTo("#cap-w60-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 66.14);
-        tl.fromTo("#cap-w60-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 66.42);
-        tl.fromTo("#cap-w60-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 66.88);
-        tl.fromTo("#cap-l61", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 67.08);
-        tl.to("#cap-l61", { opacity: 0, duration: 0.08 }, 67.74);
-        tl.fromTo("#cap-w61-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 67.08);
-        tl.fromTo("#cap-w61-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 67.24);
-        tl.fromTo("#cap-w61-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 67.42);
-        tl.fromTo("#cap-l62", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 67.86);
-        tl.to("#cap-l62", { opacity: 0, duration: 0.08 }, 68.52);
-        tl.fromTo("#cap-w62-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 67.86);
-        tl.fromTo("#cap-w62-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 67.96);
-        tl.fromTo("#cap-w62-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 68.1);
-        tl.fromTo("#cap-l63", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 68.64);
-        tl.to("#cap-l63", { opacity: 0, duration: 0.08 }, 69.64);
-        tl.fromTo("#cap-w63-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 68.64);
-        tl.fromTo("#cap-w63-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 69.18);
-        tl.fromTo("#cap-l64", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 69.76);
-        tl.to("#cap-l64", { opacity: 0, duration: 0.08 }, 70.48);
-        tl.fromTo("#cap-w64-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 69.76);
-        tl.fromTo("#cap-w64-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 70.18);
-        tl.fromTo("#cap-w64-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 70.26);
-        tl.fromTo("#cap-l65", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 70.6);
-        tl.to("#cap-l65", { opacity: 0, duration: 0.08 }, 70.9);
-        tl.fromTo("#cap-w65-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 70.6);
-        tl.fromTo("#cap-w65-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 70.78);
-        tl.fromTo("#cap-w65-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 70.92);
-        tl.fromTo("#cap-l66", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 71.02);
-        tl.to("#cap-l66", { opacity: 0, duration: 0.08 }, 71.78);
-        tl.fromTo("#cap-w66-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 71.02);
-        tl.fromTo("#cap-w66-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 71.46);
-        tl.fromTo("#cap-w66-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 71.54);
-        tl.fromTo("#cap-l67", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 71.9);
-        tl.to("#cap-l67", { opacity: 0, duration: 0.08 }, 72.98);
-        tl.fromTo("#cap-w67-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 71.9);
-        tl.fromTo("#cap-w67-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 72.22);
-        tl.fromTo("#cap-w67-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 72.52);
-        tl.fromTo("#cap-l68", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 73.1);
-        tl.to("#cap-l68", { opacity: 0, duration: 0.08 }, 73.6);
-        tl.fromTo("#cap-w68-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 73.1);
-        tl.fromTo("#cap-w68-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 73.36);
-        tl.fromTo("#cap-w68-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 73.64);
-        tl.fromTo("#cap-l69", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 73.72);
-        tl.to("#cap-l69", { opacity: 0, duration: 0.08 }, 74.42);
-        tl.fromTo("#cap-w69-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 73.72);
-        tl.fromTo("#cap-w69-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 73.9);
-        tl.fromTo("#cap-w69-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 74.32);
-        tl.fromTo("#cap-l70", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 74.54);
-        tl.to("#cap-l70", { opacity: 0, duration: 0.08 }, 75.14);
-        tl.fromTo("#cap-w70-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 74.54);
-        tl.fromTo("#cap-w70-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 74.7);
-        tl.fromTo("#cap-w70-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 75.14);
-        tl.fromTo("#cap-l71", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 75.26);
-        tl.to("#cap-l71", { opacity: 0, duration: 0.08 }, 75.82);
-        tl.fromTo("#cap-w71-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 75.26);
-        tl.fromTo("#cap-w71-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 75.44);
-        tl.fromTo("#cap-w71-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 75.62);
-        tl.fromTo("#cap-l72", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 75.94);
-        tl.to("#cap-l72", { opacity: 0, duration: 0.08 }, 76.32);
-        tl.fromTo("#cap-w72-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 75.94);
+        tl.fromTo("#cap-w2-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 2.94);
+        tl.fromTo("#cap-w2-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 3.28);
+        tl.fromTo("#cap-l3", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 3.66);
+        tl.to("#cap-l3", { opacity: 0, duration: 0.08 }, 4.52);
+        tl.fromTo("#cap-w3-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 3.66);
+        tl.fromTo("#cap-w3-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 3.94);
+        tl.fromTo("#cap-w3-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 4.3);
+        tl.fromTo("#cap-l4", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 4.64);
+        tl.to("#cap-l4", { opacity: 0, duration: 0.08 }, 5.74);
+        tl.fromTo("#cap-w4-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 4.64);
+        tl.fromTo("#cap-w4-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 5.06);
+        tl.fromTo("#cap-w4-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 5.46);
+        tl.fromTo("#cap-l5", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 5.86);
+        tl.to("#cap-l5", { opacity: 0, duration: 0.08 }, 7.42);
+        tl.fromTo("#cap-w5-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 5.86);
+        tl.fromTo("#cap-w5-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 6.3);
+        tl.fromTo("#cap-w5-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 6.92);
+        tl.fromTo("#cap-l6", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 7.54);
+        tl.to("#cap-l6", { opacity: 0, duration: 0.08 }, 8.18);
+        tl.fromTo("#cap-w6-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 7.54);
+        tl.fromTo("#cap-w6-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 7.68);
+        tl.fromTo("#cap-w6-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 8.08);
+        tl.fromTo("#cap-l7", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 8.3);
+        tl.to("#cap-l7", { opacity: 0, duration: 0.08 }, 9.18);
+        tl.fromTo("#cap-w7-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 8.3);
+        tl.fromTo("#cap-l8", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 9.3);
+        tl.to("#cap-l8", { opacity: 0, duration: 0.08 }, 10.16);
+        tl.fromTo("#cap-w8-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 9.3);
+        tl.fromTo("#cap-w8-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 9.6);
+        tl.fromTo("#cap-l9", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 10.28);
+        tl.to("#cap-l9", { opacity: 0, duration: 0.08 }, 11.42);
+        tl.fromTo("#cap-w9-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 10.28);
+        tl.fromTo("#cap-w9-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 10.7);
+        tl.fromTo("#cap-w9-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 11.22);
+        tl.fromTo("#cap-l10", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 11.54);
+        tl.to("#cap-l10", { opacity: 0, duration: 0.08 }, 12.92);
+        tl.fromTo("#cap-w10-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 11.54);
+        tl.fromTo("#cap-w10-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 12.16);
+        tl.fromTo("#cap-w10-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 12.32);
+        tl.fromTo("#cap-l11", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 13.04);
+        tl.to("#cap-l11", { opacity: 0, duration: 0.08 }, 13.82);
+        tl.fromTo("#cap-w11-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 13.04);
+        tl.fromTo("#cap-w11-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 13.34);
+        tl.fromTo("#cap-w11-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 13.74);
+        tl.fromTo("#cap-l12", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 13.94);
+        tl.to("#cap-l12", { opacity: 0, duration: 0.08 }, 14.76);
+        tl.fromTo("#cap-w12-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 13.94);
+        tl.fromTo("#cap-w12-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 14.16);
+        tl.fromTo("#cap-w12-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 14.7);
+        tl.fromTo("#cap-l13", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 14.88);
+        tl.to("#cap-l13", { opacity: 0, duration: 0.08 }, 15.68);
+        tl.fromTo("#cap-w13-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 14.88);
+        tl.fromTo("#cap-w13-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 15.12);
+        tl.fromTo("#cap-w13-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 15.58);
+        tl.fromTo("#cap-l14", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 15.8);
+        tl.to("#cap-l14", { opacity: 0, duration: 0.08 }, 16.48);
+        tl.fromTo("#cap-w14-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 15.8);
+        tl.fromTo("#cap-w14-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 16.1);
+        tl.fromTo("#cap-w14-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 16.4);
+        tl.fromTo("#cap-l15", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 16.6);
+        tl.to("#cap-l15", { opacity: 0, duration: 0.08 }, 17.14);
+        tl.fromTo("#cap-w15-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 16.6);
+        tl.fromTo("#cap-w15-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 17);
+        tl.fromTo("#cap-w15-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 17.04);
+        tl.fromTo("#cap-l16", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 17.26);
+        tl.to("#cap-l16", { opacity: 0, duration: 0.08 }, 18);
+        tl.fromTo("#cap-w16-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 17.26);
+        tl.fromTo("#cap-w16-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 17.6);
+        tl.fromTo("#cap-w16-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 17.96);
+        tl.fromTo("#cap-l17", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 18.12);
+        tl.to("#cap-l17", { opacity: 0, duration: 0.08 }, 19.08);
+        tl.fromTo("#cap-w17-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 18.12);
+        tl.fromTo("#cap-w17-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 18.5);
+        tl.fromTo("#cap-l18", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 19.2);
+        tl.to("#cap-l18", { opacity: 0, duration: 0.08 }, 20.32);
+        tl.fromTo("#cap-w18-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 19.2);
+        tl.fromTo("#cap-w18-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 19.44);
+        tl.fromTo("#cap-w18-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 20.32);
+        tl.fromTo("#cap-l19", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 20.44);
+        tl.to("#cap-l19", { opacity: 0, duration: 0.08 }, 21.46);
+        tl.fromTo("#cap-w19-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 20.44);
+        tl.fromTo("#cap-w19-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 20.88);
+        tl.fromTo("#cap-w19-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 21.4);
+        tl.fromTo("#cap-l20", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 21.58);
+        tl.to("#cap-l20", { opacity: 0, duration: 0.08 }, 22.36);
+        tl.fromTo("#cap-w20-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 21.58);
+        tl.fromTo("#cap-l21", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 22.58);
+        tl.to("#cap-l21", { opacity: 0, duration: 0.08 }, 23.36);
+        tl.fromTo("#cap-w21-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 22.58);
+        tl.fromTo("#cap-w21-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 22.78);
+        tl.fromTo("#cap-w21-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 23.08);
+        tl.fromTo("#cap-l22", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 23.48);
+        tl.to("#cap-l22", { opacity: 0, duration: 0.08 }, 24.7);
+        tl.fromTo("#cap-w22-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 23.48);
+        tl.fromTo("#cap-w22-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 23.86);
+        tl.fromTo("#cap-l23", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 24.82);
+        tl.to("#cap-l23", { opacity: 0, duration: 0.08 }, 25.7);
+        tl.fromTo("#cap-w23-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 24.82);
+        tl.fromTo("#cap-w23-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 25.02);
+        tl.fromTo("#cap-w23-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 25.46);
+        tl.fromTo("#cap-l24", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 25.82);
+        tl.to("#cap-l24", { opacity: 0, duration: 0.08 }, 26.74);
+        tl.fromTo("#cap-w24-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 25.82);
+        tl.fromTo("#cap-w24-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 26.02);
+        tl.fromTo("#cap-w24-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 26.18);
+        tl.fromTo("#cap-l25", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 26.86);
+        tl.to("#cap-l25", { opacity: 0, duration: 0.08 }, 27.76);
+        tl.fromTo("#cap-w25-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 26.86);
+        tl.fromTo("#cap-w25-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 27.12);
+        tl.fromTo("#cap-w25-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 27.34);
+        tl.fromTo("#cap-l26", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 27.88);
+        tl.to("#cap-l26", { opacity: 0, duration: 0.08 }, 28.92);
+        tl.fromTo("#cap-w26-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 27.88);
+        tl.fromTo("#cap-w26-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 28.28);
+        tl.fromTo("#cap-w26-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 28.66);
+        tl.fromTo("#cap-l27", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 29.04);
+        tl.to("#cap-l27", { opacity: 0, duration: 0.08 }, 29.96);
+        tl.fromTo("#cap-w27-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 29.04);
+        tl.fromTo("#cap-w27-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 29.24);
+        tl.fromTo("#cap-w27-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 29.38);
+        tl.fromTo("#cap-l28", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 30.08);
+        tl.to("#cap-l28", { opacity: 0, duration: 0.08 }, 31.16);
+        tl.fromTo("#cap-w28-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 30.08);
+        tl.fromTo("#cap-w28-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 30.5);
+        tl.fromTo("#cap-l29", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 31.28);
+        tl.to("#cap-l29", { opacity: 0, duration: 0.08 }, 31.84);
+        tl.fromTo("#cap-w29-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 31.28);
+        tl.fromTo("#cap-w29-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 31.46);
+        tl.fromTo("#cap-w29-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 31.68);
+        tl.fromTo("#cap-l30", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 31.96);
+        tl.to("#cap-l30", { opacity: 0, duration: 0.08 }, 32.94);
+        tl.fromTo("#cap-w30-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 31.96);
+        tl.fromTo("#cap-l31", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 33.06);
+        tl.to("#cap-l31", { opacity: 0, duration: 0.08 }, 33.72);
+        tl.fromTo("#cap-w31-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 33.06);
+        tl.fromTo("#cap-w31-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 33.32);
+        tl.fromTo("#cap-w31-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 33.54);
+        tl.fromTo("#cap-l32", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 33.84);
+        tl.to("#cap-l32", { opacity: 0, duration: 0.08 }, 34.92);
+        tl.fromTo("#cap-w32-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 33.84);
+        tl.fromTo("#cap-w32-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 34.04);
+        tl.fromTo("#cap-w32-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 34.48);
+        tl.fromTo("#cap-l33", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 35.04);
+        tl.to("#cap-l33", { opacity: 0, duration: 0.08 }, 35.7);
+        tl.fromTo("#cap-w33-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 35.04);
+        tl.fromTo("#cap-w33-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 35.42);
+        tl.fromTo("#cap-w33-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 35.62);
+        tl.fromTo("#cap-l34", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 35.82);
+        tl.to("#cap-l34", { opacity: 0, duration: 0.08 }, 36.36);
+        tl.fromTo("#cap-w34-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 35.82);
+        tl.fromTo("#cap-l35", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 36.52);
+        tl.to("#cap-l35", { opacity: 0, duration: 0.08 }, 37.64);
+        tl.fromTo("#cap-w35-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 36.52);
+        tl.fromTo("#cap-w35-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 36.68);
+        tl.fromTo("#cap-w35-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 36.86);
+        tl.fromTo("#cap-l36", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 37.76);
+        tl.to("#cap-l36", { opacity: 0, duration: 0.08 }, 38.22);
+        tl.fromTo("#cap-w36-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 37.76);
+        tl.fromTo("#cap-w36-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 37.96);
+        tl.fromTo("#cap-w36-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 38.18);
+        tl.fromTo("#cap-l37", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 38.34);
+        tl.to("#cap-l37", { opacity: 0, duration: 0.08 }, 38.96);
+        tl.fromTo("#cap-w37-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 38.34);
+        tl.fromTo("#cap-w37-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 38.44);
+        tl.fromTo("#cap-l38", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 39.22);
+        tl.to("#cap-l38", { opacity: 0, duration: 0.08 }, 40.12);
+        tl.fromTo("#cap-w38-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 39.22);
+        tl.fromTo("#cap-w38-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 39.62);
+        tl.fromTo("#cap-w38-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 39.94);
+        tl.fromTo("#cap-l39", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 40.24);
+        tl.to("#cap-l39", { opacity: 0, duration: 0.08 }, 41.42);
+        tl.fromTo("#cap-w39-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 40.24);
+        tl.fromTo("#cap-w39-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 40.68);
+        tl.fromTo("#cap-w39-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 40.9);
+        tl.fromTo("#cap-l40", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 41.64);
+        tl.to("#cap-l40", { opacity: 0, duration: 0.08 }, 42.26);
+        tl.fromTo("#cap-w40-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 41.64);
+        tl.fromTo("#cap-w40-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 41.98);
+        tl.fromTo("#cap-w40-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 42.1);
+        tl.fromTo("#cap-l41", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 42.38);
+        tl.to("#cap-l41", { opacity: 0, duration: 0.08 }, 43.24);
+        tl.fromTo("#cap-w41-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 42.38);
+        tl.fromTo("#cap-w41-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 42.78);
+        tl.fromTo("#cap-w41-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 42.98);
+        tl.fromTo("#cap-l42", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 43.36);
+        tl.to("#cap-l42", { opacity: 0, duration: 0.08 }, 45.08);
+        tl.fromTo("#cap-w42-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 43.36);
+        tl.fromTo("#cap-w42-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 44.34);
+        tl.fromTo("#cap-w42-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 44.76);
+        tl.fromTo("#cap-l43", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 45.2);
+        tl.to("#cap-l43", { opacity: 0, duration: 0.08 }, 46.74);
+        tl.fromTo("#cap-w43-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 45.2);
+        tl.fromTo("#cap-w43-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 45.48);
+        tl.fromTo("#cap-w43-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 46.26);
+        tl.fromTo("#cap-l44", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 46.86);
+        tl.to("#cap-l44", { opacity: 0, duration: 0.08 }, 48.28);
+        tl.fromTo("#cap-w44-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 46.86);
+        tl.fromTo("#cap-w44-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 47.94);
+        tl.fromTo("#cap-w44-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 48.14);
+        tl.fromTo("#cap-l45", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 48.4);
+        tl.to("#cap-l45", { opacity: 0, duration: 0.08 }, 48.86);
+        tl.fromTo("#cap-w45-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 48.4);
+        tl.fromTo("#cap-w45-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 48.64);
+        tl.fromTo("#cap-w45-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 48.76);
+        tl.fromTo("#cap-l46", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 48.98);
+        tl.to("#cap-l46", { opacity: 0, duration: 0.08 }, 50.2);
+        tl.fromTo("#cap-w46-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 48.98);
+        tl.fromTo("#cap-w46-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 49.56);
+        tl.fromTo("#cap-l47", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 50.56);
+        tl.to("#cap-l47", { opacity: 0, duration: 0.08 }, 51.28);
+        tl.fromTo("#cap-w47-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 50.56);
+        tl.fromTo("#cap-w47-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 50.8);
+        tl.fromTo("#cap-w47-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 51.02);
+        tl.fromTo("#cap-l48", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 51.4);
+        tl.to("#cap-l48", { opacity: 0, duration: 0.08 }, 52.18);
+        tl.fromTo("#cap-w48-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 51.4);
+        tl.fromTo("#cap-w48-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 51.66);
+        tl.fromTo("#cap-w48-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 52.06);
+        tl.fromTo("#cap-l49", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 52.3);
+        tl.to("#cap-l49", { opacity: 0, duration: 0.08 }, 53.7);
+        tl.fromTo("#cap-w49-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 52.3);
+        tl.fromTo("#cap-w49-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 52.54);
+        tl.fromTo("#cap-w49-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 53.5);
+        tl.fromTo("#cap-l50", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 53.82);
+        tl.to("#cap-l50", { opacity: 0, duration: 0.08 }, 54.32);
+        tl.fromTo("#cap-w50-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 53.82);
+        tl.fromTo("#cap-w50-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 53.98);
+        tl.fromTo("#cap-w50-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 54.12);
+        tl.fromTo("#cap-l51", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 54.44);
+        tl.to("#cap-l51", { opacity: 0, duration: 0.08 }, 55.16);
+        tl.fromTo("#cap-w51-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 54.44);
+        tl.fromTo("#cap-w51-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 54.9);
+        tl.fromTo("#cap-l52", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 55.28);
+        tl.to("#cap-l52", { opacity: 0, duration: 0.08 }, 56.56);
+        tl.fromTo("#cap-w52-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 55.28);
+        tl.fromTo("#cap-w52-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 55.7);
+        tl.fromTo("#cap-w52-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 56.06);
+        tl.fromTo("#cap-l53", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 56.68);
+        tl.to("#cap-l53", { opacity: 0, duration: 0.08 }, 58.24);
+        tl.fromTo("#cap-w53-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 56.68);
+        tl.fromTo("#cap-w53-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 57.14);
+        tl.fromTo("#cap-w53-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 57.42);
+        tl.fromTo("#cap-l54", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 58.36);
+        tl.to("#cap-l54", { opacity: 0, duration: 0.08 }, 59.5);
+        tl.fromTo("#cap-w54-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 58.36);
+        tl.fromTo("#cap-w54-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 58.64);
+        tl.fromTo("#cap-w54-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 58.88);
+        tl.fromTo("#cap-l55", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 59.62);
+        tl.to("#cap-l55", { opacity: 0, duration: 0.08 }, 60.42);
+        tl.fromTo("#cap-w55-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 59.62);
+        tl.fromTo("#cap-w55-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 59.9);
+        tl.fromTo("#cap-w55-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 60.28);
+        tl.fromTo("#cap-l56", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 60.54);
+        tl.to("#cap-l56", { opacity: 0, duration: 0.08 }, 61.2);
+        tl.fromTo("#cap-w56-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 60.54);
+        tl.fromTo("#cap-w56-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 60.68);
+        tl.fromTo("#cap-w56-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 60.88);
+        tl.fromTo("#cap-l57", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 61.32);
+        tl.to("#cap-l57", { opacity: 0, duration: 0.08 }, 62.12);
+        tl.fromTo("#cap-w57-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 61.32);
+        tl.fromTo("#cap-w57-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 61.56);
+        tl.fromTo("#cap-w57-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 61.86);
+        tl.fromTo("#cap-l58", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 62.24);
+        tl.to("#cap-l58", { opacity: 0, duration: 0.08 }, 63.16);
+        tl.fromTo("#cap-w58-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 62.24);
+        tl.fromTo("#cap-w58-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 62.5);
+        tl.fromTo("#cap-w58-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 63.08);
+        tl.fromTo("#cap-l59", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 63.28);
+        tl.to("#cap-l59", { opacity: 0, duration: 0.08 }, 64.34);
+        tl.fromTo("#cap-w59-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 63.28);
+        tl.fromTo("#cap-w59-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 63.58);
+        tl.fromTo("#cap-l60", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 65.14);
+        tl.to("#cap-l60", { opacity: 0, duration: 0.08 }, 65.96);
+        tl.fromTo("#cap-w60-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 65.14);
+        tl.fromTo("#cap-w60-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 65.42);
+        tl.fromTo("#cap-w60-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 65.88);
+        tl.fromTo("#cap-l61", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 66.08);
+        tl.to("#cap-l61", { opacity: 0, duration: 0.08 }, 66.74);
+        tl.fromTo("#cap-w61-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 66.08);
+        tl.fromTo("#cap-w61-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 66.24);
+        tl.fromTo("#cap-w61-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 66.42);
+        tl.fromTo("#cap-l62", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 66.86);
+        tl.to("#cap-l62", { opacity: 0, duration: 0.08 }, 67.52);
+        tl.fromTo("#cap-w62-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 66.86);
+        tl.fromTo("#cap-w62-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 66.96);
+        tl.fromTo("#cap-w62-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 67.1);
+        tl.fromTo("#cap-l63", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 67.64);
+        tl.to("#cap-l63", { opacity: 0, duration: 0.08 }, 68.64);
+        tl.fromTo("#cap-w63-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 67.64);
+        tl.fromTo("#cap-w63-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 68.18);
+        tl.fromTo("#cap-l64", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 68.76);
+        tl.to("#cap-l64", { opacity: 0, duration: 0.08 }, 69.48);
+        tl.fromTo("#cap-w64-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 68.76);
+        tl.fromTo("#cap-w64-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 69.18);
+        tl.fromTo("#cap-w64-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 69.26);
+        tl.fromTo("#cap-l65", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 69.6);
+        tl.to("#cap-l65", { opacity: 0, duration: 0.08 }, 69.9);
+        tl.fromTo("#cap-w65-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 69.6);
+        tl.fromTo("#cap-w65-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 69.78);
+        tl.fromTo("#cap-w65-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 69.92);
+        tl.fromTo("#cap-l66", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 70.02);
+        tl.to("#cap-l66", { opacity: 0, duration: 0.08 }, 70.78);
+        tl.fromTo("#cap-w66-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 70.02);
+        tl.fromTo("#cap-w66-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 70.46);
+        tl.fromTo("#cap-w66-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 70.54);
+        tl.fromTo("#cap-l67", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 70.9);
+        tl.to("#cap-l67", { opacity: 0, duration: 0.08 }, 71.98);
+        tl.fromTo("#cap-w67-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 70.9);
+        tl.fromTo("#cap-w67-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 71.22);
+        tl.fromTo("#cap-w67-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 71.52);
+        tl.fromTo("#cap-l68", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 72.1);
+        tl.to("#cap-l68", { opacity: 0, duration: 0.08 }, 72.6);
+        tl.fromTo("#cap-w68-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 72.1);
+        tl.fromTo("#cap-w68-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 72.36);
+        tl.fromTo("#cap-w68-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 72.64);
+        tl.fromTo("#cap-l69", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 72.72);
+        tl.to("#cap-l69", { opacity: 0, duration: 0.08 }, 73.42);
+        tl.fromTo("#cap-w69-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 72.72);
+        tl.fromTo("#cap-w69-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 72.9);
+        tl.fromTo("#cap-w69-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 73.32);
+        tl.fromTo("#cap-l70", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 73.54);
+        tl.to("#cap-l70", { opacity: 0, duration: 0.08 }, 74.14);
+        tl.fromTo("#cap-w70-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 73.54);
+        tl.fromTo("#cap-w70-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 73.7);
+        tl.fromTo("#cap-w70-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 74.14);
+        tl.fromTo("#cap-l71", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 74.26);
+        tl.to("#cap-l71", { opacity: 0, duration: 0.08 }, 74.82);
+        tl.fromTo("#cap-w71-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 74.26);
+        tl.fromTo("#cap-w71-1", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 74.44);
+        tl.fromTo("#cap-w71-2", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 74.62);
+        tl.fromTo("#cap-l72", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.16, ease: "power2.out" }, 74.94);
+        tl.to("#cap-l72", { opacity: 0, duration: 0.08 }, 75.32);
+        tl.fromTo("#cap-w72-0", { opacity: 0.55, scale: 0.94 }, { opacity: 1, scale: 1, duration: 0.14, ease: "back.out(2)" }, 74.94);
         window.__timelines["rolka-c"] = tl;
       })();
     </script>
