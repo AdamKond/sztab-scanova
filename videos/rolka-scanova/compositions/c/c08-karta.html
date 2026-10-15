@@ -42,19 +42,27 @@
   .logo { font-weight: 900; font-size: 150px; letter-spacing: -.05em; }
   .hbox { position: relative; height: 230px; width: 920px; }
   .hbox .h { position: absolute; left: 0; right: 0; top: 0; opacity: 0; }
-  .scard { width: 760px; height: 480px; border-radius: 44px; background: #1d5fd1; color: #fff; box-shadow: 0 30px 70px rgba(0,0,0,.22); position: relative; overflow: hidden; text-align: left; }
-  .scard .top { display: flex; justify-content: space-between; align-items: center; padding: 34px 40px 0; font-weight: 700; font-size: 34px; }
-  .scard .top small { font-family: "Space Mono", monospace; font-size: 26px; opacity: .85; }
-  .scard .slots { display: flex; gap: 26px; padding: 44px 40px 0; }
-  .scard .slots i { width: 90px; height: 90px; border-radius: 50%; border: 5px solid rgba(255,255,255,.55); display: grid; place-items: center; font-style: normal; font-size: 40px; position: relative; }
-  .scard .slots i b { position: absolute; inset: -5px; border-radius: 50%; background: #fff; display: grid; place-items: center; color: #1d5fd1; font-size: 44px; opacity: 0; }
-  .scard .nag { position: absolute; left: 40px; right: 40px; bottom: 36px; display: flex; justify-content: space-between; align-items: center; }
-  .scard .nag small { font-family: "Space Mono", monospace; font-size: 24px; opacity: .85; display: block; }
-  .scard .nag b { font-size: 40px; }
-  .scard .ribbon { position: absolute; left: 0; right: 0; top: 50%; margin-top: -60px; background: #fff4a8; color: #1c1c1c; font-weight: 900; font-size: 56px; text-align: center; padding: 26px 0; transform: rotate(-4deg); box-shadow: 0 16px 40px rgba(0,0,0,.25); opacity: 0; }
-  .review { width: 760px; border-radius: 44px; background: #fff; border: 6px solid #1c1c1c; box-shadow: 12px 16px 0 rgba(0,0,0,.08); padding: 44px 40px; box-sizing: border-box; position: absolute; left: 0; top: 0; opacity: 0; }
-  .review b { display: block; font-size: 54px; margin-bottom: 18px; }
-  .review .btn { display: inline-block; margin-top: 22px; background: #1f8f3e; color: #fff; font-weight: 700; font-size: 38px; padding: 20px 36px; border-radius: 20px; }
+  .pass { width: 780px; height: 470px; border-radius: 52px; background: linear-gradient(135deg, #3b7bff 0%, #1d5fd1 55%, #1a44a8 100%); color: #fff; box-shadow: 0 40px 90px rgba(26,68,168,.35), inset 0 1px 0 rgba(255,255,255,.35); position: relative; overflow: hidden; text-align: left; }
+  .pass .shine { position: absolute; top: -40%; bottom: -40%; width: 46%; left: -60%; background: linear-gradient(100deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.28) 50%, rgba(255,255,255,0) 100%); transform: skewX(-18deg); pointer-events: none; }
+  .pass .top { display: flex; justify-content: space-between; align-items: center; padding: 36px 44px 0; font-weight: 700; font-size: 32px; letter-spacing: -.01em; }
+  .pass .top .brand { display: flex; align-items: center; gap: 16px; }
+  .pass .top .brand i { width: 44px; height: 44px; border-radius: 14px; background: rgba(255,255,255,.92); display: block; }
+  .pass .top small { font-family: "Space Mono", monospace; font-weight: 400; font-size: 24px; opacity: .8; letter-spacing: .04em; }
+  .pass .slots { display: flex; gap: 22px; padding: 46px 44px 0; }
+  .pass .slots i { width: 86px; height: 86px; border-radius: 50%; border: 3px solid rgba(255,255,255,.38); display: block; position: relative; }
+  .pass .slots i b { position: absolute; inset: -3px; border-radius: 50%; background: #fff; display: grid; place-items: center; color: #1d5fd1; font-size: 42px; font-weight: 700; opacity: 0; box-shadow: 0 10px 24px rgba(0,0,0,.18); }
+  .pass .slots i u { position: absolute; inset: -3px; border-radius: 50%; border: 3px solid #fff; opacity: 0; display: block; }
+  .pass .foot { position: absolute; left: 44px; right: 44px; bottom: 34px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .pass .foot small { font-family: "Space Mono", monospace; font-size: 22px; opacity: .75; display: block; letter-spacing: .08em; margin-bottom: 6px; }
+  .pass .foot b { font-size: 40px; font-weight: 700; letter-spacing: -.01em; }
+  .pass .ready { position: absolute; right: 44px; bottom: 34px; background: #fff; color: #1a7f4b; font-weight: 700; font-size: 30px; padding: 16px 28px; border-radius: 999px; box-shadow: 0 12px 30px rgba(0,0,0,.2); opacity: 0; white-space: nowrap; }
+  .sheet { width: 780px; border-radius: 52px; background: #fff; box-shadow: 0 40px 90px rgba(0,0,0,.14), 0 0 0 1px rgba(0,0,0,.05); padding: 52px 48px 48px; box-sizing: border-box; position: absolute; left: 0; top: 0; opacity: 0; text-align: center; }
+  .sheet b { display: block; font-size: 52px; font-weight: 700; letter-spacing: -.02em; }
+  .sheet p { margin: 10px 0 26px; font-size: 30px; color: #8e8e93; font-weight: 500; }
+  .sheet .stars { gap: 14px; } .sheet .stars span { font-size: 88px; color: #e5e5ea; }
+  .sheet .btn { display: inline-block; margin-top: 30px; background: #1c1c1e; color: #fff; font-weight: 700; font-size: 34px; padding: 22px 40px; border-radius: 999px; }
+  .spark { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; }
+  .spark i { position: absolute; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%; background: #fff; opacity: 0; display: block; box-shadow: 0 0 18px 4px rgba(255,255,255,.7); }
   .conf { position: absolute; left: 50%; top: 50%; width: 10px; height: 10px; }
   .conf i { position: absolute; left: 0; top: 0; width: 18px; height: 18px; border-radius: 4px; opacity: 0; display: block; }
   .qrbox { width: 480px; height: 480px; background: #fff; border: 10px solid #1c1c1c; border-radius: 36px; display: grid; place-items: center; position: relative; overflow: hidden; }
@@ -79,12 +87,12 @@
       <div id="root" data-composition-id="c08-karta" data-width="1080" data-height="1300">
         <div class="stage" id="c08-karta-stage">
           <div class="hbox"><div class="h" id="c08-h1">Każda wizyta = <em>pieczątka</em></div><div class="h" id="c08-h2">Po kilku: <em>nagroda</em></div><div class="h" id="c08-h3">Po wizycie: <em>prośba o opinię</em></div><div class="h" id="c08-h4">Stąd <em>setki opinii</em></div></div>
-      <div style="position:relative;width:760px;height:480px">
-        <div class="scard" id="c08-card"><div class="top"><span>Twój lokal</span><small id="c08-cnt">0/6</small></div><div class="slots" id="c08-slots"><i><b>✓</b></i><i><b>✓</b></i><i><b>✓</b></i><i><b>✓</b></i><i><b>✓</b></i><i><b>✓</b></i></div><div class="nag"><div><small>NAGRODA</small><b>Kawa gratis</b></div></div><div class="ribbon" id="c08-rib">🎁 Nagroda gotowa</div></div>
-        <div class="conf" id="c08-conf"><i style="background:#1d5fd1"></i><i style="background:#1f8f3e"></i><i style="background:#f4c542"></i><i style="background:#d2262e"></i><i style="background:#1d5fd1"></i><i style="background:#1f8f3e"></i><i style="background:#f4c542"></i><i style="background:#d2262e"></i><i style="background:#1d5fd1"></i><i style="background:#1f8f3e"></i><i style="background:#f4c542"></i><i style="background:#d2262e"></i><i style="background:#1d5fd1"></i><i style="background:#1f8f3e"></i></div>
-        <div class="review" id="c08-rev"><b>Podobało się?</b><div class="stars" id="c08-st"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><span class="btn">Zostaw opinię w Google</span></div>
+      <div style="position:relative;width:780px;height:470px">
+        <div class="pass" id="c08-card"><div class="shine" id="c08-shine"></div><div class="top"><span class="brand"><i></i>Twój lokal</span><small id="c08-cnt">0 / 6</small></div><div class="slots" id="c08-slots"><i><u></u><b>✓</b></i><i><u></u><b>✓</b></i><i><u></u><b>✓</b></i><i><u></u><b>✓</b></i><i><u></u><b>✓</b></i><i><u></u><b>✓</b></i></div><div class="foot" id="c08-foot"><div><small>NAGRODA</small><b>Kawa gratis</b></div></div><div class="ready" id="c08-ready">✓ Nagroda gotowa</div></div>
+        <div class="spark" id="c08-sp"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="sheet" id="c08-rev"><b>Podobało się?</b><p>Twoja opinia pomaga innym gościom</p><div class="stars" id="c08-st"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><span class="btn" id="c08-btn">Zostaw opinię w Google</span></div>
       </div>
-      <div class="big g" id="c08-n" style="font-size:220px;opacity:0;position:absolute;left:0;right:0;top:520px">+357</div>
+      <div class="big g" id="c08-n" style="font-size:230px;opacity:0;position:absolute;left:0;right:0;top:520px">+357</div>
         </div>
       </div>
       <script>
@@ -104,33 +112,39 @@
         tl.fromTo(h.querySelectorAll(".w"), { opacity: 0, y: 34 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out", stagger: 0.06 }, 0.12);
       });
           const cnt = q("#c08-cnt");
-      // 1. pieczątki jedna po drugiej do tN
-      const slots = document.querySelectorAll("#c08-slots i b");
-      const step = Math.max(0.25, (tN - 0.6) / 6);
-      slots.forEach((b, k) => {
-        tl.fromTo(b, { opacity: 0, scale: 0.3 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(3)", onStart: () => { cnt.textContent = (k + 1) + "/6"; }, onReverseComplete: () => { cnt.textContent = k + "/6"; } }, 0.5 + k * step);
+      // 1. pieczątki: miękkie wejście + pierścień, licznik w rogu
+      const fills = document.querySelectorAll("#c08-slots i b"), rings = document.querySelectorAll("#c08-slots i u");
+      const step = Math.max(0.28, (tN - 0.7) / 6);
+      fills.forEach((b, k) => {
+        const t = 0.5 + k * step;
+        tl.fromTo(b, { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)", onStart: () => { cnt.textContent = (k + 1) + " / 6"; }, onReverseComplete: () => { cnt.textContent = k + " / 6"; } }, t);
+        tl.fromTo(rings[k], { opacity: 0.8, scale: 1 }, { opacity: 0, scale: 1.9, duration: 0.7, ease: "power2.out" }, t + 0.05);
       });
-      // 2. nagroda: wstęga + konfetti
-      tl.fromTo("#c08-rib", { opacity: 0, scale: 0.5, rotation: -14 }, { opacity: 1, scale: 1, rotation: -4, duration: 0.5, ease: "back.out(2.5)" }, tN + 0.1);
-      document.querySelectorAll("#c08-conf i").forEach((c, k) => {
-        const a = (k / 14) * Math.PI * 2;
-        tl.fromTo(c, { opacity: 1, x: 0, y: 0, rotation: 0 }, { x: Math.cos(a) * 360, y: Math.sin(a) * 260 + 120, rotation: 540, opacity: 0, duration: 1.1, ease: "power2.out" }, tN + 0.15);
+      // 2. nagroda: karta unosi się, błysk przechodzi, pastylka „Nagroda gotowa”, kilka iskier
+      tl.to("#c08-card", { y: -14, scale: 1.02, boxShadow: "0 60px 120px rgba(26,68,168,.42), inset 0 1px 0 rgba(255,255,255,.35)", duration: 0.6, ease: "expo.out" }, tN);
+      tl.fromTo("#c08-shine", { x: 0 }, { x: 1400, duration: 1.1, ease: "power2.inOut" }, tN + 0.05);
+      tl.to("#c08-foot", { opacity: 0, x: -20, duration: 0.3, ease: "power2.in" }, tN + 0.1);
+      tl.fromTo("#c08-ready", { opacity: 0, scale: 0.7, y: 10 }, { opacity: 1, scale: 1, y: 0, duration: 0.55, ease: "back.out(1.8)" }, tN + 0.35);
+      document.querySelectorAll("#c08-sp i").forEach((c, k) => {
+        const a = (k / 8) * Math.PI * 2 + 0.4;
+        tl.fromTo(c, { opacity: 0.9, x: 0, y: 0, scale: 0.6 }, { x: Math.cos(a) * 300, y: Math.sin(a) * 200, scale: 1.2, opacity: 0, duration: 1.0, ease: "power3.out" }, tN + 0.2 + (k % 3) * 0.06);
       });
-      // 3. karta obraca się w prośbę o opinię
-      tl.to("#c08-card", { rotationY: 90, transformPerspective: 1600, duration: 0.35, ease: "power2.in" }, tO);
-      tl.fromTo("#c08-rev", { opacity: 1, rotationY: -90, transformPerspective: 1600 }, { rotationY: 0, duration: 0.4, ease: "power2.out" }, tO + 0.35);
-      tl.to("#c08-st span", { color: "#f4c542", duration: 0.2, stagger: 0.14 }, tO + 0.9);
-      tl.fromTo("#c08-rev .btn", { scale: 1 }, { scale: 1.07, duration: 0.25, yoyo: true, repeat: 1 }, tO + 1.9);
-      // 4. setki opinii: panel odlatuje, licznik
-      tl.to("#c08-rev", { y: -520, opacity: 0, duration: 0.45, ease: "power2.in" }, tS);
+      // 3. obrót do arkusza opinii, gwiazdki po kolei, delikatne wciśnięcie przycisku
+      tl.to("#c08-card", { rotationY: 90, scale: 0.96, transformPerspective: 1800, duration: 0.42, ease: "power2.in" }, tO);
+      tl.fromTo("#c08-rev", { opacity: 1, rotationY: -90, scale: 0.96, transformPerspective: 1800 }, { rotationY: 0, scale: 1, duration: 0.55, ease: "expo.out" }, tO + 0.42);
+      tl.to("#c08-st span", { color: "#f5b400", duration: 0.25, ease: "power1.out", stagger: 0.14 }, tO + 1.0);
+      tl.fromTo("#c08-st span", { scale: 1 }, { scale: 1.18, duration: 0.14, yoyo: true, repeat: 1, ease: "power1.inOut", stagger: 0.14 }, tO + 1.0);
+      tl.fromTo("#c08-btn", { scale: 1 }, { scale: 0.95, duration: 0.14, yoyo: true, repeat: 1, ease: "power1.inOut" }, tO + 2.1);
+      // 4. setki opinii: arkusz zmniejsza się i znika, licznik wyłania się z rozmycia
+      tl.to("#c08-rev", { scale: 0.9, y: -40, opacity: 0, duration: 0.35, ease: "power2.in" }, tS);
       const n = { v: 1 }, el = q("#c08-n");
-      tl.fromTo(el, { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power4.out" }, tS + 0.25);
-      tl.to(n, { v: 357, duration: 1.1, ease: "power2.out", onUpdate: () => { el.textContent = "+" + Math.round(n.v); } }, tS + 0.3);
+      tl.fromTo(el, { opacity: 0, scale: 1.25, filter: "blur(24px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, tS + 0.45);
+      tl.to(n, { v: 357, duration: 1.2, ease: "power2.out", onUpdate: () => { el.textContent = "+" + Math.round(n.v); } }, tS + 0.5);
       // nagłówki
       const hs = ["#c08-h1", "#c08-h2", "#c08-h3", "#c08-h4"], ts = [0, tN, tO, tS];
       hs.forEach((h, k) => {
-        tl.fromTo(h, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, ts[k] + (k ? 0.05 : 0.1));
-        if (k < 3) tl.to(h, { opacity: 0, y: -20, duration: 0.25 }, ts[k + 1]);
+        tl.fromTo(h, { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.5, ease: "expo.out" }, ts[k] + (k ? 0.05 : 0.1));
+        if (k < 3) tl.to(h, { opacity: 0, y: -16, duration: 0.3, ease: "power2.in" }, ts[k + 1]);
       });
           tl.to(S, { opacity: 0, y: -50, scale: 0.97, duration: 0.3, ease: "power2.in" }, Math.max(0.6, dur - 0.3));
           window.__timelines["c08-karta"] = tl;
