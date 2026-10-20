@@ -163,6 +163,7 @@ describe("teksty DM", () => {
     expect(text).toContain("za darmo");
     expect(text).toContain("300");
     expect(text).toContain("Google");
+    expect(text).toContain("(KARTA)");
     expect(text).not.toMatch(/Świdnik|Lublin/);
     expect(text).toContain("?");
     expect(text).not.toContain("5 minut");
@@ -171,7 +172,8 @@ describe("teksty DM", () => {
   it("hook z researchu (dm_text = HOOK: ...) zastępuje hook niszy, reszta bez zmian", () => {
     const plain = firstDmText(row({ niche: "pizza" }));
     const custom = firstDmText(row({ niche: "pizza", dm_text: "HOOK: Wasza neapolitańska to legenda na Czubach." }));
-    expect(custom).toContain("Cześć! Wasza neapolitańska to legenda na Czubach. Robimy");
+    expect(custom).toMatch(/^Cześć! .*300 nowych opinii/);
+    expect(custom).toContain("Wasza neapolitańska to legenda na Czubach. Robimy");
     expect(custom).not.toContain("Piątkowa pizza");
     expect(custom.slice(custom.indexOf("Robimy"))).toBe(plain.slice(plain.indexOf("Robimy")));
     // Stary długi tekst z zasiewu (bez prefiksu) jest ignorowany.
@@ -188,7 +190,7 @@ describe("teksty DM", () => {
 
   it("follow-up prosi o jedno słowo i zostawia wyjście", () => {
     const text = followupDmText();
-    expect(text).toContain("OFERTA");
+    expect(text).toContain("(KARTA)");
     expect(text).toContain("nie będę spamować");
   });
 });

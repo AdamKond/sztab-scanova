@@ -59,9 +59,9 @@ Kroki 1–2 są niezależne od ManyChata i blokują resztę. Kroki 3–4 można 
 
 Automation → New Automation → nazwa „Odpowiedź na zimny DM”.
 
-**Wyzwalacz (Trigger):** „Instagram → User sends a message” → **Keyword** = `OFERTA` (dopasowanie „zawiera”,
+**Wyzwalacz (Trigger):** „Instagram → User sends a message” → **Keyword** = `KARTA` (dopasowanie „zawiera”,
 bez rozróżniania wielkości liter; ManyChat bez słowa kluczowego nie wysyła automatycznych odpowiedzi na zimne DM-y).
-Pierwszy DM i follow-up ze Sztabu kończą się prośbą „odpiszcie OFERTA”, więc lead sam uruchamia flow.
+Pierwszy DM i follow-up ze Sztabu kończą się prośbą „odpiszcie jednym słowem (KARTA)”, więc lead sam uruchamia flow.
 Kto odpisze inaczej („ok”, „chcę szczegóły”), ląduje w Live Chat; Adam wysyła wtedy ten sam tekst
 przyciskiem „Odpisał → filmik” ze Sztabu.
 
@@ -82,7 +82,7 @@ przyciskiem „Odpisał → filmik” ze Sztabu.
 więc w DM-ie jest jeden link)
 ```
 Dzięki za odpowiedź. Wszystkie szczegóły są tu: https://scanova.tech/film
-Minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik.
+Znajdziecie tam minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik.
 Na dole jest przycisk „Umów spotkanie”: 15 minut online, ustawimy system pod Wasz lokal.
 Pierwsze 14 dni za darmo. Adam
 ```
@@ -94,24 +94,25 @@ z przycisku „Ile to kosztuje?” ze Sztabu. Reszta zostaje dla Adama (Sztab �
 
 ## Krok 5b: pełny flow pod maksymalną konwersję (2026-10-15)
 
-Zasada: lead, który odpisał OFERTA, jest „ciepły” przez 24 godziny (Instagram pozwala botowi pisać tylko
+Zasada: lead, który odpisał KARTA, jest „ciepły” przez 24 godziny (Instagram pozwala botowi pisać tylko
 w ciągu 24 h od ostatniej wiadomości klienta). W tym oknie trzeba zrobić trzy rzeczy: dać dowód (film),
 zaangażować jednym kliknięciem i zamknąć spotkanie w czacie, nie odsyłając na stronę, jeśli nie trzeba.
 
 **Wyzwalacz:** Keyword, dopasowanie „contains”, lista słów (wszystkie uruchamiają ten sam flow):
-`oferta, szczegóły, szczegoly, filmik, film, ile kosztuje, cena, chętnie, chetnie, ok, tak, poproszę, poprosze`.
+`karta, oferta, szczegóły, szczegoly, filmik, film, ile kosztuje, cena, chętnie, chetnie, ok, tak, poproszę, poprosze`.
+(`oferta` zostaje na liście, bo starsze DM-y wysłane przed 2026-10-20 prosiły o to słowo.)
 Dodatkowo **Default Reply** (raz na 24 h) dla każdej innej wiadomości:
 ```
-Dzięki za wiadomość. Adam odpisze osobiście w ciągu godziny. Jeśli chcecie szczegóły od razu, odpiszcie OFERTA.
+Dzięki za wiadomość. Adam odpisze osobiście w ciągu godziny. Jeśli chcecie szczegóły od razu, odpiszcie KARTA.
 ```
 
 **Wiadomość 1 (od razu):** External Request do Sztabu (krok A) + tekst z dwoma przyciskami (w ManyChacie: Message → Add button → Open website):
 ```
 Dzięki za odpowiedź. Wszystkie szczegóły są tu: https://scanova.tech/film
-Minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik.
+Znajdziecie tam minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik.
 Pierwsze 14 dni za darmo. Adam
 ```
-- przycisk „Zobacz film (76 s)” → `https://scanova.tech/film?utm_source=ig&utm_medium=dm&utm_campaign=oferta`
+- przycisk „Zobacz film (76 s)” → `https://scanova.tech/film?utm_source=ig&utm_medium=dm&utm_campaign=karta`
 - przycisk „Umów spotkanie” → `https://scanova.tech/film?book&utm_source=ig&utm_medium=dm` (parametr `book` od razu otwiera okno umawiania)
 
 **Wiadomość 2 (Smart Delay 2 minuty):** pytanie z Quick Replies, żeby lead kliknął, a nie pisał:
@@ -169,14 +170,14 @@ Default Reply albo keyword. Dalsze follow-upy wysyła Adam ręcznie ze Sztabu (f
 - ManyChat → Instagram → Conversation Starters (ice breakers dla osób, które wchodzą na profil): „Ile to kosztuje?”,
   „Jak działa karta w telefonie?”, „Umów spotkanie” → każdy wpięty w ten sam flow (odpowiednio ścieżka Cena /
   Stali klienci / Umawiam się).
-- Story Reply trigger (gdy ktoś odpowie na story z filmem) → ten sam flow co OFERTA.
+- Story Reply trigger (gdy ktoś odpowie na story z filmem) → ten sam flow co KARTA.
 - Bez emotek, podpis „Adam”, maksymalnie jeden link w wiadomości, przyciski zamiast gołych linków.
 - Live Chat w aplikacji ManyChat na telefonie z powiadomieniami: odpowiedź na „Mam pytanie” w ciągu kilku
   minut, dopóki lead ma otwarty Instagram.
 
 **Pomiar:** ManyChat → Flow → statystyki (sent / delivered / clicked na każdym kroku) i tagi `spotkanie`,
 `pytanie`, `nie-teraz`. Link z UTM pokaże w Vercel Analytics wejścia na /film z DM-ów. W Sztabie każdy
-krok leada widać w Rozmowach (webhook). Co tydzień porównać: odpowiedzi OFERTA → kliknięcia Quick Reply →
+krok leada widać w Rozmowach (webhook). Co tydzień porównać: odpowiedzi KARTA → kliknięcia Quick Reply →
 spotkania. Jeśli mało osób klika w wiadomości 2, skrócić wiadomość 1 albo zamienić kolejność (najpierw pytanie,
 potem link).
 
