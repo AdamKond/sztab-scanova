@@ -181,8 +181,9 @@ describe("teksty DM", () => {
     expect(text).not.toContain("5 minut");
   });
 
-  it("hook o opiniach otwiera wiadomość", () => {
-    expect(firstDmText(row({ niche: "pizza" }))).toMatch(/^Cześć\. Zbieramy restauracjom nawet 200 nowych opinii/);
+  it("hook o opiniach otwiera wiadomość, tekst ma akapity", () => {
+    expect(firstDmText(row({ niche: "pizza" })).split("\n\n").length).toBeGreaterThan(3);
+    expect(firstDmText(row({ niche: "pizza" }))).toMatch(/^Cześć! 👋 Zbieramy restauracjom nawet 200 nowych opinii/);
   });
 
   it("jeden tekst dla wszystkich: nisza ani hook z researchu go nie zmieniają", () => {

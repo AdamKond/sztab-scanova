@@ -47,15 +47,22 @@ export const NICHES = [
   "restauracja",
 ];
 
-/** Jeden zimny DM dla wszystkich lokali. Hook = opinie w Google. */
-export const COLD_DM =
-  `Cześć. Zbieramy restauracjom nawet 200 nowych opinii w Google miesięcznie. ` +
+/**
+ * Jeden zimny DM dla wszystkich lokali. Hook = opinie w Google.
+ * Akapity rozdzielone pustą linią (wklejenie w IG zachowuje łamanie) i trzy
+ * emotki — Adam, 2026-10-21: ściana tekstu na telefonie odstrasza.
+ */
+export const COLD_DM = [
+  `Cześć! 👋 Zbieramy restauracjom nawet 200 nowych opinii w Google miesięcznie.`,
   `Robimy cyfrowe karty lojalnościowe: gość dodaje Waszą kartę do Apple lub Google Wallet, ` +
-  `bez żadnej aplikacji, i zbiera pieczątki za wizyty. ` +
-  `Wy widzicie, kto do Was wraca, a system sam prosi zadowolonych gości o opinię w Google. ` +
-  `Korzystają już z tego m.in. ${PROOF}. ` +
-  `Dla każdej lokalizacji pierwsze 14 dni są testowe i za darmo, więc sprawdzicie bez ryzyka, czy Wam się to opłaca. ` +
-  `Chcecie poznać szczegóły? Odpiszcie jednym słowem „${KEYWORD}”, a podeślę więcej informacji. ${SIGNATURE}`;
+    `bez żadnej aplikacji, i zbiera pieczątki za wizyty. Wy widzicie, kto do Was wraca, ` +
+    `a system sam prosi zadowolonych gości o opinię w Google ⭐`,
+  `Korzystają już z tego m.in. ${PROOF}.`,
+  `Dla każdej lokalizacji pierwsze 14 dni są testowe i za darmo 🎁 Sprawdzicie bez ryzyka, ` +
+    `czy Wam się to opłaca.`,
+  `Chcecie poznać szczegóły? Odpiszcie jednym słowem „${KEYWORD}”, a podeślę więcej informacji.`,
+  SIGNATURE,
+].join("\n\n");
 
 /**
  * Pierwszy DM. Argumenty zostały dla zgodności z Bazą (nisza, hook z researchu),
@@ -67,12 +74,13 @@ export function firstDm(_niche?: string, _customHook?: string | null): string {
 
 /** Follow-up po 3 dniach ciszy: ta sama obietnica, prośba o jedno słowo, jasne wyjście. */
 export function followupDm(): string {
-  return (
-    `Cześć, jeszcze raz krótko: nasz system zbiera restauracjom nawet 200 nowych opinii w Google miesięcznie, ` +
-    `a goście wracają po pieczątki w karcie, którą mają w telefonie. Pierwsze 14 dni są testowe i za darmo. ` +
-    `Odpiszcie jednym słowem „${KEYWORD}”, a podeślę więcej informacji. ` +
-    `Jeśli temat nie gra, dajcie znać, nie będę spamować. ${SIGNATURE}`
-  );
+  return [
+    `Cześć! 👋 Jeszcze raz krótko: nasz system zbiera restauracjom nawet 200 nowych opinii ` +
+      `w Google miesięcznie, a goście wracają po pieczątki w karcie, którą mają w telefonie.`,
+    `Pierwsze 14 dni są testowe i za darmo. Odpiszcie jednym słowem „${KEYWORD}”, a podeślę więcej informacji.`,
+    `Jeśli temat nie gra, dajcie znać, nie będę spamować.`,
+    SIGNATURE,
+  ].join("\n\n");
 }
 
 export type ReplyTemplate = {
@@ -95,11 +103,12 @@ export const REPLIES: ReplyTemplate[] = [
     key: "film",
     label: "Odpisał → filmik",
     when: `Na każdą pierwszą odpowiedź (słowo ${KEYWORD} obsługuje ManyChat sam; ręcznie, gdy ktoś odpisze inaczej).`,
-    text:
-      `Dzięki za odpowiedź. Wszystkie szczegóły są tu: ${filmLink()}. ` +
-      `Znajdziecie tam minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik. ` +
-      `Na dole jest przycisk „Umów spotkanie”: 15 minut online, ustawimy system pod Wasz lokal. ` +
+    text: [
+      `Dzięki za odpowiedź 🙌 Wszystkie szczegóły są tu: ${filmLink()}`,
+      `Znajdziecie tam minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik.`,
+      `Na dole jest przycisk „Umów spotkanie”: 15 minut online, ustawimy system pod Wasz lokal.`,
       `Pierwsze 14 dni za darmo. ${SIGNATURE}`,
+    ].join("\n\n"),
   },
   {
     key: "info",

@@ -46,7 +46,7 @@ export default function ReplyKit() {
               </button>
             </div>
             {open ? (
-              <p className="anim-in mt-2 rounded-xl bg-canvas p-3 text-[13.5px] leading-relaxed text-ink">
+              <p className="anim-in mt-2 whitespace-pre-line rounded-xl bg-canvas p-3 text-[13.5px] leading-relaxed text-ink">
                 {r.text}
               </p>
             ) : null}

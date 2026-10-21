@@ -82,9 +82,12 @@ przyciskiem „Odpisał → filmik” ze Sztabu.
 **Krok B, Send Message (Instagram):** (wersja z 2026-10-15, strona /film ma już własne umawianie spotkań,
 więc w DM-ie jest jeden link)
 ```
-Dzięki za odpowiedź. Wszystkie szczegóły są tu: https://scanova.tech/film
+Dzięki za odpowiedź 🙌 Wszystkie szczegóły są tu: https://scanova.tech/film
+
 Znajdziecie tam minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik.
+
 Na dole jest przycisk „Umów spotkanie”: 15 minut online, ustawimy system pod Wasz lokal.
+
 Pierwsze 14 dni za darmo. Adam
 ```
 Tekst jest ten sam, co przycisk „Odpisał → filmik” w Sztabie (`lib/crm/dm-copy.ts`). Zgłoszenie ze strony
@@ -109,8 +112,10 @@ Dzięki za wiadomość. Adam odpisze osobiście w ciągu godziny. Jeśli chcecie
 
 **Wiadomość 1 (od razu):** External Request do Sztabu (krok A) + tekst z dwoma przyciskami (w ManyChacie: Message → Add button → Open website):
 ```
-Dzięki za odpowiedź. Wszystkie szczegóły są tu: https://scanova.tech/film
+Dzięki za odpowiedź 🙌 Wszystkie szczegóły są tu: https://scanova.tech/film
+
 Znajdziecie tam minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik.
+
 Pierwsze 14 dni za darmo. Adam
 ```
 - przycisk „Zobacz film (76 s)” → `https://scanova.tech/film?utm_source=ig&utm_medium=dm&utm_campaign=karta`

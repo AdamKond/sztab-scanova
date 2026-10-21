@@ -259,7 +259,7 @@ export default function DmRow({
                   Przeglądarka nie pozwoliła skopiować automatycznie — skopiuj przyciskiem niżej.
                 </p>
               ) : null}
-              <p className="select-all">{text}</p>
+              <p className="select-all whitespace-pre-line">{text}</p>
               <div className="mt-2">
                 <button
                   type="button"
