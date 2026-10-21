@@ -167,22 +167,22 @@ describe("countFollowupsDue / followupQueue / blitzCounts", () => {
 });
 
 describe("teksty DM", () => {
-  it("pierwszy DM: bez linku, z 14 dniami za darmo, opiniami Google i słowem (KARTA)", () => {
+  it("pierwszy DM: bez linku, z 14 dniami za darmo, opiniami Google i słowem „KARTA”", () => {
     const text = firstDmText(row({ niche: "pizza" }));
     expect(text.length).toBeLessThan(800);
     expect(text).not.toMatch(/https?:|\.tech|\.pl\b/);
     expect(text).toMatch(/Adam$/);
     expect(text).toContain("za darmo");
-    expect(text).toContain("300");
+    expect(text).toContain("200");
     expect(text).toContain("Google");
-    expect(text).toContain("(KARTA)");
+    expect(text).toContain("„KARTA”");
     expect(text).not.toMatch(/Świdnik|Lublin/);
     expect(text).toContain("?");
     expect(text).not.toContain("5 minut");
   });
 
   it("hook o opiniach otwiera wiadomość", () => {
-    expect(firstDmText(row({ niche: "pizza" }))).toMatch(/^O! Cześć\. Zbieramy restauracjom nawet 300 nowych opinii/);
+    expect(firstDmText(row({ niche: "pizza" }))).toMatch(/^Cześć\. Zbieramy restauracjom nawet 200 nowych opinii/);
   });
 
   it("jeden tekst dla wszystkich: nisza ani hook z researchu go nie zmieniają", () => {
@@ -197,7 +197,7 @@ describe("teksty DM", () => {
 
   it("follow-up prosi o jedno słowo i zostawia wyjście", () => {
     const text = followupDmText();
-    expect(text).toContain("(KARTA)");
+    expect(text).toContain("„KARTA”");
     expect(text).toContain("nie będę spamować");
   });
 });

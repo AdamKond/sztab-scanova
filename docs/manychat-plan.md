@@ -61,7 +61,7 @@ Automation → New Automation → nazwa „Odpowiedź na zimny DM”.
 
 **Wyzwalacz (Trigger):** „Instagram → User sends a message” → **Keyword** = `KARTA` (dopasowanie „zawiera”,
 bez rozróżniania wielkości liter; ManyChat bez słowa kluczowego nie wysyła automatycznych odpowiedzi na zimne DM-y).
-Pierwszy DM i follow-up ze Sztabu kończą się prośbą „odpiszcie jednym słowem (KARTA)”, więc lead sam uruchamia flow.
+Pierwszy DM i follow-up ze Sztabu kończą się prośbą „odpiszcie jednym słowem »KARTA«”, więc lead sam uruchamia flow.
 Od 2026-10-21 zimny DM jest jeden dla wszystkich lokali (`COLD_DM` w `lib/crm/dm-copy.ts`), bez personalizacji per nisza.
 Kto odpisze inaczej („ok”, „chcę szczegóły”), ląduje w Live Chat; Adam wysyła wtedy ten sam tekst
 przyciskiem „Odpisał → filmik” ze Sztabu.

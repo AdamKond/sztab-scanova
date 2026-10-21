@@ -4,10 +4,10 @@
 //
 // Decyzja Adama z 2026-10-21: KONIEC z personalizacją pierwszego DM-a. Wszyscy
 // dostają ten sam tekst (łatwiej wysyłać masowo, nie trzeba researchu pod hook).
-// Szkielet: hook = opinie w Google (nawet 300 miesięcznie) → co robimy (cyfrowa
-// karta w Apple/Google Wallet, pieczątki za wizyty) → kto wraca + skąd te opinie
+// Szkielet: hook = opinie w Google (nawet 200 miesięcznie) → co robimy (cyfrowa
+// karta w Apple/Google Wallet, pieczątki za wizyty) → kto wraca i skąd opinie
 // → dowód (nasi klienci) → 14 dni testowych za darmo dla każdej lokalizacji →
-// pytanie i słowo kluczowe (KARTA) w nawiasie, bo to ono uruchamia ManyChata.
+// pytanie i słowo kluczowe „KARTA” w cudzysłowie, bo to ono uruchamia ManyChata.
 // Bez linku w pierwszej wiadomości (linki od obcych kont lądują w spamie).
 
 export const SIGNATURE = "Adam";
@@ -49,13 +49,13 @@ export const NICHES = [
 
 /** Jeden zimny DM dla wszystkich lokali. Hook = opinie w Google. */
 export const COLD_DM =
-  `O! Cześć. Zbieramy restauracjom nawet 300 nowych opinii w Google miesięcznie. ` +
+  `Cześć. Zbieramy restauracjom nawet 200 nowych opinii w Google miesięcznie. ` +
   `Robimy cyfrowe karty lojalnościowe: gość dodaje Waszą kartę do Apple lub Google Wallet, ` +
   `bez żadnej aplikacji, i zbiera pieczątki za wizyty. ` +
-  `Wy widzicie, kto do Was wraca, a system sam prosi zadowolonych gości o opinię w Google. Stąd te 300. ` +
+  `Wy widzicie, kto do Was wraca, a system sam prosi zadowolonych gości o opinię w Google. ` +
   `Korzystają już z tego m.in. ${PROOF}. ` +
   `Dla każdej lokalizacji pierwsze 14 dni są testowe i za darmo, więc sprawdzicie bez ryzyka, czy Wam się to opłaca. ` +
-  `Chcecie poznać szczegóły? Odpiszcie jednym słowem (${KEYWORD}), a podeślę więcej informacji. ${SIGNATURE}`;
+  `Chcecie poznać szczegóły? Odpiszcie jednym słowem „${KEYWORD}”, a podeślę więcej informacji. ${SIGNATURE}`;
 
 /**
  * Pierwszy DM. Argumenty zostały dla zgodności z Bazą (nisza, hook z researchu),
@@ -68,9 +68,9 @@ export function firstDm(_niche?: string, _customHook?: string | null): string {
 /** Follow-up po 3 dniach ciszy: ta sama obietnica, prośba o jedno słowo, jasne wyjście. */
 export function followupDm(): string {
   return (
-    `Cześć, jeszcze raz krótko: nasz system zbiera restauracjom nawet 300 nowych opinii w Google miesięcznie, ` +
+    `Cześć, jeszcze raz krótko: nasz system zbiera restauracjom nawet 200 nowych opinii w Google miesięcznie, ` +
     `a goście wracają po pieczątki w karcie, którą mają w telefonie. Pierwsze 14 dni są testowe i za darmo. ` +
-    `Odpiszcie jednym słowem (${KEYWORD}), a podeślę więcej informacji. ` +
+    `Odpiszcie jednym słowem „${KEYWORD}”, a podeślę więcej informacji. ` +
     `Jeśli temat nie gra, dajcie znać, nie będę spamować. ${SIGNATURE}`
   );
 }
@@ -94,7 +94,7 @@ export const REPLIES: ReplyTemplate[] = [
   {
     key: "film",
     label: "Odpisał → filmik",
-    when: `Na każdą pierwszą odpowiedź (${KEYWORD} wysyła ManyChat sam; ręcznie, gdy ktoś odpisze inaczej).`,
+    when: `Na każdą pierwszą odpowiedź (słowo ${KEYWORD} obsługuje ManyChat sam; ręcznie, gdy ktoś odpisze inaczej).`,
     text:
       `Dzięki za odpowiedź. Wszystkie szczegóły są tu: ${filmLink()}. ` +
       `Znajdziecie tam minutowy filmik, prawdziwe liczby z jednej z naszych restauracji i cennik. ` +
@@ -107,7 +107,7 @@ export const REPLIES: ReplyTemplate[] = [
     when: "Gdy proszą o szczegóły zamiast spotkania.",
     text:
       `Jasne. Najważniejsze: system sam prosi zadowolonych gości o opinię w Google, u jednej z naszych ` +
-      `sieci to nawet 300 nowych opinii miesięcznie. A działa to tak: gość dodaje Waszą kartę do Apple ` +
+      `sieci to nawet 200 nowych opinii miesięcznie. A działa to tak: gość dodaje Waszą kartę do Apple ` +
       `lub Google Wallet, bez aplikacji. Przy wizycie dostaje pieczątkę przez NFC albo QR, a po kilku ` +
       `odbiera nagrodę. Wy widzicie, kto wraca, i możecie wysłać powiadomienie na jego telefon. ` +
       `Pierwsze 14 dni są testowe i za darmo. ` +

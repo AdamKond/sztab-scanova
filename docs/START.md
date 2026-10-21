@@ -33,7 +33,7 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 ## 3. Stan Sztabu (2026-09-27)
 
 - **Zimny DM od 2026-10-21: jeden tekst dla wszystkich** (`COLD_DM` w `lib/crm/dm-copy.ts`), bez personalizacji
-  per nisza. Hook = opinie w Google (nawet 300 miesięcznie), słowo kluczowe dla ManyChata: `(KARTA)`.
+  per nisza. Hook = opinie w Google (nawet 200 miesięcznie), słowo kluczowe dla ManyChata: „KARTA”.
 - Przebudowa 2026-09-21: 18 ekranów → 4. Teksty DM: `lib/crm/dm-copy.ts`. Kroki rozmowy: `lib/crm/steps.ts`.
   Kolejka DM i etapy lokalu: `lib/crm/blitz.ts`. Mutacje: `lib/crm/actions.ts`.
 - **Baza: 732 lokale** (Lublin ~280, Rzeszów ~95, Kielce ~79, Radom ~66, Zamość, Biała Podlaska, Puławy,
@@ -84,6 +84,7 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 |---|---|
 | `npx tsx scripts/import-leady-baza.ts <plik-lub-katalog> --wykonaj` | import lokali do Bazy (format `@handle \| Nazwa \| Miasto \| nisza \| obs \| hook`; bez `--wykonaj` = dry-run) |
 | `npx tsx scripts/popraw-hooki.ts <plik> --wykonaj` | nadpisuje nazwę/miasto/hook po handle (pomija wysłane) |
+| `npx tsx scripts/duplikaty-bazy.ts` | raport duplikatów w Bazie: ten sam @handle, ta sama nazwa, ten sam szyld w mieście (tylko czyta) |
 | `npx tsx scripts/create-user.ts <email> <hasło>` | nowe konto do Sztabu (+ dopisać do `STAFF_EMAILS`/`STAFF_USER_IDS` na Vercelu) |
 | `/api/health` | stan bazy i migracji |
 | `/api/export/{rozmowy,aktywnosci,historia,baza}` | eksport CSV (po zalogowaniu) |

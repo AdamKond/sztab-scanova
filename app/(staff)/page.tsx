@@ -1,5 +1,6 @@
-// Dziś — jedyny ekran, który otwiera się rano. Trzy listy w kolejności
-// ważności: odpowiedzi/rozmowy do ruszenia, follow-upy, nowe DM-y.
+// Dziś — jedyny ekran, który otwiera się rano. Trzy listy w kolejności, jakiej
+// chciał Adam (2026-10-21): najpierw nowe DM-y (wchodzi i od razu wysyła),
+// potem rozmowy do ruszenia, na końcu follow-upy.
 
 import Link from "next/link";
 import Topbar from "@/components/shell/Topbar";
@@ -52,6 +53,13 @@ export default async function DzisPage() {
         </div>
 
         <Card>
+          <CardTitle action={<Link href="/baza" className={buttonClass("ghost", "sm")}>Cała Baza →</Link>}>
+            Nowe DM-y na dziś
+          </CardTitle>
+          <DmQueue done={done} todo={todo} now={now} />
+        </Card>
+
+        <Card>
           <CardTitle count={due.all.length} action={<Link href="/rozmowy" className={buttonClass("ghost", "sm")}>Wszystkie rozmowy →</Link>}>
             Rozmowy do ruszenia
           </CardTitle>
@@ -82,13 +90,6 @@ export default async function DzisPage() {
               ))}
             </ul>
           )}
-        </Card>
-
-        <Card>
-          <CardTitle action={<Link href="/baza" className={buttonClass("ghost", "sm")}>Cała Baza →</Link>}>
-            Nowe DM-y na dziś
-          </CardTitle>
-          <DmQueue done={done} todo={todo} now={now} />
         </Card>
       </div>
     </>
