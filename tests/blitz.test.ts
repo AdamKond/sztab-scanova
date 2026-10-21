@@ -128,6 +128,18 @@ describe("blitzStage", () => {
   });
 });
 
+describe("kolejność na liście", () => {
+  it("w niszy najpierw nie zaczepione, potem wysłane, na końcu rozmowy", () => {
+    const [g] = groupBlitzByNiche([
+      row({ instagram: "wyslany", niche: "pizza", followers: 9000, sent_at: "2026-09-20T10:00:00Z" }),
+      row({ instagram: "rozmowa", niche: "pizza", followers: 8000, sent_at: "2026-09-19T10:00:00Z", lead_id: "l1" }),
+      row({ instagram: "nowy-maly", niche: "pizza", followers: 100 }),
+      row({ instagram: "nowy-duzy", niche: "pizza", followers: 5000 }),
+    ]);
+    expect(g.rows.map((r) => r.instagram)).toEqual(["nowy-duzy", "nowy-maly", "wyslany", "rozmowa"]);
+  });
+});
+
 describe("countFollowupsDue / followupQueue / blitzCounts", () => {
   const sentAt = "2026-09-10T10:00:00Z";
   const now = Date.parse(sentAt) + (FOLLOWUP_AFTER_DAYS + 1) * DAY;

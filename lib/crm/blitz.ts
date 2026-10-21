@@ -128,6 +128,15 @@ export function blitzNicheLabel(niche: string): string {
 
 const NICHE_INDEX = new Map<string, number>(BLITZ_NICHE_ORDER.map((n, i) => [n, i]));
 
+/**
+ * Ranga na liście: 0 = jeszcze nie zaczepiony (robota), 1 = DM wysłany, czeka,
+ * 2 = już rozmowa. Decyzja Adama z 2026-10-21: nie zaczepione zawsze na górze.
+ */
+export function blitzSortRank(row: CrmDmBlitz): number {
+  if (row.lead_id) return 2;
+  return row.sent_at ? 1 : 0;
+}
+
 /** Porządek uderzenia: nisza wg listy, w niszy większe profile pierwsze. */
 export function compareBlitz(a: CrmDmBlitz, b: CrmDmBlitz): number {
   return (
@@ -145,8 +154,9 @@ export type BlitzGroup = {
 };
 
 /**
- * Grupuje wpisy po niszy w kolejności uderzenia; w grupie najpierw największe
- * profile (followers malejąco). Nisze spoza znanej listy lądują na końcu.
+ * Grupuje wpisy po niszy w kolejności uderzenia; w grupie najpierw lokale bez
+ * wysłanego DM-a (potem zaczepione, na końcu rozmowy), a w ramach etapu
+ * największe profile. Nisze spoza znanej listy lądują na końcu.
  */
 export function groupBlitzByNiche(rows: CrmDmBlitz[]): BlitzGroup[] {
   const byNiche = new Map<string, CrmDmBlitz[]>();
@@ -160,7 +170,7 @@ export function groupBlitzByNiche(rows: CrmDmBlitz[]): BlitzGroup[] {
   );
   return niches.map((niche) => {
     const list = byNiche.get(niche)!;
-    list.sort(compareBlitz);
+    list.sort((a, b) => blitzSortRank(a) - blitzSortRank(b) || compareBlitz(a, b));
     return {
       niche,
       label: blitzNicheLabel(niche),

@@ -1,15 +1,24 @@
 "use client";
 
 // Kolejka nowych DM-ów na Dziś: cel dzienny (30), filtry po niszy i mieście,
-// „więcej” gdy chcecie pisać dalej. Wysłane dziś zostają na górze, żeby dało
-// się wrócić do profilu albo cofnąć pomyłkę.
+// „więcej” gdy chcecie pisać dalej.
+//
+// Decyzja Adama z 2026-10-21: na samej górze są lokale JESZCZE NIE ZACZEPIONE
+// (to one są robotą na dziś). Wysłane dziś zjeżdżają do osobnej sekcji niżej —
+// dalej można tam wrócić do profilu, odhaczyć odpowiedź albo cofnąć pomyłkę.
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import DmRow from "@/components/baza/DmRow";
 import EmptyState from "@/components/ui/EmptyState";
 import { buttonClass } from "@/components/ui/Button";
-import { blitzNicheLabel, BLITZ_NICHE_ORDER, DAILY_DM_LIMIT, type CrmDmBlitz } from "@/lib/crm/blitz";
+import {
+  blitzNicheLabel,
+  BLITZ_NICHE_ORDER,
+  DAILY_DM_LIMIT,
+  FOLLOWUP_AFTER_DAYS,
+  type CrmDmBlitz,
+} from "@/lib/crm/blitz";
 
 const STEP = 30;
 
@@ -83,9 +92,14 @@ export default function DmQueue({ done, todo, now }: { done: CrmDmBlitz[]; todo:
         ) : null}
       </div>
 
-      {done.length + next.length === 0 ? (
+      {next.length === 0 ? (
         filtered.length === 0 && todo.length > 0 ? (
           <EmptyState title="Nic nie pasuje do filtra" hint="Zmień niszę albo miasto." />
+        ) : room === 0 ? (
+          <EmptyState
+            title={`Dzienny limit ${target} DM-ów zrobiony`}
+            hint="Na dziś wystarczy, jutro kolejka ułoży się sama. Jeśli musisz pisać dalej, dobij porcję przyciskiem niżej."
+          />
         ) : (
           <EmptyState
             title="Baza jest wyczerpana"
@@ -95,9 +109,6 @@ export default function DmQueue({ done, todo, now }: { done: CrmDmBlitz[]; todo:
         )
       ) : (
         <ul className="-mx-3 divide-y divide-line/70">
-          {done.map((r) => (
-            <DmRow key={r.id} row={r} now={now} />
-          ))}
           {next.map((r) => (
             <DmRow key={r.id} row={r} now={now} />
           ))}
@@ -111,6 +122,26 @@ export default function DmQueue({ done, todo, now }: { done: CrmDmBlitz[]; todo:
           </button>
           <span className="text-[13px] text-ink-3">jeszcze {remaining} w kolejce</span>
         </div>
+      ) : null}
+
+      {done.length > 0 ? (
+        <section className="mt-6 border-t border-line/70 pt-4">
+          <div className="mb-1 flex items-baseline justify-between px-1">
+            <h3 className="text-[13px] font-semibold uppercase tracking-[0.08em] text-ink-2">
+              Wysłane dziś — czekają na odpowiedź
+            </h3>
+            <span className="tabular text-[12px] text-ink-3">{done.length}</span>
+          </div>
+          <p className="mb-2 px-1 text-[12.5px] text-ink-3">
+            Follow-up wypadnie automatycznie po {FOLLOWUP_AFTER_DAYS} dniach ciszy. Jeśli ktoś odpisze wcześniej,
+            kliknij „Odpowiedział”.
+          </p>
+          <ul className="-mx-3 divide-y divide-line/70">
+            {done.map((r) => (
+              <DmRow key={r.id} row={r} now={now} />
+            ))}
+          </ul>
+        </section>
       ) : null}
 
       <p className="mt-4 text-[12.5px] text-ink-3">
