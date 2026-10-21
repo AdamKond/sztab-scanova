@@ -32,10 +32,13 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 
 ## 3. Stan Sztabu (2026-09-27)
 
+- **Zimny DM od 2026-10-21: jeden tekst dla wszystkich** (`COLD_DM` w `lib/crm/dm-copy.ts`), bez personalizacji
+  per nisza. Hook = opinie w Google (nawet 300 miesięcznie), słowo kluczowe dla ManyChata: `(KARTA)`.
 - Przebudowa 2026-09-21: 18 ekranów → 4. Teksty DM: `lib/crm/dm-copy.ts`. Kroki rozmowy: `lib/crm/steps.ts`.
   Kolejka DM i etapy lokalu: `lib/crm/blitz.ts`. Mutacje: `lib/crm/actions.ts`.
 - **Baza: 732 lokale** (Lublin ~280, Rzeszów ~95, Kielce ~79, Radom ~66, Zamość, Biała Podlaska, Puławy,
-  Chełm, Biłgoraj, mniejsze miasta), ~500 z własnym pierwszym zdaniem („HOOK:” w `dm_text`).
+  Chełm, Biłgoraj, mniejsze miasta), ~500 z własnym pierwszym zdaniem („HOOK:” w `dm_text`) — od 2026-10-21
+  te hooki NIE wchodzą już do DM-a (zostają jako notatka o lokalu), bo wszyscy dostają jeden wspólny tekst.
   Partia z 2026-10-05: `docs/research-2026-10/leady-2026-10-05.txt` (30 zaimportowanych, kampania `baza-2026-10`,
   + 20 potwierdzonych w sekcji REZERWA do następnej partii, 3 DO DECYZJI, + NIEPEWNE).
   Wysłane DM-y na 22.09: 2 (Rykowisko, Canotto). Reszta czeka.
@@ -93,7 +96,8 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
   handle'i nie da się sprawdzić fetchem. **Działa za to WebSearch `site:instagram.com <handle> <miasto>`** — tytuł
   wyniku „Nazwa (@handle) • Instagram” z liczbą obserwujących potwierdza profil (tak zweryfikowano partię 2026-10-05).
   Drugie źródło: `curl` strony własnej lokalu i grep `instagram.com/`. Bezpiecznik w Sztabie: „Wyślij DM” otwiera profil; nieistniejący → „Usuń”.
-- Agenci Opus czasem piszą hooki **bez polskich znaków** — sprawdzać (`[ąćęłńóśźż]`) i poprawiać `popraw-hooki.ts`.
+- Agenci Opus czasem piszą hooki **bez polskich znaków** — sprawdzać (`[ąćęłńóśźż]`) i poprawiać `popraw-hooki.ts`
+  (mniej krytyczne od 2026-10-21: hook nie trafia już do treści DM-a).
 - Kopiowanie do schowka w Sztabie musi być synchroniczne PRZED `window.open` (nowa karta zabiera fokus).
 - Cache Vercela dla strony: po pushu sprawdzić, czy nowa wersja jest na żywo; jeśli nie — `npx vercel --prod`.
 - PowerShell w narzędziu: kasowanie plików ze skryptu `.ps1` (inline `Remove-Item` bywa blokowane);

@@ -62,7 +62,7 @@ export default function AddLokal() {
             <Input id="al-followers" name="followers" inputMode="numeric" />
           </div>
           <div className="sm:col-span-2">
-            <Label htmlFor="al-hook">Pierwsze zdanie o tym lokalu (opcjonalnie — zastąpi hook niszy)</Label>
+            <Label htmlFor="al-hook">Pierwsze zdanie o tym lokalu (opcjonalnie — notatka, DM-y są jednakowe dla wszystkich)</Label>
             <Input id="al-hook" name="hook" placeholder="np. Kolejka po Wasze croissanty w sobotę to już legenda." />
           </div>
           <div className="flex items-end">

@@ -1,23 +1,22 @@
-// Teksty wiadomości: pierwszy DM per nisza, follow-up po ciszy i gotowe
+// Teksty wiadomości: jeden wspólny zimny DM, follow-up po ciszy i gotowe
 // odpowiedzi na typowe reakcje. Czysty moduł bez dostępu do bazy — używa go
 // serwer (kolejka na Dziś) i klient (kopiowanie do schowka).
 //
-// Szkielet pierwszego DM-a (ustalony z Adamem, 2026-10-20):
-// hook = ponad 300 nowych opinii w Google co miesiąc (najmocniejsza liczba idzie
-// na początek) → zdanie o NICH (hook niszy albo z researchu) → co robimy (cyfrowe
-// karty lojalnościowe w telefonie) → dowód (nasi klienci) → pierwsze 14 dni
-// testowe za darmo dla każdej lokalizacji → pytanie i słowo kluczowe (KARTA),
-// które uruchamia ManyChata. Słowo jest w nawiasie, żeby lead widział, co wpisać.
+// Decyzja Adama z 2026-10-21: KONIEC z personalizacją pierwszego DM-a. Wszyscy
+// dostają ten sam tekst (łatwiej wysyłać masowo, nie trzeba researchu pod hook).
+// Szkielet: hook = opinie w Google (nawet 300 miesięcznie) → co robimy (cyfrowa
+// karta w Apple/Google Wallet, pieczątki za wizyty) → kto wraca + skąd te opinie
+// → dowód (nasi klienci) → 14 dni testowych za darmo dla każdej lokalizacji →
+// pytanie i słowo kluczowe (KARTA) w nawiasie, bo to ono uruchamia ManyChata.
 // Bez linku w pierwszej wiadomości (linki od obcych kont lądują w spamie).
 
 export const SIGNATURE = "Adam";
 
-/** Słowo kluczowe, które lead odpisuje, żeby dostać filmik (wyzwalacz w ManyChacie). */
+/** Słowo kluczowe, które lead odpisuje, żeby dostać szczegóły (wyzwalacz w ManyChacie). */
 export const KEYWORD = "KARTA";
 
 /** Dowód społeczny — bez miast, same nazwy. */
-const PROOF_RESTAURANT = "MusiSushi i Kago Sushi";
-const PROOF_CAFE = "Yōkai Matcha, MusiSushi i Kago Sushi";
+const PROOF = "MusiSushi i Kago Sushi";
 
 /**
  * Linki wysyłane dopiero PO odpowiedzi. Filmik ustawia się zmienną
@@ -30,51 +29,48 @@ export const LINKS = {
   film: (process.env.NEXT_PUBLIC_FILM_URL?.trim() || null) as string | null,
 };
 
-const CAFE_NICHES = new Set(["kawiarnia", "cukiernia/lody", "boba/matcha", "vegan", "sniadania/brunch"]);
+/**
+ * Nisze w Bazie. Od 2026-10-21 nie zmieniają treści DM-a (wszyscy mają ten sam
+ * tekst) — służą tylko do segmentacji: filtry w Bazie, sekcje w kolejce na Dziś.
+ */
+export const NICHES = [
+  "pizza",
+  "burgery",
+  "kebab/street food",
+  "kawiarnia",
+  "cukiernia/lody",
+  "sniadania/brunch",
+  "sushi/azja",
+  "boba/matcha",
+  "vegan",
+  "wloska",
+  "restauracja",
+];
 
-const HOOKS: Record<string, string> = {
-  pizza: "Piątkowa pizza to nawyk. Pytanie, czy ludzie mają go u Was, czy u konkurencji.",
-  burgery: "Co ile wracają Wasi goście? Da się ten czas skrócić.",
-  "kebab/street food": "Stały klient na lunch to najtańszy klient, bo nie trzeba go zdobywać drugi raz.",
-  kawiarnia: "Papierowa karta na kawę ginie w portfelu, a telefon nie.",
-  "cukiernia/lody": "Sobotnie zakupy u Was to dla wielu osób rytuał, a taki rytuał da się wzmocnić.",
-  "sniadania/brunch": "W weekend macie kolejkę. Gdzie ci sami ludzie jedzą we wtorek?",
-  "sushi/azja": "Ile osób było u Was raz, pochwaliło jedzenie i nie wróciło?",
-  "boba/matcha": "Wasi klienci mają wszystko w telefonie. Karta lojalnościowa też powinna tam być.",
-  vegan: "Goście lokali wege są wierni, jeśli mają powód, żeby wracać.",
-  wloska: "Za nowego gościa płacicie reklamą. Stałemu wystarczy dać powód, żeby wrócił.",
-  restauracja: "Za nowego gościa płacicie reklamą. Stałemu wystarczy dać powód, żeby wrócił.",
-};
-
-export const NICHES = Object.keys(HOOKS);
+/** Jeden zimny DM dla wszystkich lokali. Hook = opinie w Google. */
+export const COLD_DM =
+  `O! Cześć. Zbieramy restauracjom nawet 300 nowych opinii w Google miesięcznie. ` +
+  `Robimy cyfrowe karty lojalnościowe: gość dodaje Waszą kartę do Apple lub Google Wallet, ` +
+  `bez żadnej aplikacji, i zbiera pieczątki za wizyty. ` +
+  `Wy widzicie, kto do Was wraca, a system sam prosi zadowolonych gości o opinię w Google. Stąd te 300. ` +
+  `Korzystają już z tego m.in. ${PROOF}. ` +
+  `Dla każdej lokalizacji pierwsze 14 dni są testowe i za darmo, więc sprawdzicie bez ryzyka, czy Wam się to opłaca. ` +
+  `Chcecie poznać szczegóły? Odpiszcie jednym słowem (${KEYWORD}), a podeślę więcej informacji. ${SIGNATURE}`;
 
 /**
- * Pierwszy DM: hook z opiniami, zdanie o nich, co robimy, dowód, 14 dni
- * testowych za darmo, pytanie i słowo kluczowe.
- * `customHook` — zdanie o TYM lokalu (z researchu); bez niego hook per nisza.
+ * Pierwszy DM. Argumenty zostały dla zgodności z Bazą (nisza, hook z researchu),
+ * ale treść jest jedna dla wszystkich — patrz COLD_DM.
  */
-export function firstDm(niche: string, customHook?: string | null): string {
-  const hook = customHook?.trim() || HOOKS[niche] || HOOKS.restauracja;
-  const proof = CAFE_NICHES.has(niche) ? PROOF_CAFE : PROOF_RESTAURANT;
-  return (
-    `Cześć! Jedna z sieci, z którymi pracujemy, zbiera ponad 300 nowych opinii w Google co miesiąc. ` +
-    `${hook} ` +
-    `Robimy cyfrowe karty lojalnościowe: gość dodaje Waszą kartę do Apple lub Google Wallet, bez aplikacji, ` +
-    `zbiera pieczątki za wizyty i wraca po nagrodę. Wy widzicie, kto wraca, a system sam prosi zadowolonych ` +
-    `gości o opinię w Google. Stąd te 300. ` +
-    `Korzystają już m.in. ${proof}. ` +
-    `Pierwsze 14 dni są testowe i za darmo dla każdej lokalizacji, potem sami decydujecie. ` +
-    `Myśleliście o czymś takim? Jeśli chcecie szczegóły, odpiszcie jednym słowem (${KEYWORD}), a podeślę krótki filmik. ` +
-    `Nic nie instalujecie. ${SIGNATURE}`
-  );
+export function firstDm(_niche?: string, _customHook?: string | null): string {
+  return COLD_DM;
 }
 
-/** Follow-up po 3 dniach ciszy: krótko, prośba o jedno słowo, jasne wyjście. */
+/** Follow-up po 3 dniach ciszy: ta sama obietnica, prośba o jedno słowo, jasne wyjście. */
 export function followupDm(): string {
   return (
-    `Cześć, jeszcze raz krótko: u jednej z naszych sieci system zbiera ponad 300 nowych opinii w Google co miesiąc, ` +
+    `Cześć, jeszcze raz krótko: nasz system zbiera restauracjom nawet 300 nowych opinii w Google miesięcznie, ` +
     `a goście wracają po pieczątki w karcie, którą mają w telefonie. Pierwsze 14 dni są testowe i za darmo. ` +
-    `Odpiszcie jednym słowem (${KEYWORD}), a wyślę minutowy filmik, jak to działa. ` +
+    `Odpiszcie jednym słowem (${KEYWORD}), a podeślę więcej informacji. ` +
     `Jeśli temat nie gra, dajcie znać, nie będę spamować. ${SIGNATURE}`
   );
 }
@@ -110,10 +106,11 @@ export const REPLIES: ReplyTemplate[] = [
     label: "„Wyślij więcej info”",
     when: "Gdy proszą o szczegóły zamiast spotkania.",
     text:
-      `Jasne. Gość dodaje Waszą kartę do Apple lub Google Wallet, bez aplikacji. Przy wizycie ` +
-      `dostaje pieczątkę przez NFC albo QR, a po kilku odbiera nagrodę. Wy widzicie, kto wraca, ` +
-      `i możecie wysłać powiadomienie na jego telefon. System prosi też zadowolonych gości o opinię ` +
-      `w Google: u jednej z naszych sieci to ponad 300 nowych opinii co miesiąc. Pierwsze 14 dni są testowe i za darmo. ` +
+      `Jasne. Najważniejsze: system sam prosi zadowolonych gości o opinię w Google, u jednej z naszych ` +
+      `sieci to nawet 300 nowych opinii miesięcznie. A działa to tak: gość dodaje Waszą kartę do Apple ` +
+      `lub Google Wallet, bez aplikacji. Przy wizycie dostaje pieczątkę przez NFC albo QR, a po kilku ` +
+      `odbiera nagrodę. Wy widzicie, kto wraca, i możecie wysłać powiadomienie na jego telefon. ` +
+      `Pierwsze 14 dni są testowe i za darmo. ` +
       `Reszta jest na ${LINKS.www}. Najszybciej pokazać to na spotkaniu online (15 minut) albo wpadnę do Was na 5 minut. Co wolicie?`,
   },
   {

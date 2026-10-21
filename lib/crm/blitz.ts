@@ -74,7 +74,8 @@ export function blitzCounts(rows: CrmDmBlitz[], nowMs: number): Record<BlitzStag
   return counts;
 }
 
-/** Prefiks w dm_text oznaczający spersonalizowany hook (reszta DM-a z szablonu niszy). */
+/** Prefiks w dm_text oznaczający hook z researchu. Od 2026-10-21 NIE wchodzi do DM-a
+ * (wszyscy dostają ten sam tekst) — zostaje w Bazie jako notatka o lokalu. */
 export const HOOK_PREFIX = "HOOK:";
 
 export function customHookOf(row: Pick<CrmDmBlitz, "dm_text">): string | null {
@@ -82,9 +83,9 @@ export function customHookOf(row: Pick<CrmDmBlitz, "dm_text">): string | null {
   return t.startsWith(HOOK_PREFIX) ? t.slice(HOOK_PREFIX.length).trim() || null : null;
 }
 
-/** Tekst pierwszego DM-a: szablon niszy z hookiem lokalu, jeśli research go dał. */
-export function firstDmText(row: Pick<CrmDmBlitz, "niche" | "dm_text">): string {
-  return firstDm(row.niche, customHookOf(row));
+/** Tekst pierwszego DM-a: jeden wspólny dla wszystkich lokali (patrz COLD_DM). */
+export function firstDmText(_row?: Pick<CrmDmBlitz, "niche" | "dm_text">): string {
+  return firstDm();
 }
 
 export function followupDmText(): string {

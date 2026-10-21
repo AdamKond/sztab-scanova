@@ -155,7 +155,7 @@ describe("countFollowupsDue / followupQueue / blitzCounts", () => {
 });
 
 describe("teksty DM", () => {
-  it("pierwszy DM: bez linku, z darmowym miesiącem, opiniami Google i pytaniem na końcu", () => {
+  it("pierwszy DM: bez linku, z 14 dniami za darmo, opiniami Google i słowem (KARTA)", () => {
     const text = firstDmText(row({ niche: "pizza" }));
     expect(text.length).toBeLessThan(800);
     expect(text).not.toMatch(/https?:|\.tech|\.pl\b/);
@@ -169,23 +169,18 @@ describe("teksty DM", () => {
     expect(text).not.toContain("5 minut");
   });
 
-  it("hook z researchu (dm_text = HOOK: ...) zastępuje hook niszy, reszta bez zmian", () => {
-    const plain = firstDmText(row({ niche: "pizza" }));
-    const custom = firstDmText(row({ niche: "pizza", dm_text: "HOOK: Wasza neapolitańska to legenda na Czubach." }));
-    expect(custom).toMatch(/^Cześć! .*300 nowych opinii/);
-    expect(custom).toContain("Wasza neapolitańska to legenda na Czubach. Robimy");
-    expect(custom).not.toContain("Piątkowa pizza");
-    expect(custom.slice(custom.indexOf("Robimy"))).toBe(plain.slice(plain.indexOf("Robimy")));
-    // Stary długi tekst z zasiewu (bez prefiksu) jest ignorowany.
-    expect(firstDmText(row({ niche: "pizza", dm_text: "Cześć Pizza Lover! Piątkowa..." }))).toBe(plain);
+  it("hook o opiniach otwiera wiadomość", () => {
+    expect(firstDmText(row({ niche: "pizza" }))).toMatch(/^O! Cześć\. Zbieramy restauracjom nawet 300 nowych opinii/);
   });
 
-  it("każda nisza z Bazy ma swój hook, nieznana dostaje ogólny", () => {
-    const pizza = firstDmText(row({ niche: "pizza" }));
-    const cafe = firstDmText(row({ niche: "kawiarnia" }));
-    const unknown = firstDmText(row({ niche: "food truck" }));
-    expect(pizza).not.toBe(cafe);
-    expect(unknown).toBe(firstDmText(row({ niche: "restauracja" })));
+  it("jeden tekst dla wszystkich: nisza ani hook z researchu go nie zmieniają", () => {
+    const plain = firstDmText(row({ niche: "pizza" }));
+    expect(firstDmText(row({ niche: "kawiarnia" }))).toBe(plain);
+    expect(firstDmText(row({ niche: "food truck" }))).toBe(plain);
+    expect(firstDmText(row({ niche: "restauracja" }))).toBe(plain);
+    expect(firstDmText(row({ niche: "pizza", dm_text: "HOOK: Wasza neapolitańska to legenda na Czubach." }))).toBe(plain);
+    // Stary długi tekst z zasiewu też jest ignorowany.
+    expect(firstDmText(row({ niche: "pizza", dm_text: "Cześć Pizza Lover! Piątkowa..." }))).toBe(plain);
   });
 
   it("follow-up prosi o jedno słowo i zostawia wyjście", () => {
