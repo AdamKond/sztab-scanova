@@ -61,6 +61,10 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 - **ManyChat (decyzja 2026-10-12: podłączamy)**: plan i instrukcja klik-po-kliku w `docs/manychat-plan.md`;
   webhook `POST /api/inbound/ig-reply` działa, token `INBOUND_WEBHOOK_SECRET` wygenerowany na nowo 2026-10-12
   (na Vercelu jako sensitive, kopia tylko w `.env.local` na Macu); test `sh scripts/test-ig-reply.sh <handle>`.
+- **Strona do zimnych maili: https://scanova.tech/restauracje** (2026-10-29; repo `scanova-tech`, `restauracje.html` = kopia `/film`
+  pod odbiorcę z maila; parametry `?l=Nazwa&b=pizzeria&t=restauracja`). Mail HTML do wklejenia w Gmaila: `mail-restauracje.html`
+  (https://scanova.tech/mail-restauracje), tekst = `docs/mail-zimny.md` wariant C. Deploy: commit tylko tych plików + push na `main`
+  (w klonie strony na Macu bywają cudze niezacommitowane zmiany; nie robić wtedy `npx vercel --prod` z całego drzewa).
 - **Podstrona z filmikiem dla leadów: https://scanova.tech/film** (repo `scanova-tech`, `film.html`; klon przez SSH; deploy `npx vercel --prod`
   w klonie strony). Od 2026-10-15 „Umów spotkanie” = modal z lejkiem (rodzaj lokalu, lokale, klientów dziennie, termin, pora,
   kontakt) → lead na scanova.support@gmail.com przez formsubmit (jak lejek na stronie). Zaproszenie Google Meet Adam wysyła ręcznie

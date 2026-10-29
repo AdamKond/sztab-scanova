@@ -1,4 +1,4 @@
-# Zimny mail do lokalu — szablony (aktualizacja 2026-10-21)
+# Zimny mail do lokalu — szablony (aktualizacja 2026-10-29)
 
 Zasady: krótko (właściciel czyta na telefonie między zamówieniami), jedna obietnica,
 jeden link, jedno pytanie. Od 2026-10-21 zaczynamy od opinii w Google (tak jak zimny DM,
@@ -8,7 +8,46 @@ Wysyłać z Waszego imiennego adresu, nie z „kontakt@”. Maks. 30–40 dzienn
 albo z prostego narzędzia (Gmail + szablon). Follow-up po 4 dniach, potem koniec.
 Pisać wyłącznie na firmowe adresy opublikowane przez lokal (RODO / PKE).
 
-## Wariant A — obietnica (domyślny)
+## Wariant C — ze stroną scanova.tech/restauracje (od 2026-10-29, domyślny do masowej wysyłki)
+
+Zamiast długiego maila: krótki tekst i jeden przycisk na stronę, która „jest mailem” —
+film 76 s, jak to działa, liczby z panelu restauracji, podgląd karty w barwach lokalu,
+„jak zaczynamy” (3 dni), kalkulator, cennik, umawianie spotkania. Strona to `restauracje.html`
+w repo strony (kopia `/film` pod zimnego odbiorcę z maila: powitanie, odpowiedź słowem „KARTA”
+zamiast Instagrama, FAQ „dlaczego piszecie”).
+
+**Link personalizujemy parametrami:** `https://scanova.tech/restauracje?l=Nazwa%20lokalu&b=pizzeria`
+- `l` = nazwa lokalu (powitanie „Dzień dobry, Nazwa!”, karta w podglądzie, formularze wypełnione),
+- `b` = `kawiarnia` · `pizzeria` · `burgery` · `sushi` · `cukiernia` · `kebab` (ustawia kalkulator),
+- `t` = `restauracja` · `klub` · `beauty` · `male` (ustawia cennik; domyślnie restauracja).
+
+**Wersja HTML do wklejenia w Gmaila:** `mail-restauracje.html` w repo strony
+(https://scanova.tech/mail-restauracje → Cmd+A, Cmd+C, wkleić; podmienić [NAZWA LOKALU], link i [telefon]).
+
+**Temat:** Nawet 200 nowych opinii w Google miesięcznie
+
+Dzień dobry,
+
+zbieramy restauracjom nawet 200 nowych opinii w Google miesięcznie.
+
+Robimy cyfrowe karty lojalnościowe: gość dodaje kartę [NAZWA LOKALU] do Apple lub Google Wallet,
+bez żadnej aplikacji, zbiera pieczątki za wizyty i wraca po nagrodę. Wy widzicie, kto wraca,
+a system sam prosi zadowolonych gości o opinię w Google. Korzystają już z tego m.in. MusiSushi i Kago Sushi.
+
+Jak to działa, ile dało jednej z restauracji i ile kosztuje, jest na jednej stronie, razem
+z minutowym filmem: https://scanova.tech/restauracje?l=[Nazwa]&b=[branża]
+
+Pierwsze 14 dni są za darmo, dla każdej lokalizacji, bez umowy na czas określony.
+Ustawiamy wszystko w 1–3 dni, Wy nic nie instalujecie.
+
+Chcecie poznać szczegóły? Odpiszcie jednym słowem „KARTA”, a podeślę więcej informacji.
+Mogę też wpaść na 5 minut i pokazać wszystko na Waszym telefonie.
+
+Pozdrawiam,
+Adam Kondracki
+SCANOVA · Lublin · [telefon]
+
+## Wariant A — obietnica (poprzedni domyślny, bez strony)
 
 **Temat:** Nawet 200 nowych opinii w Google miesięcznie
 
