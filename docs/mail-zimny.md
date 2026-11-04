@@ -107,7 +107,7 @@ Adam
 ## Po odpowiedzi
 
 Te same gotowe odpowiedzi co w Sztabie (rozmowa → „Gotowe odpowiedzi”): filmik,
-„ile kosztuje” (od 250 zł, z opiniami 339 zł), „czy to się opłaca” (kalkulator),
+„ile kosztuje” (Start 99 zł netto, Rozwój 199 zł netto), „czy to się opłaca” (kalkulator),
 umawiam wizytę, po demo → 14 dni testowych.
 
 ## Parametry linku do kalkulatora

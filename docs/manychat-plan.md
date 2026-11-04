@@ -138,7 +138,7 @@ Quick Replies i odpowiedzi (każda kończy się tym samym pytaniem o spotkanie):
   ```
 - „Cena” →
   ```
-  Pierwsze 14 dni za darmo. Potem 250 zł miesięcznie za kartę i pieczątki, 339 zł z opiniami Google i automatycznymi powiadomieniami. Stojak, karty i wdrożenie w cenie, bez płatności online.
+  Pierwsze 14 dni za darmo. Potem 99 zł netto miesięcznie (Start: karta, pieczątki, opinie Google, 4 kampanie) albo 199 zł netto (Rozwój: kilka lokali, dwie karty, 8 kampanii, grafiki pod lokal). Bez limitu klientów, faktura co miesiąc, bez płatności online.
   Cennik i kalkulator są na https://scanova.tech/film. Pokazać to na żywo na Waszym lokalu? 15 minut online.
   ```
 Pod każdą z tych odpowiedzi Quick Replies: „Umawiam się” / „Mam pytanie” / „Nie teraz”.

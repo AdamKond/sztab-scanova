@@ -46,7 +46,7 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
   potwierdzone na stronach źródłowych — kolumny `*_status`). Szablony maili: `docs/mail-zimny.md`.
 - ~120 lokali „NIEPEWNE” (nazwy bez potwierdzonego Instagrama): sekcje `### NIEPEWNE` w
   `docs/research-2026-09/*.txt` i `runda-2/`. Do domknięcia w sesji ze świeżym limitem WebSearch.
-- Cennik (ze strony): Standard 250 zł, **Pro 339 zł** (opinie Google — to plan, który obiecują DM-y), Max 590 zł;
+- Cennik (ze strony, od 2026-11-04): **Start 99 zł netto** (1 lokal, 4 kampanie/mies., opinie Google) i **Rozwój 199 zł netto** (kilka lokali, dwie karty, 8 kampanii, grafiki pod lokal); bez limitu klientów, faktura bez karty;
   /mies. za lokal, bez umowy, wdrożenie do 3 dni, stojak i karty w cenie. **Od 2026-10-13: pierwsze 14 dni za darmo**
   (decyzja Adama; DM-y, maile, tablica i Sztab już tak mówią; strona scanova.tech nadal ma „30 dni”, repo `scanova-tech`
   nie jest sklonowane na Macu, do poprawienia osobno).
