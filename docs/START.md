@@ -1,6 +1,6 @@
 # START — jak wrócić do pracy na nowym komputerze
 
-Ostatnia aktualizacja: 2026-09-27. Autor notatek: Claude (sesja 21–22 września 2026).
+Ostatnia aktualizacja: 2026-11-17 (Maile). Autor notatek: Claude (sesja 21–22 września 2026).
 
 ## 1. Nowy komputer w 10 minut
 
@@ -69,6 +69,10 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
   w klonie strony). Od 2026-10-15 „Umów spotkanie” = modal z lejkiem (rodzaj lokalu, lokale, klientów dziennie, termin, pora,
   kontakt) → lead na scanova.support@gmail.com przez formsubmit (jak lejek na stronie). Zaproszenie Google Meet Adam wysyła ręcznie
   z kalendarza; docelowo link do Harmonogramu spotkań Google (kroki w manychat-plan.md). Strona jest mobile-first, bez emotek.
+- **Maile — automatyczna zimna wysyłka (2026-11-17): ekran `/maile`, cron co 15 min, 3-krokowa sekwencja, odpowiedzi
+  trafiają do Rozmów.** Wszystko w `docs/maile-system.md` (strategia, konfiguracja skrzynek, skąd brać adresy). Migracja 006
+  do uruchomienia w Supabase. Potrzebne od Adama: skrzynki (hasła aplikacji) w `MAIL_ACCOUNTS`, `MAIL_SECRET`, DNS domeny nadawczej.
+  Skrypty: `scripts/apify-gmaps-leady.ts` (Google Maps + e-maile), `scripts/znajdz-maile.ts` (e-maile ze stron), `scripts/import-maile.ts`.
 - Integracja Instagram przez API Mety (alternatywa bez abonamentu): kod gotowy (`app/api/meta/instagram`, `lib/meta/*`),
   webhook `POST /api/inbound/ig-reply` (token `INBOUND_WEBHOOK_SECRET`). Na Vercelu jest `META_VERIFY_TOKEN`;
   **brakuje**: `META_APP_SECRET`, `META_IG_ACCESS_TOKEN`, `META_IG_USER_ID`, `META_AUTO_REPLY=1`, `NEXT_PUBLIC_FILM_URL`.
@@ -79,7 +83,7 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 1. **Nagrać filmik** (2–3 min wg `docs/filmik-scenariusz.md` / tablicy) → link jako `NEXT_PUBLIC_FILM_URL`
    na Vercelu (`npx vercel env add NEXT_PUBLIC_FILM_URL production`) → odpowiedź „Odpisał → filmik” i bot mają link.
 2. Wysyłać DM-y: Sztab → Dziś → filtr miasta → „Wyślij DM” (kopiuje tekst, otwiera profil, odhacza). 30/dzień/konto.
-3. Maile: 51 potwierdzonych adresów z `kontakty.csv`, wariant A z `mail-zimny.md`, z imiennego adresu.
+3. Maile: skonfigurować skrzynki i uruchomić migrację 006 wg `docs/maile-system.md`; cron wysyła sam (150/dzień po rozgrzewce).
 4. Meta/bot — gdy będzie czas: konto IG firmowe → aplikacja Meta → 3 klucze → App Review.
 
 ## 5. Skrypty, które się przydają
@@ -89,6 +93,9 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
 | `npx tsx scripts/import-leady-baza.ts <plik-lub-katalog> --wykonaj` | import lokali do Bazy (format `@handle \| Nazwa \| Miasto \| nisza \| obs \| hook`; bez `--wykonaj` = dry-run) |
 | `npx tsx scripts/popraw-hooki.ts <plik> --wykonaj` | nadpisuje nazwę/miasto/hook po handle (pomija wysłane) |
 | `npx tsx scripts/duplikaty-bazy.ts` | raport duplikatów w Bazie: ten sam @handle, ta sama nazwa, ten sam szyld w mieście (tylko czyta) |
+| `npx tsx scripts/import-maile.ts <plik> --wykonaj` | import adresów do kolejki Maili (dry-run bez `--wykonaj`; `--zrodlo=gmaps|strona|csv`) |
+| `npx tsx scripts/apify-gmaps-leady.ts "Miasto"` | Google Maps przez Apify → CSV lokali z e-mailami (+ `-bez-maila.csv` do `znajdz-maile.ts`) |
+| `npx tsx scripts/znajdz-maile.ts <plik.csv>` | szuka e-maili na stronach lokali (kolumna www) |
 | `npx tsx scripts/create-user.ts <email> <hasło>` | nowe konto do Sztabu (+ dopisać do `STAFF_EMAILS`/`STAFF_USER_IDS` na Vercelu) |
 | `/api/health` | stan bazy i migracji |
 | `/api/export/{rozmowy,aktywnosci,historia,baza}` | eksport CSV (po zalogowaniu) |
