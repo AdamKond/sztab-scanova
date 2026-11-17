@@ -1,7 +1,7 @@
 // Lokale gastronomiczne z OpenStreetMap (Overpass API) — darmowe, bez limitów
 // per konto. Zwraca nazwę, kategorię, stronę WWW i (gdy jest) e-mail.
 //
-//   npx tsx scripts/osm-leady.ts "Lublin" [--out=docs/research-2026-11/osm-lublin.csv]
+//   npx tsx scripts/osm-leady.ts "Lublin" [--out=docs/research-2026-11/osm-lublin.csv] [--z-pliku=odp.json]
 //
 // Wyjścia (jak apify-gmaps-leady.ts):
 //   <out>               — lokale z e-mailem w OSM (gotowe do import-maile.ts),
@@ -11,7 +11,7 @@
 // Główny serwer overpass-api.de bywa przeciążony (502) — próbujemy po kolei
 // kilka luster. Granice miasta bierzemy z Nominatim (bounding box).
 
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { isSendableEmail, normalizeNiche } from "../lib/crm/mail/parse";
 
@@ -37,7 +37,7 @@ async function bbox(city: string): Promise<[number, number, number, number]> {
   return [s, w, n, e];
 }
 
-async function overpass(query: string): Promise<Element[]> {
+async function overpass(query: string, round = 1): Promise<Element[]> {
   let lastErr = "";
   for (const ep of MIRRORS) {
     try {
@@ -58,6 +58,12 @@ async function overpass(query: string): Promise<Element[]> {
       lastErr = `${ep}: ${err instanceof Error ? err.message : String(err)}`;
       console.log(`  ${lastErr}, próbuję następne lustro`);
     }
+  }
+  // Serwery Overpass bywają zapchane przez kilka minut — trzy rundy z przerwą.
+  if (round < 3) {
+    console.log(`  wszystkie lustra zajęte, czekam 120 s (runda ${round + 1}/3)`);
+    await new Promise((r) => setTimeout(r, 120_000));
+    return overpass(query, round + 1);
   }
   throw new Error(`Overpass nie odpowiada: ${lastErr}`);
 }
@@ -90,12 +96,20 @@ async function main() {
   const out = args.find((a) => a.startsWith("--out="))?.slice(6) ?? `docs/research-${new Date().toISOString().slice(0, 7)}/osm-${slug}.csv`;
   mkdirSync(path.dirname(out), { recursive: true });
 
-  const [s, w, n, e] = await bbox(city);
-  const query = `[out:json][timeout:150];
+  // --z-pliku=plik.json: gotowa odpowiedź Overpass (np. zapisana wcześniej) zamiast pytania serwera.
+  const fromFile = args.find((a) => a.startsWith("--z-pliku="))?.slice(10);
+  let els: Element[];
+  if (fromFile) {
+    els = ((JSON.parse(readFileSync(fromFile, "utf8")) as { elements?: Element[] }).elements ?? []);
+  } else {
+    const [s, w, n, e] = await bbox(city);
+    const query = `[out:json][timeout:150];
 nwr(${s},${w},${n},${e})["amenity"~"^(restaurant|cafe|fast_food|bar|pub|ice_cream|food_court|biergarten)$"]["name"];
 out tags center;`;
-  console.log("Pytam Overpass…");
-  const els = await overpass(query);
+    console.log("Pytam Overpass…");
+    els = await overpass(query);
+    writeFileSync(out.replace(/\.csv$/, ".overpass.json"), JSON.stringify({ elements: els }), "utf8");
+  }
 
   const withMail: string[] = ["email,nazwa,miasto,nisza,www,uwaga"];
   const noMail: string[] = ["nazwa,miasto,nisza,www,uwaga"];
