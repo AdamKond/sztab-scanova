@@ -69,12 +69,13 @@ na własną odpowiedzialność.
 
 ## 4. Skąd brać adresy (150/dzień = ~750 tygodniowo)
 
-| Źródło | Komenda | Ile |
+| Źródło | Komenda | Ile / uwagi |
 |---|---|---|
-| Google Maps przez Apify (lokale ze stroną + e-maile ze stron) | `npx tsx scripts/apify-gmaps-leady.ts "Rzeszów" --fraza=restauracja,pizzeria,kawiarnia --max=120` | ~30–45 % lokali ma e-mail; plan FREE Apify ≈ 800–1000 lokali/mies., za 49 USD/mies. bez limitu |
-| Strony lokali bez maila w Apify | `npx tsx scripts/znajdz-maile.ts docs/research-2026-11/gmaps-rzeszow-bez-maila.csv` | dociąga kolejne ~20 % |
-| Research z września | `docs/research-2026-09/kontakty.csv` (57 adresów) | import od razu |
-| Baza DM (lokale z www) | eksport `/api/export/baza` → kolumna www → `znajdz-maile.ts` | — |
+| **OpenStreetMap** (darmowe, bez konta) — lokale z nazwą, stroną, czasem e-mailem | `npx tsx scripts/osm-leady.ts "Rzeszów"` | Lublin: 534 lokale, 29 z e-mailem, 76 ze stroną; serwery Overpass bywają zapchane, skrypt próbuje 3 lustra × 3 rundy |
+| Strony lokali (z OSM, Restaurant Guru, Bazy) → e-mail | `npx tsx scripts/znajdz-maile.ts docs/research-2026-11/osm-rzeszow-bez-maila.csv` | ~60 % stron ma adres |
+| Restaurant Guru (listing miasta → strony lokali) | `npx tsx scripts/restaurantguru-leady.ts Rzeszow --strony=30` | ~17 lokali/stronę, ale po ~10 szybkich stronach blokuje IP na kilkanaście minut (503); skrypt czeka i ponawia — uruchamiać na noc, max 1 miasto naraz |
+| Google Maps przez Apify (najlepsza jakość, płatne) | `npx tsx scripts/apify-gmaps-leady.ts "Rzeszów" --max=120` | plan FREE = 5 USD/mies. (≈800 lokali), **w listopadzie 2026 kredyt wyczerpany** — od grudnia albo po przejściu na Starter 49 USD |
+| Research z września | `docs/research-2026-11/kontakty-2026-09-maile.csv` | 50 adresów gotowych |
 | Ręcznie | Maile → „+ Adres” / „Wklej listę” | — |
 
 Import do kolejki: `npx tsx scripts/import-maile.ts <plik.csv> --zrodlo=gmaps --wykonaj`
