@@ -7,7 +7,7 @@
 // Miasto w pisowni restaurantguru (bez polskich znaków): Lublin, Rzeszow, Kielce,
 // Radom, Warsaw, Krakow, Bialystok, Zamosc, Chelm, Pulawy, Swidnik…
 // ~17 lokali na stronę listingu; Rzeszów ma ~80 stron. Tempo grzeczne
-// (4 strony lokali naraz, ~0,4 s przerwy), bez logowania, tylko publiczne dane.
+// (jedno żądanie naraz, ~2 s przerwy; przy 503 pauza 90 s), bez logowania, tylko publiczne dane.
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
@@ -16,11 +16,21 @@ import { normalizeNiche } from "../lib/crm/mail/parse";
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36";
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-async function get(url: string): Promise<string | null> {
+// Restaurant Guru po kilku szybkich żądaniach odpowiada 503 „Suspicious activity"
+// na kilka minut. Dlatego: jedno żądanie naraz, ~2 s przerwy, a przy 503 czekamy
+// 90 s i próbujemy jeszcze dwa razy. Wersja angielska (bez Accept-Language) ma
+// linki w formacie /Nazwa-Miasto, polska ma inne — zostajemy przy angielskiej.
+async function get(url: string, attempt = 1): Promise<string | null> {
   const ctrl = new AbortController();
   const t = setTimeout(() => ctrl.abort(), 20_000);
   try {
-    const res = await fetch(url, { signal: ctrl.signal, headers: { "user-agent": UA, "accept-language": "pl,en;q=0.8" } });
+    const res = await fetch(url, { signal: ctrl.signal, headers: { "user-agent": UA } });
+    if (res.status === 503 || res.status === 429) {
+      if (attempt >= 3) return null;
+      process.stdout.write(`\n  ${res.status} — czekam 90 s (próba ${attempt + 1}/3)`);
+      await sleep(90_000);
+      return get(url, attempt + 1);
+    }
     if (!res.ok) return null;
     return await res.text();
   } catch {
@@ -100,7 +110,7 @@ async function main() {
     for (const m of html.matchAll(linkRe)) if (!detailUrls.includes(m[1])) detailUrls.push(m[1]);
     process.stdout.write(`\rlisting ${p}/${maxPages}: ${detailUrls.length} lokali`);
     if (detailUrls.length === before && p > 1) break;
-    await sleep(400);
+    await sleep(2000);
   }
   console.log();
 
@@ -108,14 +118,14 @@ async function main() {
   let i = 0;
   let done = 0;
   await Promise.all(
-    Array.from({ length: 4 }, async () => {
+    Array.from({ length: 1 }, async () => {
       while (i < detailUrls.length) {
         const url = detailUrls[i++];
         const html = await get(url);
         if (html) places.push(parseDetail(html, url));
         done += 1;
         if (done % 10 === 0 || done === detailUrls.length) process.stdout.write(`\rlokale ${done}/${detailUrls.length}, ze stroną: ${places.filter((x) => x.www).length}`);
-        await sleep(400);
+        await sleep(2000);
       }
     }),
   );
