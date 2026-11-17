@@ -1,6 +1,6 @@
 "use client";
 
-// Nawigacja — cztery ekrany, nic więcej. Client component, bo aktywny stan
+// Nawigacja — pięć ekranów, nic więcej. Client component, bo aktywny stan
 // liczymy z usePathname().
 import { usePathname } from "next/navigation";
 import type { SVGProps } from "react";
@@ -57,11 +57,21 @@ function IconGrid(props: IconProps) {
   );
 }
 
+function IconMail(props: IconProps) {
+  return (
+    <svg {...iconBase(props)}>
+      <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" />
+      <path d="m4.5 7 7.5 5.5L19.5 7" />
+    </svg>
+  );
+}
+
 export const icons = {
   today: IconToday,
   chat: IconChat,
   star: IconStar,
   grid: IconGrid,
+  mail: IconMail,
 } as const;
 
 export type IconName = keyof typeof icons;
@@ -78,6 +88,7 @@ export const navItems: NavItem[] = [
   { href: "/rozmowy", label: "Rozmowy", icon: "chat" },
   { href: "/klienci", label: "Klienci", icon: "star" },
   { href: "/baza", label: "Baza", icon: "grid" },
+  { href: "/maile", label: "Maile", icon: "mail" },
 ];
 
 export function isActive(pathname: string, href: string) {
