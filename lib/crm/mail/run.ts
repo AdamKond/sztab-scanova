@@ -14,7 +14,7 @@ import { findDuplicateCandidates } from "../queries";
 import { normalizeDomain, normalizeName } from "../normalize";
 import { REPLIED_NEXT_ACTION } from "../promote";
 import { classify, fromAddress } from "./inbox";
-import { pickSubject, renderMail, type MailContext } from "./copy";
+import { firstSubjectFor, renderMail, type MailContext } from "./copy";
 import { planBatch, type PlannedSend } from "./plan";
 import { getMailSettings, listMailActionable, processedIncomingIds, todayStats } from "./queries";
 import type { CrmMailRow, MailEventKind } from "./types";
@@ -49,6 +49,7 @@ function contextFor(row: CrmMailRow, account: MailAccount): MailContext {
     city: row.city,
     niche: row.niche,
     senderName: account.name,
+    senderEmail: account.email,
     phone: signaturePhone(),
     unsubscribeUrl: unsubscribeUrl(row.email),
   };
@@ -71,14 +72,15 @@ async function sendPlanned(p: PlannedSend, variant: "pytanie" | "oferta"): Promi
   if (!account) return { ok: false, error: `Brak skrzynki ${p.mailbox} w MAIL_ACCOUNTS` };
 
   const ctx = contextFor(p.row, account);
-  const firstSubject = p.row.subject ?? pickSubject(p.row.name, p.row.id);
+  const firstSubject = p.row.subject ?? firstSubjectFor(variant, p.row.name, p.row.id);
   const rendered = renderMail(p.step, variant, ctx, firstSubject);
-  const messageId = p.step === 1 ? newMessageId(account.email) : newMessageId(account.email);
+  const messageId = newMessageId(account.email);
 
   const result = await sendMail(account, {
     to: p.row.email,
     subject: rendered.subject,
     text: rendered.text,
+    html: rendered.html,
     messageId,
     inReplyTo: p.step > 1 ? p.row.message_id : null,
     unsubscribeUrl: ctx.unsubscribeUrl,
@@ -418,14 +420,16 @@ export async function sendTestMail(to: string, sample: Pick<CrmMailRow, "name" |
     city: sample.city,
     niche: sample.niche,
     senderName: account.name,
+    senderEmail: account.email,
     phone: signaturePhone(),
     unsubscribeUrl: unsubscribeUrl(to),
   };
-  const rendered = renderMail(1, settings.variant, ctx, pickSubject(sample.name, "test"));
+  const rendered = renderMail(1, settings.variant, ctx, firstSubjectFor(settings.variant, sample.name, "test"));
   const result = await sendMail(account, {
     to,
     subject: `[TEST] ${rendered.subject}`,
     text: rendered.text,
+    html: rendered.html,
     messageId: newMessageId(account.email),
     unsubscribeUrl: ctx.unsubscribeUrl,
   });

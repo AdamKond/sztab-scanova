@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { firstMailAsk, firstMailOffer, followupMail, lastMail, landingLink, nicheToCalc, pickSubject, renderMail, shortName, wordCount, type MailContext } from "@/lib/crm/mail/copy";
+import { offerSubject } from "@/lib/crm/mail/offer";
 import { batchSize, dueStep, effectiveDailyLimit, isSendWindow, planBatch, runsLeftToday, warsawClock } from "@/lib/crm/mail/plan";
 import { classify, excerptOf, extractEmails, isOptOut, ownLines } from "@/lib/crm/mail/inbox";
 import { isSendableEmail, normalizeNiche, parseContactLines } from "@/lib/crm/mail/parse";
@@ -10,6 +11,7 @@ const ctx: MailContext = {
   city: "Lublin",
   niche: "pizza",
   senderName: "Adam Kondracki",
+  senderEmail: "adam@skrzynka.pl",
   phone: "500 000 000",
   unsubscribeUrl: "https://sztab.example/api/mail/wypisz?e=x&t=y",
 };
@@ -89,6 +91,24 @@ describe("treści maili", () => {
   it("follow-up bez linku, ostatni z linkiem", () => {
     expect(followupMail(ctx).split("Jeśli nie chcecie")[0]).not.toMatch(/https?:\/\//);
     expect(lastMail(ctx)).toContain("scanova.tech/restauracje");
+  });
+  it("wariant oferta: HTML Adama z podpisem nadawcy, mailto na skrzynkę i stopką wypisania", () => {
+    const r = renderMail(1, "oferta", ctx, offerSubject(ctx.name));
+    expect(r.subject).toBe("Karta lojalnościowa dla Rykowisko: pierwsze 14 dni za darmo");
+    expect(r.html).toBeDefined();
+    expect(r.html).not.toContain("Oliwier Kępa");
+    expect(r.html).toContain("Adam Kondracki");
+    expect(r.html).not.toContain("scanova.support@gmail.com");
+    expect(r.html).toContain("mailto:adam@skrzynka.pl");
+    // W HTML & w adresie jest zakodowane jako &amp; (przeglądarka odkodowuje).
+    expect(r.html).toContain(ctx.unsubscribeUrl.replace("&", "&amp;"));
+    expect(r.html!.endsWith("</div>")).toBe(true);
+    expect(r.text).toContain("Pierwsze 14 dni za darmo");
+    expect(r.text).not.toContain("[image:");
+    expect(r.text).toContain(ctx.unsubscribeUrl);
+    expect(renderMail(2, "oferta", ctx, "x").text).toContain("10 minut");
+    expect(renderMail(3, "oferta", ctx, "x").text).toContain("scanova.tech/oferta");
+    expect(renderMail(2, "oferta", ctx, "x").html).toBeUndefined();
   });
   it("krok 2 i 3 idą jako Re: tematu maila #1", () => {
     expect(renderMail(2, "pytanie", ctx, "pytanie o Rykowisko").subject).toBe("Re: pytanie o Rykowisko");

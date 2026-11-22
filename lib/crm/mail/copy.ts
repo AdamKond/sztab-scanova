@@ -20,6 +20,7 @@
 //   tylko dla lokali z okolicy (tam możemy wpaść osobiście).
 
 import { KEYWORD } from "../dm-copy";
+import { offerFollowup, offerHtml, offerLast, offerSubject, offerText } from "./offer";
 
 export const PROOF = "MusiSushi i Kago Sushi";
 
@@ -94,6 +95,8 @@ export interface MailContext {
   niche: string | null;
   /** Podpis: imię i nazwisko nadawcy. */
   senderName: string;
+  /** Skrzynka nadawcza (mailto w ofercie, żeby odpowiedzi wracały tam, gdzie czyta je cron). */
+  senderEmail: string;
   /** Telefon w podpisie (opcjonalnie). */
   phone: string | null;
   /** Pełny URL do wypisania się (unikalny per adres). */
@@ -168,11 +171,19 @@ export function lastMail(ctx: MailContext): string {
 export interface RenderedMail {
   subject: string;
   text: string;
+  /** Tylko wariant „oferta”, krok 1: mail HTML Adama (tekst = wersja alternatywna). */
+  html?: string;
+}
+
+/** Temat maila #1 zależnie od wariantu (rotacja dla „pytanie”, stały rzeczowy dla „oferta”). */
+export function firstSubjectFor(variant: "pytanie" | "oferta", name: string, seed: string): string {
+  return variant === "oferta" ? offerSubject(name) : pickSubject(name, seed);
 }
 
 /**
  * Treść dla danego kroku sekwencji. Krok 2 i 3 idą jako "Re:" tematu maila #1
- * (ten sam wątek w skrzynce odbiorcy).
+ * (ten sam wątek w skrzynce odbiorcy). Wariant „oferta” = mail HTML Adama
+ * (lib/crm/mail/offer.ts) + tekstowe follow-upy w formie „Państwo”.
  */
 export function renderMail(
   step: 1 | 2 | 3,
@@ -181,12 +192,15 @@ export function renderMail(
   firstSubject: string,
 ): RenderedMail {
   if (step === 1) {
-    return {
-      subject: firstSubject,
-      text: variant === "oferta" ? firstMailOffer(ctx) : firstMailAsk(ctx),
-    };
+    if (variant === "oferta") {
+      return { subject: firstSubject, text: offerText(ctx), html: offerHtml(ctx) };
+    }
+    return { subject: firstSubject, text: firstMailAsk(ctx) };
   }
   const re = firstSubject.toLowerCase().startsWith("re:") ? firstSubject : `Re: ${firstSubject}`;
+  if (variant === "oferta") {
+    return { subject: re, text: step === 2 ? offerFollowup(ctx) : offerLast(ctx) };
+  }
   return { subject: re, text: step === 2 ? followupMail(ctx) : lastMail(ctx) };
 }
 

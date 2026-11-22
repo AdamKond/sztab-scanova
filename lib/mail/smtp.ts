@@ -1,7 +1,7 @@
 import "server-only";
 
 // Wysyłka przez SMTP skrzynki (Gmail / Google Workspace / dowolny host).
-// Jeden transport per skrzynka, cache w procesie. Czysty tekst, bez HTML.
+// Jeden transport per skrzynka, cache w procesie. Tekst zawsze; HTML tylko w wariancie „oferta”.
 
 import nodemailer, { type Transporter } from "nodemailer";
 import { randomUUID } from "node:crypto";
@@ -37,6 +37,8 @@ export interface OutgoingMail {
   to: string;
   subject: string;
   text: string;
+  /** Wersja HTML (wariant „oferta”); tekst zostaje jako alternatywa. */
+  html?: string | null;
   messageId: string;
   /** Message-ID maila #1 — dla kroków 2 i 3 (wątek). */
   inReplyTo?: string | null;
@@ -61,6 +63,7 @@ export async function sendMail(account: MailAccount, mail: OutgoingMail): Promis
       replyTo: account.replyTo ?? undefined,
       subject: mail.subject,
       text: mail.text,
+      html: mail.html ?? undefined,
       messageId: mail.messageId,
       inReplyTo: mail.inReplyTo ?? undefined,
       references: mail.inReplyTo ?? undefined,
