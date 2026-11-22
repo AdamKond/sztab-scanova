@@ -69,9 +69,11 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
   w klonie strony). Od 2026-10-15 „Umów spotkanie” = modal z lejkiem (rodzaj lokalu, lokale, klientów dziennie, termin, pora,
   kontakt) → lead na scanova.support@gmail.com przez formsubmit (jak lejek na stronie). Zaproszenie Google Meet Adam wysyła ręcznie
   z kalendarza; docelowo link do Harmonogramu spotkań Google (kroki w manychat-plan.md). Strona jest mobile-first, bez emotek.
-- **Maile — automatyczna zimna wysyłka (2026-11-17): ekran `/maile`, cron co 15 min, 3-krokowa sekwencja, odpowiedzi
-  trafiają do Rozmów.** Wszystko w `docs/maile-system.md` (strategia, konfiguracja skrzynek, skąd brać adresy). Migracja 006
-  do uruchomienia w Supabase. Potrzebne od Adama: skrzynki (hasła aplikacji) w `MAIL_ACCOUNTS`, `MAIL_SECRET`, DNS domeny nadawczej.
+- **Maile — automatyczna zimna wysyłka DZIAŁA NA PRODUKCJI od 2026-11-22**: ekran `/maile`, cron co 15 min (dni robocze 8–16),
+  3-krokowa sekwencja, odpowiedzi trafiają do Rozmów. Wariant „oferta” = mail HTML Adama z 2026-11-21 (`lib/crm/mail/templates/`),
+  skrzynka absolusq@gmail.com (limit 40/dzień), rozgrzewka od 2026-11-23 (20/dzień, +10). 1441 adresów w kolejce (kampania mail-2026-11).
+  Wszystko w `docs/maile-system.md`. Żeby dojść do 150/dzień, potrzebne 3 kolejne skrzynki w `MAIL_ACCOUNTS` (hasła aplikacji).
+  Ustawienia z terminala: `npx tsx scripts/ustaw-maile.ts --pauza|--start|--wariant=…`; test: `npx tsx scripts/test-mail.ts adres`.
   Skrypty: `scripts/apify-gmaps-leady.ts` (Google Maps + e-maile), `scripts/znajdz-maile.ts` (e-maile ze stron), `scripts/import-maile.ts`.
 - Integracja Instagram przez API Mety (alternatywa bez abonamentu): kod gotowy (`app/api/meta/instagram`, `lib/meta/*`),
   webhook `POST /api/inbound/ig-reply` (token `INBOUND_WEBHOOK_SECRET`). Na Vercelu jest `META_VERIFY_TOKEN`;

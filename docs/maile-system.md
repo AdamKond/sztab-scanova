@@ -39,6 +39,11 @@ przez lokal, każdy mail ma wypisanie jednym kliknięciem, a „nie” jest resp
 na stałe. Wariant „oferta” (pełny tekst z linkiem) jest do włączenia w ustawieniach
 na własną odpowiedzialność.
 
+**Decyzja Adama 2026-11-22:** mailem #1 jest jego mail ofertowy HTML (szablon w `lib/crm/mail/templates/oferta.html`,
+wysłany 2026-11-21 z Gmaila; system podmienia podpis i mailto na skrzynkę nadawczą, dokleja stopkę wypisania; tekst =
+wersja alternatywna). Follow-upy (krok 2 i 3) są tekstowe, w formie „Państwo”. Wariant „pytanie” (krótki tekst) zostaje
+do włączenia w ustawieniach. Szablon zmienia się edycją `.html`/`.txt` + `python3 scripts/generuj-szablon-oferty.py`.
+
 ## 3. Konfiguracja (jednorazowo)
 
 1. **Migracja:** Supabase → SQL Editor → `supabase/migration-006-maile.sql` → Run.

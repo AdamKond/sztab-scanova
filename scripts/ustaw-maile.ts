@@ -52,9 +52,12 @@ async function main() {
   }
   const { data, error } = await db.from("crm_mail_settings").select("*").eq("id", 1).single();
   if (error) throw new Error(error.message);
-  const q = await db.from("crm_mail_queue").select("status");
+  // PostgREST ucina na 1000 wierszy — liczymy per status z count: "exact".
   const counts: Record<string, number> = {};
-  for (const r of (q.data ?? []) as { status: string }[]) counts[r.status] = (counts[r.status] ?? 0) + 1;
+  for (const st of ["oczekuje", "wyslany", "followup", "zamkniety", "odpowiedzial", "odbil", "skarga", "wypisany", "wstrzymany", "blad"]) {
+    const { count } = await db.from("crm_mail_queue").select("id", { count: "exact", head: true }).eq("status", st);
+    if (count) counts[st] = count;
+  }
   console.log("Ustawienia:", { ...data, updated_at: undefined });
   console.log("Kolejka:", counts);
 }
