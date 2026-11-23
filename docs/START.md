@@ -69,7 +69,8 @@ ręcznie w SQL Editorze (wszystkie są już uruchomione na produkcji). Klucze: `
   w klonie strony). Od 2026-10-15 „Umów spotkanie” = modal z lejkiem (rodzaj lokalu, lokale, klientów dziennie, termin, pora,
   kontakt) → lead na scanova.support@gmail.com przez formsubmit (jak lejek na stronie). Zaproszenie Google Meet Adam wysyła ręcznie
   z kalendarza; docelowo link do Harmonogramu spotkań Google (kroki w manychat-plan.md). Strona jest mobile-first, bez emotek.
-- **Maile — automatyczna zimna wysyłka DZIAŁA NA PRODUKCJI od 2026-11-22**: ekran `/maile`, cron co 15 min (dni robocze 8–16),
+- **Maile — WSTRZYMANE 2026-11-23 na polecenie Adama** (`ustaw-maile.ts --pauza`; cron dalej czyta skrzynki, nie wysyła; wznowienie: `--start`).
+  Automatyczna zimna wysyłka działała na produkcji od 2026-11-22: ekran `/maile`, cron co 15 min (dni robocze 8–16),
   3-krokowa sekwencja, odpowiedzi trafiają do Rozmów. Wariant „oferta” = mail HTML Adama z 2026-11-21 (`lib/crm/mail/templates/`),
   skrzynka absolusq@gmail.com (limit 40/dzień), rozgrzewka od 2026-11-23 (20/dzień, +10). 1441 adresów w kolejce (kampania mail-2026-11).
   Wszystko w `docs/maile-system.md`. Żeby dojść do 150/dzień, potrzebne 3 kolejne skrzynki w `MAIL_ACCOUNTS` (hasła aplikacji).
