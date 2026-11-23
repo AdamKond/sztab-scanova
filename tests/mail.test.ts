@@ -96,13 +96,15 @@ describe("treści maili", () => {
     const r = renderMail(1, "oferta", ctx, offerSubject(ctx.name));
     expect(r.subject).toBe("Karta lojalnościowa dla Rykowisko: pierwsze 14 dni za darmo");
     expect(r.html).toBeDefined();
-    expect(r.html).not.toContain("Oliwier Kępa");
-    expect(r.html).toContain("Adam Kondracki");
+    // Podpis Adama zostaje nietknięty.
+    expect(r.html).toContain("Oliwier Kępa i Adam Kondracki");
+    expect(r.html).not.toContain("Adam Kondracki i Adam Kondracki");
     expect(r.html).not.toContain("scanova.support@gmail.com");
     expect(r.html).toContain("mailto:adam@skrzynka.pl");
     // W HTML & w adresie jest zakodowane jako &amp; (przeglądarka odkodowuje).
     expect(r.html).toContain(ctx.unsubscribeUrl.replace("&", "&amp;"));
     expect(r.html!.endsWith("</div>")).toBe(true);
+    expect(r.html!.indexOf("kliknąć tutaj")).toBeLessThan(r.html!.lastIndexOf("</td>"));
     expect(r.text).toContain("Pierwsze 14 dni za darmo");
     expect(r.text).not.toContain("[image:");
     expect(r.text).toContain(ctx.unsubscribeUrl);

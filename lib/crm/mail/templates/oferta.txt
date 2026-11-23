@@ -1,23 +1,24 @@
 scanova
-cyfrowe karty lojalnościowe
+CYFROWE KARTY LOJALNOŚCIOWE
 [image: ✓ ✓ ✓ ✓ ✓ ✓]
-  Oferta dla Państwa lokalu
+  OFERTA DLA PAŃSTWA LOKALU
 Karta lojalnościowa
 w telefonie klienta.
 Pierwsze 14 dni za darmo.
 Zamiast papierowej karty z pieczątkami.
-Po okresie próbnym 99 zł netto miesięcznie, bez umowy na czas określony.
-[image: Telefon z kartą Scanova w portfelu, przyłożony do czipa przy kasie]
-Karta zapisuje się w Apple Wallet lub Google Wallet. Pieczątka nabita przy
-kasie pojawia się na niej od razu.
+Po okresie próbnym 99 zł netto miesięcznie.
+[image: Karta lojalnościowa Scanova w Apple Wallet: 7 z 10 pieczątek, kod
+QR do skanowania przy kasie]
+Tak wygląda karta w Apple Wallet lub Google Wallet klienta. Pieczątka
+nabita przy kasie pojawia się na niej od razu.
 
 
 14 dni
-za darmo
+ZA DARMO
 99 zł
-netto / mies.
+NETTO / MIES.
 0
-aplikacji
+APLIKACJI
 
 
 Dzień dobry,
@@ -26,47 +27,47 @@ lokalu. Klienci zbierają pieczątki na telefonie, a przy każdej wizycie
 widzą, ile brakuje im do nagrody. Dzięki temu już po pierwszym zakupie
 mają konkretny
 powód, żeby wrócić właśnie do Państwa.
-  Co to daje
+  CO TO DAJE
 Częstsze powroty klientów i więcej opinii Google.
 Karta daje klientowi powód, żeby wrócić, a po wizycie sama prosi o opinię w
 Google. Tak wygląda to w liczbach u niektórych lokali, które z nami
 współpracują.
-Karty klientów w telefonach
+KARTY KLIENTÓW W TELEFONACH
 Ile kart klienci zapisali w Apple Wallet i Google Wallet, łącznie u
 niektórych lokali, które z nami współpracują.
 472
 
 
-start
+1. MIESIĄC
 824
 
 
-·
+2. MIESIĄC
 1 126
 
 
-·
+3. MIESIĄC
 1 291
 
-dziś
-Opinie Google jednego z lokali
+DZIŚ
+OPINIE GOOGLE JEDNEGO Z LOKALI
 Liczba opinii w wizytówce Google po włączeniu karty: ze 144 do 354, ocena z
 4,7 na 4,9.
 144
 
 
-start
+1. MIESIĄC
 208
 
 
-·
+2. MIESIĄC
 283
 
 
-·
+3. MIESIĄC
 354
 
-dziś
+DZIŚ
 
 
 
@@ -91,7 +92,7 @@ trzy razy i więcej
 
 Dane z niektórych lokali, które współpracują ze Scanovą. Powroty liczone
 jako kolejna pieczątka za wizytę na tej samej karcie.
-  Okres próbny
+  OKRES PRÓBNY
 Pierwsze 14 dni za darmo, w Państwa lokalu.
 Przez pełne 14 dni mogą Państwo korzystać z programu i sprawdzić, jak
 przyjmą go klienci. Przygotujemy kartę z Państwa logo, wspólnie ustalimy
@@ -99,7 +100,7 @@ zasady zbierania pieczątek i dostarczymy materiały z kodem QR do ustawienia
 przy kasie.
 Po okresie próbnym abonament wynosi 99 zł netto miesięcznie. Żadnych opłat
 za uruchomienie.
-  Krok po kroku
+  KROK PO KROKU
 Jak to wygląda przy zakupie?
 
 
@@ -122,7 +123,7 @@ klient otrzyma po zebraniu kompletu.
 
 Po zebraniu kompletu odbiera nagrodę
 Może to być darmowy produkt, rabat na kolejną wizytę lub drobny upominek.
-  W abonamencie
+  W ABONAMENCIE
 Co obejmuje 99 zł netto miesięcznie.
 
 
@@ -157,7 +158,7 @@ Materiały z kodem QR i pomoc przy uruchomieniu
 Wydrukowane kody QR do dodania karty i do nabijania pieczątek oraz krótka
 instrukcja dla obsługi, żeby mogła zacząć przyznawać pieczątki od
 pierwszego dnia.
-  Pakiet Start
+  PAKIET START
 99 zł netto miesięcznie. Co jeszcze jest w środku.
 Poza kartą, pieczątkami i powiadomieniami w abonamencie są narzędzia, które
 pracują na powroty klientów bez Państwa udziału.
@@ -167,10 +168,9 @@ pracują na powroty klientów bez Państwa udziału.
 nagrody.
 ✓ Projekt karty w barwach Państwa lokalu robimy my.
 ✓ Wsparcie e-mail i telefon od poniedziałku do piątku.
-Zasady współpracy
+ZASADY WSPÓŁPRACY
 ✓ Bez limitu klientów i kart.
 ✓ Faktura VAT co miesiąc, bez podpinania karty płatniczej.
-✓ Bez umowy na czas określony. Rezygnują Państwo, kiedy chcą.
 ✓ Wdrożenie do 3 dni od decyzji.
 Dla kilku lokali na jednym koncie, większej liczby kampanii i wiadomości do
 nieaktywnych klientów jest pakiet Rozwój, 199 zł netto miesięcznie.
@@ -186,8 +186,8 @@ Umówmy rozmowę  →
 <scanova.support@gmail.com?subject=Scanova%20%E2%80%93%20rozmowa%20o%20karcie%20lojalno%C5%9Bciowej>
 Wystarczy odpisać na tę wiadomość, jaki dzień i godzina Państwu odpowiadają.
 
-OK
-Pozdrawiam
-Oliwier Kępa
+s
+Pozdrawiamy
+Oliwier Kępa i Adam Kondracki
 Scanova sp. z o.o.
 Scanova sp. z o.o. · scanova.tech · scanova.support@gmail.com
