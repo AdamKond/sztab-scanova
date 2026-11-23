@@ -160,10 +160,12 @@ export function planBatch(input: PlanInput): PlannedSend[] {
       // Follow-up z tej samej skrzynki — jeśli dziś już wyczerpana, poczeka.
       if ((mailboxRoom.get(c.row.mailbox) ?? 0) > 0) mailbox = c.row.mailbox;
     } else {
-      // Nowy mail: skrzynka z największym zapasem (równe obciążenie).
+      // Nowy mail: skrzynka z największym zapasem (równe obciążenie), z pominięciem
+      // skrzynek „tylko follow-upy” (np. prywatna skrzynka, z której już nie wysyłamy nowych).
       let best: string | null = null;
       let bestRoom = 0;
       for (const [email, room] of mailboxRoom) {
+        if (mailboxes.find((m) => m.email === email)?.onlyFollowups) continue;
         if (room > bestRoom) {
           best = email;
           bestRoom = room;

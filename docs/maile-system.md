@@ -60,7 +60,7 @@ do włączenia w ustawieniach. Szablon zmienia się edycją `.html`/`.txt` + `py
 
    | Zmienna | Co |
    |---|---|
-   | `MAIL_ACCOUNTS` | JSON ze skrzynkami: `[{"email":"adam@x.pl","pass":"haslo-aplikacji","name":"Adam Kondracki","dailyCap":40}]` (bez `smtp`/`imap` = Gmail/Workspace) |
+   | `MAIL_ACCOUNTS` | JSON ze skrzynkami: `[{"email":"adam@x.pl","pass":"haslo-aplikacji","name":"Adam Kondracki","dailyCap":40}]` (bez `smtp`/`imap` = Gmail/Workspace). `"onlyFollowups": true` = skrzynka tylko kończy rozpoczęte wątki, nowych maili z niej nie ma (tak jest ustawiona prywatna absolusq@gmail.com po 20 mailach z 2026-11-23) |
    | `MAIL_SECRET` | losowy ciąg ≥16 znaków (podpis linków wypisania) |
    | `CRON_SECRET` | Vercel ustawia sam przy pierwszym deployu z `crons`; jeśli nie ma, dodać losowy |
    | `MAIL_PHONE` | telefon do podpisu (opcjonalnie) |

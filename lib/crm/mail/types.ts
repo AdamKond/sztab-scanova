@@ -129,4 +129,6 @@ export interface MailboxInfo {
   email: string;
   name: string;
   dailyCap: number;
+  /** true = skrzynka tylko kończy rozpoczęte wątki (kroki 2 i 3), nowych maili #1 z niej nie wysyłamy. */
+  onlyFollowups?: boolean;
 }

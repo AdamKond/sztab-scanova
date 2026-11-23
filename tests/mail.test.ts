@@ -186,6 +186,18 @@ describe("plan wysyłki", () => {
     expect(emails).not.toContain("b@a.pl");
     expect(emails).toContain("d@d.pl");
   });
+  it("planBatch: skrzynka onlyFollowups nie dostaje nowych maili, ale kończy wątki", () => {
+    const rows = [
+      row({ email: "n@n.pl", domain: "n.pl" }),
+      row({ email: "f@f.pl", domain: "f.pl", status: "wyslany", step: 1, mailbox: "stara@g.pl", sent_at: "2026-11-10T10:00:00Z" }),
+    ];
+    const base = { rows, settings, now: TUE_10, sentToday: 0, sentTodayByMailbox: {}, domainsToday: new Set<string>(), cronMinutes: 15 };
+    const onlyOld = planBatch({ ...base, mailboxes: [{ email: "stara@g.pl", name: "A", dailyCap: 10, onlyFollowups: true }] });
+    expect(onlyOld.map((p) => [p.row.email, p.mailbox])).toEqual([["f@f.pl", "stara@g.pl"]]);
+    const both = planBatch({ ...base, mailboxes: [{ email: "stara@g.pl", name: "A", dailyCap: 10, onlyFollowups: true }, { email: "nowa@s.pl", name: "A", dailyCap: 40 }] });
+    expect(both.find((p) => p.row.email === "n@n.pl")?.mailbox).toBe("nowa@s.pl");
+    expect(both.find((p) => p.row.email === "f@f.pl")?.mailbox).toBe("stara@g.pl");
+  });
   it("planBatch: pauza, limit wyczerpany, brak skrzynek → nic", () => {
     const rows = [row({})];
     const base = { rows, now: TUE_10, sentToday: 0, sentTodayByMailbox: {}, domainsToday: new Set<string>(), mailboxes: [{ email: "m@s.pl", name: "A", dailyCap: 40 }], cronMinutes: 15 };

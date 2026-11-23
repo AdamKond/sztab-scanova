@@ -7,7 +7,8 @@ import "server-only";
 // [
 //   { "email": "adam@scanova.pl", "pass": "haslo-aplikacji", "name": "Adam Kondracki", "dailyCap": 40 },
 //   { "email": "adam@x.pl", "pass": "...", "smtp": { "host": "smtp.x.pl", "port": 465 },
-//     "imap": { "host": "imap.x.pl", "port": 993 } }
+//     "imap": { "host": "imap.x.pl", "port": 993 } },
+//   { "email": "stara@gmail.com", "pass": "...", "onlyFollowups": true }   // tylko kończy rozpoczęte wątki
 // ]
 // Bez smtp/imap zakładamy Gmail / Google Workspace (smtp.gmail.com:465, imap.gmail.com:993)
 // z hasłem aplikacji (konto musi mieć włączoną weryfikację dwuetapową).
@@ -56,6 +57,7 @@ export function loadMailAccounts(): MailAccount[] {
       email,
       name,
       dailyCap: cap,
+      onlyFollowups: item.onlyFollowups === true,
       pass,
       replyTo: typeof item.replyTo === "string" && item.replyTo.trim() ? item.replyTo.trim() : null,
       smtp: {
@@ -78,7 +80,7 @@ export function loadMailAccounts(): MailAccount[] {
 
 /** Wersja bez sekretów — do planowania i UI. */
 export function mailboxInfos(): MailboxInfo[] {
-  return loadMailAccounts().map(({ email, name, dailyCap }) => ({ email, name, dailyCap }));
+  return loadMailAccounts().map(({ email, name, dailyCap, onlyFollowups }) => ({ email, name, dailyCap, onlyFollowups }));
 }
 
 export function findMailAccount(email: string): MailAccount | null {
