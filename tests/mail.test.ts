@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { firstMailAsk, firstMailOffer, followupMail, lastMail, landingLink, nicheToCalc, pickSubject, renderMail, shortName, wordCount, type MailContext } from "@/lib/crm/mail/copy";
-import { offerSubject } from "@/lib/crm/mail/offer";
+import { offerCard, offerSubject } from "@/lib/crm/mail/offer";
 import { batchSize, dueStep, effectiveDailyLimit, isSendWindow, planBatch, runsLeftToday, warsawClock } from "@/lib/crm/mail/plan";
 import { classify, excerptOf, extractEmails, isOptOut, ownLines } from "@/lib/crm/mail/inbox";
 import { isSendableEmail, normalizeNiche, parseContactLines } from "@/lib/crm/mail/parse";
@@ -111,6 +111,17 @@ describe("treści maili", () => {
     expect(renderMail(2, "oferta", ctx, "x").text).toContain("10 minut");
     expect(renderMail(3, "oferta", ctx, "x").text).toContain("scanova.tech/oferta");
     expect(renderMail(2, "oferta", ctx, "x").html).toBeUndefined();
+  });
+  it("wariant oferta: karta w mailu dobrana do branży", () => {
+    const r = renderMail(1, "oferta", ctx, offerSubject(ctx.name));
+    expect(r.html).toContain("assets/cards/mail/karta-pizzeria.png");
+    expect(r.html).toContain("karta Państwa pizzerii");
+    expect(r.html).not.toContain("karta-scanova.png");
+    expect(r.text).toContain("karta-pizzeria.png");
+    const sushi = renderMail(1, "oferta", { ...ctx, niche: "sushi/azja" }, "x");
+    expect(sushi.html).toContain("karta-sushi.png");
+    expect(renderMail(1, "oferta", { ...ctx, niche: null }, "x").html).toContain("karta-restauracja.png");
+    expect(offerCard("boba/matcha").file).toBe("kawiarnia");
   });
   it("krok 2 i 3 idą jako Re: tematu maila #1", () => {
     expect(renderMail(2, "pytanie", ctx, "pytanie o Rykowisko").subject).toBe("Re: pytanie o Rykowisko");

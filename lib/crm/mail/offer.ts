@@ -12,6 +12,53 @@ import { shortName, type MailContext } from "./copy";
 
 const ORIGINAL_MAILBOX = "scanova.support@gmail.com";
 
+// Karta w mailu dobrana do branży lokalu (obrazki: repo scanova-tech, assets/cards/mail/,
+// generator nowe-sekcje/karty-mail.html). Szablon ma kartę "restauracja"; podmieniamy
+// src, alt i podpis pod obrazkiem.
+const CARD_BASE = "https://scanova.tech/assets/cards/mail/";
+const TEMPLATE_CARD_SRC = "https://scanova.tech/assets/cards/karta-scanova.png";
+const TEMPLATE_CARD_ALT = "Karta lojalnościowa Scanova w Apple Wallet: 7 z 10 pieczątek i kod QR do skanowania przy kasie";
+const TEMPLATE_CARD_CAPTION =
+  "Tak wygląda karta w Apple Wallet lub Google Wallet. Pieczątka nabita przy kasie pojawia się na niej od razu.";
+
+export interface OfferCard {
+  /** Nazwa pliku bez rozszerzenia w assets/cards/mail/. */
+  file: string;
+  /** Dopełniacz do zdania „karta Państwa …”. */
+  genitive: string;
+  reward: string;
+}
+
+export function offerCard(niche: string | null | undefined): OfferCard {
+  switch ((niche ?? "").toLowerCase()) {
+    case "pizza":
+    case "wloska":
+      return { file: "pizzeria", genitive: "pizzerii", reward: "co 7. pizza gratis" };
+    case "burgery":
+      return { file: "burgery", genitive: "burgerowni", reward: "9. burger gratis" };
+    case "kebab/street food":
+      return { file: "kebab", genitive: "lokalu", reward: "11. kebab gratis" };
+    case "kawiarnia":
+    case "boba/matcha":
+    case "sniadania/brunch":
+      return { file: "kawiarnia", genitive: "kawiarni", reward: "11. kawa gratis" };
+    case "cukiernia/lody":
+      return { file: "cukiernia", genitive: "cukierni", reward: "9. deser gratis" };
+    case "sushi/azja":
+      return { file: "sushi", genitive: "sushi baru", reward: "zestaw gratis po 8 wizytach" };
+    default:
+      return { file: "restauracja", genitive: "restauracji", reward: "deser gratis na 10. wizytę" };
+  }
+}
+
+function cardCaption(card: OfferCard): string {
+  return (
+    `Tak może wyglądać karta Państwa ${card.genitive} w Apple Wallet lub Google Wallet, ` +
+    `na przykład z nagrodą „${card.reward}”. Kolory, logo i nagrodę ustalamy razem. ` +
+    `Pieczątka nabita przy kasie pojawia się na karcie od razu.`
+  );
+}
+
 function escapeHtml(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
@@ -24,7 +71,12 @@ export function offerSubject(name: string): string {
 export function offerHtml(ctx: MailContext): string {
   const mailbox = ctx.senderEmail;
   // mailto w przycisku i w stopce → skrzynka nadawcza
+  const card = offerCard(ctx.niche);
   let html = OFFER_HTML.split(`mailto:${ORIGINAL_MAILBOX}`).join(`mailto:${mailbox}`);
+  html = html
+    .split(TEMPLATE_CARD_SRC).join(`${CARD_BASE}karta-${card.file}.png`)
+    .split(TEMPLATE_CARD_ALT).join(escapeHtml(`Przykładowa karta lojalnościowa ${card.genitive} w Apple Wallet, nagroda: ${card.reward}`))
+    .split(TEMPLATE_CARD_CAPTION).join(escapeHtml(cardCaption(card)));
   html = html.split(`>${ORIGINAL_MAILBOX}<`).join(`>${mailbox}<`);
   // Stopka z wypisaniem — doklejona na końcu ostatniej komórki (szary tekst jak reszta stopki).
   const footer =
@@ -37,7 +89,11 @@ export function offerHtml(ctx: MailContext): string {
 }
 
 export function offerText(ctx: MailContext): string {
+  const card = offerCard(ctx.niche);
   let text = OFFER_TEXT.split(ORIGINAL_MAILBOX).join(ctx.senderEmail);
+  text = text.split("14 dni za darmo · 99 zł netto / mies. · 0 aplikacji").join(
+    `14 dni za darmo · 99 zł netto / mies. · 0 aplikacji\n\nPrzykładowa karta ${card.genitive} (nagroda: ${card.reward}): ${CARD_BASE}karta-${card.file}.png`,
+  );
   // Linijki "[image: …]" z konwersji Gmaila nic nie mówią w tekście.
   text = text
     .split("\n")
