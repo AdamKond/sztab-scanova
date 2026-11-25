@@ -50,9 +50,9 @@ z `renderMail(1,"oferta",…)` → plik HTML (wysyłka była wstrzymana, nic nie
 **Karta w mailu wg branży (2026-11-25):** `offerCard(niche)` w `lib/crm/mail/offer.ts` podmienia obrazek, alt i podpis pod kartą.
 7 kart (pizzeria, burgery, kebab, kawiarnia, cukiernia, sushi, restauracja = domyślna) leży na https://scanova.tech/assets/cards/mail/,
 generator to `nowe-sekcje/karty-mail.html` w repo strony (Chrome headless 450×531, skala 2). Nowa branża = nowy wpis w `offerCard` + nowy PNG.
-Karty mają układ jak karty klientów (ikona, nazwa, podtytuł, zdjęcie pod pieczątkami, QR). Zdjęcia: `assets/strip-*.jpg` — palarnia/nami/sol/laka
-nasze, pizza/burger/kebab/deser z Openverse na licencji CC0 (StockSnap, rawpixel; źródła w `assets/strip-zrodla.json`). Higgsfield ma 0 kredytów,
-więc AI-generowanie odpadło. Powitanie „Dzień dobry” jest na górze maila, pod granatowym nagłówkiem.
+Karty mają układ 1:1 jak prawdziwe karty klientów (`assets/cards/karta-nami.png`, `karta-palarnia.png`): ikona w kwadracie, nazwa, podtytuł,
+„PIECZĄTKI x/10”, płaski pasek z linią nagrody i 2 rzędami po 5 pieczątek, QR z numerem. BEZ zdjęć: Adam 2026-11-25 odrzucił wersję ze zdjęciem
+pod pieczątkami („nie tak wyglądają nasze karty”). Powitanie „Dzień dobry” jest na górze maila, pod granatowym nagłówkiem.
 
 ## 3. Konfiguracja (jednorazowo)
 
