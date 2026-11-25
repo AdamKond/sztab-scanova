@@ -43,6 +43,10 @@ na własną odpowiedzialność.
 wysłany 2026-11-21 z Gmaila; system podmienia podpis i mailto na skrzynkę nadawczą, dokleja stopkę wypisania; tekst =
 wersja alternatywna). Follow-upy (krok 2 i 3) są tekstowe, w formie „Państwo”. Wariant „pytanie” (krótki tekst) zostaje
 do włączenia w ustawieniach. Szablon zmienia się edycją `.html`/`.txt` + `python3 scripts/generuj-szablon-oferty.py`.
+**2026-11-25:** szablon przepisany na czysty HTML (tabele, style inline, 560 px, ok. 35 kB zamiast 190 kB z eksportu Gmaila)
+i skrócone teksty wg recenzji: nagłówek „Więcej powracających klientów. Więcej opinii w Google.”, 4 wskaźniki (1 291 kart, +632 opinii,
+41% powrotów, ocena 4,7→4,9), słupki z dynamiką (+174% kart, +146% opinii), adnotacja o źródle danych. Podgląd: `npx tsx` skryptem
+z `renderMail(1,"oferta",…)` → plik HTML (wysyłka była wstrzymana, nic nie poszło).
 
 ## 3. Konfiguracja (jednorazowo)
 
