@@ -47,6 +47,9 @@ do włączenia w ustawieniach. Szablon zmienia się edycją `.html`/`.txt` + `py
 i skrócone teksty wg recenzji: nagłówek „Więcej powracających klientów. Więcej opinii w Google.”, 4 wskaźniki (1 291 kart, +632 opinii,
 41% powrotów, ocena 4,7→4,9), słupki z dynamiką (+174% kart, +146% opinii), adnotacja o źródle danych. Podgląd: `npx tsx` skryptem
 z `renderMail(1,"oferta",…)` → plik HTML (wysyłka była wstrzymana, nic nie poszło).
+**Karta w mailu wg branży (2026-11-25):** `offerCard(niche)` w `lib/crm/mail/offer.ts` podmienia obrazek, alt i podpis pod kartą.
+7 kart (pizzeria, burgery, kebab, kawiarnia, cukiernia, sushi, restauracja = domyślna) leży na https://scanova.tech/assets/cards/mail/,
+generator to `nowe-sekcje/karty-mail.html` w repo strony (Chrome headless 450×531, skala 2). Nowa branża = nowy wpis w `offerCard` + nowy PNG.
 
 ## 3. Konfiguracja (jednorazowo)
 
