@@ -127,3 +127,28 @@ Warszawa, Kraków — e-mail nie wymaga dojazdu, więc cała Polska jest w zasi�
 | `components/maile/*` | ekran |
 | `scripts/apify-gmaps-leady.ts`, `znajdz-maile.ts`, `import-maile.ts` | zbieranie i import adresów |
 | `tests/mail.test.ts` | 20 testów treści, planu, klasyfikacji, parsera |
+
+
+## Audyt 2026-11-27 (przed wznowieniem wysyłki)
+
+Stan: wysyłka WSTRZYMANA od 23.11 (`paused=true`), cron chodzi co 15 min i czyta skrzynki. Wysłano naprawdę 17 maili 23.11
+(13:00–14:00 UTC) ze scanova.support@gmail.com, tematy z nazwą lokalu, 1 autoodpowiedź, 0 odpowiedzi. Produkcja: MAIL_DRY_RUN wyłączony
+(w dzienniku nie ma „NA SUCHO”). Kolejka: 1424 oczekuje → po czyszczeniu 1415 (9 wstrzymanych).
+
+Co było źle i co naprawiono (commit z 27.11):
+- **Karta po branży była zawodna**: nisze z Bazy są przypisane „na oko” (piekarnia jako kebab, Thai jako sushi, trattoria jako pizzeria,
+  pączkarnia jako restauracja). Teraz `offerCard(niche, name)` patrzy NAJPIERW na nazwę (pizz/burger/kebab/sushi/cukiern/kaw…),
+  a nisze wloska / kebab-street food / sushi-azja bez słowa w nazwie dostają neutralną kartę restauracji.
+- **„Delivery Status Notification (Delay)” liczyło się jako odbicie** → Liberty Cafe i Mangia dostały status „odbił” po samym opóźnieniu
+  (potem i tak przyszły Failure). Teraz opóźnienie = wpis w dzienniku, status bez zmian.
+- **Prywatna skrzynka absolusq@gmail.com (onlyFollowups)**: każdy newsletter/Twitch lądował z tematem w `crm_mail_events` (471 wpisów).
+  Teraz obce maile z prywatnej skrzynki zapisują się bez nadawcy i tematu („obcy mail, pominięty”).
+- Oferta: „piszemy / pokażemy” (liczba mnoga jak w podpisie „Pozdrawiamy”).
+- Dane: 39 nazw poprawionych (WIELKIE LITERY, małe litery, miasto w nazwie, „Re”→„Klub Re”, „Si”→„Restauracja Si”, „3P”→„Kawiarnia 3P”),
+  1 adres z „\” na końcu, 9 wierszy `wstrzymany` (adresy z Sentry, twoj@email.pl, jankowalski@mail.pl, info@mail.com, literówka .comr.pl,
+  2 nazwy-slogany >40 znaków, „grky”). Odbicia bez dopasowania (Gmail nie podaje adresu w temacie) zostają w dzienniku jako „nieznany”.
+- `scripts/test-mail.ts` ma `--nisza=` i `--miasto=`; 27.11 poszły 3 testy na kondracki.bartosz@gmail.com (pizzeria, kawiarnia, follow-up).
+
+Nadal do decyzji Adama: 576 z 1441 adresów to ogólne info@/kontakt@ (normalne dla lokali), ~30 to prywatne Gmaile właścicieli
+(np. rafal.grabowski00@) — piszemy tylko na adresy opublikowane przez lokal. Liczba lokali w danych o wynikach nadal niepodana.
+Wznowienie: `npx tsx scripts/ustaw-maile.ts --start` (rozgrzewka liczy od 22.11, więc limit dzienny będzie już wyższy: 20 + 10/dzień, max 150).
