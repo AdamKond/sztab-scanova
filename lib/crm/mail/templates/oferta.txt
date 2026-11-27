@@ -2,7 +2,7 @@ scanova
 CYFROWE KARTY LOJALNOŚCIOWE
 
 Dzień dobry,
-piszę w sprawie cyfrowej karty lojalnościowej dla Państwa lokalu. Klient
+piszemy w sprawie cyfrowej karty lojalnościowej dla Państwa lokalu. Klient
 zbiera pieczątki w telefonie, przy każdej wizycie widzi, ile brakuje mu do
 nagrody, i ma konkretny powód, żeby wrócić właśnie do Państwa. Poniżej
 w skrócie: jak to działa, co dało innym lokalom i ile kosztuje.
@@ -78,7 +78,7 @@ klientów: pakiet Rozwój, 199 zł netto miesięcznie. Szczegóły obu pakietów
 scanova.tech/oferta.
 
 10 minut rozmowy w tym tygodniu?
-Pokażę, jak wygląda karta na telefonie klienta i jak obsługa dodaje
+Pokażemy, jak wygląda karta na telefonie klienta i jak obsługa dodaje
 pieczątkę przy kasie. Jeśli się Państwu spodoba, ustalimy start dwóch
 bezpłatnych tygodni. Wystarczy odpisać na tę wiadomość, jaki dzień
 i godzina Państwu odpowiadają.

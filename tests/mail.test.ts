@@ -118,10 +118,19 @@ describe("treści maili", () => {
     expect(r.html).toContain("karta Państwa pizzerii");
     expect(r.html).not.toContain("karta-scanova.png");
     expect(r.text).toContain("karta-pizzeria.png");
-    const sushi = renderMail(1, "oferta", { ...ctx, niche: "sushi/azja" }, "x");
+    const sushi = renderMail(1, "oferta", { ...ctx, name: "Kipo Sushi", niche: "sushi/azja" }, "x");
     expect(sushi.html).toContain("karta-sushi.png");
-    expect(renderMail(1, "oferta", { ...ctx, niche: null }, "x").html).toContain("karta-restauracja.png");
+    expect(renderMail(1, "oferta", { ...ctx, name: "Pod Lipą", niche: null }, "x").html).toContain("karta-restauracja.png");
     expect(offerCard("boba/matcha").file).toBe("kawiarnia");
+    // nazwa wygrywa z niszą; nisze „na oko” bez słowa w nazwie → neutralna restauracja
+    expect(offerCard("restauracja", "Dobra Pączkarnia").file).toBe("cukiernia");
+    expect(offerCard("restauracja", "Pizza Lover").file).toBe("pizzeria");
+    expect(offerCard("kebab/street food", "Piekarnia Pod Telegrafem").file).toBe("restauracja");
+    expect(offerCard("kebab/street food", "Lord Kebab").file).toBe("kebab");
+    expect(offerCard("sushi/azja", "Thai Food").file).toBe("restauracja");
+    expect(offerCard("sushi/azja", "Kipo Sushi").file).toBe("sushi");
+    expect(offerCard("wloska", "Trattoria La Campana").file).toBe("restauracja");
+    expect(offerCard("kawiarnia", "Hard Rock Cafe").file).toBe("kawiarnia");
   });
   it("krok 2 i 3 idą jako Re: tematu maila #1", () => {
     expect(renderMail(2, "pytanie", ctx, "pytanie o Rykowisko").subject).toBe("Re: pytanie o Rykowisko");

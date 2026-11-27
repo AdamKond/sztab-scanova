@@ -29,25 +29,43 @@ export interface OfferCard {
   reward: string;
 }
 
-export function offerCard(niche: string | null | undefined): OfferCard {
+const CARDS: Record<string, OfferCard> = {
+  pizzeria: { file: "pizzeria", genitive: "pizzerii", reward: "co 7. pizza gratis" },
+  burgery: { file: "burgery", genitive: "burgerowni", reward: "9. burger gratis" },
+  kebab: { file: "kebab", genitive: "lokalu", reward: "11. kebab gratis" },
+  kawiarnia: { file: "kawiarnia", genitive: "kawiarni", reward: "11. kawa gratis" },
+  cukiernia: { file: "cukiernia", genitive: "cukierni", reward: "9. deser gratis" },
+  sushi: { file: "sushi", genitive: "sushi baru", reward: "zestaw gratis po 8 wizytach" },
+  restauracja: { file: "restauracja", genitive: "restauracji", reward: "deser gratis na 10. wizytę" },
+};
+
+/**
+ * Karta po NAZWIE lokalu (najpewniejsze: „Pizzeria K2”, „Good Burger”, „Kipo Sushi”),
+ * dopiero potem po niszy z Bazy. Nisze „wloska”, „kebab/street food” i „sushi/azja”
+ * bez słowa w nazwie dostają neutralną kartę restauracji — trattoria to nie pizzeria,
+ * bar mleczny to nie kebab, a tajska to nie sushi bar (audyt 2026-11-27).
+ */
+export function offerCard(niche: string | null | undefined, name?: string | null): OfferCard {
+  const n = (name ?? "").toLowerCase();
+  if (/pizz/.test(n)) return CARDS.pizzeria;
+  if (/burger|burgir|buły/.test(n)) return CARDS.burgery;
+  if (/kebab|kebap|d[öo]ner/.test(n)) return CARDS.kebab;
+  if (/sushi|sashimi/.test(n)) return CARDS.sushi;
+  if (/cukiern|lodziarn|\blody\b|lood|gelato|p[ąa]czk|ciast|cake|deser|wafl|waffle/.test(n)) return CARDS.cukiernia;
+  if (/kawiarn|kawk|caf[eé]|caff[eè]|coffee|herbaciarn|bubble|boba|matcha|kawa\b/.test(n)) return CARDS.kawiarnia;
   switch ((niche ?? "").toLowerCase()) {
     case "pizza":
-    case "wloska":
-      return { file: "pizzeria", genitive: "pizzerii", reward: "co 7. pizza gratis" };
+      return CARDS.pizzeria;
     case "burgery":
-      return { file: "burgery", genitive: "burgerowni", reward: "9. burger gratis" };
-    case "kebab/street food":
-      return { file: "kebab", genitive: "lokalu", reward: "11. kebab gratis" };
+      return CARDS.burgery;
     case "kawiarnia":
     case "boba/matcha":
     case "sniadania/brunch":
-      return { file: "kawiarnia", genitive: "kawiarni", reward: "11. kawa gratis" };
+      return CARDS.kawiarnia;
     case "cukiernia/lody":
-      return { file: "cukiernia", genitive: "cukierni", reward: "9. deser gratis" };
-    case "sushi/azja":
-      return { file: "sushi", genitive: "sushi baru", reward: "zestaw gratis po 8 wizytach" };
+      return CARDS.cukiernia;
     default:
-      return { file: "restauracja", genitive: "restauracji", reward: "deser gratis na 10. wizytę" };
+      return CARDS.restauracja;
   }
 }
 
@@ -71,7 +89,7 @@ export function offerSubject(name: string): string {
 export function offerHtml(ctx: MailContext): string {
   const mailbox = ctx.senderEmail;
   // mailto w przycisku i w stopce → skrzynka nadawcza
-  const card = offerCard(ctx.niche);
+  const card = offerCard(ctx.niche, ctx.name);
   let html = OFFER_HTML.split(`mailto:${ORIGINAL_MAILBOX}`).join(`mailto:${mailbox}`);
   html = html
     .split(TEMPLATE_CARD_SRC).join(`${CARD_BASE}karta-${card.file}.png`)
@@ -89,7 +107,7 @@ export function offerHtml(ctx: MailContext): string {
 }
 
 export function offerText(ctx: MailContext): string {
-  const card = offerCard(ctx.niche);
+  const card = offerCard(ctx.niche, ctx.name);
   let text = OFFER_TEXT.split(ORIGINAL_MAILBOX).join(ctx.senderEmail);
   text = text.split("14 dni za darmo · 99 zł netto / mies. · 0 aplikacji").join(
     `14 dni za darmo · 99 zł netto / mies. · 0 aplikacji\n\nPrzykładowa karta ${card.genitive} (nagroda: ${card.reward}): ${CARD_BASE}karta-${card.file}.png`,

@@ -15,6 +15,8 @@ export interface IncomingMessage {
 
 export type Classification =
   | { kind: "bounce"; recipient: string | null }
+  /** Powiadomienie o OPÓŹNIENIU dostawy (Gmail: „Delivery Status Notification (Delay)”) — nic nie robimy. */
+  | { kind: "delay" }
   | { kind: "autoreply" }
   | { kind: "unsubscribe"; excerpt: string }
   | { kind: "reply"; excerpt: string };
@@ -86,7 +88,13 @@ export function excerptOf(text: string, max = 400): string {
  * Klasyfikacja. `known` = adresy z kolejki (małe litery), żeby przy odbiciu
  * wskazać, KTÓREGO adresata dotyczy.
  */
+/** Opóźnienie dostawy: serwer odbiorcy chwilowo nie odpowiada; adres może być dobry. */
+export function isDelay(msg: Pick<IncomingMessage, "from" | "subject">): boolean {
+  return isBounce(msg) && /\(delay\)|delayed|op[óo][źz]nien|will keep trying|nadal pr[óo]buj/i.test(msg.subject);
+}
+
 export function classify(msg: IncomingMessage, known: Set<string>): Classification {
+  if (isDelay(msg)) return { kind: "delay" };
   if (isBounce(msg)) {
     const inBody = extractEmails(msg.text).find((e) => known.has(e)) ?? null;
     return { kind: "bounce", recipient: inBody };

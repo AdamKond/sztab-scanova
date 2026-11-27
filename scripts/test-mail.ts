@@ -1,7 +1,7 @@
 // Wysyła mail testowy (krok 1, 2 albo 3) na podany adres, dokładnie tak, jak
 // zrobi to cron — z pierwszej skrzynki w MAIL_ACCOUNTS (.env.local).
 //
-//   npx tsx scripts/test-mail.ts adres@gmail.com [--wariant=oferta|pytanie] [--krok=1|2|3] [--nazwa="Pizzeria Testowa"]
+//   npx tsx scripts/test-mail.ts adres@gmail.com [--wariant=oferta|pytanie] [--krok=1|2|3] [--nazwa="Pizzeria Testowa"] [--nisza=pizza|kawiarnia|...] [--miasto=Lublin]
 //
 // Nie dotyka bazy ani kolejki. Temat ma przedrostek [TEST].
 
@@ -37,6 +37,8 @@ async function main() {
   const variant = args.find((a) => a.startsWith("--wariant="))?.slice(10) === "pytanie" ? "pytanie" : "oferta";
   const step = (Number(args.find((a) => a.startsWith("--krok="))?.slice(7) ?? "1") || 1) as 1 | 2 | 3;
   const name = args.find((a) => a.startsWith("--nazwa="))?.slice(8) ?? "Pizzeria Testowa";
+  const niche = args.find((a) => a.startsWith("--nisza="))?.slice(8) ?? "pizza";
+  const city = args.find((a) => a.startsWith("--miasto="))?.slice(9) ?? "Lublin";
 
   const accounts = JSON.parse(process.env.MAIL_ACCOUNTS ?? "[]") as { email: string; pass: string; name?: string }[];
   const acc = accounts[0];
@@ -45,8 +47,8 @@ async function main() {
 
   const ctx: MailContext = {
     name,
-    city: "Lublin",
-    niche: "pizza",
+    city,
+    niche,
     senderName,
     senderEmail: acc.email,
     phone: process.env.MAIL_PHONE?.trim() || null,

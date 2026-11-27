@@ -355,6 +355,11 @@ export async function processInboxes(now: Date = new Date()): Promise<InboxSumma
       const cls = classify(msg, known);
       summary.messages += 1;
       try {
+        if (cls.kind === "delay") {
+          // Opóźnienie to nie odbicie: adres zostaje „wysłany”, a jeśli serwer w końcu odrzuci, przyjdzie osobne Failure.
+          await logMailEvent({ email: from ?? "?", kind: "nieznany", mailbox: account.email, message_id: msg.messageId, detail: `opóźnienie dostawy (bez zmiany statusu): ${msg.subject.slice(0, 100)}` });
+          continue;
+        }
         if (cls.kind === "bounce") {
           const row = (cls.recipient ? allRows.find((r) => r.email === cls.recipient) : null) ?? matchRow(msg, allRows);
           if (row && row.status !== "odbil") {
@@ -368,7 +373,9 @@ export async function processInboxes(now: Date = new Date()): Promise<InboxSumma
         const row = matchRow(msg, allRows);
         if (!row) {
           // Obcy mail w skrzynce (newsletter, znajomy) — zapamiętujemy, żeby nie czytać drugi raz.
-          await logMailEvent({ email: from ?? "?", kind: "nieznany", mailbox: account.email, message_id: msg.messageId, detail: msg.subject.slice(0, 120) });
+          // Ze skrzynki prywatnej (onlyFollowups) NIE zapisujemy tematu ani nadawcy: to cudza poczta, nie CRM.
+          const privateBox = account.onlyFollowups;
+          await logMailEvent({ email: privateBox ? "(prywatna skrzynka)" : from ?? "?", kind: "nieznany", mailbox: account.email, message_id: msg.messageId, detail: privateBox ? "obcy mail, pominięty" : msg.subject.slice(0, 120) });
           continue;
         }
         if (cls.kind === "autoreply") {
